@@ -1,0 +1,11 @@
+{
+  "type": "code",
+  "modid": "purposefulstorage",
+  "name": "PurposefulStorage",
+  "authors": [ "SONZ-INA" ],
+  "description": "Includes various storage blocks for better visual and functional item storage.",
+  "version": "1.0.0",
+  "dependencies": {
+    "game": "1.20.11"
+  }
+}
