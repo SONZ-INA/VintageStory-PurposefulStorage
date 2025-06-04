@@ -1,0 +1,94 @@
+{
+  "code": "wardrobe",
+  "class": "PurposefulStorage.BlockWardrobe",
+  "entityclass": "PurposefulStorage.BEWardrobe",
+  "variantgroups": [
+    { "code": "type", "states": ["normal"] },
+    { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
+  ],
+  "attributes": {
+    "materials": { "loadFromProperties": "block/wood" },
+    "variantTextures": {
+      "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ],
+      "glass": [ "game:block/glass/{glass}" ]
+    },
+    "handbook": {
+      "groupBy": [ "wardrobe-*" ],
+      "extraSections": [
+        {
+          "title": "purposefulstorage:blockdesc-canhold-title",
+          "text": "purposefulstorage:blockdesc-wardrobe-text"
+        }
+      ]
+    }
+  },
+  "behaviors": [
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } },
+    { "name": "Multiblock",
+      "propertiesByType": {
+        "*-north": { "sizex": 2, "sizey": 2, "sizez": 1, "cposition": { "x": 0, "y": 0, "z": 0 } },
+        "*-east": { "sizex": 1, "sizey": 2, "sizez": 2, "cposition": { "x": 0, "y": 0, "z": 0 } },
+        "*-south": { "sizex": 2, "sizey": 2, "sizez": 1, "cposition": { "x": 1, "y": 0, "z": 0 } },
+        "*-west": { "sizex": 1, "sizey": 2, "sizez": 2, "cposition": { "x": 0, "y": 0, "z": 1 } }
+      }
+    }
+  ],
+  "shape": {
+    "base": "block/clothes/wardrobe",
+    "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightReadyAnimation": "heldblockready", 
+  "heldTpUseAnimation": "twohandplaceblock",
+  "blockmaterial": "Wood",
+  "lightAbsorption": 2,
+  "maxStackSize": 8,
+  "replaceable": 900,
+  "resistance": 1.5,
+  "materialDensity": 400,
+  "faceCullMode": "NeverCull",
+  "emitSideAo": { "all": false },
+  "sidesolidByType": {
+    "*-north": { "verticals": true, "north": true, "horizontals": false },
+    "*-east": { "verticals": true, "east": true, "horizontals": false },
+    "*-west": { "verticals": true, "west": true, "horizontals": false },
+    "*-south": { "verticals": true, "south": true, "horizontals": false }
+  },
+  "sideopaque": { "all": false },
+  "guiTransform": {
+		"origin": { "x": 0.1, "y": 1.2, "z": 0.5 },
+		"scale": 0.55
+	},
+  "tpHandTransform": {
+	  "translation": { "x": -0.7, "y": -2.18, "z": -1.11 },
+	  "rotation": { "x": 99, "y": -15, "z": -76 },
+	  "scale": 0.35
+  },
+  "sounds": {
+    "place": "game:block/planks",
+    "hit": "game:block/planks",
+    "break": "game:block/planks"
+  },
+  "collisionbox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 } },
+  "selectionBoxes": [
+    { "x1": 0.125, "y1": 0.0625, "z1": 0.0625, "x2": 0.5, "y2": 0.375, "z2": 0.6875, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.0625, "z1": 0.6875, "x2": 0.5, "y2": 0.375, "z2": 1.3125, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.0625, "z1": 1.3125, "x2": 0.5, "y2": 0.375, "z2": 1.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.5, "y1": 0.25, "z1": 0.0625, "x2": 0.9375, "y2": 0.5625, "z2": 0.6875, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.5, "y1": 0.25, "z1": 0.6875, "x2": 0.9375, "y2": 0.5625, "z2": 1.3125, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.5, "y1": 0.25, "z1": 1.3125, "x2": 0.9375, "y2": 0.5625, "z2": 1.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+
+    { "x1": 0.125, "y1": 0.85, "z1": 0.0625, "x2": 0.9375, "y2": 1.9375, "z2": 0.25, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 0.25, "x2": 0.9375, "y2": 1.9375, "z2": 0.4375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 0.4375, "x2": 0.9375, "y2": 1.9375, "z2": 0.625, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 0.625, "x2": 0.9375, "y2": 1.9375, "z2": 0.8125, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 0.8125, "x2": 0.9375, "y2": 1.9375, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 1, "x2": 0.9375, "y2": 1.9375, "z2": 1.1875, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 1.1875, "x2": 0.9375, "y2": 1.9375, "z2": 1.375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 1.375, "x2": 0.9375, "y2": 1.9375, "z2": 1.5625, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 1.5625, "x2": 0.9375, "y2": 1.9375, "z2": 1.75, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.125, "y1": 0.85, "z1": 1.75, "x2": 0.9375, "y2": 1.9375, "z2": 1.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  
+    { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 2, "z2": 2, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  ]
+}

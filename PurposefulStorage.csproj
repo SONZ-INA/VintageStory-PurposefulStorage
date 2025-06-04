@@ -38,9 +38,29 @@
   <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+  <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\footware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbody.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\Wardrobe.json" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\acacia.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\baldcypress.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\birch.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\ebony.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\kapok.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\larch.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\maple.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\oak.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\pine.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\purpleheart.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\redwood.png" />
+  <None Remove="assets\purposefulstorage\textures\variants\wood\walnut.png" />
   <Content Include="modinfo.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+</ItemGroup>
+
+<ItemGroup>
+  <Folder Include="assets\purposefulstorage\sounds\block\" />
 </ItemGroup>
 
 </Project>

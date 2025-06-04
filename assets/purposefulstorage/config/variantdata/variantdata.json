@@ -1,0 +1,7 @@
+{
+  "RecipeVariantData": {},
+  "DefaultFallback": {
+    "game:plank-*": { "*:plank-*": [] },
+    "game:glass-*": { "*:glass-*": [] }
+  }
+}

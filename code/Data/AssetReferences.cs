@@ -1,9 +1,10 @@
 ﻿namespace PurposefulStorage;
 
 public static class ShapeReferences {
-    public const string HorizontalBarrel = "purposefulstorage:shapes/block/xxx.json";
+    public const string Wardrobe = "purposefulstorage:shapes/block/clothes/wardrobe.json";
 }
 
 public static class SoundReferences {
-    public const string CoolingCabinetOpen = "purposefulstorage:sounds/block/xxx.ogg";
+    public const string WardrobeOpen = "purposefulstorage:sounds/block/wardrobeopen.ogg";
+    public const string WardrobeClose = "purposefulstorage:sounds/block/wardrobeclose.ogg";
 }

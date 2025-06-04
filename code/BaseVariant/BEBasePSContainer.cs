@@ -1,4 +1,6 @@
-﻿namespace PurposefulStorage;
+﻿using System.Linq;
+
+namespace PurposefulStorage;
 
 public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorageContainer {
     public InventoryGeneric inv;
@@ -15,11 +17,10 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     protected virtual string CantPlaceMessage => "";
     protected abstract InfoDisplayOptions InfoDisplay { get; }
 
-    public virtual int ShelfCount { get; set; } = 1;
-    public virtual int SegmentsPerShelf { get; set; } = 1;
+    public virtual int[] SectionSegmentCounts { get; set; } = { 1 };
     public virtual int ItemsPerSegment { get; set; } = 1;
     public virtual int AdditionalSlots { get; set; } = 0;
-    public virtual int SlotCount => ShelfCount * SegmentsPerShelf * ItemsPerSegment + AdditionalSlots;
+    public virtual int SlotCount => SectionSegmentCounts.Sum() * ItemsPerSegment + AdditionalSlots;
 
     public override void Initialize(ICoreAPI api) {
         block ??= api.World.BlockAccessor.GetBlock(Pos) as BasePSContainer;
@@ -151,6 +152,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
-        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SegmentsPerShelf, ItemsPerSegment, true, SlotCount - AdditionalSlots);
+        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, true, SlotCount - AdditionalSlots);
     }
 }

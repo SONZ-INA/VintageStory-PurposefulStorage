@@ -1,3 +1,10 @@
 {
-    "hello": "hello world!"
+  "game:tabname-purposefulstorage": "Purposeful Storage",
+
+  "block-wardrobe-*": "Wardrobe",
+
+  "blockdesc-canhold-title": "Can hold:",
+  "blockdesc-wardrobe-text": "  -Most types of upperbody clothes as well as most shoes.",
+
+  "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

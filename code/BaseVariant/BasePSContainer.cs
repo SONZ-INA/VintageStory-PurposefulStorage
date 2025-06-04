@@ -9,7 +9,6 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
         base.OnLoaded(api);
         
         PlacedPriorityInteract = true; // Needed to call OnBlockInteractStart when shifting with an item in hand
-        heldDescEntry = Attributes["helddescentry"].AsString(Code.FirstCodePart());
 
         LoadVariantsCreative(api, this);
     }
@@ -33,17 +32,6 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
 
     public override string GetHeldItemName(ItemStack itemStack) {
         return base.GetHeldItemName(itemStack) + " " + itemStack.GetMaterialNameLocalized();
-    }
-
-    public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo) {
-        base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
-
-        string entry = "purposefulstorage:helddesc-" + heldDescEntry;
-        string desc = Lang.Get(entry);
-        if (desc != entry) {
-            dsc.AppendLine();
-            dsc.AppendLine(desc);
-        }
     }
 
     public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1) {

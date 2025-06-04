@@ -14,6 +14,14 @@ public class Core : ModSystem {
         // Coded Variants----------
         api.RegisterBlockClass("PurposefulStorage.BlockPSContainer", typeof(BasePSContainer));
         // ------------------------
+
+        // Block Classes-----------
+        api.RegisterBlockClass("PurposefulStorage.BlockWardrobe", typeof(BlockWardrobe));
+        // ------------------------
+
+        // Block Entity Classes----
+        api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
+        // ------------------------
     }
 
     public override void AssetsLoaded(ICoreAPI api) {
@@ -23,7 +31,7 @@ public class Core : ModSystem {
             RecipePatcher.SupportModdedIngredients(api);
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
-                ["barrels"] = new[] { "barrelrack", "tunrack" },
+                ["clothes"] = new[] { "footware", "upperbody" },
             };
 
             LoadData(api, restrictionGroupsServer);
