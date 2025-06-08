@@ -12,7 +12,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public override string AttributeTransformCode => "on" + Block?.Code.FirstCodePart() + "Transform";
 
     public ITreeAttribute VariantAttributes { get; set; } = new TreeAttribute();
-    public virtual string AttributeCheck => "ps" + GetType().Name.Replace("BE", "");
+    public virtual string[] AttributeCheck => new[] { "ps" + GetType().Name.Replace("BE", "") };
 
     protected virtual string CantPlaceMessage => "";
     protected abstract InfoDisplayOptions InfoDisplay { get; }
@@ -49,7 +49,15 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
             return TryTake(byPlayer, blockSel);
         }
         else {
-            if (slot.CanStoreInSlot(AttributeCheck)) {
+            bool canStore = false;
+            foreach (var attribute in AttributeCheck) {
+                if (slot.CanStoreInSlot(attribute)) {
+                    canStore = true;
+                    break;
+                }
+            }
+
+            if (canStore) {
                 AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
 
                 if (TryPut(byPlayer, slot, blockSel)) {
@@ -152,6 +160,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
-        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, true, SlotCount - AdditionalSlots);
+        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, false, SlotCount - AdditionalSlots);
     }
 }

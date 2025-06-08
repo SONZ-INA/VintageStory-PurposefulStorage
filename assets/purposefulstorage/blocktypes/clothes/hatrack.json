@@ -1,0 +1,66 @@
+{
+  "code": "hatrack",
+  "class": "PurposefulStorage.BlockHatRack",
+  "entityclass": "PurposefulStorage.BEHatRack",
+  "variantgroups": [
+    { "code": "type", "states": ["normal"] },
+    { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
+  ],
+  "attributes": {
+    "materials": { "loadFromProperties": "block/wood" },
+    "variantTextures": {
+      "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+    }
+  },
+  "behaviors": [
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } },
+    { "name": "Multiblock", "properties": { "sizex": 1, "sizey": 2, "sizez": 1, "cposition": { "x": 0, "y": 0, "z": 0 } } }
+  ],
+  "shape": {
+    "base": "block/clothes/hatrack",
+    "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightReadyAnimation": "heldblockready", 
+  "heldTpUseAnimation": "twohandplaceblock",
+  "blockmaterial": "Wood",
+  "lightAbsorption": 2,
+  "maxStackSize": 32,
+  "replaceable": 900,
+  "resistance": 1.5,
+  "materialDensity": 400,
+  "faceCullMode": "NeverCull",
+  "emitSideAo": { "all": false },
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "combustibleProps": {
+    "burnTemperature": 700,
+    "burnDuration": 36
+  },
+  "guiTransform": {
+    "origin": { "x": 0.6, "y": 1, "z": 0.5 },
+    "scale": 0.65
+  },
+  "tpHandTransform": {
+	  "translation": { "x": -0.7, "y": -1.48, "z": -0.91 },
+	  "rotation": { "x": 99, "y": -15, "z": -76 },
+	  "scale": 0.35
+  },
+  "sounds": {
+    "place": "game:block/planks",
+    "hit": "game:block/planks",
+    "break": "game:block/planks"
+  },
+  "collisionbox": { "x1": 0.2815, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+  "selectionBoxes": [
+	  { "x1": 0.2815, "y1": 0.0625, "z1": 0.0625, "x2": 0.9375, "y2": 0.485, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 0.0625, "z1": 0.5, "x2": 0.9375, "y2": 0.485, "z2": 0.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 0.515, "z1": 0.0625, "x2": 0.9375, "y2": 0.9865, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 0.515, "z1": 0.5, "x2": 0.9375, "y2": 0.9865, "z2": 0.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+
+    { "x1": 0.2815, "y1": 1.0625, "z1": 0.0625, "x2": 0.9375, "y2": 1.485, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 1.0625, "z1": 0.5, "x2": 0.9375, "y2": 1.485, "z2": 0.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 1.515, "z1": 0.0625, "x2": 0.9375, "y2": 1.9865, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.2815, "y1": 1.515, "z1": 0.5, "x2": 0.9375, "y2": 1.9865, "z2": 0.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  ]
+}

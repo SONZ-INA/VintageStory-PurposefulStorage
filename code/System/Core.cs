@@ -17,9 +17,11 @@ public class Core : ModSystem {
 
         // Block Classes-----------
         api.RegisterBlockClass("PurposefulStorage.BlockWardrobe", typeof(BlockWardrobe));
+        api.RegisterBlockClass("PurposefulStorage.BlockHatRack", typeof(BlockHatRack));
         // ------------------------
 
         // Block Entity Classes----
+        api.RegisterBlockEntityClass("PurposefulStorage.BEHatRack", typeof(BEHatRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
         // ------------------------
     }
@@ -31,7 +33,7 @@ public class Core : ModSystem {
             RecipePatcher.SupportModdedIngredients(api);
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
-                ["clothes"] = new[] { "footware", "upperbody" },
+                ["clothes"] = new[] { "blankets", "footware", "headware", "upperbodyware", "waistware" },
             };
 
             LoadData(api, restrictionGroupsServer);

@@ -12,7 +12,7 @@ public class BEWardrobe : BEBasePSAnimatable {
     public BEWardrobe() {
         inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (id, inv) => {
             if (id < 6) return new ItemSlotPSUniversal(inv, "psFootware");
-            else return new ItemSlotPSUniversal(inv, "psUpperbody");
+            else return new ItemSlotPSUniversal(inv, "psUpperbodyware");
         });
     }
 
@@ -42,7 +42,7 @@ public class BEWardrobe : BEBasePSAnimatable {
         }
         else {
             if (WardrobeOpen) {
-                if (slot.CanStoreInSlot("psFootware") || slot.CanStoreInSlot("psUpperbody")) {
+                if (slot.CanStoreInSlot("psFootware") || slot.CanStoreInSlot("psUpperbodyware")) {
                     AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
 
                     if (TryPut(byPlayer, slot, blockSel)) {

@@ -2,9 +2,12 @@
   "game:tabname-purposefulstorage": "Purposeful Storage",
 
   "block-wardrobe-*": "Wardrobe",
+  "block-hatrack-*": "Hat Rack",
 
   "blockdesc-canhold-title": "Can hold:",
-  "blockdesc-wardrobe-text": "  -Most types of upperbody clothes as well as most shoes.",
+  
+  "helddesc-wardrobe": "Can hold most types of upperbody clothes and well as most shoes!",
+  "helddesc-hatrack": "Can hold most hats!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

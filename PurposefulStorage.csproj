@@ -38,9 +38,14 @@
   <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\hatrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\blankets.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\footware.json" />
-  <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbody.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\headware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbodyware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\waistware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\headware.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\Wardrobe.json" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\acacia.png" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\baldcypress.png" />
