@@ -6,6 +6,7 @@
   "block-blanketrack-*": "Blanket Rack",
   "block-shoerack-*": "Shoe Rack",
   "block-belthooks-*": "Belt Hooks",
+  "block-glidermount-*": "Glider Mount",
 
   "blockdesc-canhold-title": "Can hold:",
   
@@ -14,6 +15,7 @@
   "helddesc-blanketrack": "Can hold all blankets!",
   "helddesc-shoerack": "Can hold all shoes!",
   "helddesc-belthooks": "Can hold all belts!",
+  "helddesc-glidermount": "A mount for your glider!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

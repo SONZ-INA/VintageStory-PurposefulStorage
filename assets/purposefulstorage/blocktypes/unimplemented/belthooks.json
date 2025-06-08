@@ -2,6 +2,7 @@
   "code": "belthooks",
   "class": "PurposefulStorage.BlockPSContainer",
   "entityclass": "PurposefulStorage.BEBeltHooks",
+  "enabled": false,
   "variantgroups": [
     { "code": "type", "states": ["normal"] },
     { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }

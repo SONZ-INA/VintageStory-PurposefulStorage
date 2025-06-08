@@ -49,6 +49,22 @@ public static class Meshing {
     }
 
     /// <summary>
+    /// Changes the item shape to another shape. Please note that the textures should be the same for the substitute shape.
+    /// </summary>
+    public static MeshData SubstituteItemShape(ICoreAPI Api, ITesselatorAPI tesselator, string shapePath) {
+        if (Api is not ICoreClientAPI capi) return null;
+
+        AssetLocation shapeLocation = new(shapePath);
+        Shape shape = Api.Assets.TryGet(shapeLocation)?.ToObject<Shape>();
+        if (shape == null) return null;
+
+        ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-SubstituteItemTexSource");
+
+        tesselator.TesselateShape(null, shape, out MeshData mesh, texSource);
+        return mesh;
+    }
+
+    /// <summary>
     /// Generates the content mesh of the block's inventory. Mainly used for generating basket contents.
     /// </summary>
     public static MeshData GenContentMesh(ICoreClientAPI capi, ITextureAtlasAPI targetAtlas, ItemStack[] contents, float[,] transformationMatrix, float scaleValue = 1f, Dictionary<string, ModelTransform> modelTransformations = null) {

@@ -18,14 +18,18 @@ public class Core : ModSystem {
         // Block Classes-----------
         api.RegisterBlockClass("PurposefulStorage.BlockWardrobe", typeof(BlockWardrobe));
         api.RegisterBlockClass("PurposefulStorage.BlockHatRack", typeof(BlockHatRack));
+
+        api.RegisterBlockClass("PurposefulStorage.BlockGliderMount", typeof(BlockGliderMount));
         // ------------------------
 
         // Block Entity Classes----
-        api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
+        //api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
         api.RegisterBlockEntityClass("PurposefulStorage.BEBlanketRack", typeof(BEBlanketRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEHatRack", typeof(BEHatRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEShoeRack", typeof(BEShoeRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
+
+        api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
         // ------------------------
     }
 
@@ -37,6 +41,7 @@ public class Core : ModSystem {
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
                 ["clothes"] = new[] { "blankets", "footware", "headware", "upperbodyware", "waistware" },
+                ["general"] = new[] { "glider" }
             };
 
             LoadData(api, restrictionGroupsServer);
