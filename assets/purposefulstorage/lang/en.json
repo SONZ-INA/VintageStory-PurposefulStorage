@@ -3,11 +3,17 @@
 
   "block-wardrobe-*": "Wardrobe",
   "block-hatrack-*": "Hat Rack",
+  "block-blanketrack-*": "Blanket Rack",
+  "block-shoerack-*": "Shoe Rack",
+  "block-belthooks-*": "Belt Hooks",
 
   "blockdesc-canhold-title": "Can hold:",
   
   "helddesc-wardrobe": "Can hold most types of upperbody clothes and well as most shoes!",
   "helddesc-hatrack": "Can hold most hats!",
+  "helddesc-blanketrack": "Can hold all blankets!",
+  "helddesc-shoerack": "Can hold all shoes!",
+  "helddesc-belthooks": "Can hold all belts!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

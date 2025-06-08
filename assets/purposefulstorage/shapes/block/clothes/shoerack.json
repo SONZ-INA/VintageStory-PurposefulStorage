@@ -1,0 +1,85 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"surface": "game:block/wood/shelf/surface"
+	},
+	"elements": [
+		{
+			"name": "originShoeRack",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 0.0, 0.0, 0.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "shoeSectionBack",
+					"from": [ 1.0, 1.0, 1.0 ],
+					"to": [ 15.0, 4.0, 8.0 ],
+					"rotationOrigin": [ 1.0, 1.0, 1.0 ],
+					"faces": {
+						"south": { "texture": "#surface", "uv": [ 1.0, 3.0, 15.0, 6.0 ] },
+						"up": { "texture": "#surface", "uv": [ 1.0, 9.0, 15.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "BackPlank",
+					"from": [ 0.0, 0.0, 0.0 ],
+					"to": [ 16.0, 8.0, 1.0 ],
+					"faces": {
+						"north": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 11.0 ] },
+						"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 1.0, 11.0 ] },
+						"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 11.0 ] },
+						"west": { "texture": "#surface", "uv": [ 15.0, 3.0, 16.0, 11.0 ] },
+						"up": { "texture": "#surface", "uv": [ 0.0, 15.0, 16.0, 16.0 ] },
+						"down": { "texture": "#surface", "uv": [ 0.0, 15.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "BottomPlank",
+					"from": [ 0.0, 0.0, 1.0 ],
+					"to": [ 16.0, 1.0, 15.0 ],
+					"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+					"faces": {
+						"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 14.0, 4.0 ] },
+						"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 4.0 ] },
+						"west": { "texture": "#surface", "uv": [ 2.0, 3.0, 16.0, 4.0 ] },
+						"up": { "texture": "#surface", "uv": [ 0.0, 2.0, 16.0, 16.0 ] },
+						"down": { "texture": "#surface", "uv": [ 0.0, 2.0, 16.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "LeftPlank",
+					"from": [ 0.0, 1.0, 1.0 ],
+					"to": [ 1.0, 5.0, 9.0 ],
+					"rotationOrigin": [ 0.0, 1.0, 1.0 ],
+					"faces": {
+						"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 8.0, 7.0 ] },
+						"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 1.0, 7.0 ] },
+						"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 16.0, 7.0 ] },
+						"up": { "texture": "#surface", "uv": [ 0.0, 8.0, 1.0, 16.0 ] }
+					}
+				},
+				{
+					"name": "RightPlank",
+					"from": [ 15.0, 1.0, 1.0 ],
+					"to": [ 16.0, 5.0, 9.0 ],
+					"rotationOrigin": [ 15.0, 1.0, 1.0 ],
+					"faces": {
+						"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 8.0, 7.0 ] },
+						"south": { "texture": "#surface", "uv": [ 15.0, 3.0, 16.0, 7.0 ] },
+						"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 16.0, 7.0 ] },
+						"up": { "texture": "#surface", "uv": [ 15.0, 8.0, 16.0, 16.0 ] }
+					}
+				}
+			]
+		}
+	],
+	"animations": [
+	]
+}

@@ -38,7 +38,10 @@
   <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\belthooks.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\blanketrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\hatrack.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\shoerack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\blankets.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\footware.json" />
@@ -46,6 +49,9 @@
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbodyware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\waistware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\headware.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\BeltHooks.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\BlanketRack.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\ShoeRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\Wardrobe.json" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\acacia.png" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\baldcypress.png" />

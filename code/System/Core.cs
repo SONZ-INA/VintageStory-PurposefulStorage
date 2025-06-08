@@ -21,7 +21,10 @@ public class Core : ModSystem {
         // ------------------------
 
         // Block Entity Classes----
+        api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEBlanketRack", typeof(BEBlanketRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEHatRack", typeof(BEHatRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEShoeRack", typeof(BEShoeRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
         // ------------------------
     }
