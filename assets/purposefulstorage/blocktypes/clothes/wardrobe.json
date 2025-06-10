@@ -3,7 +3,7 @@
   "class": "PurposefulStorage.BlockWardrobe",
   "entityclass": "PurposefulStorage.BEWardrobe",
   "variantgroups": [
-    { "code": "type", "states": ["normal"] },
+    { "code": "type", "states": ["normal", "wooden"] },
     { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
   ],
   "attributes": {
@@ -24,9 +24,15 @@
       }
     }
   ],
-  "shape": {
-    "base": "block/clothes/wardrobe",
-    "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+  "shapeByType": {
+    "*-normal-*": {
+      "base": "block/clothes/wardrobe",
+      "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+    },
+    "*-wooden-*": {
+      "base": "block/clothes/wardrobewooden",
+      "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+    }
   },
   "heldTpIdleAnimation": "holdbothhandslarge",
   "heldRightReadyAnimation": "heldblockready", 

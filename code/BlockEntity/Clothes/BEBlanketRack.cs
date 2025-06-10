@@ -2,7 +2,6 @@
 
 public class BEBlanketRack : BEBasePSContainer {
     public override string[] AttributeCheck => new[] { "psBlankets" };
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => new[] { 4 };
 

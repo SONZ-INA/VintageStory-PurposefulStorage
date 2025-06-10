@@ -15,7 +15,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public virtual string[] AttributeCheck => new[] { "ps" + GetType().Name.Replace("BE", "") };
 
     protected virtual string CantPlaceMessage => "";
-    protected abstract InfoDisplayOptions InfoDisplay { get; }
+    protected virtual InfoDisplayOptions InfoDisplay { get; set; } = InfoDisplayOptions.BySegment; 
 
     public virtual int[] SectionSegmentCounts { get; set; } = { 1 };
     public virtual int ItemsPerSegment { get; set; } = 1;
@@ -160,6 +160,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
-        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, false, SlotCount - AdditionalSlots);
+        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, SlotCount - AdditionalSlots);
     }
 }

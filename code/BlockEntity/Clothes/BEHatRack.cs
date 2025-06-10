@@ -3,7 +3,6 @@
 public class BEHatRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onHeadwareTransform";
     public override string[] AttributeCheck => new[] { "psHeadware" };
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => new[] { 8 };
 

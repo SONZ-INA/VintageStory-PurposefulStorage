@@ -2,7 +2,6 @@
 
 public class BEBeltHooks : BEBasePSContainer {
     public override string[] AttributeCheck => new[] { "psWaistware" };
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => new[] { 4 };
     public override int ItemsPerSegment => 3;

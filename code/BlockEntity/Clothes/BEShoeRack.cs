@@ -2,7 +2,6 @@
 
 public class BEShoeRack : BEBasePSContainer {
     public override string[] AttributeCheck => new[] { "psFootware" };
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => new[] { 4 };
 

@@ -3,7 +3,10 @@
 public class BEWardrobe : BEBasePSAnimatable {
     protected new BlockWardrobe block;
 
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+    protected override string ReferencedShape => 
+        block.Variant["type"] == "wooden" 
+            ? ShapeReferences.WardrobeWooden 
+            : base.ReferencedShape;
 
     public override int[] SectionSegmentCounts => new[] { 6, 10 };
 

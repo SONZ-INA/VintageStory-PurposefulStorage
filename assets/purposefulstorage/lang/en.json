@@ -1,12 +1,15 @@
 {
   "game:tabname-purposefulstorage": "Purposeful Storage",
 
-  "block-wardrobe-*": "Wardrobe",
+  "block-wardrobe-normal-*": "Wardrobe",
+  "block-wardrobe-wooden-*": "Wooden Wardrobe",
   "block-hatrack-*": "Hat Rack",
   "block-blanketrack-*": "Blanket Rack",
   "block-shoerack-*": "Shoe Rack",
   "block-belthooks-*": "Belt Hooks",
   "block-glidermount-*": "Glider Mount",
+  "block-weaponrack-*": "Weapon Rack",
+  "block-gearrack-*": "Gear Rack",
 
   "blockdesc-canhold-title": "Can hold:",
   
@@ -16,6 +19,8 @@
   "helddesc-shoerack": "Can hold all shoes!",
   "helddesc-belthooks": "Can hold all belts!",
   "helddesc-glidermount": "A mount for your glider!",
+  "helddesc-weaponrack": "Can hold most long weapons!",
+  "helddesc-gearrack": "Can hold gears!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

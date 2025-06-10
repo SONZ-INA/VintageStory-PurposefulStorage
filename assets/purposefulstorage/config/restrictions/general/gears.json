@@ -1,6 +1,7 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:falx-*"
+    "game:gear-rusty",
+    "game:gear-temporal"
   ]
 }

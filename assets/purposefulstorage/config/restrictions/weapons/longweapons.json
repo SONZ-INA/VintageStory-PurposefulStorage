@@ -1,0 +1,12 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:bow-long",
+    "game:bow-recurve",
+    "game:spear-generic-*",
+    "game:spear-scrap-scrap",
+    "game:blade-claymore-ruined",
+    "game:spear-voulge-ruined",
+    "game:spear-boar-ruined"
+  ]
+}

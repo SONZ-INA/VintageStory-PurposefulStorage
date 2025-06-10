@@ -1,0 +1,9 @@
+{
+  "game:bow-long": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.865, "y": 0.0185, "z": -0.125 }, "scaleXYZ": { "x": 1.1, "y": 1, "z": 1 }, "rotation": { "x": 10, "y": 0, "z": 0 } },
+  "game:bow-recurve": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.865, "y": 0.005, "z": 0 }, "scaleXYZ": { "x": 1.1, "y": 1, "z": 1 }, "rotation": { "x": 15, "y": 0, "z": 0 } },
+  "game:spear-generic-hacking": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.95, "y": -0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 } },
+  "game:spear-generic-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 1.05, "y": -0.03, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 } },
+  "game:spear-scrap-scrap": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.75, "y": -0.005, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 } },
+  "game:spear-voulge-ruined":  { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 1.05, "y": 0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 } },
+  "game:spear-boar-ruined":  { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 1.05, "y": 0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 } }
+}

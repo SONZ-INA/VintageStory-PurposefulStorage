@@ -2,7 +2,6 @@
 
 public class BEGliderMount : BEBasePSContainer {
     public override string[] AttributeCheck => new[] { "psGlider" };
-    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => new[] { 1 };
 
