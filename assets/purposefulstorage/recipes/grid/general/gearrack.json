@@ -1,0 +1,19 @@
+[
+  {
+    "ingredientPattern": "PP,SS,PP",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick" },
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+    },
+    "width": 2, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "gearrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

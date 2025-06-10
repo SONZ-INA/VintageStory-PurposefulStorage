@@ -5,6 +5,8 @@
 namespace PurposefulStorage;
 
 public class Core : ModSystem {
+    public override double ExecuteOrder() => 1.01; // For the dynamic recipes to load, this must be after 1
+
     private readonly Dictionary<string, RestrictionData> restrictions = new();
     private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = new();
 
@@ -33,6 +35,8 @@ public class Core : ModSystem {
 
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        
+        api.RegisterBlockEntityClass("PurposefulStorage.BEGrassBin", typeof(BEGrassBin));
 
         api.RegisterBlockEntityClass("PurposefulStorage.BEWeaponRack", typeof(BEWeaponRack));
         // ------------------------
@@ -45,6 +49,7 @@ public class Core : ModSystem {
             RecipePatcher.SupportModdedIngredients(api);
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
+                ["blocks"] = new[] { "grassbin" },
                 ["clothes"] = new[] { "blankets", "footware", "headware", "upperbodyware", "waistware" },
                 ["general"] = new[] { "gears", "glider" },
                 ["weapons"] = new[] { "longweapons" }

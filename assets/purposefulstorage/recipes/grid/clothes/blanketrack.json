@@ -1,0 +1,19 @@
+[
+  {
+    "ingredientPattern": "S,P,S",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:plankslab-*-down-free" },
+      "P": { "type": "item", "code": "game:plank-*", "quantity": 2, "name": "wood" }
+    },
+    "width": 1, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "blanketrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

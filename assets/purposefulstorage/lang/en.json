@@ -10,6 +10,7 @@
   "block-glidermount-*": "Glider Mount",
   "block-weaponrack-*": "Weapon Rack",
   "block-gearrack-*": "Gear Rack",
+  "block-grassbin-*": "Grass Bin",
 
   "blockdesc-canhold-title": "Can hold:",
   
@@ -21,6 +22,7 @@
   "helddesc-glidermount": "A mount for your glider!",
   "helddesc-weaponrack": "Can hold most long weapons!",
   "helddesc-gearrack": "Can hold gears!",
+  "helddesc-grassbin": "Can hold dry grass!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

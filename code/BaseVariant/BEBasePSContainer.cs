@@ -62,7 +62,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
 
                 if (TryPut(byPlayer, slot, blockSel)) {
                     Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
-                    MarkDirty();
                     return true;
                 }
             }

@@ -1,0 +1,18 @@
+[
+  {
+    "ingredientPattern": "P__,P_P,PPP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "grassbin-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

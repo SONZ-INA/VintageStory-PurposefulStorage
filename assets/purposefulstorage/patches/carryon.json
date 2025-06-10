@@ -1,0 +1,81 @@
+[
+  {
+    "file": "purposefulstorage:blocktypes/clothes/blanketrack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {},
+          "Back": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/clothes/shoerack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {},
+          "Back": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/clothes/hatrack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/general/gearrack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {},
+          "Back": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/resources/grassbin.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {},
+          "Back": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  }
+]

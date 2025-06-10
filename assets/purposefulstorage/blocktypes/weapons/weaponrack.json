@@ -39,7 +39,7 @@
   "sideopaque": { "all": false },
   "combustibleProps": {
     "burnTemperature": 700,
-    "burnDuration": 36
+    "burnDuration": 96
   },
   "guiTransform": {
     "origin": { "x": 0.5, "y": 0.8, "z": 0.5 },

@@ -1,0 +1,19 @@
+[
+  {
+    "ingredientPattern": "___,PSP,PPP",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick", "quantity": 2 },
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "shoerack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

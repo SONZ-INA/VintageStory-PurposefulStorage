@@ -1,7 +1,7 @@
 {
-  "code": "gearrack",
+  "code": "grassbin",
   "class": "PurposefulStorage.BlockPSContainer",
-  "entityclass": "PurposefulStorage.BEGearRack",
+  "entityclass": "PurposefulStorage.BEGrassBin",
   "variantgroups": [
     { "code": "type", "states": ["normal"] },
     { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
@@ -13,15 +13,18 @@
     }
   },
   "behaviors": [
-    { "name": "HorizontalAttachable", "properties": { "dropBlockFace": "east" } }
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }
   ],
   "shape": {
-    "base": "block/general/gearrack",
+    "base": "block/resources/grassbin",
     "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
   },
-  "heldTpIdleAnimation": "holdunderarm",
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightReadyAnimation": "heldblockready", 
+  "heldTpUseAnimation": "twohandplaceblock",
   "blockmaterial": "Wood",
-  "lightAbsorption": 1,
+  "lightAbsorption": 2,
+  "maxStackSize": 32,
   "replaceable": 900,
   "resistance": 1.5,
   "materialDensity": 400,
@@ -31,15 +34,15 @@
   "sideopaque": { "all": false },
   "combustibleProps": {
     "burnTemperature": 700,
-    "burnDuration": 40
+    "burnDuration": 36
   },
   "guiTransform": {
-    "origin": { "x": 1, "y": 0.4, "z": 0.6 },
-    "scale": 1.1
+    "origin": { "x": 0.65, "y": 0.5, "z": 0.6 },
+    "scale": 0.95
   },
   "tpHandTransform": {
-	  "translation": { "x": -0.8, "y": -0.58, "z": -0.41 },
-	  "rotation": { "x": -4, "y": -82, "z": 0 },
+	  "translation": { "x": -1.1, "y": -1.08, "z": -0.61 },
+	  "rotation": { "x": -164, "y": -8, "z": -88 },
 	  "scale": 0.5
   },
   "sounds": {
@@ -47,9 +50,7 @@
     "hit": "game:block/planks",
     "break": "game:block/planks"
   },
-  "collisionbox": { "x1": 0.6, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-  "selectionBoxes": [
-	  { "x1": 0.5, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-	  { "x1": 0.5, "y1": 0, "z1": 0.5, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  "collisionSelectionBoxes": [
+	  { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1 }
   ]
 }

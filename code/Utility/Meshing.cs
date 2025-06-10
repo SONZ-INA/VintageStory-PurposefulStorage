@@ -124,4 +124,68 @@ public static class Meshing {
 
         return nestedContentMesh;
     }
+
+    /// <summary>
+    /// Generates a mesh that will generate some item shapes, and then move them up as the stack size increases.
+    /// Do note that generally, the item shapes should "cover" up the whole top so you can't see the bottom of the block, giving the illusion that it's full.
+    /// </summary>
+    public static MeshData GenPartialContentMesh(ICoreClientAPI capi, ItemStack[] contents, string utilShapeLoc, float[][] transformationMatrices, float maxHeight) {
+        if (capi == null) return null;
+        if (contents == null || contents.Length == 0 || contents[0] == null || contents[0].Item == null) return null;
+
+        // Get item shape
+        string shapeLocation = contents[0].Item.Shape?.Base;
+        if (shapeLocation == null) return null;
+
+        Shape shape = capi.TesselatorManager.GetCachedShape(shapeLocation)?.Clone();
+        if (shape == null) return null;
+
+        // Handle texture source
+        ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-PartialContentMesh");
+        capi.Tesselator.TesselateShape("PS-TesselatePartial", shape, out MeshData itemMesh, texSource);
+
+        MeshData contentMesh = itemMesh.Clone();
+        if (transformationMatrices?[0] != null) 
+            contentMesh.MatrixTransform(transformationMatrices[0]);
+        
+        // Mesh some shapes
+        for (int i = 1; i < Math.Min(contents[0].StackSize, transformationMatrices.Length); i++) {
+            MeshData currentMesh = itemMesh.Clone();
+            if (transformationMatrices?[i] != null)
+                currentMesh.MatrixTransform(transformationMatrices[i]);
+            
+            contentMesh.AddMeshData(currentMesh);
+        }
+
+        // If more items are added, move content up
+        if (contents[0].StackSize > transformationMatrices.Length) {
+            // Calculate the total content amount
+            float contentAmount = 0;
+            foreach (var itemStack in contents) {
+                contentAmount += itemStack?.StackSize ?? 0;
+            }
+
+            // Calculating new height
+            int stackSizeDiv = contents[0].Collectible.MaxStackSize / 32;
+            float step = maxHeight / (contents.Length * 32 * stackSizeDiv);
+            float shapeHeight = contentAmount * step;
+
+            // Get util shape
+            AssetLocation utilLoc = new(utilShapeLoc);
+            Shape utilShape = Shape.TryGet(capi, utilLoc);
+            if (utilShape == null) return null;
+
+            // Get util textures
+            var textures = contents[0].Item.Textures;
+            texSource = new ContainerTextureSource(capi, contents[0], textures.Values.FirstOrDefault());
+
+            capi.Tesselator.TesselateShape("PS-TesselatePartialUtil", utilShape, out MeshData utilMesh, texSource);
+        
+            contentMesh?.Translate(0, shapeHeight, 0);
+            utilMesh.Translate(0, shapeHeight, 0);
+            contentMesh.AddMeshData(utilMesh);
+        }
+
+        return contentMesh;
+    }
 }
