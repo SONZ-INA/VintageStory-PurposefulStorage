@@ -36,7 +36,7 @@ public class Core : ModSystem {
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
         
-        api.RegisterBlockEntityClass("PurposefulStorage.BEGrassBin", typeof(BEGrassBin));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
 
         api.RegisterBlockEntityClass("PurposefulStorage.BEWeaponRack", typeof(BEWeaponRack));
         // ------------------------
@@ -49,7 +49,7 @@ public class Core : ModSystem {
             RecipePatcher.SupportModdedIngredients(api);
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
-                ["blocks"] = new[] { "grassbin" },
+                ["blocks"] = new[] { "resourcebin" },
                 ["clothes"] = new[] { "blankets", "footware", "headware", "upperbodyware", "waistware" },
                 ["general"] = new[] { "gears", "glider" },
                 ["weapons"] = new[] { "longweapons" }

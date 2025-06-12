@@ -129,7 +129,7 @@ public static class Meshing {
     /// Generates a mesh that will generate some item shapes, and then move them up as the stack size increases.
     /// Do note that generally, the item shapes should "cover" up the whole top so you can't see the bottom of the block, giving the illusion that it's full.
     /// </summary>
-    public static MeshData GenPartialContentMesh(ICoreClientAPI capi, ItemStack[] contents, string utilShapeLoc, float[][] transformationMatrices, float maxHeight) {
+    public static MeshData GenPartialContentMesh(ICoreClientAPI capi, ItemStack[] contents, float[][] transformationMatrices, float maxHeight, string utilShapeLoc = null) {
         if (capi == null) return null;
         if (contents == null || contents.Length == 0 || contents[0] == null || contents[0].Item == null) return null;
 
@@ -170,20 +170,27 @@ public static class Meshing {
             float step = maxHeight / (contents.Length * 32 * stackSizeDiv);
             float shapeHeight = contentAmount * step;
 
-            // Get util shape
-            AssetLocation utilLoc = new(utilShapeLoc);
-            Shape utilShape = Shape.TryGet(capi, utilLoc);
-            if (utilShape == null) return null;
-
-            // Get util textures
-            var textures = contents[0].Item.Textures;
-            texSource = new ContainerTextureSource(capi, contents[0], textures.Values.FirstOrDefault());
-
-            capi.Tesselator.TesselateShape("PS-TesselatePartialUtil", utilShape, out MeshData utilMesh, texSource);
-        
             contentMesh?.Translate(0, shapeHeight, 0);
-            utilMesh.Translate(0, shapeHeight, 0);
-            contentMesh.AddMeshData(utilMesh);
+
+            if (utilShapeLoc != null) {
+                // Get util shape
+                AssetLocation utilLoc = new(utilShapeLoc);
+                Shape utilShape = Shape.TryGet(capi, utilLoc);
+
+                if (utilShape == null) {
+                    capi.Logger.Warning("[PurposefulStorage] non-existent utilShapeLoc passed. No content mesh will be generated.");
+                    return null;
+                }
+
+                // Get util textures
+                var textures = contents[0].Item.Textures;
+                texSource = new ContainerTextureSource(capi, contents[0], textures.Values.FirstOrDefault());
+
+                capi.Tesselator.TesselateShape("PS-TesselatePartialUtil", utilShape, out MeshData utilMesh, texSource);
+        
+                utilMesh.Translate(0, shapeHeight, 0);
+                contentMesh.AddMeshData(utilMesh);
+            }
         }
 
         return contentMesh;

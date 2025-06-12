@@ -11,7 +11,7 @@
 	},
 	"elements": [
 		{
-			"name": "utilGrassBin",
+			"name": "utilResourceBin",
 			"from": [ 1.05, 1.0, 1.05 ],
 			"to": [ 14.95, 2.0, 14.95 ],
 			"rotationOrigin": [ 1.0, 1.0, 1.0 ],

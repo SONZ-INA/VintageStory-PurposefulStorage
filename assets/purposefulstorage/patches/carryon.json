@@ -63,7 +63,7 @@
     "dependsOn": [ { "modid": "carryon" } ]
   },
   {
-    "file": "purposefulstorage:blocktypes/resources/grassbin.json",
+    "file": "purposefulstorage:blocktypes/resources/resourcebin.json",
     "op": "addmerge", "path": "/behaviors/-", "side": "server",
     "value": {
       "name": "Carryable",

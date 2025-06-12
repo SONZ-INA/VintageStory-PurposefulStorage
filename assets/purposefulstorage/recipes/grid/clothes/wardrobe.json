@@ -1,11 +1,11 @@
 [
   {
-    "ingredientPattern": "PSP,GTG,PPP",
+    "ingredientPattern": "PSP,GNG,PPP",
     "ingredients": {
-      "S": { "type": "item", "code": "game:stick", "quantity": 8 },
       "P": { "type": "item", "code": "game:plank-*", "quantity": 3, "name": "wood" },
-      "G": { "type": "block", "code": "game:glass-*", "name": "glass" },
-      "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 }
+      "S": { "type": "item", "code": "game:stick", "quantity": 8 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "G": { "type": "block", "code": "game:glass-*" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": {
@@ -13,8 +13,7 @@
       "code": "wardrobe-normal-east",
       "attributes": {
         "PSAttributes": {
-          "wood": "{wood}",
-          "glass": "{glass}"
+          "wood": "{wood}"
         }
       }
     }

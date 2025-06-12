@@ -267,6 +267,7 @@ public static class RecipePatcher {
     }
 
     private static void RemoveAttributesForIngredient(GridRecipe recipe, string ingredientName) {
+        if (ingredientName == null) return;
         if (recipe.Output.Attributes == null) return;
 
         JToken jTokenAttributes = recipe.Output.Attributes.AsObject<JToken>();

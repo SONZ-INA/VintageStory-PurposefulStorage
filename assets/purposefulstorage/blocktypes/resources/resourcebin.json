@@ -1,7 +1,7 @@
 {
-  "code": "grassbin",
+  "code": "resourcebin",
   "class": "PurposefulStorage.BlockPSContainer",
-  "entityclass": "PurposefulStorage.BEGrassBin",
+  "entityclass": "PurposefulStorage.BEResourceBin",
   "variantgroups": [
     { "code": "type", "states": ["normal"] },
     { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
@@ -16,7 +16,7 @@
     { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }
   ],
   "shape": {
-    "base": "block/resources/grassbin",
+    "base": "block/resources/resourcebin",
     "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
   },
   "heldTpIdleAnimation": "holdbothhandslarge",
