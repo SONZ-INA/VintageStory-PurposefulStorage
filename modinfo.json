@@ -4,7 +4,7 @@
   "name": "PurposefulStorage",
   "authors": [ "SONZ-INA" ],
   "description": "Adds a variety of storage blocks designed for both aesthetic appeal and functional item organization.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "game": "1.20.10"
   }

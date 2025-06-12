@@ -2,7 +2,7 @@
   {
     "ingredientPattern": "S,P,S",
     "ingredients": {
-      "S": { "type": "item", "code": "game:plankslab-*-down-free" },
+      "S": { "type": "block", "code": "game:plankslab-*-down-free" },
       "P": { "type": "item", "code": "game:plank-*", "quantity": 2, "name": "wood" }
     },
     "width": 1, "height": 3, "recipeGroup": 1,
