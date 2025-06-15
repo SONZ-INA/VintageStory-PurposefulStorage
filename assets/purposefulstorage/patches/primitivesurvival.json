@@ -1,0 +1,14 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/general/gears.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-", "side": "server",
+    "value": "primitivesurvival:psgear-*",
+    "dependsOn": [ { "modid": "primitivesurvival" } ]
+  },
+  {
+    "file": "purposefulstorage:config/restrictions/clothes/lowerbodyware.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-", "side": "server",
+    "value": "primitivesurvival:clothes-lowerbody-clean-pants",
+    "dependsOn": [ { "modid": "primitivesurvival" } ]
+  }
+]

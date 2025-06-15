@@ -29,7 +29,10 @@ public class Core : ModSystem {
         // Block Entity Classes----
         //api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
         api.RegisterBlockEntityClass("PurposefulStorage.BEBlanketRack", typeof(BEBlanketRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEGloveRack", typeof(BEGloveRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEHatRack", typeof(BEHatRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BENecklaceStand", typeof(BENecklaceStand));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEPantsRack", typeof(BEPantsRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEShoeRack", typeof(BEShoeRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
 
@@ -50,7 +53,7 @@ public class Core : ModSystem {
 
             Dictionary<string, string[]> restrictionGroupsServer = new() {
                 ["blocks"] = new[] { "resourcebin" },
-                ["clothes"] = new[] { "blankets", "footware", "headware", "upperbodyware", "waistware" },
+                ["clothes"] = new[] { "blankets", "handware", "footware", "headware", "lowerbodyware", "neckware", "upperbodyware", "waistware" },
                 ["general"] = new[] { "gears", "glider" },
                 ["weapons"] = new[] { "longweapons" }
             };

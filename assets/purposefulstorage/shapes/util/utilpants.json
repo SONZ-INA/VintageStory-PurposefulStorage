@@ -1,0 +1,121 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"musician": "game:entity/humanoid/villagerclothes/lowerbody/pants/musician"
+	},
+	"elements": [
+		{
+			"name": "BottomFold",
+			"from": [ 1.0, 2.3, 3.6 ],
+			"to": [ 8.0, 2.8, 10.6 ],
+			"rotationOrigin": [ 9.0, 2.3, 7.1 ],
+			"rotationX": 10.0,
+			"faces": {
+				"north": { "texture": "#musician", "uv": [ 11.0, 8.0, 11.5, 14.8889 ], "rotation": 270 },
+				"east": { "texture": "#musician", "uv": [ 0.75, 8.4444, 7.75, 8.8889 ] },
+				"south": { "texture": "#musician", "uv": [ 3.5, 8.0, 4.0, 14.3778 ], "rotation": 90, "autoUv": false },
+				"west": { "texture": "#musician", "uv": [ 0.75, 13.7778, 7.75, 14.2222 ] },
+				"up": { "texture": "#musician", "uv": [ 8.25, 11.3334, 15.25, 14.22 ], "rotation": 90, "autoUv": false },
+				"down": { "texture": "#musician", "uv": [ 8.25, 11.3334, 15.25, 14.22 ], "rotation": 270, "autoUv": false }
+			},
+			"children": [
+				{
+					"name": "Spine",
+					"from": [ 0.01, 0.0, 0.01 ],
+					"to": [ 0.71, 0.7, 6.99 ],
+					"rotationOrigin": [ 0.0, 0.0, 0.0 ],
+					"rotationZ": 45.0,
+					"faces": {
+						"north": { "texture": "#musician", "uv": [ 10.25, 13.7778, 10.75, 14.4444 ] },
+						"east": { "texture": "#musician", "uv": [ 8.5, 13.7778, 15.25, 14.4444 ] },
+						"south": { "texture": "#musician", "uv": [ 10.75, 14.0, 11.25, 14.6667 ] },
+						"west": { "texture": "#musician", "uv": [ 8.5, 13.7778, 15.25, 14.4444 ] },
+						"up": { "texture": "#musician", "uv": [ 8.5, 14.0, 15.25, 14.6667 ], "rotation": 90 }
+					}
+				},
+				{
+					"name": "BottomFold2",
+					"from": [ -2.0, 0.0, 0.0 ],
+					"to": [ 5.0, 0.5, 7.0 ],
+					"rotationOrigin": [ 6.0, 0.0, 3.5 ],
+					"rotationX": -180.0,
+					"rotationZ": -180.0,
+					"faces": {
+						"north": { "texture": "#musician", "uv": [ 11.0, 7.5555, 11.5, 13.4411 ], "rotation": 270, "autoUv": false },
+						"east": { "texture": "#musician", "uv": [ 8.25, 8.6667, 15.25, 9.1111 ] },
+						"south": { "texture": "#musician", "uv": [ 10.75, 7.1111, 11.25, 13.7111 ], "rotation": 90, "autoUv": false },
+						"west": { "texture": "#musician", "uv": [ 8.5, 13.1111, 15.5, 13.5556 ], "rotation": 180 },
+						"up": { "texture": "#musician", "uv": [ 8.5, 6.6667, 15.5, 9.5511 ], "rotation": 90, "autoUv": false },
+						"down": { "texture": "#musician", "uv": [ 8.25, 6.6667, 15.25, 9.5511 ], "rotation": 270, "autoUv": false }
+					}
+				}
+			]
+		},
+		{
+			"name": "TopRB",
+			"from": [ 14.8, 2.1846, 10.6336 ],
+			"to": [ 21.7, 2.6846, 14.1336 ],
+			"rotationOrigin": [ 14.8, 2.1846, 10.6336 ],
+			"rotationX": -170.0,
+			"rotationY": -1.0,
+			"rotationZ": -180.0,
+			"faces": {
+				"north": { "texture": "#musician", "uv": [ 11.0, 4.4444, 11.5, 11.3333 ], "rotation": 90 },
+				"east": { "texture": "#musician", "uv": [ 6.25, 1.1111, 9.75, 1.5556 ] },
+				"west": { "texture": "#musician", "uv": [ 8.25, 0.8889, 11.75, 1.3333 ] },
+				"up": { "texture": "#musician", "uv": [ 12.25, 5.5556, 15.25, 9.44 ], "rotation": 270, "autoUv": false },
+				"down": { "texture": "#musician", "uv": [ 12.25, 5.5556, 15.25, 9.44 ], "rotation": 90, "autoUv": false }
+			}
+		},
+		{
+			"name": "TopRT",
+			"from": [ 14.8, 2.7924, 7.1868 ],
+			"to": [ 21.7, 3.3024, 10.6868 ],
+			"rotationOrigin": [ 14.8, 2.7924, 7.1868 ],
+			"rotationX": -170.0,
+			"rotationY": -1.0,
+			"rotationZ": -180.0,
+			"faces": {
+				"north": { "texture": "#musician", "uv": [ 11.0, 8.0, 11.5, 14.8889 ], "rotation": 90 },
+				"east": { "texture": "#musician", "uv": [ 5.25, 1.1111, 8.75, 1.5533 ], "autoUv": false },
+				"south": { "texture": "#musician", "uv": [ 10.5, 8.0, 11.0, 13.89 ], "rotation": 90, "autoUv": false },
+				"west": { "texture": "#musician", "uv": [ 4.75, 1.1111, 8.25, 1.5556 ] },
+				"up": { "texture": "#musician", "uv": [ 4.25, 5.5556, 7.25, 9.44 ], "rotation": 270, "autoUv": false }
+			}
+		},
+		{
+			"name": "TopLT",
+			"from": [ 7.9, 2.7924, 7.1868 ],
+			"to": [ 14.8, 3.2724, 10.6868 ],
+			"rotationOrigin": [ 7.9, 2.7924, 7.1868 ],
+			"rotationX": -170.0,
+			"rotationZ": -180.0,
+			"faces": {
+				"north": { "texture": "#musician", "uv": [ 11.0, 8.2222, 11.25, 14.7222 ], "rotation": 90, "autoUv": false },
+				"east": { "texture": "#musician", "uv": [ 9.5, 13.7778, 13.0, 14.2222 ] },
+				"south": { "texture": "#musician", "uv": [ 11.0, 8.6667, 11.25, 14.5544 ], "rotation": 270, "autoUv": false },
+				"west": { "texture": "#musician", "uv": [ 9.25, 8.4444, 12.75, 8.8889 ] },
+				"up": { "texture": "#musician", "uv": [ 4.25, 11.3334, 7.25, 14.6 ], "rotation": 270, "autoUv": false }
+			}
+		},
+		{
+			"name": "TopLB",
+			"from": [ 7.9, 2.1846, 10.6336 ],
+			"to": [ 14.8, 2.6746, 14.1336 ],
+			"rotationOrigin": [ 7.9, 2.1846, 10.6337 ],
+			"rotationX": -170.0,
+			"rotationZ": -180.0,
+			"faces": {
+				"north": { "texture": "#musician", "uv": [ 11.0, 8.4444, 11.25, 14.64 ], "rotation": 90, "autoUv": false },
+				"east": { "texture": "#musician", "uv": [ 1.25, 13.7778, 4.75, 14.2222 ] },
+				"south": { "texture": "#musician", "uv": [ 11.0, 8.0, 11.25, 14.6 ], "rotation": 270, "autoUv": false },
+				"up": { "texture": "#musician", "uv": [ 12.25, 11.3334, 15.25, 14.6 ], "rotation": 270, "autoUv": false }
+			}
+		}
+	]}

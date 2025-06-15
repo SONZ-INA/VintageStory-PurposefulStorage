@@ -1,0 +1,133 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"surface": "game:block/wood/shelf/surface"
+	},
+	"elements": [
+		{
+			"name": "originPantsRack",
+			"from": [ 0.0, 0.0, 0.0 ],
+			"to": [ 0.0, 0.0, 0.0 ],
+			"faces": {
+			},
+			"children": [
+				{
+					"name": "BackPlank",
+					"from": [ 0.0, 0.0, 0.0 ],
+					"to": [ 16.0, 16.0, 1.0 ],
+					"faces": {
+						"north": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 16.0 ], "autoUv": false },
+						"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 1.0, 16.0 ], "autoUv": false },
+						"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 16.0 ], "autoUv": false },
+						"west": { "texture": "#surface", "uv": [ 15.0, 3.0, 16.0, 16.0 ], "autoUv": false },
+						"up": { "texture": "#surface", "uv": [ 0.0, 15.0, 16.0, 16.0 ] },
+						"down": { "texture": "#surface", "uv": [ 0.0, 15.0, 16.0, 16.0 ] }
+					},
+					"children": [
+						{
+							"name": "PlankB",
+							"from": [ 0.0, 0.0, 1.0 ],
+							"to": [ 16.0, 1.0, 12.0 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#surface", "uv": [ 0.0, 15.0, 11.0, 16.0 ] },
+								"south": { "texture": "#surface", "uv": [ 0.0, 15.0, 16.0, 16.0 ] },
+								"west": { "texture": "#surface", "uv": [ 5.0, 15.0, 16.0, 16.0 ] },
+								"up": { "texture": "#surface", "uv": [ 0.0, 5.0, 16.0, 16.0 ] },
+								"down": { "texture": "#surface", "uv": [ 0.0, 5.0, 16.0, 16.0 ] }
+							}
+						},
+						{
+							"name": "PlankT",
+							"from": [ 0.0, 15.0, 1.0 ],
+							"to": [ 16.0, 16.0, 12.0 ],
+							"rotationOrigin": [ 0.0, 15.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#surface", "uv": [ 0.0, 3.0, 11.0, 4.0 ] },
+								"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 4.0 ] },
+								"west": { "texture": "#surface", "uv": [ 5.0, 3.0, 16.0, 4.0 ] },
+								"up": { "texture": "#surface", "uv": [ 0.0, 5.0, 16.0, 16.0 ] },
+								"down": { "texture": "#surface", "uv": [ 0.0, 5.0, 16.0, 16.0 ] }
+							}
+						},
+						{
+							"name": "PlankL",
+							"from": [ 0.0, 1.0, 1.0 ],
+							"to": [ 1.0, 15.0, 11.5 ],
+							"rotationOrigin": [ 0.0, 1.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#surface", "uv": [ 0.0, 4.0, 8.5, 15.0 ], "autoUv": false },
+								"south": { "texture": "#surface", "uv": [ 0.0, 4.0, 1.0, 15.0 ], "autoUv": false },
+								"west": { "texture": "#surface", "uv": [ 5.5, 4.0, 16.0, 15.0 ], "autoUv": false }
+							}
+						},
+						{
+							"name": "PlankR",
+							"from": [ 15.0, 1.0, 1.0 ],
+							"to": [ 16.0, 15.0, 11.5 ],
+							"rotationOrigin": [ 15.0, 1.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#surface", "uv": [ 0.0, 4.0, 10.5, 15.0 ], "autoUv": false },
+								"south": { "texture": "#surface", "uv": [ 15.0, 4.0, 16.0, 15.0 ], "autoUv": false },
+								"west": { "texture": "#surface", "uv": [ 7.5, 4.0, 16.0, 15.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "RestB",
+					"from": [ 1.0, 1.0, 1.0 ],
+					"to": [ 15.0, 1.5, 11.3 ],
+					"rotationOrigin": [ 1.0, 1.0, 11.5 ],
+					"rotationX": 10.0,
+					"faces": {
+						"up": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 13.0 ], "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "RestBFence",
+							"from": [ 0.0, 0.0, 10.0 ],
+							"to": [ 14.0, 1.5, 10.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 10.5 ],
+							"rotationX": -10.0,
+							"faces": {
+								"south": { "texture": "#surface", "uv": [ 0.0, 7.0, 16.0, 8.5 ], "autoUv": false },
+								"up": { "texture": "#surface", "uv": [ 0.0, 5.5, 16.0, 6.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "RestT",
+					"from": [ 1.0, 7.75, 1.0 ],
+					"to": [ 15.0, 8.25, 11.3 ],
+					"rotationOrigin": [ 1.0, 7.7, 11.5 ],
+					"rotationX": 10.0,
+					"faces": {
+						"up": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 13.0 ], "autoUv": false },
+						"down": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 13.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] }
+					},
+					"children": [
+						{
+							"name": "RestTFence",
+							"from": [ 0.0, 0.0, 10.0 ],
+							"to": [ 14.0, 1.5, 10.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 10.5 ],
+							"rotationX": -10.0,
+							"faces": {
+								"south": { "texture": "#surface", "uv": [ 0.0, 7.0, 16.0, 8.5 ], "autoUv": false },
+								"up": { "texture": "#surface", "uv": [ 0.0, 5.5, 16.0, 6.0 ], "autoUv": false },
+								"down": { "texture": "#surface", "uv": [ 0.0, 5.5, 16.0, 6.0 ], "autoUv": false, "windMode": [-1,-1,-1,-1] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

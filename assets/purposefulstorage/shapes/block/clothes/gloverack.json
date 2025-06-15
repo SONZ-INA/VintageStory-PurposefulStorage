@@ -1,0 +1,122 @@
+{
+	"editor": {
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"surface": "game:block/wood/shelf/surface"
+	},
+	"elements": [
+		{
+			"name": "BackPlank",
+			"from": [ 1.0, 1.0, 0.0 ],
+			"to": [ 15.0, 15.0, 1.0 ],
+			"rotationOrigin": [ 1.0, 1.0, 0.0 ],
+			"faces": {
+				"north": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 16.0 ], "autoUv": false },
+				"east": { "texture": "#surface", "uv": [ 1.0, 15.0, 15.0, 16.0 ], "rotation": 90 },
+				"south": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 16.0 ], "autoUv": false },
+				"west": { "texture": "#surface", "uv": [ 1.0, 3.0, 15.0, 4.0 ], "rotation": 90 },
+				"up": { "texture": "#surface", "uv": [ 1.0, 15.0, 15.0, 16.0 ] },
+				"down": { "texture": "#surface", "uv": [ 1.0, 15.0, 15.0, 16.0 ] }
+			},
+			"children": [
+				{
+					"name": "GloveBL",
+					"from": [ 1.8, 1.5, 0.0 ],
+					"to": [ 3.2, 9.5, 1.7 ],
+					"rotationOrigin": [ 1.8, 1.5, 0.0 ],
+					"rotationX": 70.0,
+					"faces": {
+						"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+						"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+						"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+						"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+						"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+						"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+					},
+					"children": [
+						{
+							"name": "GloveBR",
+							"from": [ 9.0, 0.0, 0.0 ],
+							"to": [ 10.4, 8.0, 1.7 ],
+							"rotationOrigin": [ 9.0, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+								"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+								"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+								"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+								"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+								"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "GloveML",
+					"from": [ 1.8, 6.5, 0.0 ],
+					"to": [ 3.2, 14.5, 1.7 ],
+					"rotationOrigin": [ 1.8, 6.5, 0.0 ],
+					"rotationX": 70.0,
+					"faces": {
+						"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+						"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+						"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+						"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+						"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+						"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+					},
+					"children": [
+						{
+							"name": "GloveMR",
+							"from": [ 9.0, 0.0, 0.0 ],
+							"to": [ 10.4, 8.0, 1.7 ],
+							"rotationOrigin": [ 9.0, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+								"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+								"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+								"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+								"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+								"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "GloveTL",
+					"from": [ 1.8, 11.5, 0.0 ],
+					"to": [ 3.2, 19.5, 1.7 ],
+					"rotationOrigin": [ 1.8, 11.5, 0.0 ],
+					"rotationX": 70.0,
+					"faces": {
+						"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+						"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+						"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+						"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+						"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+						"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+					},
+					"children": [
+						{
+							"name": "GloveTR",
+							"from": [ 9.0, 0.0, 0.0 ],
+							"to": [ 10.4, 8.0, 1.7 ],
+							"rotationOrigin": [ 9.0, 0.0, 0.0 ],
+							"faces": {
+								"north": { "texture": "#surface", "uv": [ 6.5, 3.0, 7.5, 11.0 ] },
+								"east": { "texture": "#surface", "uv": [ 5.0, 3.0, 6.5, 11.0 ] },
+								"south": { "texture": "#surface", "uv": [ 3.5, 3.0, 4.5, 11.0 ] },
+								"west": { "texture": "#surface", "uv": [ 8.0, 3.0, 9.5, 11.0 ] },
+								"up": { "texture": "#surface", "uv": [ 9.5, 0.0, 10.5, 1.5 ] },
+								"down": { "texture": "#surface", "uv": [ 7.0, 3.0, 8.0, 4.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

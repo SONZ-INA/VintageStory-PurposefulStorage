@@ -1,0 +1,19 @@
+[
+  {
+    "ingredientPattern": "BPB",
+    "ingredients": {
+      "B": { "type": "block", "code": "game:plankslab-*-down-free" },
+      "P": { "type": "item", "code": "game:plank-*", "quantity": 3, "name": "wood" }
+    },
+    "width": 3, "height": 1, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "pantsrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

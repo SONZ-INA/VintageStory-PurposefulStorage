@@ -13,7 +13,7 @@ public class BEGliderMount : BEBasePSContainer {
         ItemStack[] stack = GetContentStacks();
         if (stack[0]?.Item != null) {
             MeshData substituteShape = SubstituteItemShape(Api, tesselator, ShapeReferences.GliderUnfolded);
-            currentMesh.AddMeshData(substituteShape.BlockYRotation(block).MatrixTransform(genTransformationMatrices()[0]));
+            currentMesh.AddMeshData(substituteShape.MatrixTransform(genTransformationMatrices()[0]));
         }
 
         mesher.AddMeshData(currentMesh);

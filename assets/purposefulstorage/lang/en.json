@@ -11,6 +11,9 @@
   "block-weaponrack-*": "Weapon Rack",
   "block-gearrack-*": "Gear Rack",
   "block-resourcebin-*": "Grass Bin",
+  "block-pantsrack-*": "Pants Rack",
+  "block-gloverack-*": "Glove Rack",
+  "block-necklacestand-*": "Necklace Stand",
 
   "blockdesc-canhold-title": "Can hold:",
   
@@ -23,6 +26,9 @@
   "helddesc-weaponrack": "Can hold most long weapons!",
   "helddesc-gearrack": "Can hold gears!",
   "helddesc-resourcebin": "Can hold dry grass!",
+  "helddesc-pantsrack": "Can hold all sorts of pants!",
+  "helddesc-gloverack": "Can hold most gloves, braces and bracelets!",
+  "helddesc-necklacestand": "Can hold most necklaces!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

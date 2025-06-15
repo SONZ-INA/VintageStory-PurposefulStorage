@@ -349,7 +349,7 @@ public static class Extensions {
     public static bool CheckTypedRestriction(this CollectibleObject obj, RestrictionData data) => data.CollectibleTypes?.Contains(obj.Code.Domain + ":" + obj.GetType().Name) == true;
 
     public static bool CanStoreInSlot(this ItemSlot slot, string attributeWhitelist) {
-        if (slot?.Itemstack?.Collectible?.Attributes?[attributeWhitelist].AsBool() == false) return false;
+        if (!(slot?.Itemstack?.Collectible?.Attributes?[attributeWhitelist].AsBool() == true)) return false;
         if (slot?.Inventory?.ClassName == "hopper") return false;
         return true;
     }

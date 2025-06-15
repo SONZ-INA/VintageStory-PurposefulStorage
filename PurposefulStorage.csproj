@@ -40,7 +40,10 @@
   </Content>
   <None Remove="assets\purposefulstorage\blocktypes\clothes\belthooks.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\blanketrack.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\gloverack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\hatrack.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\necklacestand.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\clothes\pantsrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\shoerack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\general\gearrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\general\glidermount.json" />
@@ -49,7 +52,10 @@
   <None Remove="assets\purposefulstorage\blocktypes\weapons\weaponrack.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\blankets.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\footware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\handware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\headware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\lowerbodyware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\neckware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbodyware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\waistware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\gears.json" />
@@ -61,8 +67,12 @@
   <None Remove="assets\purposefulstorage\config\transformations\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\patches\armory.json" />
   <None Remove="assets\purposefulstorage\patches\carryon.json" />
+  <None Remove="assets\purposefulstorage\patches\primitivesurvival.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\blanketrack.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\clothes\gloverack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\hatrack.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\clothes\necklacestand.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\clothes\pantsrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\shoerack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\wardrobe.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\gearrack.json" />
@@ -71,6 +81,9 @@
   <None Remove="assets\purposefulstorage\recipes\grid\weapons\weaponrack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\BeltHooks.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\BlanketRack.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\GloveRack.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\NecklaceStand.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\clothes\PantsRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\ShoeRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\Wardrobe.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\WardrobeWooden.json" />
@@ -78,6 +91,7 @@
   <None Remove="assets\purposefulstorage\shapes\block\general\glidermount.json" />
   <None Remove="assets\purposefulstorage\shapes\block\resources\resourcebin.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\WeaponRack.json" />
+  <None Remove="assets\purposefulstorage\shapes\util\utilPants.json" />
   <None Remove="assets\purposefulstorage\shapes\util\utilResourceBin.json" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\acacia.png" />
   <None Remove="assets\purposefulstorage\textures\variants\wood\baldcypress.png" />

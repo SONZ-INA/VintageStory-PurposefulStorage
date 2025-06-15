@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Vintagestory.Client.NoObf;
+using Vintagestory.ServerMods;
 
 namespace PurposefulStorage;
 
@@ -48,6 +50,7 @@ public static class Meshing {
         return mesh;
     }
 
+
     /// <summary>
     /// Changes the item shape to another shape. Please note that the textures should be the same for the substitute shape.
     /// </summary>
@@ -59,6 +62,35 @@ public static class Meshing {
         if (shape == null) return null;
 
         ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-SubstituteItemTexSource");
+
+        tesselator.TesselateShape(null, shape, out MeshData mesh, texSource);
+        return mesh;
+    }
+
+    /// <summary>
+    /// Changes multiple item shapes to another shape.
+    /// </summary>
+    public static MeshData SubstituteItemShapes(ICoreAPI Api, ITesselatorAPI tesselator, string shapePath, ItemStack texturesFromItems) {
+        if (Api is not ICoreClientAPI capi) return null;
+        if (texturesFromItems == null) return null;
+
+        AssetLocation shapeLocation = new(shapePath);
+        Shape shape = Api.Assets.TryGet(shapeLocation)?.ToObject<Shape>();
+        if (shape == null) return null;
+
+        ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-SubstituteItemTexSource");
+
+        if (texturesFromItems.Item != null) {
+            var textures = texturesFromItems.Item.Textures.ShallowClone();
+
+            foreach (var texture in textures) {
+                if (texture.Value.ToString().Contains("transparent")) {
+                    textures.Remove(texture.Key);
+                }
+            }
+            
+            texSource = new ContainerTextureSource(capi, texturesFromItems, textures.Values.FirstOrDefault());
+        }
 
         tesselator.TesselateShape(null, shape, out MeshData mesh, texSource);
         return mesh;
