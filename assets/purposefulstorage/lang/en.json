@@ -14,9 +14,11 @@
   "block-pantsrack-*": "Pants Rack",
   "block-gloverack-*": "Glove Rack",
   "block-necklacestand-*": "Necklace Stand",
+  "block-tuningcylinderrack-normal-*": "Tuning Cylinder Rack",
+  "block-tuningcylinderrack-stand-*": "Tuning Cylinder Stand",
 
   "blockdesc-canhold-title": "Can hold:",
-  
+
   "helddesc-wardrobe": "Can hold most types of upperbody clothes and well as most shoes!",
   "helddesc-hatrack": "Can hold most hats!",
   "helddesc-blanketrack": "Can hold all blankets!",
@@ -29,6 +31,7 @@
   "helddesc-pantsrack": "Can hold all sorts of pants!",
   "helddesc-gloverack": "Can hold most gloves, braces and bracelets!",
   "helddesc-necklacestand": "Can hold most necklaces!",
+  "helddesc-tuningcylinderrack": "Can hold tuning cylinders!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

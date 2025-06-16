@@ -38,6 +38,7 @@ public class Core : ModSystem {
 
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        api.RegisterBlockEntityClass("PurposefulStorage.BETuningCylinderRack", typeof(BETuningCylinderRack));
         
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
 
@@ -54,7 +55,7 @@ public class Core : ModSystem {
             Dictionary<string, string[]> restrictionGroupsServer = new() {
                 ["blocks"] = new[] { "resourcebin" },
                 ["clothes"] = new[] { "blankets", "handware", "footware", "headware", "lowerbodyware", "neckware", "upperbodyware", "waistware" },
-                ["general"] = new[] { "gears", "glider" },
+                ["general"] = new[] { "gears", "glider", "tuningcylinders" },
                 ["weapons"] = new[] { "longweapons" }
             };
 

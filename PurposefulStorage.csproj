@@ -60,6 +60,7 @@
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\waistware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\gears.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\glider.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\general\tuningcylinders.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\resources\grass.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\headware.json" />
@@ -89,6 +90,7 @@
   <None Remove="assets\purposefulstorage\shapes\block\clothes\WardrobeWooden.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\GearRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\glidermount.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\general\tuningcylinderstand.json" />
   <None Remove="assets\purposefulstorage\shapes\block\resources\resourcebin.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\WeaponRack.json" />
   <None Remove="assets\purposefulstorage\shapes\util\utilPants.json" />
