@@ -6,6 +6,7 @@
   "game:spear-scrap-scrap": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.75, "y": -0.005, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scale": 0.85 },
   "game:spear-voulge-ruined": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 1.05, "y": 0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scale": 0.85 },
   "game:spear-boar-ruined": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 1.05, "y": 0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scale": 0.85 },
+  "game:club-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.3, "y": 0, "z": -0.005 }, "scale": 0.75 },
 
   "armory:sword-long-plain-steel": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.4, "y": 0, "z": -0.025 }, "scale": 0.6 },
   "armory:sword-long-plain-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.45, "y": 0, "z": -0.025 }, "scale": 0.6 },

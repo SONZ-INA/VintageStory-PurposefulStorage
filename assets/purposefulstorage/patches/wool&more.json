@@ -1,0 +1,8 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/clothes/upperbodyware.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-", "side": "server",
+    "value": "wool:clothes-upperbodyover-*",
+    "dependsOn": [ { "modid": "wool" } ]
+  }
+]

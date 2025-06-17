@@ -23,10 +23,10 @@ public class BETuningCylinderRack : BEBasePSContainer {
                     .Translate(x - 0.5f, y, z - 0.5f)
                     .Values;
             }
-            else { // finish
+            else {
                 float x = -0.375f + segment % 4 * 0.25f;
-                float y = -0.075f + segment / 4 * 0.4f;
-                float z = -0.3295f - segment / 4 * 0.1625f;
+                float y = -0.12f + segment / 4 * 0.4f;
+                float z = -0.345f - segment / 4 * 0.22f;
 
                 tfMatrices[segment] = new Matrixf()
                     .Translate(0.5f, 0, 0.5f)

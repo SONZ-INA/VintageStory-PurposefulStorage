@@ -262,13 +262,15 @@ public static class Extensions {
 
         var stacks = new List<JsonItemStack>();
 
-        var defaultBlock = new JsonItemStack() {
-            Code = block.Code,
-            Type = EnumItemClass.Block,
-            Attributes = new JsonObject(JToken.Parse("{}"))
-        };
-        defaultBlock.Resolve(api.World, block.Code);
-        stacks.Add(defaultBlock);
+        if (block.Attributes?["skipDefault"]?.AsBool() != true) {
+            var defaultBlock = new JsonItemStack() {
+                Code = block.Code,
+                Type = EnumItemClass.Block,
+                Attributes = new JsonObject(JToken.Parse("{}"))
+            };
+            defaultBlock.Resolve(api.World, block.Code);
+            stacks.Add(defaultBlock);
+        }
 
         if (props != null && material != "") {
             foreach (var prop in props.Variants) {
@@ -296,28 +298,15 @@ public static class Extensions {
             return "";
 
         foreach (var pair in tree) {
-            if (pair.Key == "wood") {
-                string toReturn = Lang.Get("game:material-" + pair.Value);
-                return (includeParenthesis ? "(" : "") + toReturn + (includeParenthesis ? ")" : "");
+            switch (pair.Key) {
+                case "wood":
+                    return (includeParenthesis ? "(" : "") + Lang.Get("game:material-" + pair.Value) + (includeParenthesis ? ")" : "");
+                case "rock":
+                    return (includeParenthesis ? "(" : "") + Lang.Get("game:rock-" + pair.Value) + (includeParenthesis ? ")" : "");
             }
         }
 
         return "";
-    }
-
-    public static float[,] GenTransformationMatrix(float[] x, float[] y, float[] z, float[] rX, float[] rY, float[] rZ) {
-        float[,] transformationMatrix = new float[6, x.Length];
-
-        for (int i = 0; i < x.Length; i++) {
-            transformationMatrix[0, i] = x[i];
-            transformationMatrix[1, i] = y[i];
-            transformationMatrix[2, i] = z[i];
-            transformationMatrix[3, i] = rX[i];
-            transformationMatrix[4, i] = rY[i];
-            transformationMatrix[5, i] = rZ[i];
-        }
-
-        return transformationMatrix;
     }
 
     public static void MBNormalizeSelectionBox(this Cuboidf selectionBox, Vec3i offset) {

@@ -77,5 +77,95 @@
       }
     },
     "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/general/tuningcylinderrack.json",
+    "op": "addmerge", "path": "/behaviorsByType/*-normal-*/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/general/tuningcylinderrack.json",
+    "op": "addmerge", "path": "/behaviorsByType/*-stand-*/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/weapons/swordpedestal.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/clothes/gloverack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/clothes/necklacestand.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/clothes/pantsrack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
   }
 ]

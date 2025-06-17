@@ -1,0 +1,37 @@
+[
+  {
+    "ingredientPattern": "SPS,PPP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" },
+      "S": { "type": "item", "code": "game:stick" }
+    },
+    "width": 3, "height": 2, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "swordpedestal-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "_C_,SBS",
+    "ingredients": {
+      "B": { "type": "block", "code": "game:rockpolished-*", "name": "rock" },
+      "C": { "type": "item", "code": "game:chisel-*", "isTool": true },
+      "S": { "type": "item", "code": "game:stone-*" }
+    },
+    "width": 3, "height": 2, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "swordpedestal-stone-east",
+      "attributes": {
+        "PSAttributes": {
+          "rock": "{rock}"
+        }
+      }
+    }
+  }
+]

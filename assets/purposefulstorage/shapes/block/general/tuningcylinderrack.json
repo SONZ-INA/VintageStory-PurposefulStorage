@@ -26,10 +26,10 @@
 			"children": [
 				{
 					"name": "Stand1",
-					"from": [ 0.5, 1.2, 1.0 ],
-					"to": [ 3.5, 1.7, 3.5 ],
-					"rotationOrigin": [ 0.5, 1.7, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 0.5, 1.4, 1.0 ],
+					"to": [ 3.5, 1.9, 3.5 ],
+					"rotationOrigin": [ 0.5, 1.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -92,10 +92,10 @@
 				},
 				{
 					"name": "Stand5",
-					"from": [ 4.5, 1.2, 1.0 ],
-					"to": [ 7.5, 1.7, 3.5 ],
-					"rotationOrigin": [ 4.5, 1.7, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 4.5, 1.4, 1.0 ],
+					"to": [ 7.5, 1.9, 3.5 ],
+					"rotationOrigin": [ 4.5, 1.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -158,10 +158,10 @@
 				},
 				{
 					"name": "Stand9",
-					"from": [ 8.5, 1.2, 1.0 ],
-					"to": [ 11.5, 1.7, 3.5 ],
-					"rotationOrigin": [ 8.5, 1.7, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 8.5, 1.4, 1.0 ],
+					"to": [ 11.5, 1.9, 3.5 ],
+					"rotationOrigin": [ 8.5, 1.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -224,10 +224,10 @@
 				},
 				{
 					"name": "Stand13",
-					"from": [ 12.5, 1.2, 1.0 ],
-					"to": [ 15.5, 1.7, 3.5 ],
-					"rotationOrigin": [ 12.5, 1.7, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 12.5, 1.4, 1.0 ],
+					"to": [ 15.5, 1.9, 3.5 ],
+					"rotationOrigin": [ 12.5, 1.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -290,10 +290,10 @@
 				},
 				{
 					"name": "Stand17",
-					"from": [ 0.5, 8.0, 1.0 ],
-					"to": [ 3.5, 8.5, 3.5 ],
-					"rotationOrigin": [ 0.5, 8.5, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 0.5, 8.4, 1.0 ],
+					"to": [ 3.5, 8.9, 3.5 ],
+					"rotationOrigin": [ 0.5, 8.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -356,10 +356,10 @@
 				},
 				{
 					"name": "Stand21",
-					"from": [ 4.5, 8.0, 1.0 ],
-					"to": [ 7.5, 8.5, 3.5 ],
-					"rotationOrigin": [ 4.5, 8.5, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 4.5, 8.4, 1.0 ],
+					"to": [ 7.5, 8.9, 3.5 ],
+					"rotationOrigin": [ 4.5, 8.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -422,10 +422,10 @@
 				},
 				{
 					"name": "Stand25",
-					"from": [ 8.5, 8.0, 1.0 ],
-					"to": [ 11.5, 8.5, 3.5 ],
-					"rotationOrigin": [ 8.5, 8.5, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 8.5, 8.4, 1.0 ],
+					"to": [ 11.5, 8.9, 3.5 ],
+					"rotationOrigin": [ 8.5, 8.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },
@@ -488,10 +488,10 @@
 				},
 				{
 					"name": "Stand29",
-					"from": [ 12.5, 8.0, 1.0 ],
-					"to": [ 15.5, 8.5, 3.5 ],
-					"rotationOrigin": [ 12.5, 8.5, 1.0 ],
-					"rotationX": 25.0,
+					"from": [ 12.5, 8.4, 1.0 ],
+					"to": [ 15.5, 8.9, 3.5 ],
+					"rotationOrigin": [ 12.5, 8.9, 1.0 ],
+					"rotationX": 30.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 6.0, 3.0, 8.5, 3.5 ] },
 						"south": { "texture": "#surface", "uv": [ 3.0, 3.0, 6.0, 3.5 ] },

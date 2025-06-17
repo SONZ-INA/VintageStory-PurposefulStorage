@@ -16,6 +16,7 @@
   "block-necklacestand-*": "Necklace Stand",
   "block-tuningcylinderrack-normal-*": "Tuning Cylinder Rack",
   "block-tuningcylinderrack-stand-*": "Tuning Cylinder Stand",
+  "block-swordpedestal-*": "Sword Pedestal",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -32,6 +33,7 @@
   "helddesc-gloverack": "Can hold most gloves, braces and bracelets!",
   "helddesc-necklacestand": "Can hold most necklaces!",
   "helddesc-tuningcylinderrack": "Can hold tuning cylinders!",
+  "helddesc-swordpedestal": "Display your swords!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

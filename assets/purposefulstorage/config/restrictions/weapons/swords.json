@@ -1,0 +1,10 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:blade-falx-*",
+    "game:blade-claymore-ruined",
+
+    "armory:sword-*",
+    "armory:sabre-*"
+  ]
+}
