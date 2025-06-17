@@ -1,0 +1,84 @@
+{
+  "code": "swordpedestal",
+  "class": "PurposefulStorage.BlockPSContainer",
+  "entityclass": "PurposefulStorage.BESwordPedestal",
+  "variantgroups": [
+    { "code": "type", "states": ["normal", "stone"] },
+    { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
+  ],
+  "attributesByType": {
+    "*-normal-*": {
+      "materials": { "loadFromProperties": "block/wood" },
+      "variantTextures": {
+        "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+      }
+    },
+    "*-stone-*": {
+      "materials": { "loadFromProperties": "block/rock" },
+      "variantTextures": {
+        "rock": [ "game:block/stone/polishedrock/{rock}" ]
+      },
+      "skipDefault": true
+    }
+  },
+  "behaviors": [
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }
+  ],
+  "shapeByType": {
+    "*-normal-*": {
+      "base": "block/weapons/swordpedestal",
+      "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+    },
+    "*-stone-*": {
+      "base": "block/weapons/swordpedestalstone",
+      "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+    }
+  },
+  "heldTpIdleAnimation": "holdunderarm",
+  "blockmaterialByType": {
+    "*-normal-*": "Wood",
+    "*-stone-*": "Stone"
+  },
+  "lightAbsorption": 1,
+  "replaceable": 900,
+  "resistanceByType": {
+    "*-normal-*": 1.5,
+    "*-stone-*":  4
+  },
+  "materialDensity": 400,
+  "faceCullMode": "NeverCull",
+  "emitSideAo": { "all": false },
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "combustiblePropsByType": {
+    "*-normal-*": {
+      "burnTemperature": 700,
+      "burnDuration": 40
+    }
+  },
+  "guiTransform": {
+    "origin": { "x": 0.5, "y": 0.3, "z": 0.5 },
+    "scale": 1.3
+  },
+  "tpHandTransform": {
+	  "translation": { "x": -1, "y": -0.68, "z": -0.45 },
+	  "rotation": { "x": 90, "y": 0, "z": 0 },
+	  "scale": 0.5
+  },
+  "soundsByType": {
+    "*-normal-*": {
+      "place": "game:block/planks",
+      "hit": "game:block/planks",
+      "break": "game:block/planks"
+    },
+    "*-stone-*": {
+		  "walk": "game:walk/stone",
+		  "byTool": {
+			  "Pickaxe": { "hit": "game:block/rock-hit-pickaxe", "break": "game:block/rock-break-pickaxe" }
+		  }
+    }
+  },
+  "collisionSelectionBoxes": [ 
+    { "x1": 0.05, "y1": 0, "z1": 0.05, "x2": 0.95, "y2": 0.5, "z2": 0.95, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  ]
+}

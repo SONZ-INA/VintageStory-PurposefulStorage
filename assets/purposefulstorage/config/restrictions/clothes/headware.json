@@ -2,6 +2,8 @@
   "CollectibleTypes": [],
   "CollectibleCodes": [
     "game:clothes-head-*",
-    "game:clothes-nadiya-head-*"
+    "game:clothes-nadiya-head-*",
+    "game:clothes-face-*",
+    "game:clothes-nadiya-face-*"
   ]
 }

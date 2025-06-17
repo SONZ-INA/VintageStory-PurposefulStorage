@@ -1,0 +1,35 @@
+[
+  {
+    "ingredientPattern": "PSS,PSS",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick" },
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+    },
+    "width": 3, "height": 2, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "tuningcylinderrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "PP_,PPP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+    },
+    "width": 3, "height": 2, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "tuningcylinderrack-stand-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]

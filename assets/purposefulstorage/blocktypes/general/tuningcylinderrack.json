@@ -1,0 +1,97 @@
+{
+  "code": "tuningcylinderrack",
+  "class": "PurposefulStorage.BlockPSContainer",
+  "entityclass": "PurposefulStorage.BETuningCylinderRack",
+  "variantgroups": [
+    { "code": "type", "states": ["normal", "stand"] },
+    { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
+  ],
+  "attributes": {
+    "materials": { "loadFromProperties": "block/wood" },
+    "variantTextures": {
+      "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+    }
+  },
+  "behaviorsByType": {
+    "*-normal-*": [ { "name": "HorizontalAttachable", "properties": { "dropBlockFace": "east" } } ],
+    "*-stand-*": [ { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } } ]
+  },
+  "shapeByType": {
+    "*-normal-*": { "base": "block/general/tuningcylinderrack", "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 } },
+    "*-stand-*": { "base": "block/general/tuningcylinderstand", "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 } }
+  },
+  "heldTpIdleAnimation": "holdunderarm",
+  "blockmaterial": "Wood",
+  "lightAbsorption": 1,
+  "replaceable": 900,
+  "resistance": 1.5,
+  "materialDensity": 400,
+  "faceCullMode": "NeverCull",
+  "emitSideAo": { "all": false },
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "combustiblePropsByType": {
+    "*-normal-*": {
+      "burnTemperature": 700,
+      "burnDuration": 44
+    },
+    "*-stand-*": {
+      "burnTemperature": 700,
+      "burnDuration": 30
+    }
+  },
+  "guiTransformByType": {
+    "*-normal-*": {
+      "origin": { "x": 1, "y": 0.4, "z": 0.6 },
+      "scale": 1.1
+    },
+    "*-stand-*": {
+      "origin": { "x": 0.65, "y": 0.4, "z": 0.6 }
+    }
+  },
+  "tpHandTransformByType": {
+    "*-normal-*": {
+	    "translation": { "x": -0.8, "y": -0.58, "z": -0.41 },
+	    "rotation": { "x": -4, "y": -82, "z": 0 },
+	    "scale": 0.5
+    },
+    "*-stand-*": {
+	    "translation": { "x": -0.8, "y": -0.58, "z": -0.41 },
+	    "rotation": { "x": -90, "y": -85, "z": 0 },
+	    "scale": 0.5
+    }
+  },
+  "sounds": {
+    "place": "game:block/planks",
+    "hit": "game:block/planks",
+    "break": "game:block/planks"
+  },
+  "collisionboxByType": {
+    "*-normal-*": { "x1": 0.6, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    "*-stand-*": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.5, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  },
+  "selectionBoxesByType": {
+    "*-normal-*": [
+      { "x1": 0.5, "y1": 0, "z1": 0, "x2": 1, "y2": 0.5, "z2": 0.25, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0, "z1": 0.25, "x2": 1, "y2": 0.5, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0, "z1": 0.5, "x2": 1, "y2": 0.5, "z2": 0.75, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0, "z1": 0.75, "x2": 1, "y2": 0.5, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+
+      { "x1": 0.5, "y1": 0.5, "z1": 0, "x2": 1, "y2": 1, "z2": 0.25, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0.5, "z1": 0.25, "x2": 1, "y2": 1, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0.5, "z1": 0.5, "x2": 1, "y2": 1, "z2": 0.75, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.5, "y1": 0.5, "z1": 0.75, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+    ],
+    "*-stand-*": [
+      { "x1": 0, "y1": 0, "z1": 0, "x2": 0.5, "y2": 0.4375, "z2": 0.25, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0, "y1": 0, "z1": 0.25, "x2": 0.5, "y2": 0.4375, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0, "y1": 0, "z1": 0.5, "x2": 0.5, "y2": 0.4375, "z2": 0.75, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0, "y1": 0, "z1": 0.75, "x2": 0.5, "y2": 0.4375, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+
+      { "x1": 0.4375, "y1": 0.4375, "z1": 0, "x2": 1, "y2": 0.7325, "z2": 0.25, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.4375, "y1": 0.4375, "z1": 0.25, "x2": 1, "y2": 0.7325, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.4375, "y1": 0.4375, "z1": 0.5, "x2": 1, "y2": 0.7325, "z2": 0.75, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+      { "x1": 0.4375, "y1": 0.4375, "z1": 0.75, "x2": 1, "y2": 0.7325, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+    ]
+  }
+}
