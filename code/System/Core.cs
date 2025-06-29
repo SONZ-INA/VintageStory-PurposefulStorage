@@ -1,4 +1,5 @@
-﻿using static PurposefulStorage.Patches;
+﻿using System.Linq;
+using static PurposefulStorage.Patches;
 
 [assembly: ModInfo(name: "Purposeful Storage", modID: "purposefulstorage")]
 
@@ -36,8 +37,10 @@ public class Core : ModSystem {
         api.RegisterBlockEntityClass("PurposefulStorage.BEShoeRack", typeof(BEShoeRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
 
+        api.RegisterBlockEntityClass("PurposefulStorage.BEButterflyDisplayPanel", typeof(BEButterflyDisplayPanel));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        api.RegisterBlockEntityClass("PurposefulStorage.BESchematicRack", typeof(BESchematicRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BETuningCylinderRack", typeof(BETuningCylinderRack));
         
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
@@ -53,13 +56,7 @@ public class Core : ModSystem {
         if (api.Side == EnumAppSide.Server) {
             RecipePatcher.SupportModdedIngredients(api);
 
-            Dictionary<string, string[]> restrictionGroupsServer = new() {
-                ["blocks"] = new[] { "resourcebin" },
-                ["clothes"] = new[] { "blankets", "handware", "footware", "headware", "lowerbodyware", "neckware", "upperbodyware", "waistware" },
-                ["general"] = new[] { "gears", "glider", "tuningcylinders" },
-                ["weapons"] = new[] { "longweapons", "swords" }
-            };
-
+            var restrictionGroupsServer = DiscoverRestrictionGroups(api);
             LoadData(api, restrictionGroupsServer);
         }
     }
@@ -73,6 +70,50 @@ public class Core : ModSystem {
                 PatchCollectibleWhitelist(obj, restriction, transformation);
             }
         }
+    }
+
+    #region CoreFunctions
+
+    private Dictionary<string, string[]> DiscoverRestrictionGroups(ICoreAPI api) {
+        var restrictionGroups = new Dictionary<string, string[]>();
+        string basePath = "config/restrictions/";
+
+        var restrictionAssets = api.Assets.GetMany("config/restrictions", "purposefulstorage", false);
+
+        foreach (var asset in restrictionAssets) {
+            string fullPath = asset.Location.Path;
+
+            string relativePath = fullPath[basePath.Length..];
+            string[] pathParts = relativePath.Split('/');
+
+            if (pathParts.Length >= 2) {
+                string folderName = pathParts[0];
+                string fileName = pathParts[1];
+
+                if (fileName.EndsWith(".json")) {
+                    fileName = fileName[..^5];
+                }
+
+                if (!restrictionGroups.TryGetValue(folderName, out string[] value)) {
+                    value = Array.Empty<string>();
+                    restrictionGroups[folderName] = value;
+                }
+
+                var currentFiles = value.ToList();
+                if (!currentFiles.Contains(fileName)) {
+                    currentFiles.Add(fileName);
+                    restrictionGroups[folderName] = currentFiles.ToArray();
+                }
+            }
+        }
+
+        // Remove folders that have no files
+        var foldersToRemove = restrictionGroups.Where(kvp => kvp.Value.Length == 0).Select(kvp => kvp.Key).ToList();
+        foreach (var folder in foldersToRemove) {
+            restrictionGroups.Remove(folder);
+        }
+
+        return restrictionGroups;
     }
 
     private void LoadData(ICoreAPI api, Dictionary<string, string[]> restrictionGroups) {
@@ -89,4 +130,6 @@ public class Core : ModSystem {
             }
         }
     }
+
+    #endregion
 }

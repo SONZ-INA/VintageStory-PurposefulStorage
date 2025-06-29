@@ -343,6 +343,16 @@ public static class Extensions {
         return true;
     }
 
+    public static bool CanStoreInSlot(this ItemSlot slot, string[] attributeWhitelist) {
+        if (slot?.Inventory?.ClassName == "hopper") return false;
+        
+        foreach (string attribute in attributeWhitelist) {
+            if (slot?.Itemstack?.Collectible?.Attributes?[attribute].AsBool() == true) return true;
+        }
+
+        return false;
+    }
+
     public static bool CanStoreInSlot(this CollectibleObject obj, string attributeWhitelist) {
         return obj?.Attributes?[attributeWhitelist].AsBool() == true;
     }

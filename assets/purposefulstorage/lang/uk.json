@@ -1,0 +1,39 @@
+{
+  "game:tabname-purposefulstorage": "Purposeful Storage",
+
+  "block-wardrobe-normal-*": "Гардероб",
+  "block-wardrobe-wooden-*": "Дерев’яний гардероб",
+  "block-hatrack-*": "Стійка для капелюхів",
+  "block-blanketrack-*": "Стійка для попон",
+  "block-shoerack-*": "Стійка для взуття",
+  "block-belthooks-*": "Гаки для поясів",
+  "block-glidermount-*": "Стійка для планера",
+  "block-weaponrack-*": "Стійка для зброї",
+  "block-gearrack-*": "Стійка для шестерень",
+  "block-resourcebin-*": "Кошик для трави",
+  "block-pantsrack-*": "Стійка для штанів",
+  "block-gloverack-*": "Стійка для рукавиць",
+  "block-necklacestand-*": "Стійка для намиста",
+  "block-tuningcylinderrack-normal-*": "Стійка для гармонізованих циліндрів",
+  "block-tuningcylinderrack-stand-*": "Лоток для гармонізованих циліндрів",
+  "block-swordpedestal-*": "П'єдестал для меча",
+
+  "blockdesc-canhold-title": "Може зберігати:",
+
+  "helddesc-wardrobe": "Може зберігати більшість верхнього одягу і взуття!",
+  "helddesc-hatrack": "Може зберігати більшість капелюхів!",
+  "helddesc-blanketrack": "Може зберігати будь-які попони!",
+  "helddesc-shoerack": "Може зберігати усе взуття!",
+  "helddesc-belthooks": "Може зберігати усі пояси!",
+  "helddesc-glidermount": "Стійка для вашого планера!",
+  "helddesc-weaponrack": "Може зберігати більшість довгої зброї!",
+  "helddesc-gearrack": "Може зберігати шестерні!",
+  "helddesc-resourcebin": "Може зберігати суха траву!",
+  "helddesc-pantsrack": "Може зберігати усі штани!",
+  "helddesc-gloverack": "Може зберігати більшість рукавичок, наручів й браслетів!",
+  "helddesc-necklacestand": "Може зберігати більшість намиста!",
+  "helddesc-tuningcylinderrack": "Може зберігати гармонізовані циліндри!",
+  "helddesc-swordpedestal": "Хизуйся своїми мечами!",
+
+  "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері."
+}
