@@ -167,5 +167,35 @@
       }
     },
     "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/general/butterflydisplaypanel.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
+  },
+  {
+    "file": "purposefulstorage:blocktypes/general/schematicrack.json",
+    "op": "addmerge", "path": "/behaviors/-", "side": "server",
+    "value": {
+      "name": "Carryable",
+      "properties": {
+        "translation": [ 0.0625, 0, 0 ],
+        "rotation": [ 0, 180, 0 ],
+        "slots": {
+          "Hands": {}
+        }
+      }
+    },
+    "dependsOn": [ { "modid": "carryon" } ]
   }
 ]

@@ -37,8 +37,10 @@ public class Core : ModSystem {
         api.RegisterBlockEntityClass("PurposefulStorage.BEShoeRack", typeof(BEShoeRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWardrobe", typeof(BEWardrobe));
 
+        api.RegisterBlockEntityClass("PurposefulStorage.BEButterflyDisplayPanel", typeof(BEButterflyDisplayPanel));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        api.RegisterBlockEntityClass("PurposefulStorage.BESchematicRack", typeof(BESchematicRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BETuningCylinderRack", typeof(BETuningCylinderRack));
         
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));

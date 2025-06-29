@@ -1,0 +1,20 @@
+[
+  {
+    "ingredientPattern": "SPS,SGS,SPS",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*", "name": "wood" },
+      "S": { "type": "item", "code": "game:stick" },
+      "G": { "type": "block", "code": "game:glass-*" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "butterflydisplaypanel-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  }
+]
