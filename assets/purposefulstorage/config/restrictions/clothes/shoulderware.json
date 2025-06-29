@@ -1,0 +1,17 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:clothes-shoulder-*",
+    "game:clothes-nadiya-shoulder-*"
+  ],
+  "BlacklistedCodes": [
+    "game:clothes-nadiya-shoulder-musician",
+    "game:clothes-shoulder-stained-leather-poncho",
+    "game:clothes-shoulder-malefactor-cloak",
+    "game:clothes-shoulder-forlorn-sash",
+    "game:clothes-shoulder-marketeer",
+    "game:clothes-shoulder-survivor",
+    "game:clothes-shoulder-scribe",
+    "game:clothes-shoulder-miner"
+  ]
+}

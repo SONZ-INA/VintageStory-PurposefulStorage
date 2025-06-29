@@ -57,6 +57,7 @@
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\headware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\lowerbodyware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\neckware.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\clothes\shoulderware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\upperbodyware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\waistware.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\gears.json" />
@@ -66,9 +67,12 @@
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\swords.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\headware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\lowerbodyware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\shoulderware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\general\gears.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\swords.json" />
+  <None Remove="assets\purposefulstorage\lang\uk.json" />
   <None Remove="assets\purposefulstorage\patches\armory.json" />
   <None Remove="assets\purposefulstorage\patches\carryon.json" />
   <None Remove="assets\purposefulstorage\patches\primitivesurvival.json" />
