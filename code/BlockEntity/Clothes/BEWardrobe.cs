@@ -9,14 +9,14 @@ public class BEWardrobe : BEBasePSAnimatable {
             : base.ReferencedShape;
 
     public override string AttributeTransformCode => "onLowerbodywareTransform";
-    public override int[] SectionSegmentCounts => new[] { 6, 10 };
+    public override int[] SectionSegmentCounts => [6, 10];
 
     [TreeSerializable(false)] public bool WardrobeOpen { get; set; }
 
     public BEWardrobe() {
         inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (id, inv) => {
             if (id < 6) return new ItemSlotPSUniversal(inv, "psFootware");
-            else return new ItemSlotPSUniversal(inv, new[] { "psUpperbodyware", "psShoulderware", "psLowerbodyware" });
+            else return new ItemSlotPSUniversal(inv, [ "psUpperbodyware", "psShoulderware", "psLowerbodyware" ]);
         });
     }
 
@@ -46,7 +46,7 @@ public class BEWardrobe : BEBasePSAnimatable {
         }
         else {
             if (WardrobeOpen) {
-                if (slot.CanStoreInSlot(new[] { "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" })) {
+                if (slot.CanStoreInSlot([ "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" ])) {
                     AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
 
                     if (TryPut(byPlayer, slot, blockSel)) {

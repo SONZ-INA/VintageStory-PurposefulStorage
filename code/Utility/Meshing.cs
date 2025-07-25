@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Vintagestory.Client.NoObf;
 using Vintagestory.ServerMods;
 
 namespace PurposefulStorage;
@@ -30,7 +29,7 @@ public static class Meshing {
         }
 
         capi.Tesselator.TesselateShape("PS-TesselateShape", variantData.Item1, out MeshData blockMesh, variantData.Item2);
-
+        
         float scale = block.Shape.Scale;
         if (scale != 1) blockMesh.Scale(new Vec3f(.5f, 0, .5f), scale, scale, scale);
 

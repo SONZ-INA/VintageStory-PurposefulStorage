@@ -2,9 +2,9 @@
 
 public class BESwordPedestal : BEBasePSContainer {
     public override string AttributeTransformCode => "onSwordsTransform";
-    public override string[] AttributeCheck => new[] { "psSwords" };
+    public override string[] AttributeCheck => ["psSwords"];
 
-    public override int[] SectionSegmentCounts => new[] { 1 };
+    public override int[] SectionSegmentCounts => [1];
 
     public BESwordPedestal() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 

@@ -158,17 +158,17 @@ public static class Extensions {
 
         mat.Translate(0.5f, 0, 0.5f);
 
-        if (transformation.Translation != null) {
+        if (!transformation.Translation.Equals(new FastVec3f(0, 0, 0))) {
             mat.Translate(transformation.Translation.X, transformation.Translation.Y, transformation.Translation.Z);
         }
 
-        if (transformation.Rotation != null) {
+        if (!transformation.Rotation.Equals(new FastVec3f(0, 0, 0))) {
             mat.RotateXDeg(transformation.Rotation.X);
             mat.RotateYDeg(transformation.Rotation.Y);
             mat.RotateZDeg(transformation.Rotation.Z);
         }
 
-        if (transformation.ScaleXYZ != null) {
+        if (!transformation.ScaleXYZ.Equals(new FastVec3f(1f, 1f, 1f))) {
             mat.Scale(transformation.ScaleXYZ.X, transformation.ScaleXYZ.Y, transformation.ScaleXYZ.Z);
         }
 
@@ -288,9 +288,9 @@ public static class Extensions {
             }
         }
 
-        block.CreativeInventoryStacks = new CreativeTabAndStackList[] {
-            new() { Stacks = stacks.ToArray(), Tabs = new string[] { "general", "decorative", "purposefulstorage" }}
-        };
+        block.CreativeInventoryStacks = [
+            new() { Stacks = [.. stacks], Tabs = ["general", "decorative", "purposefulstorage"]}
+        ];
     }
 
     public static string GetMaterialNameLocalized(this ItemStack itemStack, bool includeParenthesis = true) {

@@ -1,9 +1,9 @@
 ﻿namespace PurposefulStorage;
 
 public class BEPantsRack : BEBasePSContainer {
-    public override string[] AttributeCheck => new[] { "psLowerbodyware" };
+    public override string[] AttributeCheck => ["psLowerbodyware"];
 
-    public override int[] SectionSegmentCounts => new[] { 2 };
+    public override int[] SectionSegmentCounts => [2];
     public override int ItemsPerSegment => 5;
 
     public BEPantsRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

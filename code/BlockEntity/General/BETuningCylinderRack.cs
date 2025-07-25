@@ -1,9 +1,9 @@
 ﻿namespace PurposefulStorage;
 
 public class BETuningCylinderRack : BEBasePSContainer {
-    public override string[] AttributeCheck => new[] { "psTuningCylinders" };
+    public override string[] AttributeCheck => ["psTuningCylinders"];
 
-    public override int[] SectionSegmentCounts => new[] { 8 };
+    public override int[] SectionSegmentCounts => [8];
 
     public BETuningCylinderRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 

@@ -17,6 +17,8 @@
   "block-tuningcylinderrack-normal-*": "Стійка для гармонізованих циліндрів",
   "block-tuningcylinderrack-stand-*": "Лоток для гармонізованих циліндрів",
   "block-swordpedestal-*": "П'єдестал для меча",
+  "block-butterflydisplaypanel-*": "Панель для метеликів",
+  "block-schematicrack-*": "Стійка для схем",
 
   "blockdesc-canhold-title": "Може зберігати:",
 
@@ -34,6 +36,8 @@
   "helddesc-necklacestand": "Може зберігати більшість намиста!",
   "helddesc-tuningcylinderrack": "Може зберігати гармонізовані циліндри!",
   "helddesc-swordpedestal": "Хизуйся своїми мечами!",
+  "helddesc-butterflydisplaypanel": "Хизуйся метеликами!",
+  "helddesc-schematicrack": "Хизуйся схемами!",
 
   "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері."
 }

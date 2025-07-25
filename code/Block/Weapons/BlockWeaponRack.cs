@@ -12,14 +12,14 @@ public class BlockWeaponRack : BasePSContainer, IMultiBlockColSelBoxes {
     public Cuboidf[] MBGetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {
         BEWeaponRack be = blockAccessor.GetBlockEntityExt<BEWeaponRack>(pos);
         if (be != null) {
-            List<Cuboidf> selBoxes = new();
+            List<Cuboidf> selBoxes = [];
 
             for (int i = 0; i < 4; i++) {
                 selBoxes.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(i).Clone());
                 selBoxes[i].MBNormalizeSelectionBox(offset);
             }
 
-            return selBoxes.ToArray();
+            return [.. selBoxes];
         }
 
         return base.GetSelectionBoxes(blockAccessor, pos);

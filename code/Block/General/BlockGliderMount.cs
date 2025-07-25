@@ -15,7 +15,7 @@ public class BlockGliderMount : BasePSContainer, IMultiBlockColSelBoxes {
             Cuboidf selBox = base.GetSelectionBoxes(blockAccessor, pos).ElementAt(0).Clone();
             selBox.MBNormalizeSelectionBox(offset);
 
-            return new Cuboidf[] { selBox };
+            return [selBox];
         }
 
         return base.GetSelectionBoxes(blockAccessor, pos);

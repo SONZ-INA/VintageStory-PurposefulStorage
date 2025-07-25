@@ -8,8 +8,8 @@ namespace PurposefulStorage;
 public class Core : ModSystem {
     public override double ExecuteOrder() => 1.01; // For the dynamic recipes to load, this must be after 1
 
-    private readonly Dictionary<string, RestrictionData> restrictions = new();
-    private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = new();
+    private readonly Dictionary<string, RestrictionData> restrictions = [];
+    private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = [];
 
     public override void Start(ICoreAPI api) {
         base.Start(api);
@@ -95,14 +95,14 @@ public class Core : ModSystem {
                 }
 
                 if (!restrictionGroups.TryGetValue(folderName, out string[] value)) {
-                    value = Array.Empty<string>();
+                    value = [];
                     restrictionGroups[folderName] = value;
                 }
 
                 var currentFiles = value.ToList();
                 if (!currentFiles.Contains(fileName)) {
                     currentFiles.Add(fileName);
-                    restrictionGroups[folderName] = currentFiles.ToArray();
+                    restrictionGroups[folderName] = [.. currentFiles];
                 }
             }
         }

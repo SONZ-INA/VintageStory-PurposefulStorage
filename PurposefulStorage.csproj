@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
 	<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
@@ -78,6 +78,7 @@
   <None Remove="assets\purposefulstorage\config\transformations\weapons\swords.json" />
   <None Remove="assets\purposefulstorage\lang\uk.json" />
   <None Remove="assets\purposefulstorage\patches\armory.json" />
+  <None Remove="assets\purposefulstorage\patches\betterruins.json" />
   <None Remove="assets\purposefulstorage\patches\carryon.json" />
   <None Remove="assets\purposefulstorage\patches\primitivesurvival.json" />
   <None Remove="assets\purposefulstorage\patches\wool&amp;more.json" />

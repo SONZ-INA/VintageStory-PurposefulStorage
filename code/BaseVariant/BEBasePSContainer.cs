@@ -12,12 +12,12 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public override string AttributeTransformCode => "on" + Block?.Code.FirstCodePart() + "Transform";
 
     public ITreeAttribute VariantAttributes { get; set; } = new TreeAttribute();
-    public virtual string[] AttributeCheck => new[] { "ps" + GetType().Name.Replace("BE", "") };
+    public virtual string[] AttributeCheck => ["ps" + GetType().Name.Replace("BE", "")];
 
     protected virtual string CantPlaceMessage => "";
     protected virtual InfoDisplayOptions InfoDisplay { get; set; } = InfoDisplayOptions.BySegment; 
 
-    public virtual int[] SectionSegmentCounts { get; set; } = { 1 };
+    public virtual int[] SectionSegmentCounts { get; set; } = [1];
     public virtual int ItemsPerSegment { get; set; } = 1;
     public virtual int AdditionalSlots { get; set; } = 0;
     public virtual int SlotCount => SectionSegmentCounts.Sum() * ItemsPerSegment + AdditionalSlots;
@@ -45,7 +45,10 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public virtual bool OnInteract(IPlayer byPlayer, BlockSelection blockSel) {
         ItemSlot slot = byPlayer.InventoryManager.ActiveHotbarSlot;
 
-        if (slot.Empty) {
+        bool shift = byPlayer.Entity.Controls.ShiftKey;
+        bool hasAttrCheck = block.WorldInteractionAttributeCheck != null;
+
+        if ((hasAttrCheck && !shift) || (!hasAttrCheck && slot.Empty)) {
             return TryTake(byPlayer, blockSel);
         }
         else {
@@ -83,9 +86,16 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
             ItemStack currentStack = inv[currentIndex].Itemstack;
 
             if (inv[currentIndex].Empty || (currentStack.Collectible.Equals(slot.Itemstack.Collectible) && currentStack.StackSize < currentStack.Collectible.MaxStackSize)) {
-                int moved = byPlayer.Entity.Controls.ShiftKey
-                    ? slot.TryPutInto(Api.World, inv[currentIndex], inv[currentIndex].MaxSlotStackSize - inv[currentIndex].Itemstack?.StackSize ?? 64)
-                    : slot.TryPutInto(Api.World, inv[currentIndex]);
+                int moved = 0;
+                bool shift = byPlayer.Entity.Controls.ShiftKey;
+                bool ctrl = byPlayer.Entity.Controls.CtrlKey;
+
+                int maxMoveQuantity = inv[currentIndex].MaxSlotStackSize - (inv[currentIndex].Itemstack?.StackSize ?? 0);
+
+                if (block.WorldInteractionAttributeCheck == null || shift) {
+                    if (ctrl) moved = slot.TryPutInto(Api.World, inv[currentIndex], maxMoveQuantity);
+                    else moved = slot.TryPutInto(Api.World, inv[currentIndex]);
+                }
 
                 if (moved > 0) {
                     InitMesh();
@@ -106,7 +116,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         for (int i = ItemsPerSegment - 1; i >= 0; i--) {
             int currentIndex = startIndex + i;
             if (!inv[currentIndex].Empty) {
-                ItemStack stack = byPlayer.Entity.Controls.ShiftKey
+                ItemStack stack = byPlayer.Entity.Controls.CtrlKey
                     ? inv[currentIndex].TakeOutWhole()
                     : inv[currentIndex].TakeOut(1);
 
@@ -159,6 +169,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
-        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Count(), ItemsPerSegment, SlotCount - AdditionalSlots);
+        DisplayInfo(forPlayer, sb, inv, InfoDisplay, SlotCount, SectionSegmentCounts.Length, ItemsPerSegment, SlotCount - AdditionalSlots);
     }
 }

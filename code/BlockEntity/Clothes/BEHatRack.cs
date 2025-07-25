@@ -2,9 +2,9 @@
 
 public class BEHatRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onHeadwareTransform";
-    public override string[] AttributeCheck => new[] { "psHeadware" };
+    public override string[] AttributeCheck => ["psHeadware"];
 
-    public override int[] SectionSegmentCounts => new[] { 8 };
+    public override int[] SectionSegmentCounts => [8];
 
     public BEHatRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
