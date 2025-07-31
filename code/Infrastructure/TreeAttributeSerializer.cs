@@ -9,7 +9,7 @@ namespace PurposefulStorage;
 /// Attribute attachable to any property that can be safely read/wrote to the attributes of a block. Mainly used for animation properties.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property)]
-public class TreeSerializableAttribute(object defaultValue = null) : Attribute {
+public sealed class TreeSerializableAttribute(object defaultValue = null) : Attribute {
     public object DefaultValue { get; set; } = defaultValue;
 }
 

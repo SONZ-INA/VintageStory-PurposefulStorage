@@ -44,7 +44,8 @@ public static class Extensions {
     public static (Shape, ITexPositionSource) GetBlockVariantData(ICoreClientAPI capi, ItemStack stackWithAttributes) {
         Block block = stackWithAttributes.Block;
 
-        string shapeLocation = block.Shape.Base.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
+        CompositeShape cShape = block.Shape.Clone();
+        string shapeLocation = cShape.Base.Clone().WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
         Shape shape = capi.Assets.TryGet(shapeLocation)?.ToObject<Shape>().Clone();
         if (shape == null) return (null, null);
 

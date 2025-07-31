@@ -2,7 +2,7 @@
   {
     "ingredientPattern": "PP,P_,PP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+      "P": { "type": "item", "code": "game:plank-{wood}" }
     },
     "width": 2, "height": 3, "recipeGroup": 1,
     "output": {
@@ -14,5 +14,13 @@
         }
       }
     }
+  },
+  {
+    "ingredientPattern": "PP,P_,PP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*" }
+    },
+    "width": 2, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "necklacestand-normal-east" }
   }
 ]

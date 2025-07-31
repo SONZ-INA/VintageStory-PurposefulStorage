@@ -1,6 +1,6 @@
 ﻿namespace PurposefulStorage;
 
-internal class ItemSlotPSUniversal : ItemSlot {
+public sealed class ItemSlotPSUniversal : ItemSlot {
     public override int MaxSlotStackSize => maxSlotStackSize;
     private readonly int maxSlotStackSize;
     private readonly string[] attributeCheck;

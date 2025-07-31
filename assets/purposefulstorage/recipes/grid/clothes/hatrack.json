@@ -2,7 +2,7 @@
   {
     "ingredientPattern": "B_,TS,B_",
     "ingredients": {
-      "B": { "type": "item", "code": "game:plank-*", "quantity": 2, "name": "wood" },
+      "B": { "type": "item", "code": "game:plank-{wood}", "quantity": 2 },
       "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 },
       "S": { "type": "item", "code": "game:stick", "quantity": 4 }
     },
@@ -16,5 +16,15 @@
         }
       }
     }
+  },
+  {
+    "ingredientPattern": "B_,TS,B_",
+    "ingredients": {
+      "B": { "type": "item", "code": "game:plank-*", "quantity": 2 },
+      "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 },
+      "S": { "type": "item", "code": "game:stick", "quantity": 4 }
+    },
+    "width": 2, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "hatrack-normal-east" }
   }
 ]

@@ -2,7 +2,7 @@
   {
     "ingredientPattern": "PSP,GNG,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*", "quantity": 3, "name": "wood" },
+      "P": { "type": "item", "code": "game:plank-{wood}", "quantity": 3 },
       "S": { "type": "item", "code": "game:stick", "quantity": 8 },
       "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
       "G": { "type": "block", "code": "game:glass-*" }
@@ -19,11 +19,22 @@
     }
   },
   {
+    "ingredientPattern": "PSP,GNG,PPP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-*", "quantity": 3 },
+      "S": { "type": "item", "code": "game:stick", "quantity": 8 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "G": { "type": "block", "code": "game:glass-*" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "wardrobe-normal-east" }
+  },
+  {
     "ingredientPattern": "PSP,XTX,PPP",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick", "quantity": 8 },
       "X": { "type": "item", "code": "game:stick", "quantity": 5 },
-      "P": { "type": "item", "code": "game:plank-*", "quantity": 3, "name": "wood" },
+      "P": { "type": "item", "code": "game:plank-{wood}", "quantity": 3 },
       "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
@@ -36,5 +47,16 @@
         }
       }
     }
+  },
+  {
+    "ingredientPattern": "PSP,XTX,PPP",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick", "quantity": 8 },
+      "X": { "type": "item", "code": "game:stick", "quantity": 5 },
+      "P": { "type": "item", "code": "game:plank-*", "quantity": 3 },
+      "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "wardrobe-wooden-east" }
   }
 ]

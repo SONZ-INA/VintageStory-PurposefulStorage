@@ -6,8 +6,6 @@ using static PurposefulStorage.Patches;
 namespace PurposefulStorage;
 
 public class Core : ModSystem {
-    public override double ExecuteOrder() => 1.01; // For the dynamic recipes to load, this must be after 1
-
     private readonly Dictionary<string, RestrictionData> restrictions = [];
     private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = [];
 
@@ -54,8 +52,6 @@ public class Core : ModSystem {
         base.AssetsLoaded(api);
 
         if (api.Side == EnumAppSide.Server) {
-            RecipePatcher.SupportModdedIngredients(api);
-
             var restrictionGroupsServer = DiscoverRestrictionGroups(api);
             LoadData(api, restrictionGroupsServer);
         }

@@ -96,67 +96,6 @@ public static class Meshing {
     }
 
     /// <summary>
-    /// Generates the content mesh of the block's inventory. Mainly used for generating basket contents.
-    /// </summary>
-    public static MeshData GenContentMesh(ICoreClientAPI capi, ITextureAtlasAPI targetAtlas, ItemStack[] contents, float[,] transformationMatrix, float scaleValue = 1f, Dictionary<string, ModelTransform> modelTransformations = null) {
-        if (capi == null) return null;
-
-        MeshData nestedContentMesh = null;
-        for (int i = 0; i < contents.Length; i++) {
-            if (contents[i] == null || contents[i].Item == null) continue;
-
-            string shapeLocation = contents[i].Item.Shape?.Base;
-            if (shapeLocation == null) continue;
-
-            Shape shape = capi.TesselatorManager.GetCachedShape(shapeLocation)?.Clone();
-            //string shapeLocation = contents[i].Item.Shape?.Base.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json").ToString();
-            //Shape shape = capi.Assets.TryGet(shapeLocation)?.ToObject<Shape>().Clone();
-            if (shape == null) continue;
-
-            if (shape.Textures.Count == 0) {
-                foreach (var texture in contents[i].Item.Textures) {
-                    shape.Textures.Add(texture.Key, texture.Value.Base);
-                }
-            }
-
-            UniversalShapeTextureSource texSource = new(capi, targetAtlas, shape, "PS-ContentTextureSource");
-
-            foreach (var textureDict in shape.Textures) {
-                CompositeTexture cTex = new(textureDict.Value);
-                cTex.Bake(capi.Assets);
-                texSource.textures[textureDict.Key] = cTex;
-            }
-
-            capi.Tesselator.TesselateShape("PS-TesselateContent", shape, out MeshData collectibleMesh, texSource);
-
-            int offset = transformationMatrix.GetLength(1);
-            if (i < offset) {
-                if (modelTransformations != null) {
-                    ModelTransform transformation = contents[i].Item.GetTransformation(modelTransformations);
-                    if (transformation != null) collectibleMesh.ModelTransform(transformation);
-                }
-
-                float[] matrixTransform =
-                    new Matrixf()
-                    .Translate(0.5f, 0, 0.5f)
-                    .RotateXDeg(transformationMatrix[3, i])
-                    .RotateYDeg(transformationMatrix[4, i])
-                    .RotateZDeg(transformationMatrix[5, i])
-                    .Scale(scaleValue, scaleValue, scaleValue)
-                    .Translate(transformationMatrix[0, i] - 0.84375f, transformationMatrix[1, i], transformationMatrix[2, i] - 0.8125f)
-                    .Values;
-
-                collectibleMesh.MatrixTransform(matrixTransform);
-            }
-
-            if (nestedContentMesh == null) nestedContentMesh = collectibleMesh;
-            else nestedContentMesh.AddMeshData(collectibleMesh);
-        }
-
-        return nestedContentMesh;
-    }
-
-    /// <summary>
     /// Generates a mesh that will generate some item shapes, and then move them up as the stack size increases.
     /// Do note that generally, the item shapes should "cover" up the whole top so you can't see the bottom of the block, giving the illusion that it's full.
     /// </summary>
