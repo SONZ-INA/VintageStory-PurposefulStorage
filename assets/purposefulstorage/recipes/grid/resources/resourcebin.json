@@ -18,7 +18,7 @@
   {
     "ingredientPattern": "P__,P_P,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*" }
+      "P": { "type": "item", "code": "*:plank-*" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": { "type": "block", "code": "resourcebin-normal-east" }

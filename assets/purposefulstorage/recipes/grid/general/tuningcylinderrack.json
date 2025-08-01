@@ -20,7 +20,7 @@
     "ingredientPattern": "PSS,PSS",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick" },
-      "P": { "type": "item", "code": "game:plank-*" }
+      "P": { "type": "item", "code": "*:plank-*" }
     },
     "width": 3, "height": 2, "recipeGroup": 1,
     "output": { "type": "block", "code": "tuningcylinderrack-normal-east" }
@@ -44,7 +44,7 @@
   {
     "ingredientPattern": "PP_,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*" }
+      "P": { "type": "item", "code": "*:plank-*" }
     },
     "width": 3, "height": 2, "recipeGroup": 1,
     "output": { "type": "block", "code": "tuningcylinderrack-stand-east" }

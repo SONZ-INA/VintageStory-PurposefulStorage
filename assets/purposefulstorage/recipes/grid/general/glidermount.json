@@ -20,7 +20,7 @@
     "ingredientPattern": "P_P,SPS,_S_",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick", "quantity": 2 },
-      "P": { "type": "item", "code": "game:plank-*", "quantity": 2 }
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 2 }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": { "type": "block", "code": "glidermount-normal-east" }

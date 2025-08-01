@@ -20,7 +20,7 @@
   {
     "ingredientPattern": "B_,TS,B_",
     "ingredients": {
-      "B": { "type": "item", "code": "game:plank-*", "quantity": 2 },
+      "B": { "type": "item", "code": "*:plank-*", "quantity": 2 },
       "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 },
       "S": { "type": "item", "code": "game:stick", "quantity": 4 }
     },

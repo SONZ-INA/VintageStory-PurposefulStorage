@@ -29,7 +29,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     protected virtual void InitMesh() {
-        blockMesh = GenBlockVariantMesh(Api, GetVariantStack(this));
+        blockMesh = GenBlockVariantMesh(Api, this.GetVariantStack());
     }
 
     public override void OnBlockPlaced(ItemStack byItemStack = null) {

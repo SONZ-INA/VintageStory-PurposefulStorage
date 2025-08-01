@@ -21,7 +21,7 @@
   {
     "ingredientPattern": "PSP,GNG,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*", "quantity": 3 },
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 3 },
       "S": { "type": "item", "code": "game:stick", "quantity": 8 },
       "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
       "G": { "type": "block", "code": "game:glass-*" }
@@ -53,7 +53,7 @@
     "ingredients": {
       "S": { "type": "item", "code": "game:stick", "quantity": 8 },
       "X": { "type": "item", "code": "game:stick", "quantity": 5 },
-      "P": { "type": "item", "code": "game:plank-*", "quantity": 3 },
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 3 },
       "T": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 2 }
     },
     "width": 3, "height": 3, "recipeGroup": 1,

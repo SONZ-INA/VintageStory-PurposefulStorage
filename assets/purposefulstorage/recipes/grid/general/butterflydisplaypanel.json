@@ -20,7 +20,7 @@
   {
     "ingredientPattern": "SPS,SGS,SPS",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*" },
+      "P": { "type": "item", "code": "*:plank-*" },
       "S": { "type": "item", "code": "game:stick" },
       "G": { "type": "block", "code": "game:glass-*" }
     },

@@ -6,6 +6,6 @@
   "description": "Adds a variety of storage blocks designed for both aesthetic appeal and functional item organization.",
   "version": "1.4.0",
   "dependencies": {
-    "game": "1.21.0-rc.1"
+    "game": "1.21.0-rc.2"
   }
 }
