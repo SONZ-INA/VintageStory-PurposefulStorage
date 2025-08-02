@@ -1,0 +1,30 @@
+[
+  {
+    "ingredientPattern": "_SP,_BP,P_P",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick", "quantity": 4 },
+      "B": { "type": "block", "code": "game:glassslab-*-down-free" },
+      "P": { "type": "item", "code": "game:plank-{wood}" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "medallionrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "_SP,_BP,P_P",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick" },
+      "B": { "type": "block", "code": "game:glassslab-*-down-free" },
+      "P": { "type": "item", "code": "*:plank-*" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "medallionrack-normal-east" }
+  }
+]
