@@ -3,7 +3,7 @@
     "ingredientPattern": "___,PSP,PPP",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick", "quantity": 2 },
-      "P": { "type": "item", "code": "game:plank-*", "name": "wood" }
+      "P": { "type": "item", "code": "game:plank-{wood}" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": {
@@ -15,5 +15,14 @@
         }
       }
     }
+  },
+  {
+    "ingredientPattern": "___,PSP,PPP",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick", "quantity": 2 },
+      "P": { "type": "item", "code": "*:plank-*" }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "shoerack-normal-east" }
   }
 ]

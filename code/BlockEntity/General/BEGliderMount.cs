@@ -1,9 +1,9 @@
 ﻿namespace PurposefulStorage;
 
 public class BEGliderMount : BEBasePSContainer {
-    public override string[] AttributeCheck => new[] { "psGlider" };
+    public override string[] AttributeCheck => ["psGlider"];
 
-    public override int[] SectionSegmentCounts => new[] { 1 };
+    public override int[] SectionSegmentCounts => [1];
 
     public BEGliderMount() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 

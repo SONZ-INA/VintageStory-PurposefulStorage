@@ -2,15 +2,62 @@
 
 public class BasePSContainer : BlockContainer, IContainedMeshSource {
     public const string PSAttributes = "PSAttributes";
+    public string WorldInteractionAttributeCheck = null;
     private string heldDescEntry;
+
+    private WorldInteraction[] itemSlottableInteractions;
     
     public override void OnLoaded(ICoreAPI api) {
         base.OnLoaded(api);
+
+        WorldInteractionAttributeCheck = Attributes["worldInteractionAttributeCheck"].AsString();
+
+        if (WorldInteractionAttributeCheck != null) {
+            List<ItemStack> stackList = [];
+
+            itemSlottableInteractions = ObjectCacheUtil.GetOrCreate(api, Code.FirstCodePart(), () => {
+                foreach (var obj in api.World.Collectibles) {
+                    if (obj.CanStoreInSlot(WorldInteractionAttributeCheck)) {
+                        stackList.Add(new ItemStack(obj));
+                    }
+                }
+
+                var stackArray = stackList.ToArray();
+
+                return new WorldInteraction[] {
+                    new() {
+                        ActionLangCode = "blockhelp-groundstorage-add",
+                        MouseButton = EnumMouseButton.Right,
+                        Itemstacks = stackArray,
+                        HotKeyCode = "shift"
+                    },
+                    new() {
+                        ActionLangCode = "blockhelp-groundstorage-addbulk",
+                        MouseButton = EnumMouseButton.Right,
+                        Itemstacks = stackArray,
+                        HotKeyCodes = ["shift", "ctrl"]
+                    },
+                    new() {
+                        ActionLangCode = "blockhelp-groundstorage-remove",
+                        MouseButton = EnumMouseButton.Right
+                    },
+                    new() {
+                        ActionLangCode = "blockhelp-groundstorage-removebulk",
+                        MouseButton = EnumMouseButton.Right,
+                        HotKeyCode = "ctrl"
+                    }
+                };
+            });
+        }
 
         PlacedPriorityInteract = true; // Needed to call OnBlockInteractStart when shifting with an item in hand
         heldDescEntry = Attributes["helddescentry"].AsString(Code.FirstCodePart());
 
         LoadVariantsCreative(api, this);
+    }
+
+    public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
+        return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer).Append(itemSlottableInteractions);
     }
 
     public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos) {
@@ -77,7 +124,7 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
     }
 
     public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1) {
-        return new ItemStack[] { OnPickBlock(world, pos) };
+        return [OnPickBlock(world, pos)];
     }
 
     public override BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer) {
@@ -107,7 +154,7 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
     public virtual string GetMeshCacheKey(ItemStack itemstack) {
         if (itemstack.Attributes[PSAttributes] is not ITreeAttribute tree) return Code;
 
-        List<string> parts = new();
+        List<string> parts = [];
         foreach (var pair in tree) {
             parts.Add($"{pair.Key}-{pair.Value}"); // No support for various domains across mods. (eg. cloth from "game:" and "wool:" domains)
         }

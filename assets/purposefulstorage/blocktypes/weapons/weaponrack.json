@@ -42,7 +42,8 @@
     "burnDuration": 96
   },
   "guiTransform": {
-    "origin": { "x": 0.5, "y": 0.8, "z": 0.5 },
+    "origin": { "x": 1, "y": 0.8, "z": 1 },
+    "translation": { "x": 0, "y": -5, "z": 0 },
     "scale": 0.85
   },
   "tpHandTransform": {

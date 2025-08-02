@@ -14,14 +14,14 @@ public class BlockHatRack : BasePSContainer, IMultiBlockColSelBoxes {
 
         BEHatRack be = blockAccessor.GetBlockEntityExt<BEHatRack>(pos);
         if (be != null) {
-            List<Cuboidf> selBoxes = new();
+            List<Cuboidf> selBoxes = [];
 
             for (int i = 4; i < 8; i++) {
                 selBoxes.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(i).Clone());
                 selBoxes[i - 4].MBNormalizeSelectionBox(offset);
             }
 
-            return new Cuboidf[] { skip, skip, skip, skip, selBoxes[0], selBoxes[1], selBoxes[2], selBoxes[3] };
+            return [skip, skip, skip, skip, selBoxes[0], selBoxes[1], selBoxes[2], selBoxes[3]];
         }
 
         return base.GetSelectionBoxes(blockAccessor, pos);

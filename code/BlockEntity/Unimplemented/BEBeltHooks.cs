@@ -1,9 +1,9 @@
 ﻿namespace PurposefulStorage;
 
 public class BEBeltHooks : BEBasePSContainer {
-    public override string[] AttributeCheck => new[] { "psWaistware" };
+    public override string[] AttributeCheck => ["psWaistware"];
 
-    public override int[] SectionSegmentCounts => new[] { 4 };
+    public override int[] SectionSegmentCounts => [4];
     public override int ItemsPerSegment => 3;
 
     public BEBeltHooks() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

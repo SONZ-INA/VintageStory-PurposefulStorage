@@ -1,0 +1,8 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/general/schematics.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-", "side": "server",
+    "value": "betterruins:br-schematic-*",
+    "dependsOn": [ { "modid": "betterruins" } ]
+  }
+]

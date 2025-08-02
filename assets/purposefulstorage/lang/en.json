@@ -19,6 +19,8 @@
   "block-swordpedestal-*": "Sword Pedestal",
   "block-butterflydisplaypanel-*": "Butterfly Display Panel",
   "block-schematicrack-*": "Schematic Rack",
+  "block-saddlerack-*": "Saddle Rack",
+  "block-medallionrack-*": "Medallion Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -38,6 +40,8 @@
   "helddesc-swordpedestal": "Display your swords!",
   "helddesc-butterflydisplaypanel": "Display your butterflies!",
   "helddesc-schematicrack": "Display your schematics!",
+  "helddesc-saddlerack": "Free your elk from the saddle!",
+  "helddesc-medallionrack": "Display your elk medallions & clothing emblems!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container."
 }

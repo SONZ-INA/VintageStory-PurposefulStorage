@@ -1,6 +1,6 @@
 ﻿namespace PurposefulStorage;
 
-internal class ItemSlotPSUniversal : ItemSlot {
+public sealed class ItemSlotPSUniversal : ItemSlot {
     public override int MaxSlotStackSize => maxSlotStackSize;
     private readonly int maxSlotStackSize;
     private readonly string[] attributeCheck;
@@ -13,7 +13,7 @@ internal class ItemSlotPSUniversal : ItemSlot {
 
     public ItemSlotPSUniversal(InventoryBase inventory, string attributeCheck, int maxSlotStackSize = 1) : base(inventory) {
         this.inventory = inventory;
-        this.attributeCheck = new[] { attributeCheck };
+        this.attributeCheck = [attributeCheck];
         this.maxSlotStackSize = maxSlotStackSize;
     }
 

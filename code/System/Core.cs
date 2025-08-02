@@ -6,10 +6,8 @@ using static PurposefulStorage.Patches;
 namespace PurposefulStorage;
 
 public class Core : ModSystem {
-    public override double ExecuteOrder() => 1.01; // For the dynamic recipes to load, this must be after 1
-
-    private readonly Dictionary<string, RestrictionData> restrictions = new();
-    private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = new();
+    private readonly Dictionary<string, RestrictionData> restrictions = [];
+    private readonly Dictionary<string, Dictionary<string, ModelTransform>> transformations = [];
 
     public override void Start(ICoreAPI api) {
         base.Start(api);
@@ -40,7 +38,10 @@ public class Core : ModSystem {
         api.RegisterBlockEntityClass("PurposefulStorage.BEButterflyDisplayPanel", typeof(BEButterflyDisplayPanel));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEMedallionRack", typeof(BEMedallionRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BESaddleRack", typeof(BESaddleRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESchematicRack", typeof(BESchematicRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BETuningCylinderRack", typeof(BETuningCylinderRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BETuningCylinderRack", typeof(BETuningCylinderRack));
         
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
@@ -54,8 +55,6 @@ public class Core : ModSystem {
         base.AssetsLoaded(api);
 
         if (api.Side == EnumAppSide.Server) {
-            RecipePatcher.SupportModdedIngredients(api);
-
             var restrictionGroupsServer = DiscoverRestrictionGroups(api);
             LoadData(api, restrictionGroupsServer);
         }
@@ -95,14 +94,14 @@ public class Core : ModSystem {
                 }
 
                 if (!restrictionGroups.TryGetValue(folderName, out string[] value)) {
-                    value = Array.Empty<string>();
+                    value = [];
                     restrictionGroups[folderName] = value;
                 }
 
                 var currentFiles = value.ToList();
                 if (!currentFiles.Contains(fileName)) {
                     currentFiles.Add(fileName);
-                    restrictionGroups[folderName] = currentFiles.ToArray();
+                    restrictionGroups[folderName] = [.. currentFiles];
                 }
             }
         }

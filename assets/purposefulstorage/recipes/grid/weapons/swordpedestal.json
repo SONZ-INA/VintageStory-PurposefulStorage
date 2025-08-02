@@ -2,7 +2,7 @@
   {
     "ingredientPattern": "SPS,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*", "name": "wood" },
+      "P": { "type": "item", "code": "game:plank-{wood}" },
       "S": { "type": "item", "code": "game:stick" }
     },
     "width": 3, "height": 2, "recipeGroup": 1,
@@ -17,9 +17,18 @@
     }
   },
   {
+    "ingredientPattern": "SPS,PPP",
+    "ingredients": {
+      "P": { "type": "item", "code": "*:plank-*" },
+      "S": { "type": "item", "code": "game:stick" }
+    },
+    "width": 3, "height": 2, "recipeGroup": 1,
+    "output": { "type": "block", "code": "swordpedestal-normal-east" }
+  },
+  {
     "ingredientPattern": "_C_,SBS",
     "ingredients": {
-      "B": { "type": "block", "code": "game:rockpolished-*", "name": "rock" },
+      "B": { "type": "block", "code": "game:rockpolished-{rock}" },
       "C": { "type": "item", "code": "game:chisel-*", "isTool": true },
       "S": { "type": "item", "code": "game:stone-*" }
     },

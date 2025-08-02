@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
 	<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
@@ -48,6 +48,8 @@
   <None Remove="assets\purposefulstorage\blocktypes\general\butterflydisplaypanel.json" />
   <None Remove="assets\purposefulstorage\blocktypes\general\gearrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\general\glidermount.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\general\medallionrack.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\general\saddlerack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\general\schematicrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\resources\resourcebin.json" />
   <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
@@ -65,6 +67,8 @@
   <None Remove="assets\purposefulstorage\config\restrictions\general\butterflies.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\gears.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\glider.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\general\medallions.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\general\saddle.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\schematics.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\general\tuningcylinders.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\resources\grass.json" />
@@ -74,10 +78,12 @@
   <None Remove="assets\purposefulstorage\config\transformations\clothes\lowerbodyware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\shoulderware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\general\gears.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\medallions.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\swords.json" />
   <None Remove="assets\purposefulstorage\lang\uk.json" />
   <None Remove="assets\purposefulstorage\patches\armory.json" />
+  <None Remove="assets\purposefulstorage\patches\betterruins.json" />
   <None Remove="assets\purposefulstorage\patches\carryon.json" />
   <None Remove="assets\purposefulstorage\patches\primitivesurvival.json" />
   <None Remove="assets\purposefulstorage\patches\wool&amp;more.json" />
@@ -91,6 +97,8 @@
   <None Remove="assets\purposefulstorage\recipes\grid\general\butterflydisplaypanel.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\gearrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\glidermount.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\general\medallionrack.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\general\saddlerack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\schematicrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\tuningcylinderrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\resources\resourcebin.json" />
@@ -107,6 +115,8 @@
   <None Remove="assets\purposefulstorage\shapes\block\general\ButterflyDisplayPanel.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\GearRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\glidermount.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\general\medallionrack.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\general\SaddleRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\SchematicRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\tuningcylinderstand.json" />
   <None Remove="assets\purposefulstorage\shapes\block\resources\resourcebin.json" />

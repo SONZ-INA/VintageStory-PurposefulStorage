@@ -2,9 +2,9 @@
 
 public class BEGearRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onGearsTransform";
-    public override string[] AttributeCheck => new[] { "psGears" };
+    public override string[] AttributeCheck => ["psGears"];
 
-    public override int[] SectionSegmentCounts => new[] { 2 };
+    public override int[] SectionSegmentCounts => [2];
     public override int ItemsPerSegment => 12;
 
     public BEGearRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

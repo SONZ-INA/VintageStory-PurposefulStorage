@@ -33,7 +33,7 @@ public static class InfoDisplay {
         }
 
         // Dictionary to group items
-        Dictionary<string, int> groupedItems = new();
+        Dictionary<string, int> groupedItems = [];
 
         for (int i = start; i != end; i = displaySelection == InfoDisplayOptions.ByBlock ? i - 1 : i + 1) {
             if (i >= slotCount) break;
