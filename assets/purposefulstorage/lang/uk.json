@@ -19,6 +19,8 @@
   "block-swordpedestal-*": "П'єдестал для меча",
   "block-butterflydisplaypanel-*": "Панель для метеликів",
   "block-schematicrack-*": "Стійка для схем",
+  "block-saddlerack-*": "Стійка для сідла",
+  "block-medallionrack-*": "Стійка для медальйона",
 
   "blockdesc-canhold-title": "Може зберігати:",
 
@@ -35,9 +37,11 @@
   "helddesc-gloverack": "Може зберігати більшість рукавичок, наручів й браслетів!",
   "helddesc-necklacestand": "Може зберігати більшість намиста!",
   "helddesc-tuningcylinderrack": "Може зберігати гармонізовані циліндри!",
-  "helddesc-swordpedestal": "Хизуйся своїми мечами!",
-  "helddesc-butterflydisplaypanel": "Хизуйся метеликами!",
-  "helddesc-schematicrack": "Хизуйся схемами!",
+  "helddesc-swordpedestal": "Хизуйтеся своїми мечами!",
+  "helddesc-butterflydisplaypanel": "Хизуйтеся своїми метеликами!",
+  "helddesc-schematicrack": "Хизуйтеся своїми схемами!",
+  "helddesc-saddlerack": "Дайте вашому оленю відпочити від сідла!",
+  "helddesc-medallionrack": "Хизуйтеся своїми медальйонами для оленів й емблемами до одягу!",
 
   "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері."
 }
