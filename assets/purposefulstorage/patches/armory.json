@@ -60,4 +60,18 @@
     "op": "remove", "path": "/game:spear-generic-flint", "side": "server",
     "dependsOn": [ { "modid": "armory" } ]
   },
+
+
+  {
+    "file": "armory:itemtypes/weapons/javelin.json",
+    "op": "addmerge", "path": "/attributes/psGroup", "side": "server",
+    "value": "javelin",
+    "dependsOn": [ { "modid": "armory" } ]
+  },
+  {
+    "file": "armory:itemtypes/weapons/pike.json",
+    "op": "addmerge", "path": "/attributes/psGroup", "side": "server",
+    "value": "pike",
+    "dependsOn": [ { "modid": "armory" } ]
+  }
 ]

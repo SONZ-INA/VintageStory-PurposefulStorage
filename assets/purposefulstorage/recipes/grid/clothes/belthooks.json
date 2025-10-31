@@ -1,0 +1,28 @@
+[
+  {
+    "ingredientPattern": "P_,PS",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick" },
+      "P": { "type": "item", "code": "game:plank-{wood}" }
+    },
+    "width": 2, "height": 2, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "belthooks-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "P_,PS",
+    "ingredients": {
+      "S": { "type": "item", "code": "game:stick" },
+      "P": { "type": "item", "code": "game:plank-*" }
+    },
+    "width": 2, "height": 2, "recipeGroup": 1,
+    "output": { "type": "block", "code": "belthooks-normal-east" }
+  }
+]

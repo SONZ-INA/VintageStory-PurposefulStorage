@@ -21,10 +21,11 @@
   "block-schematicrack-*": "Schematic Rack",
   "block-saddlerack-*": "Saddle Rack",
   "block-medallionrack-*": "Medallion Rack",
+  "block-spearrack-*": "Spear Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
-  "helddesc-wardrobe": "Can hold most types of upperbody clothes and well as most shoes!",
+  "helddesc-wardrobe": "Can hold most types of upperbody and lowerbody clothes and well as most shoes!",
   "helddesc-hatrack": "Can hold most hats!",
   "helddesc-blanketrack": "Can hold all blankets!",
   "helddesc-shoerack": "Can hold all shoes!",
@@ -42,6 +43,8 @@
   "helddesc-schematicrack": "Display your schematics!",
   "helddesc-saddlerack": "Free your elk from the saddle!",
   "helddesc-medallionrack": "Display your elk medallions & clothing emblems!",
+  "helddesc-spearrack": "Leave your spears at an accessible place!",
 
-  "This item cannot be placed in this container.": "This item cannot be placed in this container."
+  "This item cannot be placed in this container.": "This item cannot be placed in this container.",
+  "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!"
 }

@@ -1,0 +1,10 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/general/schematics.json",
+    "op": "addmerge", "path": "/CollectibleCodes", "side": "server",
+    "value": [
+      "draconis:schematics-draconic"
+    ],
+    "dependsOn": [ { "modid": "draconis" } ]
+  }
+]

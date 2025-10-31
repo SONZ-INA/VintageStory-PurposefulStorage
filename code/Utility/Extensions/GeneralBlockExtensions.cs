@@ -74,7 +74,8 @@ public static class GeneralBlockExtensions {
             dropSide = jsonDoc.RootElement.GetProperty("dropBlockFace").GetString() ?? "east";
         }
 
-        if (blockSide != null && blockSide != dropSide) return;
+        if (blockSide != null && blockSide != dropSide) 
+            return;
 
         var materials = block.Attributes["materials"].AsObject<RegistryObjectVariantGroup>();
         string material = "";

@@ -11,7 +11,8 @@ public static class InfoDisplay {
         if (selectedSegment == -1 && forPlayer.CurrentBlockSelection != null)
             selectedSegment = forPlayer.CurrentBlockSelection.SelectionBoxIndex;
 
-        if (displaySelection != InfoDisplayOptions.ByBlock && selectedSegment == -1) return;
+        if (displaySelection != InfoDisplayOptions.ByBlock && selectedSegment == -1) 
+            return;
 
         int start = 0, end = slotCount;
 

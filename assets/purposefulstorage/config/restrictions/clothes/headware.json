@@ -1,9 +1,11 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:clothes-head-*",
+    "game:armor-head-hide-bear-*",
+    "*:clothes-head-*",
     "game:clothes-nadiya-head-*",
-    "game:clothes-face-*",
+    "*:clothes-face-*",
     "game:clothes-nadiya-face-*"
-  ]
+  ],
+  "BlacklistedCodes": []
 }

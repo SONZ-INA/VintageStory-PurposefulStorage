@@ -38,7 +38,6 @@
   <Content Include="assets\**">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
-  <None Remove="assets\purposefulstorage\blocktypes\clothes\belthooks.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\blanketrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\gloverack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\clothes\hatrack.json" />
@@ -53,6 +52,7 @@
   <None Remove="assets\purposefulstorage\blocktypes\general\schematicrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\resources\resourcebin.json" />
   <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\weapons\spearrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\weapons\swordpedestal.json" />
   <None Remove="assets\purposefulstorage\blocktypes\weapons\weaponrack.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\blankets.json" />
@@ -73,20 +73,38 @@
   <None Remove="assets\purposefulstorage\config\restrictions\general\tuningcylinders.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\resources\grass.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\longweapons.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\weapons\spearrack.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\swords.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\blankets.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\footware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\handware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\headware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\lowerbodyware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\neckware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\shoulderware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\upperbodyware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\clothes\waistware.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\butterflies.json" />
   <None Remove="assets\purposefulstorage\config\transformations\general\gears.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\glider.json" />
   <None Remove="assets\purposefulstorage\config\transformations\general\medallions.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\saddle.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\schematics.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\general\tuningcylinders.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\longweapons.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\weapons\spearrack.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\swords.json" />
+  <None Remove="assets\purposefulstorage\lang\pl.json" />
+  <None Remove="assets\purposefulstorage\lang\ru.json" />
   <None Remove="assets\purposefulstorage\lang\uk.json" />
   <None Remove="assets\purposefulstorage\patches\armory.json" />
+  <None Remove="assets\purposefulstorage\patches\basegame.json" />
   <None Remove="assets\purposefulstorage\patches\betterruins.json" />
   <None Remove="assets\purposefulstorage\patches\carryon.json" />
+  <None Remove="assets\purposefulstorage\patches\draconis.json" />
   <None Remove="assets\purposefulstorage\patches\primitivesurvival.json" />
   <None Remove="assets\purposefulstorage\patches\wool&amp;more.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\clothes\belthooks.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\blanketrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\gloverack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\clothes\hatrack.json" />
@@ -102,6 +120,7 @@
   <None Remove="assets\purposefulstorage\recipes\grid\general\schematicrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\general\tuningcylinderrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\resources\resourcebin.json" />
+  <None Remove="assets\purposefulstorage\recipes\grid\weapons\spearrack.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\weapons\swordpedestal.json" />
   <None Remove="assets\purposefulstorage\recipes\grid\weapons\weaponrack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\clothes\BeltHooks.json" />
@@ -120,6 +139,7 @@
   <None Remove="assets\purposefulstorage\shapes\block\general\SchematicRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\general\tuningcylinderstand.json" />
   <None Remove="assets\purposefulstorage\shapes\block\resources\resourcebin.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\weapons\SpearRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\SwordPedestal.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\SwordPedestalStone.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\WeaponRack.json" />

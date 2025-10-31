@@ -22,11 +22,12 @@ public class Core : ModSystem {
 
         api.RegisterBlockClass("PurposefulStorage.BlockGliderMount", typeof(BlockGliderMount));
 
+        api.RegisterBlockClass("PurposefulStorage.BlockSpearRack", typeof(BlockSpearRack));
         api.RegisterBlockClass("PurposefulStorage.BlockWeaponRack", typeof(BlockWeaponRack));
         // ------------------------
 
         // Block Entity Classes----
-        //api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEBeltHooks", typeof(BEBeltHooks));
         api.RegisterBlockEntityClass("PurposefulStorage.BEBlanketRack", typeof(BEBlanketRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGloveRack", typeof(BEGloveRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEHatRack", typeof(BEHatRack));
@@ -46,6 +47,7 @@ public class Core : ModSystem {
         
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
 
+        api.RegisterBlockEntityClass("PurposefulStorage.BESpearRack", typeof(BESpearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESwordPedestal", typeof(BESwordPedestal));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWeaponRack", typeof(BEWeaponRack));
         // ------------------------

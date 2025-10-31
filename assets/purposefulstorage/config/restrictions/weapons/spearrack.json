@@ -1,0 +1,13 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:spear-generic-*",
+    "game:spear-scrap-scrap",
+    "game:spear-voulge-ruined",
+    "game:spear-boar-ruined",
+
+    "armory:javelin-plain-*",
+    "armory:pike-plain-*"
+  ],
+  "BlacklistedCodes": []
+}

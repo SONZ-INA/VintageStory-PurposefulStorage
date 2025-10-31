@@ -16,7 +16,7 @@ public class BEHatRack : BEBasePSContainer {
 
             float x = 0.1f;
             float y = -1.63f + segment / 2 * 0.5f;
-            float z = -0.215f + segment % 2 * 0.42f;
+            float z = -0.215f + segment % 2 * 0.4275f;
 
             tfMatrices[index] = new Matrixf()
                 .Translate(0.5f, 0, 0.5f)

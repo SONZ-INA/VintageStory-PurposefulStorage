@@ -18,5 +18,6 @@
     "armory:poleaxe-plain-*",
     "armory:halberd-plain-*",
     "armory:quarterstaff-plain-*"
-  ]
+  ],
+  "BlacklistedCodes": []
 }

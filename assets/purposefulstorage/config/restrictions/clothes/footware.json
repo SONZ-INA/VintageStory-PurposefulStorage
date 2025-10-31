@@ -1,7 +1,8 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:clothes-foot-*",
+    "*:clothes-foot-*",
     "game:clothes-nadiya-foot-*"
-  ]
+  ],
+  "BlacklistedCodes": []
 }

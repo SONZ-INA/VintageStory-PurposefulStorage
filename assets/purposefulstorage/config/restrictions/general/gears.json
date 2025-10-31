@@ -3,5 +3,6 @@
   "CollectibleCodes": [
     "game:gear-rusty",
     "game:gear-temporal"
-  ]
+  ],
+  "BlacklistedCodes": []
 }

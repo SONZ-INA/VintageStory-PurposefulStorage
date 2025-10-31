@@ -40,7 +40,7 @@ public static class LocationalExtensions {
 
     /// <summary>
     /// Calculates and returns the horizontal rotation angle of a block relative to the player’s position,
-    /// rounding it to the nearest 22.5 degrees.<br/> Useful for meshing blocks that can rotate freely (e.g., baskets).
+    /// rounding it to the nearest 22.5 degrees.<br/> Useful for meshing blocks that can rotate freely (e.g., buckets).
     /// </summary>
     public static float GetBlockMeshAngle(IPlayer byPlayer, BlockSelection blockSel, bool val) {
         if (val) {

@@ -1,8 +1,9 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:hoovedwearables-face-*",
-    "game:clothes-butterflypin-*",
-    "game:clothes-emblem-*"
-  ]
+    "*:hoovedwearables-face-*",
+    "*:clothes-butterflypin-*",
+    "*:clothes-emblem-*"
+  ],
+  "BlacklistedCodes": []
 }

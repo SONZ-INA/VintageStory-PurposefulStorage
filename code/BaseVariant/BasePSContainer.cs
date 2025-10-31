@@ -10,8 +10,10 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
     public override void OnLoaded(ICoreAPI api) {
         base.OnLoaded(api);
 
-        WorldInteractionAttributeCheck = Attributes["worldInteractionAttributeCheck"].AsString();
+        PlacedPriorityInteract = true; // Needed to call OnBlockInteractStart when shifting with an item in hand
+        heldDescEntry = Attributes["helddescentry"].AsString(Code.FirstCodePart());
 
+        WorldInteractionAttributeCheck = Attributes["worldInteractionAttributeCheck"].AsString();
         if (WorldInteractionAttributeCheck != null) {
             List<ItemStack> stackList = [];
 
@@ -49,9 +51,6 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
                 };
             });
         }
-
-        PlacedPriorityInteract = true; // Needed to call OnBlockInteractStart when shifting with an item in hand
-        heldDescEntry = Attributes["helddescentry"].AsString(Code.FirstCodePart());
 
         LoadVariantsCreative(api, this);
     }

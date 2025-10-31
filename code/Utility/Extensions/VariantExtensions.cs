@@ -21,7 +21,7 @@ public static class VariantExtensions {
             }
         }
 
-        var stexSource = new ShapeTextureSource(capi, shape, "FS-TextureSource");
+        var stexSource = new ShapeTextureSource(capi, shape, "PS-TextureSource");
 
         // Custom Textures
         if (stackWithAttributes.Attributes[BasePSContainer.PSAttributes] is ITreeAttribute tree && block.Attributes["variantTextures"].Exists) {
