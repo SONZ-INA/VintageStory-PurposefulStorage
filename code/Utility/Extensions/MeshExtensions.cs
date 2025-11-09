@@ -1,4 +1,6 @@
-﻿namespace PurposefulStorage;
+﻿using System.Linq;
+
+namespace PurposefulStorage;
 
 public static class MeshExtensions {
     /// <summary>
@@ -21,5 +23,19 @@ public static class MeshExtensions {
                 if (face != null) face.Texture = key;
             }
         }
+    }
+
+    /// <summary>
+    /// Recursively removes elements and their children whose names are in skipElements.
+    /// </summary>
+    public static ShapeElement[] RemoveElements(ShapeElement[] elementArray, string[] skipElements) {
+        var remainingElements = elementArray.Where(e => !skipElements.Contains(e.Name)).ToArray();
+        foreach (var element in remainingElements) {
+            if (element.Children != null && element.Children.Length > 0) {
+                element.Children = RemoveElements(element.Children, skipElements); // Recursively filter children
+            }
+        }
+
+        return remainingElements;
     }
 }

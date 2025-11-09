@@ -1,6 +1,7 @@
 ﻿namespace PurposefulStorage;
 
 public class BEBlanketRack : BEBasePSContainer {
+    public override string AttributeTransformCode => "onBlanketsTransform";
     public override string[] AttributeCheck => ["psBlankets"];
 
     public override int[] SectionSegmentCounts => [4];

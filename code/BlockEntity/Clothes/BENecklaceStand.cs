@@ -1,6 +1,7 @@
 ﻿namespace PurposefulStorage;
 
 public class BENecklaceStand : BEBasePSContainer {
+    public override string AttributeTransformCode => "onNeckwareTransform";
     public override string[] AttributeCheck => ["psNeckware"];
 
     public override int[] SectionSegmentCounts => [6];

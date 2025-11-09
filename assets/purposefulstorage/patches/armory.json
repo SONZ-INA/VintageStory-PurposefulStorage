@@ -1,5 +1,27 @@
 [
   {
+    "file": "purposefulstorage:config/transformations/weapons/spearrack.json",
+    "op": "replace", "path": "/game:spear-generic-*", "side": "server",
+    "value": {
+      "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+      "translation": { "x": 1.04, "y": 0, "z": 0.125 },
+      "scaleXYZ": { "x": 0.785, "y": 0.85, "z": 0.85 }
+    },
+    "dependsOn": [ { "modid": "armory" } ]
+  },
+  {
+    "file": "purposefulstorage:config/transformations/weapons/spearrack.json",
+    "op": "replace", "path": "/game:spear-scrap-scrap", "side": "server",
+    "value": {
+      "origin": { "x": 0.5, "y": 0, "z": 0.5 },
+      "translation": { "x": 1.25, "y": 0, "z": 0.125 },
+      "scaleXYZ": { "x": 0.785, "y": 0.85, "z": 0.85 }
+    },
+    "dependsOn": [ { "modid": "armory" } ]
+  },
+
+
+  {
     "file": "purposefulstorage:config/transformations/weapons/longweapons.json",
     "op": "replace", "path": "/game:spear-generic-*/translation", "side": "server",
     "value": { "x": 2.05, "y": 0.01, "z": 0.04 },

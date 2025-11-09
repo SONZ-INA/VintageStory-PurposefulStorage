@@ -15,21 +15,11 @@ public static class Meshing {
         var variantData = GetBlockVariantData(capi, stackWithAttributes);
 
         if (skipElements?.Length > 0) {
-            ShapeElement[] RemoveElements(ShapeElement[] elementArray) {
-                var remainingElements = elementArray.Where(e => !skipElements.Contains(e.Name)).ToArray();
-                foreach (var element in remainingElements) {
-                    if (element.Children != null && element.Children.Length > 0) {
-                        element.Children = RemoveElements(element.Children); // Recursively filter children
-                    }
-                }
-                return remainingElements;
-            }
-
-            variantData.Item1.Elements = RemoveElements(variantData.Item1.Elements);
+            variantData.Item1.Elements = RemoveElements(variantData.Item1.Elements, skipElements);
         }
 
         capi.Tesselator.TesselateShape("PS-TesselateShape", variantData.Item1, out MeshData blockMesh, variantData.Item2);
-        
+
         float scale = block.Shape.Scale;
         if (scale != 1) blockMesh.Scale(new Vec3f(.5f, 0, .5f), scale, scale, scale);
 

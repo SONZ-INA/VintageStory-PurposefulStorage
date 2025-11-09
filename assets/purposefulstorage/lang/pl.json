@@ -1,7 +1,6 @@
 {
-  "blockdesc-canhold-title": "Może przechowywać",
-  "This item cannot be placed in this container.": "Tego przedmiotu nie można umieścić w tym pojemniku.",
   "game:tabname-purposefulstorage": "Purposeful Storage",
+
   "block-wardrobe-normal-*": "Szafa",
   "block-wardrobe-wooden-*": "Drewniana szafa",
   "block-hatrack-*": "Wieszak na kapelusze",
@@ -22,6 +21,10 @@
   "block-schematicrack-*": "Pulpit na schemat",
   "block-saddlerack-*": "Stojak na siodło",
   "block-medallionrack-*": "Gablota na medaliony",
+  "block-spearrack-*": "Stojak na włócznie",
+
+  "blockdesc-canhold-title": "Może przechowywać",
+
   "helddesc-wardrobe": "Może przechowywać większość rodzajów odzieży górnej i dolnej, a także większość obuwia!",
   "helddesc-hatrack": "Może przechowywać większość kapeluszy!",
   "helddesc-blanketrack": "Może przechowywać wszystkie czapraki!",
@@ -40,7 +43,8 @@
   "helddesc-schematicrack": "Wyeksponuj swoje schematy!",
   "helddesc-saddlerack": "Uwolnij swojego wierzchowca od siodła!",
   "helddesc-medallionrack": "Wyeksponuj medaliony przynależności, broszki, przypinki i odznaki!",
-  "block-spearrack-*": "Stojak na włócznie",
   "helddesc-spearrack": "Zostaw swoje włócznie w łatwo dostępnym miejscu!",
+
+  "This item cannot be placed in this container.": "Tego przedmiotu nie można umieścić w tym pojemniku.",
   "This item is not of the same type as the item in the container!": "Ten przedmiot nie jest tego samego typu co przedmiot w pojemniku!"
 }

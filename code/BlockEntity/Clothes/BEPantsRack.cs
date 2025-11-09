@@ -1,6 +1,7 @@
 ﻿namespace PurposefulStorage;
 
 public class BEPantsRack : BEBasePSContainer {
+    public override string AttributeTransformCode => "onLowerbodywareTransform";
     public override string[] AttributeCheck => ["psLowerbodyware"];
 
     public override int[] SectionSegmentCounts => [2];

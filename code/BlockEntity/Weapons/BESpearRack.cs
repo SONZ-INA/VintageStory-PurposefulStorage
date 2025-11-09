@@ -18,9 +18,9 @@ public class BESpearRack : BEBasePSContainer {
         float[][] tfMatrices = new float[SlotCount][];
 
         for (int item = 0; item < ItemsPerSegment; item++) {
-            float x = 2.3f;
+            float x = 1.25f;
             float y = -0.45f + item % 5 * 0.15f + item / 5 * 0.025f;
-            float z = -0.225f + item / 5 * 0.125f;
+            float z = -0.15f + item / 5 * 0.125f;
 
             tfMatrices[item] = new Matrixf()
                 .Translate(0.5f, 0, 0.5f)
