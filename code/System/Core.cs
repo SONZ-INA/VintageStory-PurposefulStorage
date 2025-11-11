@@ -49,6 +49,7 @@ public class Core : ModSystem {
 
         api.RegisterBlockEntityClass("PurposefulStorage.BESpearRack", typeof(BESpearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESwordPedestal", typeof(BESwordPedestal));
+        api.RegisterBlockEntityClass("PurposefulStorage.BESwordPlaque", typeof(BESwordPlaque));
         api.RegisterBlockEntityClass("PurposefulStorage.BEWeaponRack", typeof(BEWeaponRack));
         // ------------------------
     }

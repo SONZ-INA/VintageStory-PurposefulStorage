@@ -29,6 +29,7 @@
   },
   "heldTpIdleAnimation": "holdunderarm",
   "blockmaterial": "Wood",
+  "maxStackSize": 32,
   "lightAbsorption": 1,
   "replaceable": 900,
   "resistance": 1.5,

@@ -54,6 +54,7 @@
   <None Remove="assets\purposefulstorage\blocktypes\wardrobe.json" />
   <None Remove="assets\purposefulstorage\blocktypes\weapons\spearrack.json" />
   <None Remove="assets\purposefulstorage\blocktypes\weapons\swordpedestal.json" />
+  <None Remove="assets\purposefulstorage\blocktypes\weapons\swordplaque.json" />
   <None Remove="assets\purposefulstorage\blocktypes\weapons\weaponrack.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\blankets.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\clothes\footware.json" />
@@ -74,7 +75,8 @@
   <None Remove="assets\purposefulstorage\config\restrictions\resources\grass.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\restrictions\weapons\spearrack.json" />
-  <None Remove="assets\purposefulstorage\config\restrictions\weapons\swords.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\weapons\swordpedestal.json" />
+  <None Remove="assets\purposefulstorage\config\restrictions\weapons\swordplaque.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\blankets.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\footware.json" />
   <None Remove="assets\purposefulstorage\config\transformations\clothes\handware.json" />
@@ -93,7 +95,8 @@
   <None Remove="assets\purposefulstorage\config\transformations\general\tuningcylinders.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\longweapons.json" />
   <None Remove="assets\purposefulstorage\config\transformations\weapons\spearrack.json" />
-  <None Remove="assets\purposefulstorage\config\transformations\weapons\swords.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\weapons\swordpedestal.json" />
+  <None Remove="assets\purposefulstorage\config\transformations\weapons\swordplaque.json" />
   <None Remove="assets\purposefulstorage\lang\pl.json" />
   <None Remove="assets\purposefulstorage\lang\ru.json" />
   <None Remove="assets\purposefulstorage\lang\uk.json" />
@@ -142,6 +145,7 @@
   <None Remove="assets\purposefulstorage\shapes\block\weapons\SpearRack.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\SwordPedestal.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\SwordPedestalStone.json" />
+  <None Remove="assets\purposefulstorage\shapes\block\weapons\SwordPlaque.json" />
   <None Remove="assets\purposefulstorage\shapes\block\weapons\WeaponRack.json" />
   <None Remove="assets\purposefulstorage\shapes\util\utilPants.json" />
   <None Remove="assets\purposefulstorage\shapes\util\utilResourceBin.json" />

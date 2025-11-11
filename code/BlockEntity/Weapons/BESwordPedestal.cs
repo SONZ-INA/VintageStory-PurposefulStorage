@@ -1,9 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BESwordPedestal : BEBasePSContainer {
-    public override string AttributeTransformCode => "onSwordsTransform";
-    public override string[] AttributeCheck => ["psSwords"];
-
     public BESwordPedestal() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     protected override float[][] genTransformationMatrices() {

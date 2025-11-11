@@ -1,6 +1,7 @@
 {
   "game:bow-long": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.865, "y": 0.0185, "z": -0.125 }, "scaleXYZ": { "x": 1.1, "y": 1, "z": 1 }, "rotation": { "x": 10, "y": 0, "z": 0 } },
   "game:bow-recurve": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.865, "y": 0.005, "z": 0 }, "scaleXYZ": { "x": 1.1, "y": 1, "z": 1 }, "rotation": { "x": 15, "y": 0, "z": 0 } },
+  "game:bowstave-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.91, "y": -0.005, "z": 0 }, "scaleXYZ": { "x": 1.1, "y": 1, "z": 1 } },
   "game:spear-generic-hacking": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.95, "y": -0.015, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scale": 0.85 },
   "game:spear-generic-chert": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.95, "y": -0.03, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scaleXYZ": { "x": 0.9, "y": 0.825, "z": 0.825 } },
   "game:spear-generic-granite": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0.95, "y": -0.03, "z": 0.04 }, "rotation": { "x": 0, "y": -1, "z": -0.009 }, "scaleXYZ": { "x": 0.9, "y": 0.825, "z": 0.825 } },

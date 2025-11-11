@@ -1,0 +1,13 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:blade-falx-*",
+    "game:blade-forlorn-iron",
+    "game:blade-blackguard-iron",
+    "game:blade-claymore-ruined",
+
+    "armory:sword-*",
+    "armory:sabre-*"
+  ],
+  "BlacklistedCodes": []
+}
