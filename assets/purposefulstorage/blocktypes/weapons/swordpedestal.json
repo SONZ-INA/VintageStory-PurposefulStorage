@@ -11,12 +11,18 @@
       "materials": { "loadFromProperties": "block/wood" },
       "variantTextures": {
         "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+      },
+      "handbook": {
+        "groupBy": [ "swordpedestal-normal-*" ]
       }
     },
     "*-stone-*": {
       "materials": { "loadFromProperties": "block/rock" },
       "variantTextures": {
         "rock": [ "game:block/stone/polishedrock/{rock}" ]
+      },
+      "handbook": {
+        "groupBy": [ "swordpedestal-stone-*" ]
       },
       "skipDefault": true
     }

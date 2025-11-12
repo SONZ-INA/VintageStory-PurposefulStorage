@@ -11,6 +11,9 @@
     "variantTextures": {
       "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ],
       "glass": [ "game:block/glass/{glass}" ]
+    },
+    "handbook": {
+      "groupBy": [ "wardrobe-*" ]
     }
   },
   "behaviors": [
