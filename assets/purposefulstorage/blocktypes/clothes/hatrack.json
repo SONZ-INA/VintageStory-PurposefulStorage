@@ -10,7 +10,11 @@
     "materials": { "loadFromProperties": "block/wood" },
     "variantTextures": {
       "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+    },
+    "handbook": {
+      "groupBy": [ "hatrack-*" ]
     }
+
   },
   "behaviors": [
     { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } },
