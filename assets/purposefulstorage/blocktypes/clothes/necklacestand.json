@@ -14,7 +14,6 @@
     "handbook": {
       "groupBy": [ "necklacestand-*" ]
     }
-
   },
   "behaviors": [
     { "name": "HorizontalAttachable", "properties": { "dropBlockFace": "east" } }
