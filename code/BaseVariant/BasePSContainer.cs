@@ -1,4 +1,6 @@
-﻿namespace PurposefulStorage;
+﻿using System.Linq;
+
+namespace PurposefulStorage;
 
 public class BasePSContainer : BlockContainer, IContainedMeshSource {
     public const string PSAttributes = "PSAttributes";
@@ -59,7 +61,8 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
         return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer).Append(itemSlottableInteractions);
     }
 
-    public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos) {
+    public override bool DoPartialSelection(IWorldAccessor world, BlockPos pos)
+    {
         return true;
     }
 
@@ -146,7 +149,7 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
         renderinfo.ModelRef = meshRef;
     }
 
-    public virtual MeshData GenMesh(ItemStack itemstack, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos) {
+    public MeshData GenMesh(ItemStack itemstack, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos) {
         return GenBlockVariantMesh(api, itemstack);
     }
 
@@ -158,6 +161,20 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
             parts.Add($"{pair.Key}-{pair.Value}"); // No support for various domains across mods. (eg. cloth from "game:" and "wool:" domains)
         }
 
+        return $"{Code}-{string.Join("-", parts)}";
+    }
+
+    public MeshData GenMesh(ItemSlot slot, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos)
+    {
+        return GenBlockVariantMesh(api, slot.Itemstack);
+    }
+
+    public string GetMeshCacheKey(ItemSlot slot)
+    {
+        if (slot.Itemstack?.Attributes[PSAttributes] is not ITreeAttribute tree) return Code;
+
+        // No support for various domains across mods. e.g. cloth from 'game:' and 'wool:' domains
+        var parts = tree.Select(pair => $"{pair.Key}-{pair.Value}").ToList();
         return $"{Code}-{string.Join("-", parts)}";
     }
 }

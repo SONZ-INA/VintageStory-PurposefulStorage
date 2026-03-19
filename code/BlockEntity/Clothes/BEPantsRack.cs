@@ -22,7 +22,11 @@ public class BEPantsRack : BEBasePSContainer {
         ItemStack[] stacks = GetContentStacks();
         for (int i = 0; i < stacks.Length; i++) {
             MeshData substituteMeshes = SubstituteItemShapes(Api, tesselator, ShapeReferences.utilPants, stacks[i]);
-            if (substituteMeshes != null) currentMesh.AddMeshData(substituteMeshes.MatrixTransform(tfMatrices[i]));
+            if (substituteMeshes != null)
+            {
+                tfMatrices ??= genTransformationMatrices();
+                currentMesh.AddMeshData(substituteMeshes.MatrixTransform(tfMatrices[i]));
+            }
         }
 
         mesher.AddMeshData(currentMesh);

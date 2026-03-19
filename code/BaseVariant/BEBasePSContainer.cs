@@ -29,6 +29,9 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     }
 
     protected virtual void InitMesh() {
+        if (this.tfMatrices == null)
+            this.updateMeshes();
+
         blockMesh = GenBlockVariantMesh(Api, this.GetVariantStack());
     }
 
@@ -60,8 +63,9 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
                 }
             }
 
-            if (canStore) {
-                AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
+            if (canStore)
+            {
+                AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place.Location;
 
                 if (TryPut(byPlayer, slot, blockSel)) {
                     Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
@@ -120,8 +124,9 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
                     ? inv[currentIndex].TakeOutWhole()
                     : inv[currentIndex].TakeOut(1);
 
-                if (byPlayer.InventoryManager.TryGiveItemstack(stack)) {
-                    AssetLocation sound = stack.Block?.Sounds?.Place;
+                if (byPlayer.InventoryManager.TryGiveItemstack(stack))
+                {
+                    AssetLocation sound = stack.Block?.Sounds?.Place.Location;
                     Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
                 }
 

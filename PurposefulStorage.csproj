@@ -1,10 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
 	<MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+	<LangVersion>default</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -160,6 +161,7 @@
   <Content Include="modinfo.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+  <None Remove="CakeBuild\**" />
 </ItemGroup>
 
 <ItemGroup>
@@ -171,6 +173,14 @@
   <Content Update="assets\purposefulstorage\patches\armory.json">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
+</ItemGroup>
+
+<ItemGroup>
+  <Compile Remove="CakeBuild\**" />
+</ItemGroup>
+
+<ItemGroup>
+  <EmbeddedResource Remove="CakeBuild\**" />
 </ItemGroup>
 
 </Project>

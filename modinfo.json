@@ -3,9 +3,10 @@
   "modid": "purposefulstorage",
   "name": "PurposefulStorage",
   "authors": [ "SONZ-INA" ],
+  "contributors": [ "LambdaSix" ],
   "description": "Adds a variety of storage blocks designed for both aesthetic appeal and functional item organization.",
-  "version": "1.5.1",
+  "version": "1.6.0-rc.1",
   "dependencies": {
-    "game": "1.21.0"
+    "game": "1.22.0"
   }
 }

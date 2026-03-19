@@ -8,6 +8,9 @@ public class BEGliderMount : BEBasePSContainer {
     public BEGliderMount() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
+        if (this.tfMatrices == null)
+            this.updateMeshes();
+
         MeshData currentMesh = blockMesh.Clone();
 
         ItemStack[] stack = GetContentStacks();

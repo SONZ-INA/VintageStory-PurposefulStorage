@@ -1,4 +1,6 @@
-﻿namespace PurposefulStorage;
+﻿using Vintagestory.API.Common.Entities;
+
+namespace PurposefulStorage;
 
 public class BEWardrobe : BEBasePSAnimatable {
     protected new BlockWardrobe block;
@@ -44,22 +46,24 @@ public class BEWardrobe : BEBasePSAnimatable {
 
             return false;
         }
-        else {
-            if (WardrobeOpen) {
-                if (slot.CanStoreInSlot([ "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" ])) {
-                    AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
 
-                    if (TryPut(byPlayer, slot, blockSel)) {
-                        Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
-                        MarkDirty();
-                        return true;
-                    }
+        if (WardrobeOpen) {
+            if (slot.CanStoreInSlot([ "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" ]))
+            {
+                var sound = slot.Itemstack?.Block?.Sounds?.Place.Location
+                            ?? new AssetLocation("sounds/player/build");
+
+                if (TryPut(byPlayer, slot, blockSel))
+                {
+                    Api.World.PlaySoundAt(sound, byPlayer.Entity, byPlayer, true, 16);
+                    MarkDirty();
+                    return true;
                 }
             }
-
-            (Api as ICoreClientAPI)?.TriggerIngameError(this, "cantplace", Lang.Get("purposefulstorage:This item cannot be placed in this container."));
-            return false;
         }
+
+        (Api as ICoreClientAPI)?.TriggerIngameError(this, "cantplace", Lang.Get("purposefulstorage:This item cannot be placed in this container."));
+        return false;
     }
 
     #region Animation
