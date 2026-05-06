@@ -8,10 +8,9 @@ public static class GeneralBlockExtensions {
     /// Retrieves the block entity of type <typeparamref name="T"/> at the given position.<br/>
     /// If the block at the position is a multiblock, it attempts to return the block entity at the master (origin) block instead.
     /// </summary>
-    public static T GetBlockEntityExt<T>(this IBlockAccessor blockAccessor, BlockPos pos) where T : BlockEntity {
-        if (blockAccessor.GetBlockEntity<T>(pos) is T blockEntity) {
+    public static T? GetBlockEntityExt<T>(this IBlockAccessor blockAccessor, BlockPos pos) where T : BlockEntity {
+        if (blockAccessor.GetBlockEntity<T>(pos) is T blockEntity)
             return blockEntity;
-        }
 
         if (blockAccessor.GetBlock(pos) is BlockMultiblock multiblock) {
             BlockPos multiblockPos = new(pos.X + multiblock.OffsetInv.X, pos.Y + multiblock.OffsetInv.Y, pos.Z + multiblock.OffsetInv.Z, pos.dimension);
@@ -41,7 +40,7 @@ public static class GeneralBlockExtensions {
     /// Returns an empty string if no relevant attribute is found.
     /// </summary>
     public static string GetMaterialNameLocalized(this ItemStack itemStack, bool includeParenthesis = true) {
-        if (itemStack.Attributes["PSAttributes"] is not ITreeAttribute tree)
+        if (itemStack.Attributes[PSAttributes] is not ITreeAttribute tree)
             return "";
 
         foreach (var pair in tree) {
@@ -62,24 +61,24 @@ public static class GeneralBlockExtensions {
     /// - Loads material variants from world properties JSON files if available.<br/>
     /// - Adds a default block stack unless explicitly skipped via attributes.<br/>
     /// - For each material variant, creates a corresponding item stack with variant-specific attributes for display in the creative inventory.<br/>
-    /// - Assigns the generated stacks to the block’s creative inventory tabs "general", "decorative", and "purposefulstorage".<br/>
+    /// - Assigns the generated stacks to the block’s creative inventory tabs "general", "decorative", and "foodshelves".<br/>
     /// </summary>
     public static void LoadVariantsCreative(ICoreAPI api, Block block) {
         string blockSide = block.Variant["side"];
         string dropSide = "east";
 
-        string properties = block.GetBehavior<BlockBehaviorHorizontalOrientable>()?.propertiesAtString;
+        string? properties = block.GetBehavior<BlockBehaviorHorizontalOrientable>()?.propertiesAtString;
         if (properties != null) {
             JsonDocument jsonDoc = JsonDocument.Parse(properties);
             dropSide = jsonDoc.RootElement.GetProperty("dropBlockFace").GetString() ?? "east";
         }
 
-        if (blockSide != null && blockSide != dropSide) 
+        if (blockSide != null && blockSide != dropSide)
             return;
 
-        var materials = block.Attributes["materials"].AsObject<RegistryObjectVariantGroup>();
+        var materials = block.Attributes?["materials"].AsObject<RegistryObjectVariantGroup>();
         string material = "";
-        StandardWorldProperty props = null;
+        StandardWorldProperty? props = null;
 
         if (materials?.LoadFromProperties != null) {
             material = materials.LoadFromProperties.ToString().Split('/')[1];
@@ -88,25 +87,31 @@ public static class GeneralBlockExtensions {
 
         var stacks = new List<JsonItemStack>();
 
-        if (block.Attributes?["skipDefault"]?.AsBool() != true) {
+        if (block.Attributes?[PSSkipDefault]?.AsBool() != true) {
             var defaultBlock = new JsonItemStack() {
                 Code = block.Code,
                 Type = EnumItemClass.Block,
                 Attributes = new JsonObject(JToken.Parse("{}"))
             };
+
             defaultBlock.Resolve(api.World, block.Code);
             stacks.Add(defaultBlock);
         }
 
         if (props != null && material != "") {
             foreach (var prop in props.Variants) {
-                string psAttributesJson = $"{{ \"{material}\": \"{prop.Code.Path}\" }}";
-                string attributesJson = "{ \"PSAttributes\": " + psAttributesJson + " }";
+                var fsAttributes = new JObject {
+                    [material] = prop.Code.Path
+                };
+
+                var attributes = new JObject {
+                    [PSAttributes] = fsAttributes
+                };
 
                 var jstack = new JsonItemStack() {
                     Code = block.Code,
                     Type = EnumItemClass.Block,
-                    Attributes = new JsonObject(JToken.Parse(attributesJson))
+                    Attributes = new JsonObject(attributes)
                 };
 
                 jstack.Resolve(api.World, block.Code);

@@ -3,69 +3,79 @@
 namespace PurposefulStorage;
 
 public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorageContainer {
-    public InventoryGeneric inv;
-    protected BasePSContainer block;
-    protected MeshData blockMesh;
+    public InventoryGeneric inv = null!;
+    protected BasePSContainer block = null!;
+    protected MeshData? blockMesh;
 
     public override InventoryBase Inventory => inv;
-    public override string InventoryClassName => Block?.Code.FirstCodePart();
-    public override string AttributeTransformCode => "on" + Block?.Code.FirstCodePart() + "Transform";
+    public override string InventoryClassName => (Block?.Code.FirstCodePart() ?? "-temp-");
+    public override string AttributeTransformCode => "on" + (Block?.Code.FirstCodePart() ?? "-temp-") + "Transform";
 
     public ITreeAttribute VariantAttributes { get; set; } = new TreeAttribute();
     public virtual string[] AttributeCheck => ["ps" + GetType().Name.Replace("BE", "")];
 
+    protected abstract InfoDisplayOptions InfoDisplay { get; }
+
     protected virtual string CantPlaceMessage => "";
-    protected virtual InfoDisplayOptions InfoDisplay { get; set; } = InfoDisplayOptions.BySegment; 
 
     public virtual int[] SectionSegmentCounts { get; set; } = [1];
     public virtual int ItemsPerSegment { get; set; } = 1;
     public virtual int AdditionalSlots { get; set; } = 0;
     public virtual int SlotCount => SectionSegmentCounts.Sum() * ItemsPerSegment + AdditionalSlots;
 
+    protected bool isBulk = false;
+
     public override void Initialize(ICoreAPI api) {
-        block ??= api.World.BlockAccessor.GetBlock(Pos) as BasePSContainer;
+        block ??= (api.World.BlockAccessor.GetBlock(Pos) as BasePSContainer)!;
+        
         base.Initialize(api);
+
         if (blockMesh == null) InitMesh();
+
+        inv.OnGetAutoPushIntoSlot = (_, _) => null;
+        inv.OnGetAutoPullFromSlot = _ => null;
+
+        foreach (var inv in Inventory) {
+            ItemSlotPSUniversal? psSlot = inv as ItemSlotPSUniversal;
+            if (psSlot?.isBulk == true) {
+                isBulk = true;
+                break;
+            }
+        }
     }
 
     protected virtual void InitMesh() {
         blockMesh = GenBlockVariantMesh(Api, this.GetVariantStack());
     }
 
-    public override void OnBlockPlaced(ItemStack byItemStack = null) {
+    public override void OnBlockPlaced(ItemStack byItemStack) {
         base.OnBlockPlaced(byItemStack);
 
-        if (byItemStack?.Attributes[BasePSContainer.PSAttributes] is ITreeAttribute tree) {
+        if (byItemStack?.Attributes[PSAttributes] is ITreeAttribute tree) {
             if (VariantAttributes.Count == 0) VariantAttributes = tree;
         }
-        
+
         InitMesh();
     }
 
-    public virtual bool OnInteract(IPlayer byPlayer, BlockSelection blockSel) {
+    public virtual bool OnInteract(IPlayer byPlayer, BlockSelection blockSel, string? overrideAttrCheck = null) {
         ItemSlot slot = byPlayer.InventoryManager.ActiveHotbarSlot;
 
         bool shift = byPlayer.Entity.Controls.ShiftKey;
-        bool hasAttrCheck = block.WorldInteractionAttributeCheck != null;
 
-        if ((hasAttrCheck && !shift) || (!hasAttrCheck && slot.Empty)) {
-            return TryTake(byPlayer, blockSel);
-        }
-        else {
-            bool canStore = false;
-            foreach (var attribute in AttributeCheck) {
-                if (slot.CanStoreInSlot(attribute)) {
-                    canStore = true;
-                    break;
-                }
-            }
+        bool placeBulk = isBulk && shift;
+        bool placeSingle = !isBulk && !shift && !slot.Empty;
 
-            if (canStore) {
-                AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
+        if (placeBulk || placeSingle) {
+            if (slot.Empty) return false;
 
+            var checks = overrideAttrCheck != null
+                ? [overrideAttrCheck]
+                : AttributeCheck;
+
+            if (checks.Any(slot.CanStoreInSlot)) {
                 if (TryPut(byPlayer, slot, blockSel)) {
-                    Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
-                    return true;
+                    return HandlePlacementEffects(slot.Itemstack, byPlayer);
                 }
             }
 
@@ -75,68 +85,135 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
 
             return false;
         }
+
+        return TryTake(byPlayer, blockSel);
     }
 
     protected virtual bool TryPut(IPlayer byPlayer, ItemSlot slot, BlockSelection blockSel) {
-        int startIndex = blockSel.SelectionBoxIndex * ItemsPerSegment;
+        int segmentIndex = blockSel.SelectionBoxIndex;
+
+        int startIndex = segmentIndex * ItemsPerSegment;
         if (startIndex >= inv.Count) return false;
 
+        ItemStack incoming = slot.Itemstack!;
+
+        if (!CanInsertIntoSegment(inv[startIndex].Itemstack, incoming))
+            return false;
+
+        if (!isBulk) {
+            int limit = GetSegmentLimit(incoming);
+            int count = CountItemsInSegment(startIndex);
+
+            if (count >= limit)
+                return false;
+        }
+
+        bool ctrl = byPlayer.Entity.Controls.CtrlKey;
+        int moved = TryPutIntoSegment(slot, startIndex, ctrl);
+
+        if (moved > 0) {
+            InitMesh();
+            MarkDirty();
+            (Api as ICoreClientAPI)?.World.Player.TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
+            return true;
+        }
+
+        return false;
+    }
+
+    protected virtual int TryPutIntoSegment(ItemSlot slot, int startIndex, bool ctrl) {
+        int moved = 0;
+
         for (int i = 0; i < ItemsPerSegment; i++) {
-            int currentIndex = startIndex + i;
-            ItemStack currentStack = inv[currentIndex].Itemstack;
+            int idx = startIndex + i;
+            ItemSlot target = inv[idx];
 
-            if (inv[currentIndex].Empty || (currentStack.Collectible.Equals(slot.Itemstack.Collectible) && currentStack.StackSize < currentStack.Collectible.MaxStackSize)) {
-                int moved = 0;
-                bool shift = byPlayer.Entity.Controls.ShiftKey;
-                bool ctrl = byPlayer.Entity.Controls.CtrlKey;
+            if (target.Empty || target.Itemstack!.Collectible == slot.Itemstack!.Collectible) {
+                var fsSlot = (ItemSlotPSUniversal)target;
+                int available = fsSlot.GetRemainingSlotSpace(slot.Itemstack!);
+                if (available == 0) continue;
 
-                int maxMoveQuantity = inv[currentIndex].MaxSlotStackSize - (inv[currentIndex].Itemstack?.StackSize ?? 0);
-
-                if (block.WorldInteractionAttributeCheck == null || shift) {
-                    if (ctrl) moved = slot.TryPutInto(Api.World, inv[currentIndex], maxMoveQuantity);
-                    else moved = slot.TryPutInto(Api.World, inv[currentIndex]);
-                }
-
+                moved = slot.TryPutIntoBulk(Api.World, target, ctrl ? available : 1);
                 if (moved > 0) {
-                    InitMesh();
-                    MarkDirty();
-                    (Api as ICoreClientAPI)?.World.Player.TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
-                    return true;
+                    // If it's bulk, continue placing items iteratively
+                    if (moved <= slot.StackSize && ctrl) {
+                        continue;
+                    }
+
+                    break;
                 }
             }
         }
 
-        return false;
+        return moved;
     }
 
     protected virtual bool TryTake(IPlayer byPlayer, BlockSelection blockSel) {
         int startIndex = blockSel.SelectionBoxIndex * ItemsPerSegment;
         if (startIndex >= inv.Count) return false;
 
+        ItemStack? stack = TryTakeFromSegment(byPlayer, startIndex);
+        if (stack == null) return false;
+
+        if (byPlayer.InventoryManager.TryGiveItemstack(stack)) {
+            this.HandlePlacementEffects(stack, byPlayer);
+        }
+
+        if (stack.StackSize > 0) {
+            Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 0.5, 0.5));
+        }
+
+        InitMesh();
+        return true;
+    }
+
+    protected virtual ItemStack? TryTakeFromSegment(IPlayer byPlayer, int startIndex) {
         for (int i = ItemsPerSegment - 1; i >= 0; i--) {
-            int currentIndex = startIndex + i;
-            if (!inv[currentIndex].Empty) {
-                ItemStack stack = byPlayer.Entity.Controls.CtrlKey
-                    ? inv[currentIndex].TakeOutWhole()
-                    : inv[currentIndex].TakeOut(1);
+            int idx = startIndex + i;
 
-                if (byPlayer.InventoryManager.TryGiveItemstack(stack)) {
-                    AssetLocation sound = stack.Block?.Sounds?.Place;
-                    Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
-                }
-
-                if (stack.StackSize > 0) {
-                    Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 0.5, 0.5));
-                }
-
-                (Api as ICoreClientAPI)?.World.Player.TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
-                InitMesh();
-                MarkDirty();
-                return true;
+            if (!inv[idx].Empty) {
+                return byPlayer.Entity.Controls.CtrlKey
+                    ? inv[idx].TakeOut(inv[idx].Itemstack!.Collectible.MaxStackSize)
+                    : inv[idx].TakeOut(1);
             }
         }
 
+        return null;
+    }
+
+    protected virtual bool TryTakeFromSlot(IPlayer byPlayer, ItemSlot slot, int quantity = 1) {
+        if (!slot.Empty) {
+            ItemStack stack = slot.TakeOut(quantity);
+
+            if (byPlayer.InventoryManager.TryGiveItemstack(stack)) {
+                this.HandlePlacementEffects(stack, byPlayer);
+            }
+
+            if (stack.StackSize > 0) {
+                Api.World.SpawnItemEntity(stack, Pos.ToVec3d().Add(0.5, 0.5, 0.5));
+            }
+
+            InitMesh();
+            return true;
+        }
+
         return false;
+    }
+
+    protected virtual int GetSegmentLimit(ItemStack? stack) {
+        return ItemsPerSegment;
+    }
+
+    public virtual int CountItemsInSegment(int startIndex) {
+        int count = 0;
+
+        for (int i = 0; i < ItemsPerSegment; i++) {
+            if (!inv[startIndex + i].Empty) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
@@ -149,13 +226,13 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         return base.OnTesselation(mesher, tesselator);
     }
 
-    protected abstract override float[][] genTransformationMatrices();
+    protected abstract override float[][]? genTransformationMatrices();
 
     public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldForResolving) {
         base.FromTreeAttributes(tree, worldForResolving);
 
-        VariantAttributes = tree[BasePSContainer.PSAttributes] is ITreeAttribute fsTree 
-            ? fsTree 
+        VariantAttributes = tree[PSAttributes] is ITreeAttribute psTree
+            ? psTree
             : new TreeAttribute();
 
         RedrawAfterReceivingTreeAttributes(worldForResolving);
@@ -164,7 +241,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public override void ToTreeAttributes(ITreeAttribute tree) {
         base.ToTreeAttributes(tree);
         if (VariantAttributes.Count != 0) {
-            tree[BasePSContainer.PSAttributes] = VariantAttributes;
+            tree[PSAttributes] = VariantAttributes;
         }
     }
 

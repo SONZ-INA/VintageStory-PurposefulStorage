@@ -11,9 +11,15 @@ global using Vintagestory.API.Util;
 global using Vintagestory.API.MathTools;
 global using Vintagestory.GameContent;
 
+global using static PurposefulStorage.Constants;
+global using static PurposefulStorage.Enums;
+
+global using static PurposefulStorage.AnimationExtensions;
 global using static PurposefulStorage.CacheExtensions;
 global using static PurposefulStorage.CheckExtensions;
 global using static PurposefulStorage.GeneralBlockExtensions;
+global using static PurposefulStorage.InteractionExtensions;
+global using static PurposefulStorage.InventoryExtensions;
 global using static PurposefulStorage.JsonExtensions;
 global using static PurposefulStorage.LocationalExtensions;
 global using static PurposefulStorage.MeshExtensions;

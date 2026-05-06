@@ -22,6 +22,7 @@
   "block-saddlerack-*": "Saddle Rack",
   "block-medallionrack-*": "Medallion Rack",
   "block-spearrack-*": "Spear Rack",
+  "block-swordplaque-*": "Sword Plaque",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -44,6 +45,7 @@
   "helddesc-saddlerack": "Free your elk from the saddle!",
   "helddesc-medallionrack": "Display your elk medallions & clothing emblems!",
   "helddesc-spearrack": "Leave your spears at an accessible place!",
+  "helddesc-swordplaque": "Hang your favorite sword!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!"

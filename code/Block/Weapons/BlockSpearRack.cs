@@ -10,15 +10,15 @@ public class BlockSpearRack : BasePSContainer, IMultiBlockColSelBoxes {
 
     // Selection boxes for multiblock parts
     public Cuboidf[] MBGetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {
-        BESpearRack be = blockAccessor.GetBlockEntityExt<BESpearRack>(pos);
-        if (be != null) {
-            Cuboidf selBox = base.GetSelectionBoxes(blockAccessor, pos).ElementAt(0).Clone();
-            selBox.MBNormalizeSelectionBox(offset);
+        BESpearRack? be = blockAccessor.GetBlockEntityExt<BESpearRack>(pos);
+        var boxes = base.GetSelectionBoxes(blockAccessor, pos);
 
-            return [selBox];
-        }
+        if (be == null) return boxes;
 
-        return base.GetSelectionBoxes(blockAccessor, pos);
+        Cuboidf selBox = base.GetSelectionBoxes(blockAccessor, pos).ElementAt(0).Clone();
+        selBox.MBNormalizeSelectionBox(offset);
+
+        return [selBox];
     }
 
     public Cuboidf[] MBGetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {

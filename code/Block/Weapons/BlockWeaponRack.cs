@@ -10,19 +10,19 @@ public class BlockWeaponRack : BasePSContainer, IMultiBlockColSelBoxes {
 
     // Selection boxes for multiblock parts
     public Cuboidf[] MBGetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {
-        BEWeaponRack be = blockAccessor.GetBlockEntityExt<BEWeaponRack>(pos);
-        if (be != null) {
-            List<Cuboidf> selBoxes = [];
+        BEWeaponRack? be = blockAccessor.GetBlockEntityExt<BEWeaponRack>(pos);
+        var boxes = base.GetSelectionBoxes(blockAccessor, pos);
 
-            for (int i = 0; i < 4; i++) {
-                selBoxes.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(i).Clone());
-                selBoxes[i].MBNormalizeSelectionBox(offset);
-            }
+        if (be == null) return boxes;
 
-            return [.. selBoxes];
+        List<Cuboidf> selBoxes = [];
+
+        for (int i = 0; i < 4; i++) {
+            selBoxes.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(i).Clone());
+            selBoxes[i].MBNormalizeSelectionBox(offset);
         }
 
-        return base.GetSelectionBoxes(blockAccessor, pos);
+        return [.. selBoxes];
     }
 
     public Cuboidf[] MBGetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {

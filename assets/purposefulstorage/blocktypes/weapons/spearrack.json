@@ -24,6 +24,7 @@
   "heldRightReadyAnimation": "heldblockready", 
   "heldTpUseAnimation": "twohandplaceblock",
   "blockmaterial": "Wood",
+  "maxStackSize": 16,
   "lightAbsorption": 1,
   "replaceable": 900,
   "resistance": 1.5,

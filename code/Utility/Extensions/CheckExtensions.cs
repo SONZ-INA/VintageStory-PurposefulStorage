@@ -45,12 +45,12 @@ public static class CheckExtensions {
     /// Checks if two item stacks can coexist in the same slot (belong to a same group).<br/>
     /// Returns true unless one of them belongs to a group, in which case their groups must match.
     /// </summary>
-    public static bool BelongsToSameGroupAs(this ItemStack checkSlot, ItemStack currSlot) {
+    public static bool BelongsToSameGroupAs(this ItemStack? checkSlot, ItemStack? currSlot) {
         if (checkSlot?.Collectible == null || currSlot?.Collectible == null)
             return true;
 
-        string checkGroup = checkSlot.ItemAttributes?["psGroup"]?.AsString();
-        string currGroup = currSlot.ItemAttributes?["psGroup"]?.AsString();
+        string? checkGroup = checkSlot.ItemAttributes?[PSGroup]?.AsString();
+        string? currGroup = currSlot.ItemAttributes?[PSGroup]?.AsString();
 
         if (string.IsNullOrEmpty(checkGroup) && string.IsNullOrEmpty(currGroup))
             return true;
