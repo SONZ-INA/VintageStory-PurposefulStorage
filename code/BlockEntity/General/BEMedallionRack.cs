@@ -4,6 +4,8 @@ public class BEMedallionRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onMedallionsTransform";
     public override string[] AttributeCheck => ["psMedallions"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [9];
 
     public BEMedallionRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

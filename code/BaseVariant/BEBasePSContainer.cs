@@ -75,7 +75,7 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
 
             if (checks.Any(slot.CanStoreInSlot)) {
                 if (TryPut(byPlayer, slot, blockSel)) {
-                    return HandlePlacementEffects(slot.Itemstack, byPlayer);
+                    return this.HandlePlacementEffects(slot.Itemstack, byPlayer);
                 }
             }
 

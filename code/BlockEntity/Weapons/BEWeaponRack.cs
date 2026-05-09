@@ -4,6 +4,8 @@ public class BEWeaponRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onLongweaponsTransform";
     public override string[] AttributeCheck => ["psLongweapons"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [4];
 
     public BEWeaponRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

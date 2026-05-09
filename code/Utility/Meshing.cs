@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Vintagestory.ServerMods;
 
 namespace PurposefulStorage;
 
@@ -208,7 +209,7 @@ public static class Meshing {
     /// Generates a mesh that will generate some item shapes, and then move them up as the stack size increases.
     /// Do note that generally, the item shapes should "cover" up the whole top so you can't see the bottom of the block, giving the illusion that it's full.
     /// </summary>
-    public static MeshData? GenPartialContentMesh(ICoreClientAPI capi, ItemSlot slot, float[][]? transformationMatrices, float maxHeight, string? utilShapeLoc = null) {
+    public static MeshData? GenPartialContentMesh(ICoreClientAPI? capi, ItemSlot? slot, float[][]? transformationMatrices, float maxHeight, string? utilShapeLoc = null) {
         if (capi == null) return null;
         if (slot == null || slot.Empty) return null;
 

@@ -60,4 +60,21 @@ public static class CheckExtensions {
 
         return false;
     }
+
+    /// <summary>
+    /// Checks if the stack can be placed in the slot. Used for containers that have varying slot sizes.
+    /// slotCount is used for calculating if the 'medium' item can be placed inside, if the inventory is half full.
+    /// </summary>
+    public static bool CanInsertIntoSegment(ItemStack? firstStack, ItemStack? checkStack) {
+        if (firstStack == null)
+            return true;
+
+        if (checkStack == null)
+            return false;
+
+        if (!firstStack.BelongsToSameGroupAs(checkStack))
+            return false;
+
+        return true;
+    }
 }

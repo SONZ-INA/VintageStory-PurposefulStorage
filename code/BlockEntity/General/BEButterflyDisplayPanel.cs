@@ -3,6 +3,8 @@
 public class BEButterflyDisplayPanel : BEBasePSContainer {
     public override string[] AttributeCheck => ["psButterflies"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [4];
 
     public BEButterflyDisplayPanel() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

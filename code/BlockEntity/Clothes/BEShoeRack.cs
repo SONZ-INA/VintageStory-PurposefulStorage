@@ -4,6 +4,8 @@ public class BEShoeRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onFootwareTransform";
     public override string[] AttributeCheck => ["psFootware"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [4];
 
     public BEShoeRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

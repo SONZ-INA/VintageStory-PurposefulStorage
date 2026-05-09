@@ -1,6 +1,8 @@
 ﻿namespace PurposefulStorage;
 
 public class BEResourceBin : BEBasePSContainer {
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.ByBlock;
+
     public override int[] SectionSegmentCounts => [1];
     public override int ItemsPerSegment => 6;
 
@@ -11,8 +13,10 @@ public class BEResourceBin : BEBasePSContainer {
 
         if (capi == null) return;
 
-        MeshData contentMesh = GenPartialContentMesh(capi, GetContentStacks(), tfMatrices, 0.62f, ShapeReferences.utilResourceBin);
-        if (contentMesh != null) blockMesh.AddMeshData(contentMesh);
+        // TODO: Fix
+        ItemStack[] gas = GetContentStacks();
+        MeshData? contentMesh = GenPartialContentMesh(capi, null, tfMatrices, 0.62f, ShapeReferences.utilResourceBin);
+        if (contentMesh != null) blockMesh!.AddMeshData(contentMesh);
     }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {

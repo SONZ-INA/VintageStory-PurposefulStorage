@@ -1,7 +1,7 @@
 ﻿namespace PurposefulStorage;
 
 public class BEWardrobe : BEBasePSAnimatable {
-    protected new BlockWardrobe block;
+    protected new BlockWardrobe block = null!;
 
     protected override string ReferencedShape => 
         block.Variant["type"] == "wooden" 
@@ -9,7 +9,11 @@ public class BEWardrobe : BEBasePSAnimatable {
             : base.ReferencedShape;
 
     public override string AttributeTransformCode => "onLowerbodywareTransform";
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [6, 10];
+
+    private readonly AnimationData DoorOpenAnim = new ("dooropen", 3f);
 
     [TreeSerializable(false)] public bool WardrobeOpen { get; set; }
 
@@ -21,11 +25,11 @@ public class BEWardrobe : BEBasePSAnimatable {
     }
 
     public override void Initialize(ICoreAPI api) {
-        block = api.World.BlockAccessor.GetBlock(Pos) as BlockWardrobe;
+        block = (api.World.BlockAccessor.GetBlock(Pos) as BlockWardrobe)!;
         base.Initialize(api);
     }
 
-    public override bool OnInteract(IPlayer byPlayer, BlockSelection blockSel) {
+    public override bool OnInteract(IPlayer byPlayer, BlockSelection blockSel, string? overrideAttrCheck = null) {
         ItemSlot slot = byPlayer.InventoryManager.ActiveHotbarSlot;
 
         // Open/Close wardrobe
@@ -47,12 +51,8 @@ public class BEWardrobe : BEBasePSAnimatable {
         else {
             if (WardrobeOpen) {
                 if (slot.CanStoreInSlot([ "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" ])) {
-                    AssetLocation sound = slot.Itemstack?.Block?.Sounds?.Place;
-
                     if (TryPut(byPlayer, slot, blockSel)) {
-                        Api.World.PlaySoundAt(sound ?? new AssetLocation("sounds/player/build"), byPlayer.Entity, byPlayer, true, 16);
-                        MarkDirty();
-                        return true;
+                        return this.HandlePlacementEffects(slot.Itemstack, byPlayer);
                     }
                 }
             }
@@ -65,29 +65,22 @@ public class BEWardrobe : BEBasePSAnimatable {
     #region Animation
 
     protected override void HandleAnimations() {
-        if (animUtil != null) {
+        if (AnimUtil != null) {
             if (WardrobeOpen) ToggleWardrobeDoor(true);
             else ToggleWardrobeDoor(false);
         }
     }
 
-    private void ToggleWardrobeDoor(bool open, IPlayer byPlayer = null) {
+    private void ToggleWardrobeDoor(bool open, IPlayer? byPlayer = null) {
         if (open) {
-            if (animUtil.activeAnimationsByAnimCode.ContainsKey("wardrobeopen") == false) {
-                animUtil.StartAnimation(new AnimationMetaData() {
-                    Animation = "wardrobeopen",
-                    Code = "wardrobeopen",
-                    AnimationSpeed = 3f,
-                    EaseOutSpeed = 1,
-                    EaseInSpeed = 2
-                });
-            }
+            AnimUtil.TryStartAnimation(DoorOpenAnim.Code, DoorOpenAnim.Speed);
 
-            if (byPlayer != null) Api.World.PlaySoundAt(block.soundWardrobeOpen, byPlayer.Entity, byPlayer, true, 16, 0.3f);
+            if (byPlayer != null) {
+                Api.World.PlaySoundAt(block.soundWardrobeOpen, byPlayer.Entity, byPlayer, true, 16, 0.3f);
+            }
         }
         else {
-            if (animUtil.activeAnimationsByAnimCode.ContainsKey("wardrobeopen") == true)
-                animUtil.StopAnimation("wardrobeopen");
+            AnimUtil.TryStopAnimation(DoorOpenAnim.Code);
             
             if (byPlayer != null) Api.World.PlaySoundAt(block.soundWardrobeClose, byPlayer.Entity, byPlayer, true, 16, 0.3f);
         }

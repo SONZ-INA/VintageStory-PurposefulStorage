@@ -931,8 +931,8 @@
 	],
 	"animations": [
 		{
-			"name": "wardrobeOpen",
-			"code": "wardrobeopen",
+			"name": "doorOpen",
+			"code": "dooropen",
 			"quantityframes": 30,
 			"onActivityStopped": "Rewind",
 			"onAnimationEnd": "Hold",

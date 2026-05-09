@@ -3,19 +3,24 @@
 public class BEGliderMount : BEBasePSContainer {
     public override string[] AttributeCheck => ["psGlider"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [1];
 
     public BEGliderMount() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
-        MeshData currentMesh = blockMesh.Clone();
+        MeshData currentMesh = blockMesh!.Clone();
 
         ItemStack[] stack = GetContentStacks();
         if (stack[0]?.Item != null) {
-            MeshData substituteShape = SubstituteItemShape(Api, tesselator, ShapeReferences.GliderUnfolded);
-            currentMesh.AddMeshData(substituteShape.MatrixTransform(genTransformationMatrices()[0]));
+            MeshData? substituteShape = SubstituteItemShape(Api, tesselator, ShapeReferences.GliderUnfolded, stack[0].Item);
+            if (substituteShape != null) {
+                currentMesh.AddMeshData(substituteShape.MatrixTransform(genTransformationMatrices()[0]));
+            }
         }
 
+        // TODO: Error here, idk why
         mesher.AddMeshData(currentMesh);
         return true;
     }

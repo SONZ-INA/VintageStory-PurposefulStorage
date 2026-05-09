@@ -4,6 +4,8 @@ public class BEPantsRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onLowerbodywareTransform";
     public override string[] AttributeCheck => ["psLowerbodyware"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [2];
     public override int ItemsPerSegment => 5;
 
@@ -17,14 +19,26 @@ public class BEPantsRack : BEBasePSContainer {
     }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
-        MeshData currentMesh = blockMesh.Clone();
+        if (blockMesh == null) return false;
 
+        MeshData currentMesh = blockMesh.Clone();
         ItemStack[] stacks = GetContentStacks();
+
         for (int i = 0; i < stacks.Length; i++) {
-            MeshData substituteMeshes = SubstituteItemShapes(Api, tesselator, ShapeReferences.utilPants, stacks[i]);
-            if (substituteMeshes != null) currentMesh.AddMeshData(substituteMeshes.MatrixTransform(tfMatrices[i]));
+            ItemStack stack = stacks[i];
+            if (stack?.Item == null) continue;
+
+            string shapePath = ShapeReferences.utilPants;
+            string? displayableShape = stack.GetDisplayedShape();
+
+            MeshData? substituteMesh = SubstituteItemShape(Api, tesselator, displayableShape ?? shapePath, stack.Item);
+
+            if (substituteMesh != null) {
+                currentMesh.AddMeshData(substituteMesh);
+            }
         }
 
+        // TODO: Error here, idk why
         mesher.AddMeshData(currentMesh);
         return true;
     }

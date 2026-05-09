@@ -11,6 +11,12 @@ public static class MeshExtensions {
         => mesh?.Rotate(new Vec3f(0.5f, 0.5f, 0.5f), 0, (block?.Shape.rotateY ?? 0) * GameMath.DEG2RAD, 0);
 
     /// <summary>
+    /// Returns the shelf displayed shape defined in the attributes of an Item.
+    /// </summary>
+    public static string? GetDisplayedShape(this ItemStack stack)
+        => stack.ItemAttributes?["displayable"]?["shelf"]?["shape"]?["base"]?.AsString();
+
+    /// <summary>
     /// Updates the texture key for all faces in the shape’s root element and its children.
     /// </summary>
     public static void ChangeTextureKey(this Shape shape, string key) {

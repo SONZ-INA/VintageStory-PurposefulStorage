@@ -3,6 +3,8 @@
 public class BETuningCylinderRack : BEBasePSContainer {
     public override string[] AttributeCheck => ["psTuningCylinders"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [8];
 
     public BETuningCylinderRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }

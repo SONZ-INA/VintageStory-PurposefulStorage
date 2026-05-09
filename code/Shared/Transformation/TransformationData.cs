@@ -6,7 +6,7 @@
 /// </summary>
 public class TransformationData() {
     public int index;
-    public int shelf;
+    public int section;
     public int segment;
     public int item;
 
