@@ -11,21 +11,14 @@ public class BEWeaponRack : BEBasePSContainer {
     public BEWeaponRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        
-        for (int segment = 0; segment < SectionSegmentCounts[0]; segment++) {
-            float x = -0.4f;
-            float y = -0.03f + segment * 0.25f;
-            float z = -0.15f;
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.y = td.segment * 0.25f;
 
-            tfMatrices[segment] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY)
-                .Translate(x - 0.5f, y, z - 0.5f)
-                .RotateXDeg(-25)
-                .Values;
-        }
+            td.offsetX = -0.4f;
+            td.offsetY = 0.18f;
+            td.offsetZ = -0.2f;
 
-        return tfMatrices;
+            td.offsetRotX = -25;
+        });
     }
 }

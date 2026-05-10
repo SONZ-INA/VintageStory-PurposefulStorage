@@ -18,22 +18,15 @@ public class BENecklaceStand : BEBasePSContainer {
     }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        
-        for (int segment = 0; segment < SectionSegmentCounts[0]; segment++) {
-            int index = segment * ItemsPerSegment;
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.x = td.segment % 3 * 0.2815f;
+            td.y = td.segment / 3 * 0.4365f;
 
-            float x = -0.1f;
-            float y = segment / 3 * 0.43525f;
-            float z = segment % 3 * 0.275f;
+            td.offsetX = -0.2825f;
+            td.offsetY = -1.2225f;
+            td.offsetZ = -0.1375f;
 
-            tfMatrices[index] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY + 90)
-                .Translate(x - 0.28f, y - 1.2225f, z - 0.78f)
-                .Values;
-        }
-
-        return tfMatrices;
+            td.offsetRotY = 90;
+        });
     }
 }

@@ -10,35 +10,28 @@ public class BETuningCylinderRack : BEBasePSContainer {
     public BETuningCylinderRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-
-        for (int segment = 0; segment < SectionSegmentCounts[0]; segment++) {
+        return TransformationGenerator.GenerateLayout(this, td => {
             if (block.Variant["type"] == "stand") {
-                float x = -0.375f + segment % 4 * 0.25f;
-                float y = -segment / 4 * 0.47f;
-                float z = -0.3f - segment / 4 * 0.2825f;
+                td.x = td.segment % 4 * 0.25f;
+                td.y = td.segment / 4 * 0.275f;
+                td.z = td.segment / 4 * -0.45f;
 
-                tfMatrices[segment] = new Matrixf()
-                    .Translate(0.5f, 0, 0.5f)
-                    .RotateYDeg(block.Shape.rotateY)
-                    .RotateXDeg(90)
-                    .Translate(x - 0.5f, y, z - 0.5f)
-                    .Values;
+                td.offsetX = -0.375f;
+                td.offsetY = 0.3f;
+                td.offsetZ = -0.02f;
+
+                td.offsetRotX = 90;
             }
             else {
-                float x = -0.375f + segment % 4 * 0.25f;
-                float y = -0.12f + segment / 4 * 0.4f;
-                float z = -0.345f - segment / 4 * 0.22f;
+                td.x = td.segment % 4 * 0.25f;
+                td.y = td.segment / 4 * 0.4425f;
 
-                tfMatrices[segment] = new Matrixf()
-                    .Translate(0.5f, 0, 0.5f)
-                    .RotateYDeg(block.Shape.rotateY)
-                    .RotateXDeg(30)
-                    .Translate(x - 0.5f, y, z - 0.5f)
-                    .Values;
+                td.offsetX = -0.375f;
+                td.offsetY = 0.075f;
+                td.offsetZ = -0.3525f;
+
+                td.offsetRotX = 30;
             }
-        }
-
-        return tfMatrices;
+        });
     }
 }
