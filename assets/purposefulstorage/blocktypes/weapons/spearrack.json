@@ -10,6 +10,9 @@
     "materials": { "loadFromProperties": "block/wood" },
     "variantTextures": {
       "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+    },
+    "handbook": {
+      "groupBy": [ "spearrack-*" ]
     }
   },
   "behaviors": [
