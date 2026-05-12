@@ -6,7 +6,7 @@ public class BEResourceBin : BEBasePSContainer {
     public override int[] SectionSegmentCounts => [1];
     public override int ItemsPerSegment => 6;
 
-    public BEResourceBin() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck, 64)); }
+    public BEResourceBin() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck, 1, true)); }
 
     protected override void InitMesh() {
         base.InitMesh();

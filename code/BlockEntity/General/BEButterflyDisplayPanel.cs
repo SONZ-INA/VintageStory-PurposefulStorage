@@ -18,7 +18,7 @@ public class BEButterflyDisplayPanel : BEBasePSContainer {
 
             td.offsetX = -0.225f;
             td.offsetY = 0.225f;
-            td.offsetZ = -0.4625f;
+            td.offsetZ = -0.46f;
 
             td.offsetRotY = -90;
             td.offsetRotZ = -90;

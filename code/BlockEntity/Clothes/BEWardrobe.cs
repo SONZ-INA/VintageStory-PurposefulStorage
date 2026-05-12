@@ -15,7 +15,14 @@ public class BEWardrobe : BEBasePSAnimatable {
 
     private readonly AnimationData DoorOpenAnim = new ("dooropen", 3f);
 
-    [TreeSerializable(false)] public bool WardrobeOpen { get; set; }
+    [TreeSerializable(false)] public bool DoorOpen { get; set; }
+
+    private enum SlotType {
+        Segments = 15,
+        LDoor = 16,
+        RDoor = 17,
+        ClosedWardrobe = 18
+    }
 
     public BEWardrobe() {
         inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (id, inv) => {
@@ -33,23 +40,27 @@ public class BEWardrobe : BEBasePSAnimatable {
         ItemSlot slot = byPlayer.InventoryManager.ActiveHotbarSlot;
 
         // Open/Close wardrobe
-        if (byPlayer.Entity.Controls.ShiftKey) {
-            if (!WardrobeOpen) ToggleWardrobeDoor(true, byPlayer);
-            else ToggleWardrobeDoor(false, byPlayer);
+        switch ((SlotType)blockSel.SelectionBoxIndex) {
+            case SlotType.ClosedWardrobe:
+                ToggleDoor(true, byPlayer);
+                MarkDirty(true);
+                return true;
 
-            MarkDirty(true);
-            return true;
+            case SlotType.LDoor:
+            case SlotType.RDoor:
+                ToggleDoor(false, byPlayer);
+                MarkDirty(true);
+                return true;
         }
 
         // Take/Put items
         if (slot.Empty) {
-            if (WardrobeOpen) 
+            if (DoorOpen) {
                 return TryTake(byPlayer, blockSel);
-
-            return false;
+            }
         }
         else {
-            if (WardrobeOpen) {
+            if (DoorOpen) {
                 if (slot.CanStoreInSlot([ "psFootware", "psUpperbodyware", "psShoulderware", "psLowerbodyware" ])) {
                     if (TryPut(byPlayer, slot, blockSel)) {
                         return this.HandlePlacementEffects(slot.Itemstack, byPlayer);
@@ -58,20 +69,21 @@ public class BEWardrobe : BEBasePSAnimatable {
             }
 
             (Api as ICoreClientAPI)?.TriggerIngameError(this, "cantplace", Lang.Get("purposefulstorage:This item cannot be placed in this container."));
-            return false;
         }
+
+        return false;
     }
 
     #region Animation
 
     protected override void HandleAnimations() {
         if (AnimUtil != null) {
-            if (WardrobeOpen) ToggleWardrobeDoor(true);
-            else ToggleWardrobeDoor(false);
+            if (DoorOpen) ToggleDoor(true);
+            else ToggleDoor(false);
         }
     }
 
-    private void ToggleWardrobeDoor(bool open, IPlayer? byPlayer = null) {
+    private void ToggleDoor(bool open, IPlayer? byPlayer = null) {
         if (open) {
             AnimUtil.TryStartAnimation(DoorOpenAnim.Code, DoorOpenAnim.Speed);
 
@@ -85,82 +97,34 @@ public class BEWardrobe : BEBasePSAnimatable {
             if (byPlayer != null) Api.World.PlaySoundAt(block.soundWardrobeClose, byPlayer.Entity, byPlayer, true, 16, 0.3f);
         }
 
-        WardrobeOpen = open;
+        DoorOpen = open;
     }
 
     #endregion
-
-    #region Transformation Matrices
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        int currentIndex = 0;
+        return TransformationGenerator.GenerateLayout(this, td => {
+            if (td.section == 0) {
+                td.x = td.segment % 3 * 0.625f;
+                td.y = td.segment / 3 * 0.1875f;
+                td.z = td.segment / 3 * -0.35f;
 
-        for (int sectionIndex = 0; sectionIndex < SectionSegmentCounts.Length; sectionIndex++) {
-            int segmentsInSection = SectionSegmentCounts[sectionIndex];
+                td.offsetX = -0.125f;
+                td.offsetY = 0.0675f;
+                td.offsetZ = 0.15f;
 
-            float[][] sectionMatrices = GenerateSectionMatrices(sectionIndex, segmentsInSection);
-
-            for (int i = 0; i < sectionMatrices.Length; i++) {
-                tfMatrices[currentIndex] = sectionMatrices[i];
-                currentIndex++;
+                td.offsetRotY = 90;
             }
-        }
 
-        return tfMatrices;
+            if (td.section == 1) {
+                td.x = td.segment * 0.1875f;
+
+                td.offsetX = -0.35f;
+                td.offsetY = 0.13f;
+                td.offsetZ = -0.035f;
+
+                td.scaleX = 0.5f;
+            }
+        });
     }
-
-    private float[][] GenerateSectionMatrices(int sectionIndex, int segmentCount) {
-        int itemsInSection = segmentCount * ItemsPerSegment;
-        float[][] sectionMatrices = new float[itemsInSection][];
-
-        return sectionIndex switch {
-            0 => GenerateMatrices1(segmentCount),
-            1 => GenerateMatrices2(segmentCount),
-            _ => sectionMatrices,
-        };
-    }
-
-    private float[][] GenerateMatrices1(int segmentCount) {
-        int itemsInSection = segmentCount * ItemsPerSegment;
-        float[][] matrices = new float[itemsInSection][];
-
-        for (int segment = 0; segment < segmentCount; segment++) {
-            float x = segment < 3 ? -0.17f : 0.25f;
-            float y = segment < 3 ? 0.08f : 0.2575f;
-            float z = -0.12f + (segment % 3 * 0.62f);
-
-            matrices[segment] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY)
-                .RotateYDeg(90)
-                .Translate(x - 0.5f, y, z - 0.5f)
-                .Values;
-        }
-
-        return matrices;
-    }
-
-    private float[][] GenerateMatrices2(int segmentCount) {
-        int itemsInSection = segmentCount * ItemsPerSegment;
-        float[][] matrices = new float[itemsInSection][];
-
-        for (int segment = 0; segment < segmentCount; segment++) {
-
-            float x = -0.75f + (segment * 0.3825f);
-            float y = 0.135f;
-            float z = -0.04f;
-
-            matrices[segment] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY)
-                .Scale(.5f, 1, 1)
-                .Translate(x - 0.5f, y, z - 0.5f)
-                .Values;
-        }
-
-        return matrices;
-    }
-
-    #endregion
 }

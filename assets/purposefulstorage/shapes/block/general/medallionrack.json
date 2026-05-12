@@ -1,16 +1,18 @@
 {
 	"editor": {
-		"collapsedPaths": "Root/originButterflyPanel/Frame1,Root/originButterflyPanel/GlassFrame1,Root/SaddleBackN,Root,Root/ORIGIN/SaddleFrontWall,Root/origin3,Root/origin,Root/origin2,Root/Origin,Root/originButterflyPanel/Divider1,Root/originButterflyPanel/GlassFrame4,Root/SaddleFrontN",
+		"collapsedPaths": "Root/originButterflyPanel/Linen1,Root/originButterflyPanel/GlassFrame1,Root/SaddleBackN,Root,Root/originButterflyPanel/Linen4,Root/origin,Root/origin2,Root/Origin,Root/originButterflyPanel/GlassFrame7,Root/originButterflyPanel/GlassFrame4,Root/originButterflyPanel/Frame1,Root/ORIGIN/SaddleFrontWall,Root/origin3,Root/originButterflyPanel/Divider1,Root/SaddleFrontN",
 		"allAngles": true,
 		"entityTextureMode": false
 	},
 	"textureWidth": 16,
 	"textureHeight": 16,
-	"textureSizes": {},
+	"textureSizes": {
+	},
 	"textures": {
-		"surface": "game:block/wood/shelf/surface",
+		"white": "game:block/cloth/linen/white",
+		"frame": "game:block/glass/frame",
 		"glass": "game:block/glass/plain",
-		"frame": "game:block/glass/frame"
+		"surface": "game:block/wood/shelf/surface"
 	},
 	"elements": [
 		{
@@ -19,13 +21,12 @@
 			"to": [ 0.0, 0.0, 16.0 ],
 			"rotationOrigin": [ 0.0, 0.0, 16.0 ],
 			"rotationX": -75.0,
-			"faces": {
-			},
+			"faces": {},
 			"children": [
 				{
 					"name": "Holder",
 					"from": [ 4.0, 12.0, 0.0 ],
-					"to": [ 12.0, 14.0, 3.8 ],
+					"to": [ 12.0, 14.0, 3.7 ],
 					"rotationOrigin": [ 4.0, 0.0, 0.0 ],
 					"rotationX": -15.0,
 					"faces": {
@@ -239,6 +240,102 @@
 							"rotationOrigin": [ 10.2, 0.0, 0.0 ],
 							"faces": {
 								"south": { "texture": "#frame", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "Linen1",
+					"from": [ 0.8, 0.75, 0.5 ],
+					"to": [ 5.05, 5.0, 0.6 ],
+					"renderPass": 1,
+					"rotationOrigin": [ 3.0, 3.0, 0.5 ],
+					"faces": {
+						"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "Linen2",
+							"from": [ 5.1, 0.0, 0.0 ],
+							"to": [ 9.35, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 5.1, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						},
+						{
+							"name": "Linen3",
+							"from": [ 10.25, 0.0, 0.0 ],
+							"to": [ 14.5, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 10.2, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "Linen4",
+					"from": [ 0.8, 5.95, 0.5 ],
+					"to": [ 5.05, 10.2, 0.6 ],
+					"renderPass": 1,
+					"rotationOrigin": [ 3.0, 8.2, 0.5 ],
+					"faces": {
+						"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "Linen5",
+							"from": [ 5.1, 0.0, 0.0 ],
+							"to": [ 9.35, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 5.1, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						},
+						{
+							"name": "Linen6",
+							"from": [ 10.25, 0.0, 0.0 ],
+							"to": [ 14.5, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 10.2, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						}
+					]
+				},
+				{
+					"name": "Linen7",
+					"from": [ 0.8, 11.05, 0.5 ],
+					"to": [ 5.05, 15.3, 0.6 ],
+					"renderPass": 1,
+					"rotationOrigin": [ 3.0, 13.3, 0.5 ],
+					"faces": {
+						"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+					},
+					"children": [
+						{
+							"name": "Linen8",
+							"from": [ 5.1, 0.0, 0.0 ],
+							"to": [ 9.35, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 5.1, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
+							}
+						},
+						{
+							"name": "Linen9",
+							"from": [ 10.25, 0.0, 0.0 ],
+							"to": [ 14.5, 4.25, 0.1 ],
+							"renderPass": 1,
+							"rotationOrigin": [ 10.2, 0.0, 0.0 ],
+							"faces": {
+								"south": { "texture": "#white", "uv": [ 0.0, 0.0, 16.0, 16.0 ], "autoUv": false }
 							}
 						}
 					]

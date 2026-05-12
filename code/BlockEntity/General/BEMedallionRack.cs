@@ -17,7 +17,7 @@ public class BEMedallionRack : BEBasePSContainer {
             td.z = td.segment / 3 * -0.3125f;
             
             td.offsetX = -0.2825f;
-            td.offsetY = 0.0825f;
+            td.offsetY = 0.085f;
             td.offsetZ = 0.35f;
             
             td.offsetRotY = 90;

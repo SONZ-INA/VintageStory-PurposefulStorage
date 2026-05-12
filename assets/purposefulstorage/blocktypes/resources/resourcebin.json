@@ -11,6 +11,9 @@
     "variantTextures": {
       "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
     },
+    "handbook": {
+      "groupBy": [ "resourcebin-*" ]
+    },
     "worldInteractionAttributeCheck": "psResourcebin"
   },
   "behaviors": [

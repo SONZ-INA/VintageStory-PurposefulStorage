@@ -1,10 +1,11 @@
 [
   {
-    "ingredientPattern": "SPS,SGS,SPS",
+    "ingredientPattern": "SPS,SGS,SLS",
     "ingredients": {
       "P": { "type": "item", "code": "game:plank-{wood}" },
       "S": { "type": "item", "code": "game:stick" },
-      "G": { "type": "block", "code": "game:glass-*" }
+      "G": { "type": "block", "code": "game:glass-*" },
+      "L": { "type": "block", "code": "game:linen-*-down" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": {
@@ -18,11 +19,12 @@
     }
   },
   {
-    "ingredientPattern": "SPS,SGS,SPS",
+    "ingredientPattern": "SPS,SGS,SLS",
     "ingredients": {
       "P": { "type": "item", "code": "*:plank-*" },
       "S": { "type": "item", "code": "game:stick" },
-      "G": { "type": "block", "code": "game:glass-*" }
+      "G": { "type": "block", "code": "game:glass-*" },
+      "L": { "type": "block", "code": "game:linen-*-down" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": { "type": "block", "code": "butterflydisplaypanel-normal-east" }

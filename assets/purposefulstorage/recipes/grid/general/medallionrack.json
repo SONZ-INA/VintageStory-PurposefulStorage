@@ -1,10 +1,11 @@
 [
   {
-    "ingredientPattern": "_SP,_BP,P_P",
+    "ingredientPattern": "_SP,_BP,PLP",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick", "quantity": 4 },
       "B": { "type": "block", "code": "game:glassslab-*-down-free" },
-      "P": { "type": "item", "code": "game:plank-{wood}" }
+      "P": { "type": "item", "code": "game:plank-{wood}" },
+      "L": { "type": "block", "code": "game:linen-*-down" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": {
@@ -18,11 +19,12 @@
     }
   },
   {
-    "ingredientPattern": "_SP,_BP,P_P",
+    "ingredientPattern": "_SP,_BP,PLP",
     "ingredients": {
       "S": { "type": "item", "code": "game:stick" },
       "B": { "type": "block", "code": "game:glassslab-*-down-free" },
-      "P": { "type": "item", "code": "*:plank-*" }
+      "P": { "type": "item", "code": "*:plank-*" },
+      "L": { "type": "block", "code": "game:linen-*-down" }
     },
     "width": 3, "height": 3, "recipeGroup": 1,
     "output": { "type": "block", "code": "medallionrack-normal-east" }
