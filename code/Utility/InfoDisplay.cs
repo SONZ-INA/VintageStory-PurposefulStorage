@@ -19,6 +19,26 @@ public static class InfoDisplay {
         ProcessGroupedDisplay(sb, inv, displaySelection, slotCount, segmentsPerShelf, itemsPerSegment, skipSlotsFrom, selectedSegment);
     }
 
+    public static string TransitionInfoCompact(IWorldAccessor world, ItemSlot? contentSlot, EnumTransitionType transitionType, TransitionDisplayMode displayMode) {
+        if (contentSlot == null || contentSlot.Empty) return "";
+
+        TransitionState? state = contentSlot.Itemstack?.Collectible.UpdateAndGetTransitionState(world, contentSlot, transitionType);
+        if (state == null) return "";
+
+        float rateMul = contentSlot.Itemstack!.Collectible.GetTransitionRateMul(world, contentSlot, transitionType);
+        if (rateMul <= 0) return "";
+
+        if (displayMode == TransitionDisplayMode.Percentage && state.TransitionLevel > 0) {
+            return GetTransitionPercentageText(transitionType, state.TransitionLevel);
+        }
+
+        double hoursLeft = state.TransitionLevel > 0
+            ? state.TransitionHours / rateMul * (1 - state.TransitionLevel)
+            : state.FreshHoursLeft / rateMul;
+
+        return GetTimeRemainingText(world, hoursLeft, transitionType);
+    }
+
     #endregion
 
     #region // Private Info Methods -------------------------------------------------------------------------------------------------------------------------
@@ -74,6 +94,54 @@ public static class InfoDisplay {
         int selectedShelf = selectedSegment / segmentsPerShelf * itemsPerShelf;
         return (selectedShelf, selectedShelf + itemsPerShelf);
     }
+
+    private static string GetTransitionPercentageText(EnumTransitionType transitionType, float transitionLevel) {
+        int percent = (int)Math.Round(transitionLevel * 100);
+
+        return transitionType switch {
+            EnumTransitionType.Perish => Lang.Get("{0}% spoiled", percent),
+            EnumTransitionType.Dry => Lang.Get("itemstack-dryable-dried", percent),
+            EnumTransitionType.Cure => Lang.Get("itemstack-curable-curing", percent),
+            EnumTransitionType.Ripen => Lang.Get("itemstack-ripenable-ripening", percent),
+            EnumTransitionType.Melt => Lang.Get("itemstack-meltable-melted", percent),
+            _ => ""
+        };
+    }
+
+    private static string GetTimeRemainingText(IWorldAccessor world, double hoursLeft, EnumTransitionType transitionType, string? actionVerb = null) {
+        string prefix = transitionType switch {
+            EnumTransitionType.Cure => "<font color=\"#bd5424\">" + Lang.Get("Curing") + "</font>: ",
+            EnumTransitionType.Dry => "<font color=\"#d6ba7a\">" + Lang.Get("Drying") + "</font>: ",
+            _ => ""
+        };
+
+        if (string.IsNullOrEmpty(actionVerb)) {
+            actionVerb = transitionType switch {
+                EnumTransitionType.Perish => "fresh for",
+                EnumTransitionType.Ripen => "will ripen in",
+                EnumTransitionType.Cure => "foodshelves:Will cure in",
+                EnumTransitionType.Dry => "foodshelves:Will dry in",
+                EnumTransitionType.Melt => "foodshelves:Will melt in",
+                _ => ""
+            };
+        }
+
+        if (string.IsNullOrEmpty(actionVerb)) return "";
+
+        double hoursPerDay = world.Calendar.HoursPerDay;
+        double daysLeft = hoursLeft / hoursPerDay;
+
+        if (daysLeft >= world.Calendar.DaysPerYear) {
+            return prefix + Lang.Get($"{actionVerb} {{0}} years", Math.Round(daysLeft / world.Calendar.DaysPerYear, 1));
+        }
+
+        if (hoursLeft > hoursPerDay) {
+            return prefix + Lang.Get($"{actionVerb} {{0}} days", Math.Round(daysLeft, 1));
+        }
+
+        return prefix + Lang.Get($"{actionVerb} {{0}} hours", Math.Round(hoursLeft, 1));
+    }
+
 
     #endregion
 }

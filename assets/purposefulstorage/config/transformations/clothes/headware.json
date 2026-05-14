@@ -1,14 +1,26 @@
 {
   "game:armor-head-hide-bear-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.2125, "z": 0 }, "scale": 0.925 },
+
+  "game:clothes-head-emeraldreindeerherder": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.15, "z": 0 } },
   "game:clothes-head-tophat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.1, "z": 0 }, "scale": 0.95 },
   "game:clothes-head-alchemist": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.125, "z": 0 }, "scale": 0.925 },
-  "game:clothes-head-bamboo-conehat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.3775, "z": 0 }, "scale": 0.8 },
+  "game:clothes-head-bamboo-conehat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.45, "z": 0 }, "scale": 0.8 },
+  "game:clothes-head-bamboo-conehat-large": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.7, "z": 0 }, "scale": 0.65 },
   "game:clothes-head-straw-hat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.415, "z": 0 }, "scale": 0.775 },
   "game:clothes-head-mianguan": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.025, "z": 0 } },
   "game:clothes-head-fancy-head-dress": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.2, "z": 0 } },
-  "game:clothes-head-messengers-hat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.2, "z": 0 } },
-  "game:clothes-nadiya-head-hunter": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.1425, "z": 0 } },
-  "game:clothes-nadiya-head-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.025, "z": 0 } },
+  "game:clothes-head-messengers-hat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.125, "z": 0 } },
+  "game:clothes-head-broadbrim": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.3, "z": 0 }, "scale": 0.85 },
+  "game:clothes-head-roll-hat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.1, "z": 0 } },
+  "game:clothes-head-lackey-hat": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.025, "z": 0 } },
   "game:clothes-face-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.2, "z": 0 } },
+  
+  "game:clothes-nadiya-head-winter2": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.25, "z": 0 }, "scale": 0.9 },
+  "game:clothes-nadiya-head-hunter": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.35, "z": 0 }, "scale": 0.9 },
+  "game:clothes-nadiya-head-tailor": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.125, "z": 0 } },
+  "game:clothes-nadiya-head-innkeeper": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.125, "z": 0 } },
+  "game:clothes-nadiya-head-musician": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.075, "z": 0 } },
+  "game:clothes-nadiya-head-miner": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": -0.075, "z": 0 } },
+  "game:clothes-nadiya-head-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.05, "z": 0 } },
   "game:clothes-nadiya-face-*": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": 0, "y": 0.2, "z": 0 } }
 }

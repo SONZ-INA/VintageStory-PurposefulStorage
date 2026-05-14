@@ -13,4 +13,9 @@ public static class Enums {
         SingleSlot,
         Bulk
     }
+
+    public enum TransitionDisplayMode {
+        Percentage,
+        TimeLeft
+    }
 }

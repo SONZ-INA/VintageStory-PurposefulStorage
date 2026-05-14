@@ -43,13 +43,34 @@ public static class Meshing {
     /// <summary>
     /// Changes the item shape to another shape. Please note that the textures should be the same for the substitute shape.
     /// </summary>
-    public static MeshData? SubstituteItemShape(ICoreAPI Api, ITesselatorAPI tesselator, string shapePath, Item texturesFromItem) {
+    public static MeshData? SubstituteItemShape(ICoreAPI Api, ITesselatorAPI tesselator, string shapePath, ItemStack? texturesFromStack = null) {
+        if (Api is not ICoreClientAPI capi) return null;
+
         AssetLocation shapeLocation = new(shapePath);
-        ITexPositionSource texSource = tesselator.GetTextureSource(texturesFromItem);
         Shape? shape = Api.Assets.TryGet(shapeLocation)?.ToObject<Shape>();
         if (shape == null) return null;
 
-        tesselator.TesselateShape(null, shape, out MeshData mesh, texSource);
+        ITexPositionSource texSource;
+
+        if (texturesFromStack?.Item != null) {
+            var textures = texturesFromStack.Item.Textures.ShallowClone();
+
+            var keysToRemove = textures
+                .Where(t => t.Value.ToString().Contains("transparent"))
+                .Select(t => t.Key)
+                .ToList();
+
+            foreach (var key in keysToRemove) {
+                textures.Remove(key);
+            }
+
+            texSource = new ContainerTextureSource(capi, texturesFromStack, textures.Values.FirstOrDefault());
+        }
+        else {
+            texSource = new ShapeTextureSource(capi, shape, "PS-SubstituteItemTexSource");
+        }
+
+        tesselator.TesselateShape("PS-TesselateShape", shape, out MeshData mesh, texSource);
         return mesh;
     }
 
