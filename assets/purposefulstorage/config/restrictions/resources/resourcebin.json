@@ -1,7 +1,9 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:drygrass"
+    "game:drygrass",
+    "game:crystalizedore-*",
+    "game:ore-*"
   ],
   "BlacklistedCodes": []
 }

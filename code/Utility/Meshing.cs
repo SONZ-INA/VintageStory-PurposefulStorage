@@ -95,20 +95,7 @@ public static class Meshing {
             Shape? shape = capi.TesselatorManager.GetCachedShape(shapeLocation)?.Clone();
             if (shape == null) continue;
 
-            if (shape.Textures.Count == 0) {
-                bool isItem = contents[i].Item != null;
-
-                if (isItem) {
-                    foreach (var texture in contents[i].Item.Textures) {
-                        shape.Textures.Add(texture.Key, texture.Value.Base);
-                    }
-                }
-                else {
-                    foreach (var texture in contents[i].Block.Textures) {
-                        shape.Textures.Add(texture.Key, texture.Value.Base);
-                    }
-                }
-            }
+            shape.TransferItemtypeTextures(contents[i]);
 
             var texSource = new ShapeTextureSource(capi, shape, "PS-ShapeTextureSource");
             foreach (var textureDict in shape.Textures) {
@@ -227,71 +214,37 @@ public static class Meshing {
     }
 
     /// <summary>
-    /// Generates a mesh that will generate some item shapes, and then move them up as the stack size increases.
-    /// Do note that generally, the item shapes should "cover" up the whole top so you can't see the bottom of the block, giving the illusion that it's full.
+    /// Generates only the utility shape translated upwards based on the stack size.
     /// </summary>
-    public static MeshData? GenPartialContentMesh(ICoreClientAPI? capi, ItemSlot? slot, float[][]? transformationMatrices, float maxHeight, string? utilShapeLoc = null) {
-        if (capi == null) return null;
-        if (slot == null || slot.Empty) return null;
+    public static MeshData? GenFillCubeMesh(ICoreClientAPI? capi, ItemStack? stack, int capacity, float maxHeight, string utilShapeLoc) {
+        if (capi == null)
+            return null;
+        
+        if (stack == null || stack.StackSize == 0)
+            return null;
+        
+        if (string.IsNullOrEmpty(utilShapeLoc))
+            return null;
 
-        ItemStack stack = slot.Itemstack!;
-        if (stack.Item?.Shape?.Base == null) return null;
+        float shapeHeight = GetFillHeight(stack.StackSize, capacity, maxHeight);
 
-        string shapeLocation = stack.Item.Shape.Base;
+        AssetLocation utilLoc = new(utilShapeLoc);
+        Shape utilShape = Shape.TryGet(capi, utilLoc);
 
-        Shape? shape = capi.TesselatorManager.GetCachedShape(shapeLocation)?.Clone();
-        if (shape == null) return null;
-
-        ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-PartialContentMesh");
-        capi.Tesselator.TesselateShape("PS-TesselatePartial", shape, out MeshData itemMesh, texSource);
-
-        MeshData contentMesh = itemMesh.Clone();
-
-        if (transformationMatrices?[0] != null)
-            contentMesh.MatrixTransform(transformationMatrices[0]);
-
-        int stackSize = stack.StackSize;
-        int matrixCount = transformationMatrices?.Length ?? 0;
-
-        // Mesh some shapes
-        for (int i = 1; i < Math.Min(stackSize, matrixCount); i++) {
-            MeshData currentMesh = itemMesh.Clone();
-
-            if (transformationMatrices?[i] != null)
-                currentMesh.MatrixTransform(transformationMatrices[i]);
-
-            contentMesh.AddMeshData(currentMesh);
+        if (utilShape == null) {
+            capi.Logger.Warning($"[PurposefulStorage] non-existent utilShapeLoc '{utilShapeLoc}' passed. No fill mesh will be generated.");
+            return null;
         }
 
-        // If more items are added, move content up
-        if (stackSize > matrixCount) {
-            float contentAmount = stackSize;
-            int capacity = stackSize + slot.GetRemainingSlotSpace(stack);
+        var textures = stack.Item?.Textures ?? stack.Block?.Textures;
+        if (textures == null || textures.Count == 0) return null;
 
-            float shapeHeight = GetFillHeight(contentAmount, capacity, maxHeight);
+        ITexPositionSource texSource = new ContainerTextureSource(capi, stack, textures.Values.FirstOrDefault());
 
-            contentMesh.Translate(0, shapeHeight, 0);
+        capi.Tesselator.TesselateShape("PS-TesselateFillCube", utilShape, out MeshData fillMesh, texSource);
 
-            if (utilShapeLoc != null) {
-                AssetLocation utilLoc = new(utilShapeLoc);
-                Shape utilShape = Shape.TryGet(capi, utilLoc);
+        fillMesh.Translate(0, shapeHeight, 0);
 
-                if (utilShape == null) {
-                    capi.Logger.Warning("[PurposefulStorage] non-existent utilShapeLoc passed. No content mesh will be generated.");
-                    return null;
-                }
-
-                // Get util textures
-                var textures = stack.Item.Textures;
-                texSource = new ContainerTextureSource(capi, stack, textures.Values.FirstOrDefault());
-
-                capi.Tesselator.TesselateShape("PS-TesselatePartialUtil", utilShape, out MeshData utilMesh, texSource);
-
-                utilMesh.Translate(0, shapeHeight, 0);
-                contentMesh.AddMeshData(utilMesh);
-            }
-        }
-
-        return contentMesh;
+        return fillMesh;
     }
 }

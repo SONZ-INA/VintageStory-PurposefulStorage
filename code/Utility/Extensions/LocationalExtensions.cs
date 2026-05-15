@@ -14,6 +14,15 @@ public static class LocationalExtensions {
     }
 
     /// <summary>
+    /// Safely gets a value from the array. 
+    /// Returns 0f if the array is null, the index is out of bounds, or the value at the index is null.
+    /// </summary>
+    public static float GetValue(float?[] array, int index) {
+        if (index >= array.Length) return 0f;
+        return array[index] ?? 0f;
+    }
+
+    /// <summary>
     /// Applies the given <see cref="ModelTransform"/> to the matrix, modifying its translation, rotation, and scale.
     /// </summary>
     public static void ApplyModelTransformToMatrixF(this Matrixf mat, ModelTransform? transformation) {
@@ -36,6 +45,24 @@ public static class LocationalExtensions {
         }
 
         mat.Translate(-0.5f, 0, -0.5f);
+    }
+
+    /// <summary>
+    /// Vanilla method for applying the AttributeTransformCode transformations per-item.
+    /// </summary>
+    public static void ApplyDefaultTranforms(this MeshData mesh, ItemStack stack, string attributeTransformCode) {
+        ModelTransform? modelTransform = stack.Collectible.Attributes?[attributeTransformCode].AsObject<ModelTransform>();
+
+        if (modelTransform != null) {
+            modelTransform.EnsureDefaultValues();
+            mesh.ModelTransform(modelTransform);
+        }
+
+        if (stack.Class == EnumItemClass.Item && (stack.Item.Shape == null || stack.Item.Shape.VoxelizeTexture)) {
+            mesh.Rotate(MathF.PI / 2f, 0f, 0f);
+            mesh.Scale(0.33f, 0.33f, 0.33f);
+            mesh.Translate(0f, -15f / 32f, 0f);
+        }
     }
 
     /// <summary>

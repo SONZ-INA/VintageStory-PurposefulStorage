@@ -64,13 +64,13 @@ public static class TransformationGenerator {
             td.Reset();
             td.index = i;
 
-            td.x = transform.X[i];
-            td.y = transform.Y[i];
-            td.z = transform.Z[i];
+            td.x = GetValue(transform.X, i);
+            td.y = GetValue(transform.Y, i);
+            td.z = GetValue(transform.Z, i);
 
-            td.offsetRotX = transform.RX[i];
-            td.offsetRotY = transform.RY[i];
-            td.offsetRotZ = transform.RZ[i];
+            td.offsetRotX = GetValue(transform.RX, i);
+            td.offsetRotY = GetValue(transform.RY, i);
+            td.offsetRotZ = GetValue(transform.RZ, i);
 
             modifier?.Invoke(td);
 

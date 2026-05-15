@@ -33,6 +33,9 @@ public class TransformationData() {
         hidden = false;
     }
 
+    /// <summary>
+    /// Builds the matrix and returns the float array to be used for the current item.
+    /// </summary>
     public float[] BuildMatrix() {
         Matrixf mat = new();
 
@@ -60,5 +63,32 @@ public class TransformationData() {
         mat.Translate(-0.5f, 0, -0.5f);
 
         return mat.Values;
+    }
+
+    /// <summary>
+    /// Safely extracts a ModelTransform from an ItemStack's attributes and applies it to this TransformationData.<br/>
+    /// <b>Doesn't apply origin properties!</b>
+    /// </summary>
+    public void ApplyModelTransform(ItemStack? stack, string attributeTransformCode) {
+        if (stack?.Collectible?.Attributes == null || string.IsNullOrEmpty(attributeTransformCode))
+            return;
+
+        ModelTransform? modelTransform = stack.Collectible.Attributes[attributeTransformCode]?.AsObject<ModelTransform>();
+        if (modelTransform == null)
+            return;
+
+        modelTransform.EnsureDefaultValues();
+
+        offsetX += modelTransform.Translation.X;
+        offsetY += modelTransform.Translation.Y;
+        offsetZ += modelTransform.Translation.Z;
+
+        offsetRotX += modelTransform.Rotation.X;
+        offsetRotY += modelTransform.Rotation.Y;
+        offsetRotZ += modelTransform.Rotation.Z;
+
+        scaleX *= modelTransform.ScaleXYZ.X;
+        scaleY *= modelTransform.ScaleXYZ.Y;
+        scaleZ *= modelTransform.ScaleXYZ.Z;
     }
 }

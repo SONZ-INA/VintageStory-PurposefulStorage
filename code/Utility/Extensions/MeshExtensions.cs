@@ -61,6 +61,24 @@ public static class MeshExtensions {
     }
 
     /// <summary>
+    /// If the shape file doesn't have any textures defined, transfers the textures from the itemtype itself.
+    /// </summary>
+    public static void TransferItemtypeTextures(this Shape shape, ItemStack stack) {
+        if (stack.Item == null && stack.Block == null) 
+            return;
+
+        if (shape.Textures.Count != 0)
+            return;
+
+        var collectibleTextures = stack.Item?.Textures ?? stack.Block?.Textures;
+        if (collectibleTextures == null) return;
+
+        foreach (var texture in collectibleTextures) {
+            shape.Textures.Add(texture.Key, texture.Value.Base);
+        }
+    }
+
+    /// <summary>
     /// Returns a pie texture source based on the 'inPieProperties' attribute.
     /// </summary>
     public static ITexPositionSource? GetPieTexture(ICoreClientAPI capi, ItemStack? stack, Shape? shape) {
