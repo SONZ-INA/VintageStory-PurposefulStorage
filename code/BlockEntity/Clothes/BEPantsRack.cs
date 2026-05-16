@@ -4,6 +4,8 @@ public class BEPantsRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onLowerbodywareTransform";
     public override string[] AttributeCheck => ["psLowerbodyware"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [2];
     public override int ItemsPerSegment => 5;
 
@@ -17,12 +19,25 @@ public class BEPantsRack : BEBasePSContainer {
     }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
-        MeshData currentMesh = blockMesh.Clone();
-
+        MeshData currentMesh = blockMesh!.Clone();
         ItemStack[] stacks = GetContentStacks();
+
+        tfMatrices ??= genTransformationMatrices();
+
         for (int i = 0; i < stacks.Length; i++) {
-            MeshData substituteMeshes = SubstituteItemShapes(Api, tesselator, ShapeReferences.utilPants, stacks[i]);
-            if (substituteMeshes != null) currentMesh.AddMeshData(substituteMeshes.MatrixTransform(tfMatrices[i]));
+            ItemStack stack = stacks[i];
+            if (stack == null) continue;
+
+            string shapePath = ShapeReferences.utilPants;
+            string? displayedShape = stack.GetDisplayedShape();
+
+            MeshData? substituteMesh = SubstituteItemShape(Api, tesselator, displayedShape ?? shapePath, stack);
+
+            if (substituteMesh != null) {
+                currentMesh.AddMeshData(
+                    substituteMesh.MatrixTransform(tfMatrices[i])
+                );
+            }
         }
 
         mesher.AddMeshData(currentMesh);
@@ -30,25 +45,12 @@ public class BEPantsRack : BEBasePSContainer {
     }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        
-        for (int segment = 0; segment < SectionSegmentCounts[0]; segment++) {
-            for (int item = 0; item < ItemsPerSegment; item++) {
-                int index = segment * ItemsPerSegment + item;
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.scaleX = 0.9f;
 
-                float x = 0;
-                float y = -0.01f + segment * 0.43f + item * 0.06f;
-                float z = -0.02f;
+            td.y = td.segment * 0.42f + td.item * 0.065f;
 
-                tfMatrices[index] = new Matrixf()
-                    .Translate(0.5f, 0, 0.5f)
-                    .RotateYDeg(block.Shape.rotateY)
-                    .Scale(0.9f, 1, 1)
-                    .Translate(x - 0.5f, y, z - 0.5f)
-                    .Values;
-            }
-        }
-
-        return tfMatrices;
+            td.offsetX = 0.01f;
+        });
     }
 }

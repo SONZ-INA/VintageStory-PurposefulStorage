@@ -1,22 +1,32 @@
-﻿using System.Linq;
-
-namespace PurposefulStorage;
+﻿namespace PurposefulStorage;
 
 public class BlockWardrobe : BasePSContainer, IMultiBlockColSelBoxes {
-    private WorldInteraction[] itemSlottableInteractions;
-    private WorldInteraction[] wardrobeInteractions;
+    private WorldInteraction[]? footwareInteractions;
+    private WorldInteraction[]? upperbodywareInteractions;
+    private WorldInteraction[]? doorOpenClose;
 
     public readonly AssetLocation soundWardrobeOpen = new(SoundReferences.WardrobeOpen);
     public readonly AssetLocation soundWardrobeClose = new(SoundReferences.WardrobeClose);
 
+    private static readonly Cuboidf Skip = new(); // Skip selectionBox, to keep consistency between selectionBox indexes
+
     public override void OnLoaded(ICoreAPI api) {
         base.OnLoaded(api);
 
-        itemSlottableInteractions = ObjectCacheUtil.GetOrCreate(api, "wardrobeItemInteractions", () => {
+        doorOpenClose = ObjectCacheUtil.GetOrCreate(api, "wardrobeInteractions", () => {
+            return new WorldInteraction[] {
+                new() {
+                    ActionLangCode = "blockhelp-door-openclose",
+                    MouseButton = EnumMouseButton.Right
+                }
+            };
+        });
+
+        footwareInteractions = ObjectCacheUtil.GetOrCreate(api, "footwareInteractions", () => {
             List<ItemStack> clothesStackList = [];
 
             foreach (var obj in api.World.Collectibles) {
-                if (obj.CanStoreInSlot("psFootware") || obj.CanStoreInSlot("psUpperbody")) {
+                if (obj.CanStoreInSlot("psFootware")) {
                     clothesStackList.Add(new ItemStack(obj));
                 }
             }
@@ -34,47 +44,68 @@ public class BlockWardrobe : BasePSContainer, IMultiBlockColSelBoxes {
             };
         });
 
-        wardrobeInteractions = ObjectCacheUtil.GetOrCreate(api, "wardrobeInteractions", () => {
+        upperbodywareInteractions = ObjectCacheUtil.GetOrCreate(api, "upperbodywareInteractions", () => {
+            List<ItemStack> clothesStackList = [];
+
+            foreach (var obj in api.World.Collectibles) {
+                if (obj.CanStoreInSlot("psUpperbodyware")) {
+                    clothesStackList.Add(new ItemStack(obj));
+                }
+            }
+
             return new WorldInteraction[] {
                 new() {
-                    ActionLangCode = "blockhelp-door-openclose",
+                    ActionLangCode = "blockhelp-groundstorage-add",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "shift",
+                    Itemstacks = [.. clothesStackList]
+                },
+                new() {
+                    ActionLangCode = "blockhelp-groundstorage-remove",
+                    MouseButton = EnumMouseButton.Right,
                 }
             };
         });
     }
 
-    public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
-        if (selection.SelectionBoxIndex == 16) return wardrobeInteractions.Append(base.GetPlacedBlockInteractionHelp(world, selection, forPlayer));
-        else return wardrobeInteractions.Append(itemSlottableInteractions.Append(base.GetPlacedBlockInteractionHelp(world, selection, forPlayer)));
+    public override WorldInteraction[]? GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
+        if (world.BlockAccessor.GetBlockEntity(selection.Position) is BEWardrobe bew) {
+            if (selection.SelectionBoxIndex < 7) {
+                return footwareInteractions;
+            }
+
+            if (selection.SelectionBoxIndex < 16) {
+                return upperbodywareInteractions;
+            }
+
+            return doorOpenClose;
+        }
+
+        return null;
     }
 
     #region MBColSelBoxes
 
     // Selection box for master block
     public override Cuboidf[] GetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos) {
-        BEWardrobe be = blockAccessor.GetBlockEntityExt<BEWardrobe>(pos);
+        BEWardrobe? be = blockAccessor.GetBlockEntityExt<BEWardrobe>(pos);
+        var boxes = base.GetSelectionBoxes(blockAccessor, pos);
 
-        Cuboidf wardrobeSelBox = base.GetSelectionBoxes(blockAccessor, pos).ElementAt(16).Clone();
-        Cuboidf skip = new(); // Skip selectionBox, to keep consistency between selectionBox indexes
+        if (be == null) return boxes;
 
-        if (be != null) {
-            if (be.WardrobeOpen) {
-                int[] selBoxIndexes = [0, 1, 3, 4, 6, 7, 8, 9, 10];
-                List<Cuboidf> selBoxes = [];
+        Cuboidf wardrobeSelBox = boxes[18].Clone();
 
-                foreach (int index in selBoxIndexes) {
-                    selBoxes.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(index).Clone());
-                }
+        if (be.DoorOpen) {
+            int[] selBoxIndexes = [0, 1, 3, 4, 6, 7, 8, 9, 10, 16];
+            List<Cuboidf> selBoxes = [];
 
-                return [selBoxes[0], selBoxes[1], skip, selBoxes[2], selBoxes[3], skip, selBoxes[4], selBoxes[5], selBoxes[6], selBoxes[7], selBoxes[8]];
+            foreach (int index in selBoxIndexes) {
+                selBoxes.Add(boxes[index].Clone());
             }
 
-            return [skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, wardrobeSelBox];
+            return [selBoxes[0], selBoxes[1], Skip, selBoxes[2], selBoxes[3], Skip, selBoxes[4], selBoxes[5], selBoxes[6], selBoxes[7], selBoxes[8], Skip, Skip, Skip, Skip, Skip, selBoxes[9]];
         }
 
-        return base.GetSelectionBoxes(blockAccessor, pos);
+        return [Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, wardrobeSelBox];
     }
 
     // Selection boxes for multiblock parts
@@ -82,38 +113,49 @@ public class BlockWardrobe : BasePSContainer, IMultiBlockColSelBoxes {
         // Selection Box indexes:
         // Shoes - 0-5
         // Upperbody - 6-15
-        // Door - 16
+        // LDoor - 16 / RDoor - 17
+        // Wardrobe - 18
 
-        Cuboidf skip = new(); // Skip selectionBox, to keep consistency between selectionBox indexes
+        BEWardrobe? be = blockAccessor.GetBlockEntityExt<BEWardrobe>(pos);
+        var boxes = base.GetSelectionBoxes(blockAccessor, pos);
 
-        BEWardrobe be = blockAccessor.GetBlockEntityExt<BEWardrobe>(pos);
-        if (be?.WardrobeOpen == true) {
+        if (be == null) return boxes;
+
+        if (be.DoorOpen) {
             List<Cuboidf> sBs = [];
-            
-            for (int i = 1; i < 16; i++) {
-                if (i == 3) continue;
-                sBs.Add(base.GetSelectionBoxes(blockAccessor, pos).ElementAt(i).Clone());
-            }
 
-            foreach (var selBox in sBs) {
-                selBox.MBNormalizeSelectionBox(offset);
+            for (int i = 0; i < boxes.Length; i++) {
+                sBs.Add(boxes[i].Clone());
+                sBs[i].MBNormalizeSelectionBox(offset);
             }
 
             if (offset.Y != 0) {
-                return [skip, skip, skip, skip, skip, skip, sBs[4], sBs[5], sBs[6], sBs[7], sBs[8], sBs[9], sBs[10], sBs[11], sBs[12], sBs[13]];
+                return [Skip, Skip, Skip, Skip, Skip, Skip, sBs[6], sBs[7], sBs[8], sBs[9], sBs[10], sBs[11], sBs[12], sBs[13], sBs[14], sBs[15], sBs[16], sBs[17]];
             }
 
-            return [skip, sBs[0], sBs[1], skip, sBs[2], sBs[3], skip, skip, skip, skip, skip, sBs[9], sBs[10], sBs[11], sBs[12], sBs[13]];
+            return [sBs[0], sBs[1], sBs[2], sBs[3], sBs[4], sBs[5], sBs[6], sBs[7], sBs[8], sBs[9], sBs[10], sBs[11], sBs[12], sBs[13], sBs[14], sBs[15], sBs[16], sBs[17]];
         }
 
-        Cuboidf wardrobeSelBox = base.GetSelectionBoxes(blockAccessor, pos)[16].Clone();
+        Cuboidf wardrobeSelBox = boxes[18].Clone();
         wardrobeSelBox.MBNormalizeSelectionBox(offset);
 
-        return [skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, skip, wardrobeSelBox];
+        return [Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, Skip, wardrobeSelBox];
     }
 
     public Cuboidf[] MBGetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos, Vec3i offset) {
-        return base.GetCollisionBoxes(blockAccessor, pos);
+        int rot = this.GetRotationAngle();
+
+        bool collides = (BlockDirection)rot switch {
+            BlockDirection.North => offset.Z == 0,
+            BlockDirection.West => offset.X == 0,
+            BlockDirection.South => offset.Z == 0,
+            BlockDirection.East => offset.X == 0,
+            _ => offset.Z == 0
+        };
+
+        if (!collides) return [];
+
+        return [new Cuboidf(0, 0, 0, 1, 1, 1)];
     }
 
     #endregion

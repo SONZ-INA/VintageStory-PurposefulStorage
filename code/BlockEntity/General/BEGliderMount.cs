@@ -3,17 +3,32 @@
 public class BEGliderMount : BEBasePSContainer {
     public override string[] AttributeCheck => ["psGlider"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [1];
 
     public BEGliderMount() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
-        MeshData currentMesh = blockMesh.Clone();
+        MeshData currentMesh = blockMesh!.Clone();
+        ItemStack[] stacks = GetContentStacks();
 
-        ItemStack[] stack = GetContentStacks();
-        if (stack[0]?.Item != null) {
-            MeshData substituteShape = SubstituteItemShape(Api, tesselator, ShapeReferences.GliderUnfolded);
-            currentMesh.AddMeshData(substituteShape.MatrixTransform(genTransformationMatrices()[0]));
+        tfMatrices ??= genTransformationMatrices();
+        
+        for (int i = 0; i < stacks.Length; i++) {
+            ItemStack stack = stacks[i];
+            if (stack == null) continue;
+
+            string shapePath = ShapeReferences.GliderUnfolded;
+            string? displayedShape = stack.GetDisplayedShape();
+
+            MeshData? substituteMesh = SubstituteItemShape(Api, tesselator, displayedShape ?? shapePath);
+
+            if (substituteMesh != null) {
+                currentMesh.AddMeshData(
+                    substituteMesh.MatrixTransform(tfMatrices[i])
+                );
+            }
         }
 
         mesher.AddMeshData(currentMesh);
@@ -21,19 +36,14 @@ public class BEGliderMount : BEBasePSContainer {
     }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        
-        float x = -0.24f;
-        float y = 1.48f;
-        float z = 0.295f;
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.scaleY = 0.8f;
 
-        tfMatrices[0] = new Matrixf()
-            .Translate(0.5f, 0, 0.5f)
-            .RotateYDeg(block.Shape.rotateY - 90)
-            .Scale(1, 0.8f, 1)
-            .Translate(x - 0.5f, y, z - 0.5f)
-            .Values;
+            td.offsetX = -0.2975f;
+            td.offsetY = 1.18f;
+            td.offsetZ = -0.25f;
 
-        return tfMatrices;
+            td.offsetRotY = -90;
+        });
     }
 }

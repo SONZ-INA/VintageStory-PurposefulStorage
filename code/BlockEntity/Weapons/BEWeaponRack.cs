@@ -4,26 +4,41 @@ public class BEWeaponRack : BEBasePSContainer {
     public override string AttributeTransformCode => "onLongweaponsTransform";
     public override string[] AttributeCheck => ["psLongweapons"];
 
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int[] SectionSegmentCounts => [4];
 
     public BEWeaponRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
 
-    protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
-        
-        for (int segment = 0; segment < SectionSegmentCounts[0]; segment++) {
-            float x = -0.4f;
-            float y = -0.03f + segment * 0.25f;
-            float z = -0.15f;
+    public override void Initialize(ICoreAPI api) {
+        base.Initialize(api);
+        inv.OnAcquireTransitionSpeed += Inventory_OnAcquireTransitionSpeed;
+    }
 
-            tfMatrices[segment] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY)
-                .Translate(x - 0.5f, y, z - 0.5f)
-                .RotateXDeg(-25)
-                .Values;
+    public virtual float Inventory_OnAcquireTransitionSpeed(EnumTransitionType transType, ItemStack stack, float baseMul) {
+        if (transType == EnumTransitionType.Dry) {
+            return 5;
         }
 
-        return tfMatrices;
+        return 1;
+    }
+
+    protected override float[][] genTransformationMatrices() {
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.y = td.segment * 0.25f;
+
+            td.offsetX = -0.4f;
+            td.offsetY = 0.18f;
+            td.offsetZ = -0.2f;
+
+            td.offsetRotX = -25;
+        });
+    }
+
+    public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
+        base.GetBlockInfo(forPlayer, sb);
+
+        int slotIndex = forPlayer.CurrentBlockSelection.SelectionBoxIndex;
+        sb.Append(TransitionInfoCompact(Api.World, inv[slotIndex], EnumTransitionType.Dry, TransitionDisplayMode.Percentage));
     }
 }

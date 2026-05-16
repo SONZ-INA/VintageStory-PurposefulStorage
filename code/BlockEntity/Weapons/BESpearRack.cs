@@ -1,6 +1,8 @@
 ﻿namespace PurposefulStorage;
 
 public class BESpearRack : BEBasePSContainer {
+    protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
+
     public override int ItemsPerSegment => 10;
 
     public BESpearRack() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck)); }
@@ -15,23 +17,18 @@ public class BESpearRack : BEBasePSContainer {
     }
 
     protected override float[][] genTransformationMatrices() {
-        float[][] tfMatrices = new float[SlotCount][];
+        return TransformationGenerator.GenerateLayout(this, td => {
+            td.x = td.item % 5 * -0.1625f;
+            td.z = td.item / 5 * 0.1f;
+            td.rotZ = td.item / 5 == 0 ? -2 : 2;
 
-        for (int item = 0; item < ItemsPerSegment; item++) {
-            float x = 1.25f;
-            float y = -0.45f + item % 5 * 0.15f + item / 5 * 0.025f;
-            float z = -0.15f + item / 5 * 0.125f;
+            td.offsetX = td.item / 5 == 0 ? 0.3075f : 0.43f;
+            td.offsetY = 1.3f;
+            td.offsetZ = -0.225f;
 
-            tfMatrices[item] = new Matrixf()
-                .Translate(0.5f, 0, 0.5f)
-                .RotateYDeg(block.Shape.rotateY)
-                .RotateZDeg(90)
-                .Translate(x - 0.5f, y, z - 0.5f)
-                .RotateXDeg(-15)
-                .RotateYDeg(10)
-                .Values;
-        }
-
-        return tfMatrices;
+            td.offsetRotX = -10;
+            td.offsetRotY = -20;
+            td.offsetRotZ = 90;
+        });
     }
 }

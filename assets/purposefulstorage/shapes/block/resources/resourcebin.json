@@ -14,7 +14,7 @@
 		{
 			"name": "originbottom",
 			"from": [ 1.0, 0.0, 1.0 ],
-			"to": [ 15.0, 1.0, 15.0 ],
+			"to": [ 15.0, 1.0, 15.5 ],
 			"rotationOrigin": [ 1.0, 0.0, 1.0 ],
 			"faces": {
 				"up": { "texture": "#surface", "uv": [ 0.0, 3.0, 16.0, 16.0 ], "autoUv": false },
@@ -75,14 +75,14 @@
 				},
 				{
 					"name": "FFence",
-					"from": [ 0.0, 0.0, 14.0 ],
-					"to": [ 1.0, 12.0, 28.0 ],
-					"rotationOrigin": [ 0.0, 0.0, 14.0 ],
+					"from": [ 0.0, 0.0, 14.5 ],
+					"to": [ 1.5, 12.0, 28.5 ],
+					"rotationOrigin": [ 0.0, 0.0, 14.5 ],
 					"rotationY": 90.0,
 					"faces": {
 						"east": { "texture": "#surface", "uv": [ 1.0, 3.0, 15.0, 15.0 ] },
 						"west": { "texture": "#surface", "uv": [ 1.0, 3.0, 15.0, 15.0 ] },
-						"up": { "texture": "#surface", "uv": [ 1.0, 15.0, 15.0, 16.0 ], "rotation": 90 }
+						"up": { "texture": "#surface", "uv": [ 1.0, 14.5, 15.0, 16.0 ], "rotation": 90 }
 					}
 				},
 				{

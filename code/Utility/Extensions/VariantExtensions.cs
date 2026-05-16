@@ -3,16 +3,18 @@
 namespace PurposefulStorage;
 
 public static class VariantExtensions {
+    private static readonly string VariantTextures = "variantTextures";
+
     /// <summary>
     /// Retrieves the block variant data needed for properly meshing variant textures on blocks.<br/>
     /// Avoid using this method during animation mesh generation.
     /// </summary>
-    public static (Shape, ITexPositionSource) GetBlockVariantData(ICoreClientAPI capi, ItemStack stackWithAttributes) {
+    public static (Shape?, ITexPositionSource?) GetBlockVariantData(ICoreClientAPI capi, ItemStack stackWithAttributes) {
         Block block = stackWithAttributes.Block;
 
         AssetLocation assetLoc = block.Shape.Base.Clone();
         string shapeLocation = assetLoc.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
-        Shape shape = capi.Assets.TryGet(shapeLocation)?.ToObject<Shape>().Clone();
+        Shape? shape = capi.Assets.TryGet(shapeLocation)?.ToObject<Shape>().Clone();
         if (shape == null) return (null, null);
 
         if (shape.Textures.Count == 0) {
@@ -24,8 +26,8 @@ public static class VariantExtensions {
         var stexSource = new ShapeTextureSource(capi, shape, "PS-TextureSource");
 
         // Custom Textures
-        if (stackWithAttributes.Attributes[BasePSContainer.PSAttributes] is ITreeAttribute tree && block.Attributes["variantTextures"].Exists) {
-            foreach (var pair in block.Attributes["variantTextures"].AsObject<Dictionary<string, string[]>>()) {
+        if (stackWithAttributes.Attributes[PSAttributes] is ITreeAttribute tree && block.Attributes[VariantTextures].Exists) {
+            foreach (var pair in block.Attributes[VariantTextures].AsObject<Dictionary<string, string[]>>()!) {
                 string[] texPaths = pair.Value;
 
                 foreach (var attr in tree) {
@@ -36,9 +38,8 @@ public static class VariantExtensions {
                         if (texPath.Contains($"{{{key}}}")) {
                             string fullTexPath = texPath.Replace($"{{{key}}}", value);
 
-                            if (capi.Assets.TryGet(new AssetLocation(fullTexPath).WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png")) == null) {
+                            if (capi.Assets.TryGet(new AssetLocation(fullTexPath).WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png")) == null)
                                 continue;
-                            }
 
                             shape.Textures[key] = fullTexPath;
 
@@ -60,11 +61,11 @@ public static class VariantExtensions {
     /// Applies variant textures to a shape based on block attributes. <br/>
     /// Intended for use in animations; do not use GetBlockVariantData here.
     /// </summary>
-    public static void ApplyVariantTextures(this Shape shape, BEBasePSContainer pscontainer) {
-        var variantTextures = pscontainer.Block.Attributes?["variantTextures"]?.AsObject<Dictionary<string, string[]>>();
+    public static void ApplyVariantTextures(this Shape shape, BEBasePSContainer psContainer) {
+        var variantTextures = psContainer.Block.Attributes?[VariantTextures]?.AsObject<Dictionary<string, string[]>>();
 
         if (variantTextures == null) return;
-        if (pscontainer.VariantAttributes == null) return;
+        if (psContainer.VariantAttributes == null) return;
 
         foreach (var texture in variantTextures) {
             string[] textureValues = texture.Value;
@@ -72,17 +73,17 @@ public static class VariantExtensions {
             foreach (string originalTexVal in textureValues.Reverse()) {
                 string textureValue = originalTexVal;
 
-                foreach (var attr in pscontainer.VariantAttributes) {
+                foreach (var attr in psContainer.VariantAttributes) {
                     string paramPlaceholder = "{" + attr.Key + "}";
-                    string paramValue = attr.Value.ToString();
+                    string? paramValue = attr.Value.ToString();
                     textureValue = textureValue.Replace(paramPlaceholder, paramValue);
                 }
 
-                if (textureValue.Contains('{') || textureValue.Contains('}')) continue;
-
-                if ((pscontainer.Api as ICoreClientAPI)?.Assets.TryGet(new AssetLocation(textureValue).WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png")) == null) {
+                if (textureValue.Contains('{') || textureValue.Contains('}'))
                     continue;
-                }
+
+                if ((psContainer.Api as ICoreClientAPI)?.Assets.TryGet(new AssetLocation(textureValue).WithPathPrefixOnce("textures/").WithPathAppendixOnce(".png")) == null)
+                    continue;
 
                 shape.Textures[texture.Key] = textureValue;
                 break;
@@ -97,7 +98,7 @@ public static class VariantExtensions {
     public static ItemStack GetVariantStack(this BEBasePSContainer entity) {
         var stack = new ItemStack(entity.Block);
         if (entity.VariantAttributes.Count != 0) {
-            stack.Attributes[BasePSContainer.PSAttributes] = entity.VariantAttributes;
+            stack.Attributes[PSAttributes] = entity.VariantAttributes;
         }
 
         return stack;

@@ -1,65 +1,82 @@
 ﻿namespace PurposefulStorage;
 
 public class BasePSContainer : BlockContainer, IContainedMeshSource {
-    public const string PSAttributes = "PSAttributes";
-    public string WorldInteractionAttributeCheck = null;
-    private string heldDescEntry;
+    public BlockHintType hintType = BlockHintType.None;
 
-    private WorldInteraction[] itemSlottableInteractions;
+    public string? WorldInteractionAttributeCheck = null;
+    private WorldInteraction[]? itemSlottableInteractions;
     
+    private string? heldDescEntry;
+    private string hintTypeStr = "none";
+
     public override void OnLoaded(ICoreAPI api) {
         base.OnLoaded(api);
 
         PlacedPriorityInteract = true; // Needed to call OnBlockInteractStart when shifting with an item in hand
+        
         heldDescEntry = Attributes["helddescentry"].AsString(Code.FirstCodePart());
+        WorldInteractionAttributeCheck = Attributes["worldInteractionAttributeCheck"].AsString()
+            ?? "ps" + Code.FirstCodePart();
 
-        WorldInteractionAttributeCheck = Attributes["worldInteractionAttributeCheck"].AsString();
-        if (WorldInteractionAttributeCheck != null) {
-            List<ItemStack> stackList = [];
-
-            itemSlottableInteractions = ObjectCacheUtil.GetOrCreate(api, Code.FirstCodePart(), () => {
-                foreach (var obj in api.World.Collectibles) {
-                    if (obj.CanStoreInSlot(WorldInteractionAttributeCheck)) {
-                        stackList.Add(new ItemStack(obj));
-                    }
-                }
-
-                var stackArray = stackList.ToArray();
-
-                return new WorldInteraction[] {
-                    new() {
-                        ActionLangCode = "blockhelp-groundstorage-add",
-                        MouseButton = EnumMouseButton.Right,
-                        Itemstacks = stackArray,
-                        HotKeyCode = "shift"
-                    },
-                    new() {
-                        ActionLangCode = "blockhelp-groundstorage-addbulk",
-                        MouseButton = EnumMouseButton.Right,
-                        Itemstacks = stackArray,
-                        HotKeyCodes = ["shift", "ctrl"]
-                    },
-                    new() {
-                        ActionLangCode = "blockhelp-groundstorage-remove",
-                        MouseButton = EnumMouseButton.Right
-                    },
-                    new() {
-                        ActionLangCode = "blockhelp-groundstorage-removebulk",
-                        MouseButton = EnumMouseButton.Right,
-                        HotKeyCode = "ctrl"
-                    }
-                };
-            });
-        }
+        hintTypeStr = Attributes["hintType"].AsString("none");
+        Enum.TryParse(hintTypeStr, true, out hintType);
 
         LoadVariantsCreative(api, this);
+
+        if (hintType == BlockHintType.None)
+            return;
+
+        List<ItemStack> stackList = [];
+        foreach (var obj in api.World.Collectibles) {
+            if (obj.CanStoreInSlot(WorldInteractionAttributeCheck)) {
+                stackList.Add(new ItemStack(obj));
+            }
+        }
+
+        var stackArray = stackList.ToArray();
+
+        itemSlottableInteractions = ObjectCacheUtil.GetOrCreate(api, Code.FirstCodePart(), () => {
+            return hintType switch {
+                BlockHintType.SingleSlot => new WorldInteraction[] {
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-add",
+                            MouseButton = EnumMouseButton.Right,
+                            Itemstacks = stackArray,
+                        },
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-remove",
+                            MouseButton = EnumMouseButton.Right
+                        }
+                    },
+                BlockHintType.Bulk => [
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-add",
+                            MouseButton = EnumMouseButton.Right,
+                            Itemstacks = stackArray,
+                            HotKeyCode = "shift"
+                        },
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-addbulk",
+                            MouseButton = EnumMouseButton.Right,
+                            Itemstacks = stackArray,
+                            HotKeyCodes = ["shift", "ctrl"]
+                        },
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-remove",
+                            MouseButton = EnumMouseButton.Right
+                        },
+                        new() {
+                            ActionLangCode = "blockhelp-groundstorage-removebulk",
+                            MouseButton = EnumMouseButton.Right,
+                            HotKeyCode = "ctrl"
+                        }
+                    ],
+                _ => [],
+            };
+        });
     }
 
-    public override WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
-        return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer).Append(itemSlottableInteractions);
-    }
-
-    public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos) {
+    public override bool DoPartialSelection(IWorldAccessor world, BlockPos pos) {
         return true;
     }
 
@@ -67,35 +84,50 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
         return 0; // To prevent the block reducing the cellar rating
     }
 
-    public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel) {
-        if (world.BlockAccessor.GetBlockEntity(blockSel.Position) is IPurposefulStorageContainer pscontainer) return pscontainer.OnInteract(byPlayer, blockSel);
-        return base.OnBlockInteractStart(world, byPlayer, blockSel);
+    public WorldInteraction[]? BaseGetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
+        return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer);
+    }
+
+    public override WorldInteraction[]? GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
+        if (itemSlottableInteractions?.Length > 0)
+            return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer).Append(itemSlottableInteractions);
+
+        return base.GetPlacedBlockInteractionHelp(world, selection, forPlayer);
     }
 
     public bool BaseOnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel) {
         return base.OnBlockInteractStart(world, byPlayer, blockSel);
     }
 
-    public override string GetHeldItemName(ItemStack itemStack) {
-        return base.GetHeldItemName(itemStack) + " " + itemStack.GetMaterialNameLocalized();
-    }
-
-    public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo) {
-        base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
-
-        string entry = "purposefulstorage:helddesc-" + heldDescEntry;
-        string desc = Lang.Get(entry);
-        if (desc != entry) {
-            dsc.AppendLine();
-            dsc.AppendLine(desc);
+    public override bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel) {
+        if (world.BlockAccessor.GetBlockEntity(blockSel.Position) is IPurposefulStorageContainer psContainer) {
+            if (psContainer.OnInteract(byPlayer, blockSel))
+                return true;
         }
+
+        // Handle block behaviors
+        return base.OnBlockInteractStart(world, byPlayer, blockSel);
     }
 
     public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1) {
-        if (world.BlockAccessor.GetBlockEntity(pos) is BlockEntityContainer bec) {
-            var stacks = bec.GetContentStacks();
-            foreach (var stack in stacks) {
-                world.SpawnItemEntity(stack, pos);
+        if (world.BlockAccessor.GetBlockEntity(pos) is BlockEntityContainer bec) { // Split stacks
+            Vec3d dropPos = pos.ToVec3d().Add(0.5, 0.5, 0.5);
+
+            foreach (var stack in bec.GetContentStacks()) {
+                if (stack == null) continue;
+
+                int max = stack.Collectible.MaxStackSize;
+
+                while (stack.StackSize > 0) {
+                    int amount = Math.Min(max, stack.StackSize);
+
+                    ItemStack drop = stack.Clone();
+                    drop.StackSize = amount;
+
+                    stack.StackSize -= amount;
+
+                    world.SpawnItemEntity(drop, dropPos);
+                }
             }
 
             bec.Inventory.Clear();
@@ -114,7 +146,7 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
         }
 
         if (world.BlockAccessor.GetBlockEntity(pos) is IPurposefulStorageContainer pscontainer) {
-            if (pscontainer?.VariantAttributes?.Count != 0) {
+            if (pscontainer.VariantAttributes?.Count > 0) {
                 stack.Attributes[PSAttributes] = pscontainer.VariantAttributes;
             }
         }
@@ -128,30 +160,46 @@ public class BasePSContainer : BlockContainer, IContainedMeshSource {
 
     public override BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer) {
         BlockDropItemStack[] drops = base.GetDropsForHandbook(handbookStack, forPlayer);
-        drops[0].ResolvedItemstack.SetFrom(handbookStack);
+        drops[0].ResolvedItemstack?.SetFrom(handbookStack);
         return drops;
+    }
+
+    public override string GetHeldItemName(ItemStack itemStack) {
+        return base.GetHeldItemName(itemStack) + " " + itemStack.GetMaterialNameLocalized();
+    }
+
+    public override void GetHeldItemInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, bool withDebugInfo) {
+        base.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+
+        string entry = "purposefulstorage:helddesc-" + heldDescEntry;
+        string desc = Lang.Get(entry);
+        if (desc != entry) {
+            dsc.AppendLine();
+            dsc.AppendLine(desc);
+        }
     }
 
     public override void OnBeforeRender(ICoreClientAPI capi, ItemStack itemstack, EnumItemRenderTarget target, ref ItemRenderInfo renderinfo) {
         if (api.Side == EnumAppSide.Server) return;
-        
-        string meshCacheKey = GetMeshCacheKey(itemstack);
+
+        string meshCacheKey = GetMeshCacheKey(renderinfo.InSlot);
         var meshrefs = GetCacheDictionary(capi, meshCacheKey);
 
-        if (!meshrefs.TryGetValue(meshCacheKey, out MultiTextureMeshRef meshRef)) {
-            MeshData mesh = GenMesh(itemstack, capi.BlockTextureAtlas, null);
+        if (!meshrefs.TryGetValue(meshCacheKey, out MultiTextureMeshRef? meshRef)) {
+            MeshData? mesh = GenMesh(renderinfo.InSlot, capi.BlockTextureAtlas, null);
             meshrefs[meshCacheKey] = meshRef = capi.Render.UploadMultiTextureMesh(mesh);
         }
 
         renderinfo.ModelRef = meshRef;
     }
 
-    public virtual MeshData GenMesh(ItemStack itemstack, ITextureAtlasAPI targetAtlas, BlockPos atBlockPos) {
-        return GenBlockVariantMesh(api, itemstack);
+    public virtual MeshData? GenMesh(ItemSlot slot, ITextureAtlasAPI targetAtlas, BlockPos? atBlockPos) {
+        return GenBlockVariantMesh(api, slot.Itemstack);
     }
 
-    public virtual string GetMeshCacheKey(ItemStack itemstack) {
-        if (itemstack.Attributes[PSAttributes] is not ITreeAttribute tree) return Code;
+    public virtual string GetMeshCacheKey(ItemSlot slot) {
+        if (slot.Itemstack?.Attributes[PSAttributes] is not ITreeAttribute tree)
+            return Code;
 
         List<string> parts = [];
         foreach (var pair in tree) {

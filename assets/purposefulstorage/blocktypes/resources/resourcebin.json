@@ -11,10 +11,10 @@
     "variantTextures": {
       "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
     },
-    "worldInteractionAttributeCheck": "psResourcebin",
     "handbook": {
       "groupBy": [ "resourcebin-*" ]
-    }
+    },
+    "worldInteractionAttributeCheck": "psResourcebin"
   },
   "behaviors": [
     { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }

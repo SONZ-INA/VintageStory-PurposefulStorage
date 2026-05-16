@@ -3,6 +3,7 @@
   "CollectibleCodes": [
     "game:bow-long",
     "game:bow-recurve",
+    "game:bowstave-*",
     "game:spear-generic-*",
     "game:spear-scrap-scrap",
     "game:blade-claymore-ruined",
