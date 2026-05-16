@@ -2,8 +2,11 @@
   "CollectibleTypes": [],
   "CollectibleCodes": [
     "game:drygrass",
+    "game:stick",
+    "game:stone-*",
     "game:crystalizedore-*",
-    "game:ore-*"
+    "game:ore-*",
+    "game:nugget-*"
   ],
   "BlacklistedCodes": []
 }

@@ -1,4 +1,8 @@
 {
-  "game:drygrass": { "scale": 0.5 },
-  "game:crystalizedore-*": { "translation": { "x": 0, "y": 0.065, "z": 0 }, "scaleXYZ": { "x": 0.9, "y": 0.8, "z": 0.85} }
+  "game:drygrass": { "translation": { "x": 0, "y": -0.26, "z": 0 }, "scale": 0.5 },
+  "game:stick": { "scaleXYZ": { "x": 0.85, "y": 0.9, "z": 0.8 } },
+  "game:stone-*": { "translation": { "x": 0, "y": -0.13, "z": 0 },  "scale": 0.65 }, 
+  "game:crystalizedore-*": { "translation": { "x": 0, "y":-0.045, "z": 0 }, "scaleXYZ": { "x": 1.1, "y": 0.8, "z": 0.9 } },
+  "game:ore-*": { "translation": { "x": 0, "y": 0.05, "z": 0 }, "scaleXYZ": { "x": 1.15, "y": 0.95, "z": 1 } },
+  "game:nugget-*": { "translation": { "x": 0, "y": 0.16, "z": 0 }, "scaleXYZ": { "x": 1.4, "y": 1.2, "z": 1.2 } } 
 }
