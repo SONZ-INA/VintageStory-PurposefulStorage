@@ -7,6 +7,7 @@ public static class ShapeReferences {
     public const string GliderUnfolded = "game:shapes/item/bag/glider-unfolded.json";
 
     public const string utilResourceBin = "purposefulstorage:shapes/util/resourcebin.json";
+    public const string utilResourceBinPowder = "purposefulstorage:shapes/util/resourcebinpowder.json";
     public const string utilPants = "purposefulstorage:shapes/util/pants.json";
 }
 

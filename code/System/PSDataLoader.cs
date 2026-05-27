@@ -11,6 +11,16 @@ public static class PSDataLoader {
             var restrictionGroupsServer = DiscoverRestrictionGroups(api);
             LoadData(api, restrictionGroupsServer, restrictions, transformations);
         }
+
+        if (api.Side == EnumAppSide.Client) {
+            Dictionary<string, string[]> restrictionGroupsClient = new() {
+                ["resources"] = ["resourcebin"]
+            };
+
+            LoadData(api, restrictionGroupsClient, restrictions, transformations);
+        }
+
+        BEResourceBin.ResourceBinData = restrictions["resourcebin"];
     }
 
     /// <summary>

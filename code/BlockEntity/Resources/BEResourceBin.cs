@@ -1,6 +1,8 @@
 ﻿namespace PurposefulStorage;
 
 public class BEResourceBin : BEBasePSContainer {
+    public static RestrictionData ResourceBinData { get; set; } = new();
+
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.ByBlock;
 
     private static readonly ExplicitTransform DefaultTransformations = new (
@@ -43,18 +45,37 @@ public class BEResourceBin : BEBasePSContainer {
         RZ: [    0,     2,    -1,     1,     0,    -2,     0,     1,    -1,     2,     1,    -1,     0,     2,    -2,     0,     1,    -2,     0,     1,    -1,     0,     2,    -1,     0,     2,    -1,     0,     1,    -1,     0,     2,    -2,     1,    -2,     0,     1,     0,     1,    -1,     2 ]
     );
 
-    private ExplicitTransform CachedTransformations {
+    private static readonly ExplicitTransform FlaxTransformations = new (
+        X: [  -.2f,   .2f,  -.2f,   .2f,  -.2f,   .2f,  -.2f,   .2f, -.2f,  .2f,     0,     0,     0,    0,   0, -.37f, -.37f,  .37f, .37f, -.22f,  .22f ],
+        Y: [     0,     0,     0,     0,     0,     0,     0,     0,    0,    0,   .1f,   .1f,   .1f,  .1f, .1f,  .11f,   .1f,   .1f, .11f,   .2f,   .2f ],
+        Z: [ -.33f, -.33f, -.17f, -.17f, -.01f, -.01f,  .15f,  .15f,  .3f,  .3f, -.33f, -.17f, -.01f, .15f, .3f, -.22f,  .18f, -.22f, .18f,  -.2f,  -.2f ],
+
+        RX: [],
+        RY: [    1,    -1,     2,     0,     1,     3,     1,    -2,  180,  180,      2,    1,    -1,    3, 180,    90,    90,   -90,  -90,    81,   -77 ],
+        RZ: []
+    );
+
+    private ExplicitTransform? CachedTransformations {
         get {
+            if (inv[0].Empty || ResourceBinData?.GroupingCodes == null)
+                return DefaultTransformations;
+
             string collectibleCode = inv[0].Itemstack?.Collectible.Code ?? "";
 
-            if (collectibleCode == "game:stick")
-                return StickTransformations;
-
-            if (WildcardUtil.Match("*:stone-*", collectibleCode))
-                return StoneTransformations;
-
-            if (WildcardUtil.Match("*:nugget-*", collectibleCode))
-                return NuggetTransformations;
+            foreach (var group in ResourceBinData.GroupingCodes) {
+                foreach (var pattern in group.Value) {
+                    if (WildcardUtil.Match(pattern, collectibleCode)) {
+                        return group.Key switch {
+                            "stick" => StickTransformations,
+                            "stone" => StoneTransformations,
+                            "flax" => FlaxTransformations,
+                            "nugget" => NuggetTransformations,
+                            "powder" => null, // Returning null means powder rendering logic
+                            _ => DefaultTransformations
+                        };
+                    }
+                }
+            }
 
             return DefaultTransformations;
         }
@@ -72,9 +93,22 @@ public class BEResourceBin : BEBasePSContainer {
     public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
         if (capi == null) return false;
 
-        base.OnTesselation(mesher, tesselator);
+        mesher.AddMeshData(blockMesh);
 
-        if (inv[0].StackSize > CachedTransformations.Length) {
+        var cachedTransforms = CachedTransformations;
+
+        if (cachedTransforms == null) {
+            MeshData? powderMesh = GenLiquidyMesh(capi, inv[0], ShapeReferences.utilResourceBinPowder, 10.2f, true);
+            if (powderMesh != null) {
+                mesher.AddMeshData(powderMesh.BlockYRotation(block));
+            }
+
+            return true;
+        }
+
+        ExplicitTransform transforms = cachedTransforms.Value;
+
+        if (inv[0].StackSize > transforms.Length) {
             ItemStack stack = inv[0].Itemstack!;
             int capacity = stack.Collectible.MaxStackSize * 8;
 
@@ -89,11 +123,16 @@ public class BEResourceBin : BEBasePSContainer {
 
     // Vanilla method for rendering items, just adjusted a little bit
     protected override bool BaseRenderContents(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
+        var cachedTransforms = CachedTransformations;
+        if (cachedTransforms == null) return true;
+
+        ExplicitTransform transforms = cachedTransforms.Value;
+
         if (tfMatrices == null) {
             updateMeshes();
         }
 
-        int loopUntil = Math.Min(CachedTransformations.Length, inv[0].StackSize);
+        int loopUntil = Math.Min(transforms.Length, inv[0].StackSize);
         for (int i = 0; i < loopUntil; i++) {
             ItemSlot itemSlot = inv[0];
             if (!itemSlot.Empty && tfMatrices != null && !(itemSlot.Itemstack.Collectible?.Code == null)) {
@@ -105,17 +144,32 @@ public class BEResourceBin : BEBasePSContainer {
     }
 
     protected override float[][] genTransformationMatrices() {
+        var cachedTransforms = CachedTransformations;
+        if (cachedTransforms == null) return [];
+
+        ExplicitTransform transforms = cachedTransforms.Value;
+
         ItemStack? stack = inv[0].Itemstack;
         float heightOffset = 0f;
 
-        if (stack?.StackSize > CachedTransformations.Length) {
+        if (stack?.StackSize > transforms.Length) {
             int capacity = stack.Collectible.MaxStackSize * 8;
             heightOffset = GetFillHeight(stack.StackSize, capacity, 0.6f);
         }
 
-        return TransformationGenerator.GenerateExplicit(CachedTransformations, td => {
+        return TransformationGenerator.GenerateExplicit(transforms, td => {
             td.preRotate = block.GetRotationAngle();
             td.offsetY += heightOffset;
+
+            if (inv[0].Itemstack?.Collectible?.Code == "game:flaxfibers") {
+                if (td.index >= 10) {
+                    td.offsetY -= 0.05f;
+                }
+
+                if (td.index >= 19) {
+                    td.offsetY -= 0.05f;
+                }
+            }
         });
     }
 }

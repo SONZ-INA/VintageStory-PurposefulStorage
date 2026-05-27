@@ -1,6 +1,7 @@
 {
   "game:spear-scrap-scrap": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.225, "y": 0, "z": 0 } },
   "game:spear-generic-hacking": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.4, "y": 0, "z": 0 }, "scaleXYZ": { "x": 0.85, "y": 0.85, "z": 0.85 } },
+  "game:spear-generic-chert": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.15, "y": 0, "z": 0 } },
   "game:spear-generic-granite": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.15, "y": 0, "z": 0 } },
   "game:spear-generic-andesite": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.15, "y": 0, "z": 0 } },
   "game:spear-generic-basalt": { "origin": { "x": 0.5, "y": 0, "z": 0.5 }, "translation": { "x": -0.15, "y": 0, "z": 0 } },

@@ -1,12 +1,37 @@
 {
-  "CollectibleTypes": [],
-  "CollectibleCodes": [
-    "game:drygrass",
-    "game:stick",
-    "game:stone-*",
-    "game:crystalizedore-*",
-    "game:ore-*",
-    "game:nugget-*"
-  ],
+  "GroupingCodes": {
+    "default": [
+      "game:drygrass",
+      "game:thatch",
+      "game:charcoal",
+      "game:coal-contaminated",
+      "game:clearquartz",
+      "game:smokyquartz",
+      "game:rosequartz",
+      "*:ore-*",
+      "*:crystalizedore-*"
+    ],
+    "stick": [
+      "game:stick"
+    ],
+    "stone": [
+      "*:stone-*"
+    ],
+    "flax": [
+      "game:flaxfibers",
+      "game:flaxtwine"
+    ],
+    "nugget": [
+      "*:nugget-*"
+    ],
+    "powder": [
+      "game:lime",
+      "game:calcined-flint",
+      "game:blastingpowder",
+      "*:clay-*",
+      "*:powder-*",
+      "*:crushed-*"
+    ]
+  },
   "BlacklistedCodes": []
 }
