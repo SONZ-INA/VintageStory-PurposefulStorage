@@ -1,0 +1,28 @@
+[
+  {
+    "ingredientPattern": "P,S,P",
+    "ingredients": {
+      "S": { "type": "block", "code": "game:plankslab-*-down-free" },
+      "P": { "type": "item", "code": "game:plank-{wood}", "quantity": 2 }
+    },
+    "width": 1, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "clothrack-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "P,S,P",
+    "ingredients": {
+      "S": { "type": "block", "code": "game:plankslab-*-down-free" },
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 2 }
+    },
+    "width": 1, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "clothrack-normal-east" }
+  }
+]

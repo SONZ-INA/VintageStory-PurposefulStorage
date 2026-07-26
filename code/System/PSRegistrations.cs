@@ -49,6 +49,8 @@ public static class PSRegistrations {
 
         // Resources
         api.RegisterBlockEntityClass("PurposefulStorage.BEResourceBin", typeof(BEResourceBin));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEClothRack", typeof(BEClothRack));
+        api.RegisterBlockEntityClass("PurposefulStorage.BERopeRack", typeof(BERopeRack));
 
         // Weapons
         api.RegisterBlockEntityClass("PurposefulStorage.BESpearRack", typeof(BESpearRack));

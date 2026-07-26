@@ -1,8 +1,7 @@
 {
   "CollectibleTypes": [],
   "CollectibleCodes": [
-    "game:hoovedwearables-middleback-saddle*"
-
+    "*:cloth-*"
   ],
   "BlacklistedCodes": []
 }

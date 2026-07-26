@@ -23,6 +23,8 @@
   "block-medallionrack-*": "Medallion Rack",
   "block-spearrack-*": "Spear Rack",
   "block-swordplaque-*": "Sword Plaque",
+  "block-clothrack-*": "Cloth Rack",
+  "block-roperack-*": "Rope Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -34,7 +36,7 @@
   "helddesc-glidermount": "A mount for your glider!",
   "helddesc-weaponrack": "Can hold most long weapons!",
   "helddesc-gearrack": "Can hold gears!",
-  "helddesc-resourcebin": "Can hold dry grass, sticks, stones, ore chunks and nuggets!",
+  "helddesc-resourcebin": "Can hold dry grass & thatch, sticks, stones, coal/quartz, flax twine/fibers, peat, compost, ore chunks, nuggets & bits, and most powder-y stuff!",
   "helddesc-pantsrack": "Can hold all sorts of pants!",
   "helddesc-gloverack": "Can hold most gloves, braces and bracelets!",
   "helddesc-necklacestand": "Can hold most necklaces!",
@@ -46,6 +48,8 @@
   "helddesc-medallionrack": "Display your elk medallions & clothing emblems!",
   "helddesc-spearrack": "Leave your spears at an accessible place!",
   "helddesc-swordplaque": "Hang your favorite sword!",
+  "helddesc-clothrack": "Store your cloth!",
+  "helddesc-roperack": "Store your ropes!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!"

@@ -18,16 +18,23 @@
       "*:stone-*"
     ],
     "flax": [
-      "game:flaxfibers",
       "game:flaxtwine"
     ],
+    "fiber": [
+      "game:flaxfibers"
+    ],
     "nugget": [
-      "*:nugget-*"
+      "*:nugget-*",
+      "*:metalbit-*"
+    ],
+    "peat": [
+      "game:peatbrick"
     ],
     "powder": [
       "game:lime",
       "game:calcined-flint",
       "game:blastingpowder",
+      "game:compost",
       "*:clay-*",
       "*:powder-*",
       "*:crushed-*"

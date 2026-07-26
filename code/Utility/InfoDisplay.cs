@@ -9,6 +9,8 @@ public static class InfoDisplay {
 
     #region // Public Methods -------------------------------------------------------------------------------------------------------------------------------
 
+    public static string GetNameAndStackSize(ItemStack stack) => stack.GetName() + " x" + stack.StackSize;
+
     public static void DisplayInfo(IPlayer forPlayer, StringBuilder sb, InventoryGeneric inv, InfoDisplayOptions displaySelection, int slotCount, int segmentsPerShelf = 0, int itemsPerSegment = 0, int skipSlotsFrom = -1, int selectedSegment = -1) {
         if (selectedSegment == -1 && forPlayer.CurrentBlockSelection != null)
             selectedSegment = forPlayer.CurrentBlockSelection.SelectionBoxIndex;

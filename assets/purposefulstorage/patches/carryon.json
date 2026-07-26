@@ -63,7 +63,7 @@
     "dependsOn": [ { "modid": "carryon" } ]
   },
   {
-    "file": "purposefulstorage:blocktypes/resources/resourcebin.json",
+    "file": "purposefulstorage:blocktypes/resources/*",
     "op": "addmerge", "path": "/behaviors/-", "side": "server",
     "value": {
       "name": "Carryable",

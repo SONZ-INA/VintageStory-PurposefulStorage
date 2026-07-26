@@ -17,7 +17,7 @@ public class BEWardrobe : BEBasePSAnimatable {
 
     [TreeSerializable(false)] public bool DoorOpen { get; set; }
 
-    private enum SlotType {
+    protected enum SlotType {
         Segments = 15,
         LDoor = 16,
         RDoor = 17,
@@ -83,7 +83,7 @@ public class BEWardrobe : BEBasePSAnimatable {
         }
     }
 
-    private void ToggleDoor(bool open, IPlayer? byPlayer = null) {
+    protected void ToggleDoor(bool open, IPlayer? byPlayer = null) {
         if (open) {
             AnimUtil.TryStartAnimation(DoorOpenAnim.Code, DoorOpenAnim.Speed);
 
