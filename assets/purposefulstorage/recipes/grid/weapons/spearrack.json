@@ -19,7 +19,7 @@
   {
     "ingredientPattern": "PSP,PSP,PPP",
     "ingredients": {
-      "P": { "type": "item", "code": "game:plank-*" },
+      "P": { "type": "item", "code": "*:plank-*" },
       "S": { "type": "item", "code": "game:stick", "quantity": 4 }
     },
     "width": 3, "height": 3, "recipeGroup": 1,

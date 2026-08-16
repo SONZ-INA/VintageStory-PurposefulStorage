@@ -12,7 +12,7 @@ public class BEMedallionRack : BEBasePSContainer {
 
     protected override float[][] genTransformationMatrices() {
         return TransformationGenerator.GenerateLayout(this, td => {
-            td.x = td.segment % 3 * 0.3125f;
+            td.x = td.segment % 3 * 0.32f;
             td.y = td.segment / 3 * 0.0825f;
             td.z = td.segment / 3 * -0.3125f;
             
