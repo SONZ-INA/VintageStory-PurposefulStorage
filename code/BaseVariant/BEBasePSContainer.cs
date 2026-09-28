@@ -3,6 +3,8 @@
 namespace PurposefulStorage;
 
 public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorageContainer {
+    protected bool receivedInitialSync = false;
+
     public InventoryGeneric inv = null!;
     protected BasePSContainer block = null!;
     protected MeshData? blockMesh;
@@ -234,6 +236,11 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         VariantAttributes = tree[PSAttributes] is ITreeAttribute psTree
             ? psTree
             : new TreeAttribute();
+
+        if (worldForResolving.Side == EnumAppSide.Client && !receivedInitialSync) {
+            receivedInitialSync = true;
+            InitMesh();
+        }
 
         RedrawAfterReceivingTreeAttributes(worldForResolving);
     }

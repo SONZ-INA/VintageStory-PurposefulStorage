@@ -1,0 +1,8 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "game:jonasframes-*",
+    "game:jonasparts-*"
+  ],
+  "BlacklistedCodes": []
+}

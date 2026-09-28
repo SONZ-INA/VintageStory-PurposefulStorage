@@ -17,6 +17,7 @@ public static class PSRegistrations {
 
         // General
         api.RegisterBlockClass("PurposefulStorage.BlockGliderMount", typeof(BlockGliderMount));
+        api.RegisterBlockClass("PurposefulStorage.BlockJonasPartsContainer", typeof(BlockJonasPartsContainer));
 
         // Weapons
         api.RegisterBlockClass("PurposefulStorage.BlockSpearRack", typeof(BlockSpearRack));
@@ -41,6 +42,7 @@ public static class PSRegistrations {
         api.RegisterBlockEntityClass("PurposefulStorage.BEButterflyDisplayPanel", typeof(BEButterflyDisplayPanel));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGearRack", typeof(BEGearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BEGliderMount", typeof(BEGliderMount));
+        api.RegisterBlockEntityClass("PurposefulStorage.BEJonasPartsCabinet", typeof(BEJonasPartsCabinet));
         api.RegisterBlockEntityClass("PurposefulStorage.BEMedallionRack", typeof(BEMedallionRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESaddleRack", typeof(BESaddleRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESchematicRack", typeof(BESchematicRack));

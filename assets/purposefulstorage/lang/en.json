@@ -2,7 +2,7 @@
   "game:tabname-purposefulstorage": "Purposeful Storage",
 
   "block-wardrobe-normal-*": "Wardrobe",
-  "block-wardrobe-wooden-*": "Wooden Wardrobe",
+  "block-wardrobe-wooden-*": "Wooden Wardrobe", 
   "block-hatrack-*": "Hat Rack",
   "block-blanketrack-*": "Blanket Rack",
   "block-shoerack-*": "Shoe Rack",
@@ -25,6 +25,7 @@
   "block-swordplaque-*": "Sword Plaque",
   "block-clothrack-*": "Cloth Rack",
   "block-roperack-*": "Rope Rack",
+  "block-jonaspartscabinet-*": "Jonas Parts Cabinet",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -50,6 +51,7 @@
   "helddesc-swordplaque": "Hang your favorite sword!",
   "helddesc-clothrack": "Store your cloth!",
   "helddesc-roperack": "Store your ropes!",
+  "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!"
