@@ -247,4 +247,39 @@ public static class Meshing {
 
         return fillMesh;
     }
+
+    /// <summary>
+    /// Generates a stacked visual using the root elements of a shape file.
+    /// More items show more root elements.
+    /// </summary>
+    public static MeshData? GenStackedShapeMesh(ICoreClientAPI? capi, ItemStack? stack, string shapePath, int capacity, float[]? baseTransform = null) {
+        if (capi == null) return null;
+        if (stack?.Collectible == null || stack.StackSize <= 0) return null;
+        if (string.IsNullOrEmpty(shapePath) || capacity <= 0) return null;
+
+        AssetLocation shapeLocation = ResolveStackedShapeLocation(shapePath, stack);
+
+        Shape? shape = Shape.TryGet(capi, shapeLocation)?.Clone();
+        if (shape?.Elements == null || shape.Elements.Length == 0) {
+            capi.Logger.Warning($"[PurposefulStorage] Stacked shape '{shapeLocation}' not found or has no root elements. No mesh will be generated.");
+            return null;
+        }
+
+        int visible = GetVisibleShapeCount(stack.StackSize, capacity, shape.Elements.Length);
+        if (visible <= 0) return null;
+
+        // Keep only the visible root elements.
+        if (visible < shape.Elements.Length) {
+            shape.Elements = [.. shape.Elements.Take(visible)];
+        }
+
+        // Use the textures defined by the shape file.
+        ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-StackedShapeTexSource");
+
+        capi.Tesselator.TesselateShape("PS-TesselateStackedShape", shape, out MeshData mesh, texSource);
+
+        if (baseTransform != null) mesh.MatrixTransform(baseTransform);
+
+        return mesh;
+    }
 }

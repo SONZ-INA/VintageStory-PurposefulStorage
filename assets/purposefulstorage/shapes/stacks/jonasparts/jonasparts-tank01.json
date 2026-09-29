@@ -1,0 +1,715 @@
+{
+	"editor": {
+		"collapsedPaths": "Root/originGlass,Root/TankMOVER,Root/MOVER3,Root/MOVER2,Root/originDeco,Root/MOVER,Root/TankMOVER4,Root/TankMOVER3,Root/TankMOVER2,Root/SocketBase,Root/originFrames,Root/originJonasStorage,Root/MOVER5,Root/originHandles,Root/MOVER4,Root/MOVER6",
+		"allAngles": false,
+		"entityTextureMode": false
+	},
+	"textureWidth": 16,
+	"textureHeight": 16,
+	"textureSizes": {},
+	"textures": {
+		"rustyglow": "game:block/machine/statictranslocator/rustyglow",
+		"cupronickel1": "game:block/metal/sheet/cupronickel1"
+	},
+	"elements": [
+		{
+			"name": "TankMOVER",
+			"from": [ 5.8, 3.6, 5.1 ],
+			"to": [ 7.8, 5.6, 7.1 ],
+			"rotationOrigin": [ 6.8, 3.6, 6.1 ],
+			"rotationY": -91.0,
+			"rotationZ": -67.5,
+			"faces": {},
+			"children": [
+				{
+					"name": "TankBody",
+					"from": [ -1.0, 0.0, 0.0 ],
+					"to": [ 3.0, 2.0, 2.5 ],
+					"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 3.5, 3.5, 7.5, 5.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 13.0, 0.0, 15.5, 2.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 2.5, 10.5, 6.5, 12.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 4.5, 4.5, 7.0, 6.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 3.0, 10.0, 7.0, 12.5 ] }
+					}
+				},
+				{
+					"name": "TankBody2",
+					"from": [ -1.0, 2.0, 0.0 ],
+					"to": [ 3.0, 2.5, 1.0 ],
+					"rotationOrigin": [ -1.0, 2.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 7.5, 8.0, 11.5, 8.5 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 6.5, 8.5, 10.5, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 6.5, 14.5, 10.5, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "TankBody3",
+							"from": [ 0.0, 0.0, 1.5 ],
+							"to": [ 4.0, 0.5, 2.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 0.0, 0.5, 4.0, 1.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 2.0, 4.0, 6.0, 4.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 6.5, 13.0, 7.5 ] }
+							}
+						},
+						{
+							"name": "TankBody4",
+							"from": [ 0.0, 0.0, 1.0 ],
+							"to": [ 1.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#cupronickel1", "uv": [ 11.5, 9.5, 12.0, 10.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 12.0, 0.5, 13.0, 1.0 ] }
+							}
+						},
+						{
+							"name": "TankBody5",
+							"from": [ 3.0, 0.0, 1.0 ],
+							"to": [ 4.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 3.0, 0.0, 1.0 ],
+							"faces": {
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 15.0, 2.0, 15.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 10.5, 10.0, 11.0 ] }
+							}
+						},
+						{
+							"name": "Fluid",
+							"from": [ 1.0, -0.2, 1.0 ],
+							"to": [ 3.0, 0.3, 1.5 ],
+							"rotationOrigin": [ 1.0, -0.2, 1.0 ],
+							"faces": {
+								"up": { "texture": "#rustyglow", "uv": [ 0.0, 13.0, 2.0, 13.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "Rim1",
+					"from": [ 3.0, -0.25, -0.25 ],
+					"to": [ 3.5, 2.75, 2.75 ],
+					"rotationOrigin": [ 3.0, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 0.0, 7.0, 0.5, 10.0 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 3.0, 3.0, 6.0, 6.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 7.5, 1.5, 8.0, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 1.5, 12.0, 4.5, 15.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 13.0, 11.0, 13.5, 14.0 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 10.0, 2.5, 10.5, 5.5 ] }
+					},
+					"children": [
+						{
+							"name": "End1",
+							"from": [ 0.5, 0.5, 0.5 ],
+							"to": [ 1.0, 2.5, 2.5 ],
+							"rotationOrigin": [ 0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 11.5, 10.0, 12.0, 12.0 ] },
+								"east": { "texture": "#cupronickel1", "uv": [ 6.5, 3.0, 8.5, 5.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 13.5, 5.5, 14.0, 7.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 14.5, 8.0, 15.0, 10.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 6.5, 4.0, 7.0, 6.0 ] }
+							},
+							"children": [
+								{
+									"name": "Tube1",
+									"from": [ 0.5, 0.7, 0.7 ],
+									"to": [ 1.5, 1.3, 1.3 ],
+									"rotationOrigin": [ 0.5, 0.7, 0.7 ],
+									"faces": {
+										"north": { "texture": "#cupronickel1", "uv": [ 5.0, 9.0, 6.0, 9.5 ] },
+										"east": { "texture": "#cupronickel1", "uv": [ 4.5, 8.5, 5.0, 9.0 ] },
+										"south": { "texture": "#cupronickel1", "uv": [ 0.5, 7.5, 1.5, 8.0 ] },
+										"up": { "texture": "#cupronickel1", "uv": [ 13.0, 5.5, 14.0, 6.0 ] },
+										"down": { "texture": "#cupronickel1", "uv": [ 13.5, 8.5, 14.5, 9.0 ] }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Rim2",
+					"from": [ -1.5, -0.25, -0.25 ],
+					"to": [ -1.0, 2.75, 2.75 ],
+					"rotationOrigin": [ -1.5, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 8.0, 11.5, 8.5, 14.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 1.0, 10.0, 4.0, 13.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 13.0, 1.5, 13.5, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 8.0, 6.0, 11.0, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 12.5, 0.5, 13.0, 3.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 14.0, 5.0, 14.5, 8.0 ] }
+					},
+					"children": [
+						{
+							"name": "End2",
+							"from": [ -0.5, 0.5, 0.5 ],
+							"to": [ 0.0, 2.5, 2.5 ],
+							"rotationOrigin": [ -0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 9.0, 4.0, 9.5, 6.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 15.0, 1.5, 15.5, 3.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 8.5, 3.5, 10.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 5.0, 12.0, 5.5, 14.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 12.5, 4.5, 13.0, 6.5 ] }
+							}
+						},
+						{
+							"name": "Tube2",
+							"from": [ -1.5, 1.2, 1.2 ],
+							"to": [ -0.5, 1.8, 1.8 ],
+							"rotationOrigin": [ -1.5, 1.2, 1.2 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 3.5, 7.5, 4.5, 8.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 11.0, 10.5, 12.0, 11.0 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 5.0, 6.5, 5.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.5, 5.5, 7.5, 6.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 11.0, 1.5, 12.0, 2.0 ] }
+							}
+						},
+						{
+							"name": "Tube3",
+							"from": [ -1.5, 1.2, -0.3 ],
+							"to": [ -0.9, 1.8, 1.2 ],
+							"rotationOrigin": [ -1.5, 1.2, -0.3 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 12.5, 2.0, 13.0, 2.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 14.0, 6.5, 15.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.0, 7.5, 6.5, 9.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 3.0, 4.0, 3.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TankMOVER2",
+			"from": [ 7.06, 2.06, 5.7 ],
+			"to": [ 9.06, 4.06, 7.7 ],
+			"rotationOrigin": [ 9.8, 0.5, 6.7 ],
+			"rotationY": -85.0,
+			"rotationZ": -50.0,
+			"faces": {},
+			"children": [
+				{
+					"name": "TankBody6",
+					"from": [ -1.0, 0.0, 0.0 ],
+					"to": [ 3.0, 2.0, 2.5 ],
+					"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 3.5, 3.5, 7.5, 5.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 13.0, 0.0, 15.5, 2.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 2.5, 10.5, 6.5, 12.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 4.5, 4.5, 7.0, 6.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 3.0, 10.0, 7.0, 12.5 ] }
+					}
+				},
+				{
+					"name": "TankBody7",
+					"from": [ -1.0, 2.0, 0.0 ],
+					"to": [ 3.0, 2.5, 1.0 ],
+					"rotationOrigin": [ -1.0, 2.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 7.5, 8.0, 11.5, 8.5 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 6.5, 8.5, 10.5, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 6.5, 14.5, 10.5, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "TankBody8",
+							"from": [ 0.0, 0.0, 1.5 ],
+							"to": [ 4.0, 0.5, 2.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 0.0, 0.5, 4.0, 1.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 2.0, 4.0, 6.0, 4.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 6.5, 13.0, 7.5 ] }
+							}
+						},
+						{
+							"name": "TankBody9",
+							"from": [ 0.0, 0.0, 1.0 ],
+							"to": [ 1.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#cupronickel1", "uv": [ 11.5, 9.5, 12.0, 10.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 12.0, 0.5, 13.0, 1.0 ] }
+							}
+						},
+						{
+							"name": "TankBody10",
+							"from": [ 3.0, 0.0, 1.0 ],
+							"to": [ 4.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 3.0, 0.0, 1.0 ],
+							"faces": {
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 15.0, 2.0, 15.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 10.5, 10.0, 11.0 ] }
+							}
+						},
+						{
+							"name": "Fluid2",
+							"from": [ 1.0, -0.2, 1.0 ],
+							"to": [ 3.0, 0.3, 1.5 ],
+							"rotationOrigin": [ 1.0, -0.2, 1.0 ],
+							"faces": {
+								"up": { "texture": "#rustyglow", "uv": [ 0.0, 13.0, 2.0, 13.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "Rim3",
+					"from": [ 3.0, -0.25, -0.25 ],
+					"to": [ 3.5, 2.75, 2.75 ],
+					"rotationOrigin": [ 3.0, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 0.0, 7.0, 0.5, 10.0 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 3.0, 3.0, 6.0, 6.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 7.5, 1.5, 8.0, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 1.5, 12.0, 4.5, 15.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 13.0, 11.0, 13.5, 14.0 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 10.0, 2.5, 10.5, 5.5 ] }
+					},
+					"children": [
+						{
+							"name": "End3",
+							"from": [ 0.5, 0.5, 0.5 ],
+							"to": [ 1.0, 2.5, 2.5 ],
+							"rotationOrigin": [ 0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 11.5, 10.0, 12.0, 12.0 ] },
+								"east": { "texture": "#cupronickel1", "uv": [ 6.5, 3.0, 8.5, 5.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 13.5, 5.5, 14.0, 7.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 14.5, 8.0, 15.0, 10.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 6.5, 4.0, 7.0, 6.0 ] }
+							},
+							"children": [
+								{
+									"name": "Tube4",
+									"from": [ 0.5, 0.7, 0.7 ],
+									"to": [ 1.5, 1.3, 1.3 ],
+									"rotationOrigin": [ 0.5, 0.7, 0.7 ],
+									"faces": {
+										"north": { "texture": "#cupronickel1", "uv": [ 5.0, 9.0, 6.0, 9.5 ] },
+										"east": { "texture": "#cupronickel1", "uv": [ 4.5, 8.5, 5.0, 9.0 ] },
+										"south": { "texture": "#cupronickel1", "uv": [ 0.5, 7.5, 1.5, 8.0 ] },
+										"up": { "texture": "#cupronickel1", "uv": [ 13.0, 5.5, 14.0, 6.0 ] },
+										"down": { "texture": "#cupronickel1", "uv": [ 13.5, 8.5, 14.5, 9.0 ] }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Rim4",
+					"from": [ -1.5, -0.25, -0.25 ],
+					"to": [ -1.0, 2.75, 2.75 ],
+					"rotationOrigin": [ -1.5, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 8.0, 11.5, 8.5, 14.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 1.0, 10.0, 4.0, 13.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 13.0, 1.5, 13.5, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 8.0, 6.0, 11.0, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 12.5, 0.5, 13.0, 3.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 14.0, 5.0, 14.5, 8.0 ] }
+					},
+					"children": [
+						{
+							"name": "End4",
+							"from": [ -0.5, 0.5, 0.5 ],
+							"to": [ 0.0, 2.5, 2.5 ],
+							"rotationOrigin": [ -0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 9.0, 4.0, 9.5, 6.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 15.0, 1.5, 15.5, 3.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 8.5, 3.5, 10.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 5.0, 12.0, 5.5, 14.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 12.5, 4.5, 13.0, 6.5 ] }
+							}
+						},
+						{
+							"name": "Tube5",
+							"from": [ -1.5, 1.2, 1.2 ],
+							"to": [ -0.5, 1.8, 1.8 ],
+							"rotationOrigin": [ -1.5, 1.2, 1.2 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 3.5, 7.5, 4.5, 8.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 11.0, 10.5, 12.0, 11.0 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 5.0, 6.5, 5.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.5, 5.5, 7.5, 6.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 11.0, 1.5, 12.0, 2.0 ] }
+							}
+						},
+						{
+							"name": "Tube6",
+							"from": [ -1.5, 1.2, -0.3 ],
+							"to": [ -0.9, 1.8, 1.2 ],
+							"rotationOrigin": [ -1.5, 1.2, -0.3 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 12.5, 2.0, 13.0, 2.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 14.0, 6.5, 15.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.0, 7.5, 6.5, 9.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 3.0, 4.0, 3.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TankMOVER3",
+			"from": [ 4.057, 1.96, 9.1 ],
+			"to": [ 6.057, 3.96, 11.1 ],
+			"rotationOrigin": [ 6.8, 0.4, 10.1 ],
+			"rotationY": -92.0,
+			"rotationZ": -50.0,
+			"faces": {},
+			"children": [
+				{
+					"name": "TankBody11",
+					"from": [ -1.0, 0.0, 0.0 ],
+					"to": [ 3.0, 2.0, 2.5 ],
+					"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 3.5, 3.5, 7.5, 5.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 13.0, 0.0, 15.5, 2.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 2.5, 10.5, 6.5, 12.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 4.5, 4.5, 7.0, 6.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 3.0, 10.0, 7.0, 12.5 ] }
+					}
+				},
+				{
+					"name": "TankBody12",
+					"from": [ -1.0, 2.0, 0.0 ],
+					"to": [ 3.0, 2.5, 1.0 ],
+					"rotationOrigin": [ -1.0, 2.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 7.5, 8.0, 11.5, 8.5 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 6.5, 8.5, 10.5, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 6.5, 14.5, 10.5, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "TankBody13",
+							"from": [ 0.0, 0.0, 1.5 ],
+							"to": [ 4.0, 0.5, 2.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 0.0, 0.5, 4.0, 1.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 2.0, 4.0, 6.0, 4.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 6.5, 13.0, 7.5 ] }
+							}
+						},
+						{
+							"name": "TankBody14",
+							"from": [ 0.0, 0.0, 1.0 ],
+							"to": [ 1.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#cupronickel1", "uv": [ 11.5, 9.5, 12.0, 10.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 12.0, 0.5, 13.0, 1.0 ] }
+							}
+						},
+						{
+							"name": "TankBody15",
+							"from": [ 3.0, 0.0, 1.0 ],
+							"to": [ 4.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 3.0, 0.0, 1.0 ],
+							"faces": {
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 15.0, 2.0, 15.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 10.5, 10.0, 11.0 ] }
+							}
+						},
+						{
+							"name": "Fluid3",
+							"from": [ 1.0, -0.2, 1.0 ],
+							"to": [ 3.0, 0.3, 1.5 ],
+							"rotationOrigin": [ 1.0, -0.2, 1.0 ],
+							"faces": {
+								"up": { "texture": "#rustyglow", "uv": [ 0.0, 13.0, 2.0, 13.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "Rim5",
+					"from": [ 3.0, -0.25, -0.25 ],
+					"to": [ 3.5, 2.75, 2.75 ],
+					"rotationOrigin": [ 3.0, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 0.0, 7.0, 0.5, 10.0 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 3.0, 3.0, 6.0, 6.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 7.5, 1.5, 8.0, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 1.5, 12.0, 4.5, 15.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 13.0, 11.0, 13.5, 14.0 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 10.0, 2.5, 10.5, 5.5 ] }
+					},
+					"children": [
+						{
+							"name": "End5",
+							"from": [ 0.5, 0.5, 0.5 ],
+							"to": [ 1.0, 2.5, 2.5 ],
+							"rotationOrigin": [ 0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 11.5, 10.0, 12.0, 12.0 ] },
+								"east": { "texture": "#cupronickel1", "uv": [ 6.5, 3.0, 8.5, 5.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 13.5, 5.5, 14.0, 7.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 14.5, 8.0, 15.0, 10.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 6.5, 4.0, 7.0, 6.0 ] }
+							},
+							"children": [
+								{
+									"name": "Tube7",
+									"from": [ 0.5, 0.7, 0.7 ],
+									"to": [ 1.5, 1.3, 1.3 ],
+									"rotationOrigin": [ 0.5, 0.7, 0.7 ],
+									"faces": {
+										"north": { "texture": "#cupronickel1", "uv": [ 5.0, 9.0, 6.0, 9.5 ] },
+										"east": { "texture": "#cupronickel1", "uv": [ 4.5, 8.5, 5.0, 9.0 ] },
+										"south": { "texture": "#cupronickel1", "uv": [ 0.5, 7.5, 1.5, 8.0 ] },
+										"up": { "texture": "#cupronickel1", "uv": [ 13.0, 5.5, 14.0, 6.0 ] },
+										"down": { "texture": "#cupronickel1", "uv": [ 13.5, 8.5, 14.5, 9.0 ] }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Rim6",
+					"from": [ -1.5, -0.25, -0.25 ],
+					"to": [ -1.0, 2.75, 2.75 ],
+					"rotationOrigin": [ -1.5, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 8.0, 11.5, 8.5, 14.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 1.0, 10.0, 4.0, 13.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 13.0, 1.5, 13.5, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 8.0, 6.0, 11.0, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 12.5, 0.5, 13.0, 3.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 14.0, 5.0, 14.5, 8.0 ] }
+					},
+					"children": [
+						{
+							"name": "End6",
+							"from": [ -0.5, 0.5, 0.5 ],
+							"to": [ 0.0, 2.5, 2.5 ],
+							"rotationOrigin": [ -0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 9.0, 4.0, 9.5, 6.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 15.0, 1.5, 15.5, 3.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 8.5, 3.5, 10.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 5.0, 12.0, 5.5, 14.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 12.5, 4.5, 13.0, 6.5 ] }
+							}
+						},
+						{
+							"name": "Tube8",
+							"from": [ -1.5, 1.2, 1.2 ],
+							"to": [ -0.5, 1.8, 1.8 ],
+							"rotationOrigin": [ -1.5, 1.2, 1.2 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 3.5, 7.5, 4.5, 8.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 11.0, 10.5, 12.0, 11.0 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 5.0, 6.5, 5.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.5, 5.5, 7.5, 6.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 11.0, 1.5, 12.0, 2.0 ] }
+							}
+						},
+						{
+							"name": "Tube9",
+							"from": [ -1.5, 1.2, -0.3 ],
+							"to": [ -0.9, 1.8, 1.2 ],
+							"rotationOrigin": [ -1.5, 1.2, -0.3 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 12.5, 2.0, 13.0, 2.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 14.0, 6.5, 15.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.0, 7.5, 6.5, 9.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 3.0, 4.0, 3.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "TankMOVER4",
+			"from": [ 8.18, 3.41, 9.1 ],
+			"to": [ 10.18, 5.41, 11.1 ],
+			"rotationOrigin": [ 9.7, 2.7, 10.1 ],
+			"rotationY": -85.0,
+			"rotationZ": -67.5,
+			"faces": {},
+			"children": [
+				{
+					"name": "TankBody16",
+					"from": [ -1.0, 0.0, 0.0 ],
+					"to": [ 3.0, 2.0, 2.5 ],
+					"rotationOrigin": [ -1.0, 0.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 3.5, 3.5, 7.5, 5.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 13.0, 0.0, 15.5, 2.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 2.5, 10.5, 6.5, 12.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 4.5, 4.5, 7.0, 6.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 3.0, 10.0, 7.0, 12.5 ] }
+					}
+				},
+				{
+					"name": "TankBody17",
+					"from": [ -1.0, 2.0, 0.0 ],
+					"to": [ 3.0, 2.5, 1.0 ],
+					"rotationOrigin": [ -1.0, 2.0, 0.0 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 7.5, 8.0, 11.5, 8.5 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 6.5, 8.5, 10.5, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 6.5, 14.5, 10.5, 15.5 ] }
+					},
+					"children": [
+						{
+							"name": "TankBody18",
+							"from": [ 0.0, 0.0, 1.5 ],
+							"to": [ 4.0, 0.5, 2.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 0.0, 0.5, 4.0, 1.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 2.0, 4.0, 6.0, 4.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 6.5, 13.0, 7.5 ] }
+							}
+						},
+						{
+							"name": "TankBody19",
+							"from": [ 0.0, 0.0, 1.0 ],
+							"to": [ 1.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 0.0, 0.0, 1.0 ],
+							"faces": {
+								"east": { "texture": "#cupronickel1", "uv": [ 11.5, 9.5, 12.0, 10.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 12.0, 0.5, 13.0, 1.0 ] }
+							}
+						},
+						{
+							"name": "TankBody20",
+							"from": [ 3.0, 0.0, 1.0 ],
+							"to": [ 4.0, 0.5, 1.5 ],
+							"rotationOrigin": [ 3.0, 0.0, 1.0 ],
+							"faces": {
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 15.0, 2.0, 15.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 9.0, 10.5, 10.0, 11.0 ] }
+							}
+						},
+						{
+							"name": "Fluid4",
+							"from": [ 1.0, -0.2, 1.0 ],
+							"to": [ 3.0, 0.3, 1.5 ],
+							"rotationOrigin": [ 1.0, -0.2, 1.0 ],
+							"faces": {
+								"up": { "texture": "#rustyglow", "uv": [ 0.0, 13.0, 2.0, 13.5 ] }
+							}
+						}
+					]
+				},
+				{
+					"name": "Rim7",
+					"from": [ 3.0, -0.25, -0.25 ],
+					"to": [ 3.5, 2.75, 2.75 ],
+					"rotationOrigin": [ 3.0, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 0.0, 7.0, 0.5, 10.0 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 3.0, 3.0, 6.0, 6.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 7.5, 1.5, 8.0, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 1.5, 12.0, 4.5, 15.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 13.0, 11.0, 13.5, 14.0 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 10.0, 2.5, 10.5, 5.5 ] }
+					},
+					"children": [
+						{
+							"name": "End7",
+							"from": [ 0.5, 0.5, 0.5 ],
+							"to": [ 1.0, 2.5, 2.5 ],
+							"rotationOrigin": [ 0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 11.5, 10.0, 12.0, 12.0 ] },
+								"east": { "texture": "#cupronickel1", "uv": [ 6.5, 3.0, 8.5, 5.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 13.5, 5.5, 14.0, 7.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 14.5, 8.0, 15.0, 10.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 6.5, 4.0, 7.0, 6.0 ] }
+							},
+							"children": [
+								{
+									"name": "Tube10",
+									"from": [ 0.5, 0.7, 0.7 ],
+									"to": [ 1.5, 1.3, 1.3 ],
+									"rotationOrigin": [ 0.5, 0.7, 0.7 ],
+									"faces": {
+										"north": { "texture": "#cupronickel1", "uv": [ 5.0, 9.0, 6.0, 9.5 ] },
+										"east": { "texture": "#cupronickel1", "uv": [ 4.5, 8.5, 5.0, 9.0 ] },
+										"south": { "texture": "#cupronickel1", "uv": [ 0.5, 7.5, 1.5, 8.0 ] },
+										"up": { "texture": "#cupronickel1", "uv": [ 13.0, 5.5, 14.0, 6.0 ] },
+										"down": { "texture": "#cupronickel1", "uv": [ 13.5, 8.5, 14.5, 9.0 ] }
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Rim8",
+					"from": [ -1.5, -0.25, -0.25 ],
+					"to": [ -1.0, 2.75, 2.75 ],
+					"rotationOrigin": [ -1.5, -0.2, -0.2 ],
+					"faces": {
+						"north": { "texture": "#cupronickel1", "uv": [ 8.0, 11.5, 8.5, 14.5 ] },
+						"east": { "texture": "#cupronickel1", "uv": [ 1.0, 10.0, 4.0, 13.0 ] },
+						"south": { "texture": "#cupronickel1", "uv": [ 13.0, 1.5, 13.5, 4.5 ] },
+						"west": { "texture": "#cupronickel1", "uv": [ 8.0, 6.0, 11.0, 9.0 ] },
+						"up": { "texture": "#cupronickel1", "uv": [ 12.5, 0.5, 13.0, 3.5 ] },
+						"down": { "texture": "#cupronickel1", "uv": [ 14.0, 5.0, 14.5, 8.0 ] }
+					},
+					"children": [
+						{
+							"name": "End8",
+							"from": [ -0.5, 0.5, 0.5 ],
+							"to": [ 0.0, 2.5, 2.5 ],
+							"rotationOrigin": [ -0.5, 0.5, 0.5 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 9.0, 4.0, 9.5, 6.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 15.0, 1.5, 15.5, 3.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 1.5, 8.5, 3.5, 10.5 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 5.0, 12.0, 5.5, 14.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 12.5, 4.5, 13.0, 6.5 ] }
+							}
+						},
+						{
+							"name": "Tube11",
+							"from": [ -1.5, 1.2, 1.2 ],
+							"to": [ -0.5, 1.8, 1.8 ],
+							"rotationOrigin": [ -1.5, 1.2, 1.2 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 3.5, 7.5, 4.5, 8.0 ] },
+								"south": { "texture": "#cupronickel1", "uv": [ 11.0, 10.5, 12.0, 11.0 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 5.0, 6.5, 5.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.5, 5.5, 7.5, 6.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 11.0, 1.5, 12.0, 2.0 ] }
+							}
+						},
+						{
+							"name": "Tube12",
+							"from": [ -1.5, 1.2, -0.3 ],
+							"to": [ -0.9, 1.8, 1.2 ],
+							"rotationOrigin": [ -1.5, 1.2, -0.3 ],
+							"faces": {
+								"north": { "texture": "#cupronickel1", "uv": [ 12.5, 2.0, 13.0, 2.5 ] },
+								"west": { "texture": "#cupronickel1", "uv": [ 14.0, 6.5, 15.5, 7.0 ] },
+								"up": { "texture": "#cupronickel1", "uv": [ 6.0, 7.5, 6.5, 9.0 ] },
+								"down": { "texture": "#cupronickel1", "uv": [ 3.0, 4.0, 3.5, 5.5 ] }
+							}
+						}
+					]
+				}
+			]
+		}
+	]}

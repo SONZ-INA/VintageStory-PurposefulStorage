@@ -16,15 +16,35 @@ public class BEJonasPartsCabinet : BEBasePSContainer {
         });
     }
 
+    protected override string getMeshCacheKey(ItemSlot slot) {
+        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
+        int visible = GetStackedVisibleCount(capi, slot.Itemstack, "jonasparts", capacity);
+
+        if (visible == 0) return base.getMeshCacheKey(slot); // no stacked shape - normal item and key
+
+        return $"ps-stacked-{slot.Itemstack?.Collectible.Code}-{visible}";
+    }
+
+    protected override MeshData getOrCreateMesh(ItemSlot slot, int index) {
+        MeshData? mesh = getMesh(slot);
+        if (mesh != null) return mesh;
+
+        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
+        mesh = GenStackedShapeMesh(capi, slot.Itemstack, "jonasparts", capacity);
+        if (mesh == null) return base.getOrCreateMesh(slot, index); // fallback: normal item
+
+        MeshCache[getMeshCacheKey(slot)] = mesh;
+        return mesh;
+    }
+
     protected override float[][] genTransformationMatrices() {
         return TransformationGenerator.GenerateLayout(this, td => {
-            td.offsetX = -0.275f;
-            td.offsetY = 0.0275f;
-            td.offsetZ = -0.2f;
+            td.offsetX = -0.25f;
+            td.offsetZ = -0.255f;
 
             if (td.index < 6) {
                 td.x = td.index / 2 * 0.42f;
-                td.y = td.index % 2 * 0.5f;
+                td.y = td.index % 2 * 0.485f;
             }
 
             if (td.index == 6) {
@@ -33,7 +53,7 @@ public class BEJonasPartsCabinet : BEBasePSContainer {
 
             if (td.index > 6) {
                 td.x = (td.index + 1) / 2 * 0.42f;
-                td.y = td.index % 2 * 0.5f;
+                td.y = td.index % 2 * 0.485f;
             }
         });
     }

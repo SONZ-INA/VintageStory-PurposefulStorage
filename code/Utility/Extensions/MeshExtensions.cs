@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Concurrent;
+using System.Linq;
 
 namespace PurposefulStorage;
 
 public static class MeshExtensions {
+    private static readonly ConcurrentDictionary<string, int> stackedShapeCounts = new();
+
     /// <summary>
     /// Rotates the mesh around the Y-axis based on the block's predefined <c>rotateY</c> value.<br/>
     /// Useful for aligning meshes with the block's in-world orientation.
@@ -15,6 +18,55 @@ public static class MeshExtensions {
     /// </summary>
     public static string? GetDisplayedShape(this ItemStack stack)
         => stack.ItemAttributes?["displayable"]?["shelf"]?["shape"]?["base"]?.AsString();
+
+    /// <summary>
+    /// Returns how many root shapes should be visible for the given stack size.
+    /// </summary>
+    public static int GetVisibleShapeCount(int content, int capacity, int shapeCount) {
+        if (content <= 0 || capacity <= 0 || shapeCount <= 0) return 0;
+        content = Math.Min(content, capacity);
+        return (content * shapeCount + capacity - 1) / capacity;
+    }
+
+    /// <summary>
+    /// Number of root shapes in the resolved shape file (cached). 0 if not found.
+    /// </summary>
+    public static int GetStackedShapeCount(ICoreClientAPI? capi, ItemStack? stack, string shapePath) {
+        if (capi == null || stack?.Collectible == null || string.IsNullOrEmpty(shapePath)) return 0;
+
+        AssetLocation loc = ResolveStackedShapeLocation(shapePath, stack);
+        string key = loc.ToString();
+
+        if (stackedShapeCounts.TryGetValue(key, out int count)) return count;
+
+        count = Shape.TryGet(capi, loc)?.Elements?.Length ?? 0;
+        if (count > 0) stackedShapeCounts[key] = count; // don't cache misses
+        return count;
+    }
+
+    /// <summary>
+    /// How many root shapes GenStackedShapeMesh would render for this stack. Use for cache keys.
+    /// </summary>
+    public static int GetStackedVisibleCount(ICoreClientAPI? capi, ItemStack? stack, string shapePath, int capacity) {
+        if (stack == null) return 0;
+        return GetVisibleShapeCount(stack.StackSize, capacity, GetStackedShapeCount(capi, stack, shapePath));
+    }
+
+    /// <summary>
+    /// Resolves a direct file path or builds one from the folder and item code path for the location of stacked shapes.<br/>
+    /// Used for GenStackedShapeMesh method.
+    /// </summary>
+    public static AssetLocation ResolveStackedShapeLocation(string source, ItemStack stack) {
+        AssetLocation loc = source.Contains(':')
+            ? new AssetLocation(source)
+            : new AssetLocation("purposefulstorage", $"shapes/stacks/{source}");
+
+        if (!source.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
+            loc = new AssetLocation(loc.Domain, $"{loc.Path.TrimEnd('/')}/{stack.Collectible.Code.Path}");
+        }
+
+        return loc.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
+    }
 
     /// <summary>
     /// Updates the texture key for all faces in the shape’s root element and its children.
