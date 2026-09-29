@@ -668,6 +668,7 @@
 					"name": "glass1",
 					"from": [ 1.0, 0.5, 10.25 ],
 					"to": [ 6.95, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 1.0, 0.5, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 6.5, 7.5, 12.0, 14.5 ] }
@@ -677,6 +678,7 @@
 					"name": "glass2",
 					"from": [ 1.0, 8.25, 10.25 ],
 					"to": [ 6.95, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 1.0, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 6.5, 5.0, 12.0, 12.0 ] }
@@ -686,6 +688,7 @@
 					"name": "glass3",
 					"from": [ 7.425, 8.25, 10.25 ],
 					"to": [ 13.775, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 7.4, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 10.0, 4.0, 16.0, 11.0 ] }
@@ -695,6 +698,7 @@
 					"name": "glass4",
 					"from": [ 7.425, 0.5, 10.25 ],
 					"to": [ 13.775, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 7.4, 0.6, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 9.5, 0.5, 15.5, 7.5 ] }
@@ -704,6 +708,7 @@
 					"name": "glass5",
 					"from": [ 14.25, 8.25, 10.25 ],
 					"to": [ 20.75, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 14.3, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 5.0, 3.0, 11.5, 10.0 ] }
@@ -713,6 +718,7 @@
 					"name": "glass6",
 					"from": [ 14.25, 0.5, 10.25 ],
 					"to": [ 20.75, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 14.3, 0.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 2.5, 6.5, 9.0, 13.5 ] }
@@ -722,6 +728,7 @@
 					"name": "glass7",
 					"from": [ 21.25, 0.5, 10.25 ],
 					"to": [ 26.75, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 21.3, 0.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 0.5, 6.0, 15.5, 11.5 ], "rotation": 90 }
@@ -731,6 +738,7 @@
 					"name": "glass8",
 					"from": [ 27.25, 0.5, 10.25 ],
 					"to": [ 33.75, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 27.3, 0.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 5.0, 8.5, 11.5, 15.5 ] }
@@ -740,6 +748,7 @@
 					"name": "glass9",
 					"from": [ 27.25, 8.25, 10.25 ],
 					"to": [ 33.75, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 27.3, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 0.5, 5.0, 7.0, 12.0 ] }
@@ -749,6 +758,7 @@
 					"name": "glass10",
 					"from": [ 34.23, 0.5, 10.25 ],
 					"to": [ 40.58, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 34.2, 0.6, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 0.0, 0.0, 6.0, 7.0 ] }
@@ -758,6 +768,7 @@
 					"name": "glass11",
 					"from": [ 34.23, 8.25, 10.25 ],
 					"to": [ 40.58, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 34.2, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 7.0, 9.0, 13.0, 16.0 ] }
@@ -767,6 +778,7 @@
 					"name": "glass12",
 					"from": [ 41.065, 8.25, 10.25 ],
 					"to": [ 47.015, 15.5, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 41.065, 8.3, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 10.0, 0.5, 15.5, 7.5 ] }
@@ -776,6 +788,7 @@
 					"name": "glass13",
 					"from": [ 41.065, 0.5, 10.25 ],
 					"to": [ 47.015, 7.75, 10.4 ],
+					"renderPass": 3,
 					"rotationOrigin": [ 41.065, 0.5, 10.2 ],
 					"faces": {
 						"south": { "texture": "#glass", "uv": [ 10.0, 6.5, 15.5, 13.5 ] }

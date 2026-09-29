@@ -71,14 +71,8 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         if (placeBulk || placeSingle) {
             if (slot.Empty) return false;
 
-            var checks = overrideAttrCheck != null
-                ? [overrideAttrCheck]
-                : AttributeCheck;
-
-            if (checks.Any(slot.CanStoreInSlot)) {
-                if (TryPut(byPlayer, slot, blockSel)) {
-                    return this.HandlePlacementEffects(slot.Itemstack, byPlayer);
-                }
+            if (TryPut(byPlayer, slot, blockSel)) {
+                return this.HandlePlacementEffects(slot.Itemstack, byPlayer);
             }
 
             if (CantPlaceMessage != "") {

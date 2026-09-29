@@ -25,7 +25,7 @@ public class BlockJonasPartsContainer : BasePSContainer, IMultiBlockColSelBoxes 
         if (offset.X is 1 or -1 || offset.Z is 1 or -1) {
             Cuboidf[] selectionBoxes = [.. Enumerable.Repeat(Skip, 10)];
 
-            for (int i = 5; i < 10; i++) {
+            for (int i = 4; i < 9; i++) {
                 Cuboidf selBox = boxes[i].Clone();
                 selBox.MBNormalizeSelectionBox(offset);
                 selectionBoxes[i] = selBox;
@@ -35,9 +35,9 @@ public class BlockJonasPartsContainer : BasePSContainer, IMultiBlockColSelBoxes 
         }
 
         if (offset.X is 2 or -2 || offset.Z is 2 or -2) {
-            Cuboidf[] selectionBoxes = [.. Enumerable.Repeat(Skip, 14)];
+            Cuboidf[] selectionBoxes = [.. Enumerable.Repeat(Skip, 13)];
 
-            for (int i = 8; i < 14; i++) {
+            for (int i = 7; i < 13; i++) {
                 Cuboidf selBox = boxes[i].Clone();
                 selBox.MBNormalizeSelectionBox(offset);
                 selectionBoxes[i] = selBox;

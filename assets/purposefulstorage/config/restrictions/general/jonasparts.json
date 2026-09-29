@@ -4,5 +4,7 @@
     "game:jonasframes-*",
     "game:jonasparts-*"
   ],
-  "BlacklistedCodes": []
+  "BlacklistedCodes": [
+    "game:jonasframes-gearbox02"
+  ]
 }
