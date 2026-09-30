@@ -16,7 +16,7 @@
     }
   },
   "behaviors": [
-    { "name": "HorizontalAttachable", "properties": { "dropBlockFace": "east" } },
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } },
     { "name": "Multiblock",
       "propertiesByType": {
         "*-north": { "sizex": 3, "sizey": 1, "sizez": 1, "cposition": { "x": 0, "y": 0, "z": 0 } },

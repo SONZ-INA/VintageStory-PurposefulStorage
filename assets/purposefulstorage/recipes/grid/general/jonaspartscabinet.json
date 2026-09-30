@@ -1,0 +1,34 @@
+[
+  {
+    "ingredientPattern": "PHP,GNG,PSP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-{wood}", "quantity": 2 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "G": { "type": "block", "code": "game:glassslab-*-down-free" },
+      "H": { "type": "item", "code": "game:hammer-*", "isTool": true, "toolDurabilityCost": 10 },
+      "S": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 10 }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "jonaspartscabinet-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "PHP,GNG,PSP",
+    "ingredients": {
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 2 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "G": { "type": "block", "code": "*:glassslab-*-down-free" },
+      "H": { "type": "item", "code": "game:hammer-*", "isTool": true, "toolDurabilityCost": 10 },
+      "S": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 10 }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "jonaspartscabinet-normal-east" }
+  }
+]
