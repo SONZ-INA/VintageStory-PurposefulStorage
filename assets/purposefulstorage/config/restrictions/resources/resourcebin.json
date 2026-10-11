@@ -45,6 +45,8 @@
       "game:blastingpowder",
       "game:compost",
       "game:bonemeal",
+      "game:salt",
+      "game:saltpeter",
       "*:clay-*",
       "*:powder-*",
       "*:crushed-*"

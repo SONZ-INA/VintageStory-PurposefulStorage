@@ -26,6 +26,7 @@
   "block-clothrack-*": "Cloth Rack",
   "block-roperack-*": "Rope Rack",
   "block-jonaspartscabinet-*": "Jonas Parts Cabinet",
+  "block-apothecarycabinet-*": "Apothecary Cabinet",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -52,6 +53,7 @@
   "helddesc-clothrack": "Store your cloth!",
   "helddesc-roperack": "Store your ropes!",
   "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
+  "helddesc-apothecarycabinet": "Store all of your bandages and poultices!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",
