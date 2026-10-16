@@ -53,7 +53,7 @@
   "helddesc-clothrack": "Store your cloth!",
   "helddesc-roperack": "Store your ropes!",
   "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
-  "helddesc-apothecarycabinet": "Store all of your bandages and poultices!",
+  "helddesc-apothecarycabinet": "Store all of your bandages and poultices! Stops alcohol-soaked bandages from drying out.",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",

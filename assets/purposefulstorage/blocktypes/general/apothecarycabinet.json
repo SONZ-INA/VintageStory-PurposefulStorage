@@ -33,26 +33,26 @@
   "sidesolid": { "all": false },
   "sideopaque": { "all": false },
   "guiTransform": {
-    "origin": { "x": 0.6, "y": 0.5, "z": 1.5 },
-    "scale": 0.63
+    "origin": { "x": 0.75, "y": 0.5, "z": 0.5 }
   },
   "tpHandTransform": {
-    "translation": { "x": -2.4, "y": -0.88, "z": -0.71 },
+    "translation": { "x": -0.9, "y": -0.68, "z": -0.41 },
     "rotation": { "x": 0, "y": -82, "z": 0 },
-    "scale": 0.36
+    "scale": 0.5
   },
   "sounds": {
     "place": "game:block/planks",
     "hit": "game:block/planks",
     "break": "game:block/planks"
   },
-  "collisionbox": { "x1": 0.3, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+  "collisionbox": { "x1": 0.4375, "y1": 0, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
   "selectionBoxes": [
-	  { "x1": 0.275, "y1": 0, "z1": 0, "x2": 1, "y2": 0.5, "z2": 0.4475, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-	  { "x1": 0.275, "y1": 0.5, "z1": 0, "x2": 1, "y2": 1, "z2": 0.4475, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-    { "x1": 0.275, "y1": 0, "z1": 0.4475, "x2": 1, "y2": 0.5, "z2": 0.875, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-    { "x1": 0.275, "y1": 0.5, "z1": 0.4475, "x2": 1, "y2": 1, "z2": 0.875, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-    { "x1": 0.275, "y1": 0, "z1": 0.875, "x2": 1, "y2": 0.5, "z2": 1.295, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
-    { "x1": 0.275, "y1": 0.5, "z1": 0.875, "x2": 1, "y2": 1, "z2": 1.295, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+	  { "x1": 0.4375, "y1": 0, "z1": 0, "x2": 1, "y2": 0.625, "z2": 0.5, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.4375, "y1": 0, "z1": 0.5, "x2": 1, "y2": 0.625, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0.4375, "y1": 0.625, "z1": 0, "x2": 1, "y2": 1, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  
+    { "x1": 0.0875, "y1": 0.0625, "z1": 0.0225, "x2": 0.495, "y2": 0.595, "z2": 0.0925, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.0875, "y1": 0.0625, "z1": 0.9075, "x2": 0.495, "y2": 0.595, "z2": 0.9775, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+    { "x1": 0.2125, "y1": 0.6155, "z1": 0.0625, "x2": 0.495, "y2": 0.6875, "z2": 0.9375, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
   ]
 }

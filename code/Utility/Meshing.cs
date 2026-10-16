@@ -257,7 +257,7 @@ public static class Meshing {
         if (stack?.Collectible == null || stack.StackSize <= 0) return null;
         if (string.IsNullOrEmpty(shapePath) || capacity <= 0) return null;
 
-        AssetLocation shapeLocation = ResolveStackedShapeLocation(shapePath, stack);
+        AssetLocation shapeLocation = ResolveStackedShapeLocation(capi, shapePath, stack);
 
         Shape? shape = Shape.TryGet(capi, shapeLocation)?.Clone();
         if (shape?.Elements == null || shape.Elements.Length == 0) {
@@ -268,12 +268,12 @@ public static class Meshing {
         int visible = GetVisibleShapeCount(stack.StackSize, capacity, shape.Elements.Length);
         if (visible <= 0) return null;
 
-        // Keep only the visible root elements.
         if (visible < shape.Elements.Length) {
             shape.Elements = [.. shape.Elements.Take(visible)];
         }
 
-        // Use the textures defined by the shape file.
+        shape.OverrideTexturesFromCollectible(stack);
+
         ITexPositionSource texSource = new ShapeTextureSource(capi, shape, "PS-StackedShapeTexSource");
 
         capi.Tesselator.TesselateShape("PS-TesselateStackedShape", shape, out MeshData mesh, texSource);

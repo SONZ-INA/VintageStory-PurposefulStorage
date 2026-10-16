@@ -26,6 +26,7 @@
   "block-clothrack-*": "Стійки для тканини",
   "block-roperack-*": "Стійка для мотузки",
   "block-jonaspartscabinet-*": "Шафа для деталей Йонаса",
+  "block-apothecarycabinet-*": "Аптекарська шафа",
 
   "blockdesc-canhold-title": "Може зберігати:",
 
@@ -52,6 +53,7 @@
   "helddesc-clothrack": "Зберігайте вашу тканину!",
   "helddesc-roperack": "Зберігайте ваші мотузки!",
   "helddesc-jonaspartscabinet": "Зберігайте всі деталі Йонаса!",
+  "helddesc-apothecarycabinet": "Зберігайте всі свої бинти та припарки! Запобігає висиханню бинтів, просочених алкоголем.",
 
   "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері.",
   "This item is not of the same type as the item in the container!": "Цей предмет не відповідає типу предмета в контейнері!",

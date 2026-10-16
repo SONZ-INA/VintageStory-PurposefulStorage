@@ -34,7 +34,7 @@ public static class MeshExtensions {
     public static int GetStackedShapeCount(ICoreClientAPI? capi, ItemStack? stack, string shapePath) {
         if (capi == null || stack?.Collectible == null || string.IsNullOrEmpty(shapePath)) return 0;
 
-        AssetLocation loc = ResolveStackedShapeLocation(shapePath, stack);
+        AssetLocation loc = ResolveStackedShapeLocation(capi, shapePath, stack);
         string key = loc.ToString();
 
         if (stackedShapeCounts.TryGetValue(key, out int count)) return count;
@@ -56,16 +56,62 @@ public static class MeshExtensions {
     /// Resolves a direct file path or builds one from the folder and item code path for the location of stacked shapes.<br/>
     /// Used for GenStackedShapeMesh method.
     /// </summary>
-    public static AssetLocation ResolveStackedShapeLocation(string source, ItemStack stack) {
+    private static readonly ConcurrentDictionary<string, AssetLocation> stackedShapeCache = new();
+
+    public static AssetLocation ResolveStackedShapeLocation(ICoreClientAPI capi, string source, ItemStack stack) {
+        string code = stack.Collectible.Code.Path;
+        string cacheKey = $"{source}|{code}";
+
+        if (stackedShapeCache.TryGetValue(cacheKey, out AssetLocation? cached))
+            return cached;
+
         AssetLocation loc = source.Contains(':')
             ? new AssetLocation(source)
             : new AssetLocation("purposefulstorage", $"shapes/stacks/{source}");
 
-        if (!source.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
-            loc = new AssetLocation(loc.Domain, $"{loc.Path.TrimEnd('/')}/{stack.Collectible.Code.Path}");
+        // Direct Filename
+        if (source.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
+            AssetLocation direct = loc.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
+            stackedShapeCache[cacheKey] = direct;
+            return direct;
         }
 
-        return loc.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json");
+        AssetLocation folder = new(loc.Domain, loc.Path.TrimEnd('/'));
+        folder = folder.WithPathPrefixOnce("shapes/");
+
+        // Exact file: <folder>/<code>.json
+        AssetLocation exact = new AssetLocation(folder.Domain, $"{folder.Path}/{code}").WithPathAppendixOnce(".json");
+        if (capi.Assets.Exists(exact)) {
+            stackedShapeCache[cacheKey] = exact;
+            return exact;
+        }
+
+        // Wildcard files: ANY in the file name stands for *
+        string folderPrefix = folder.Path + "/";
+        AssetLocation? best = null;
+        int bestScore = -1;
+
+        foreach (IAsset asset in capi.Assets.GetManyInCategory("shapes", folderPrefix["shapes/".Length..], folder.Domain, false)) {
+            string path = asset.Location.Path;
+            if (!path.StartsWith(folderPrefix) || !path.EndsWith(".json")) continue;
+
+            string name = path[folderPrefix.Length..^".json".Length];
+            if (name.Contains('/') || !name.Contains('~')) continue;
+
+            string pattern = name.Replace('~', '*');
+            if (!WildcardUtil.Match(pattern, code)) continue;
+
+            int score = pattern.Count(c => c != '*');
+            if (score > bestScore) {
+                bestScore = score;
+                best = asset.Location;
+            }
+        }
+
+        // Nothing matched
+        AssetLocation result = best ?? exact;
+        stackedShapeCache[cacheKey] = result;
+        return result;
     }
 
     /// <summary>
@@ -95,6 +141,23 @@ public static class MeshExtensions {
             foreach (var face in child.FacesResolved!) {
                 face?.Texture = key;
             }
+        }
+    }
+
+    /// <summary>
+    /// Replaces the shape's texture paths with the collectible's own textures, matched by key.<br/>
+    /// </summary>
+    public static void OverrideTexturesFromCollectible(this Shape shape, ItemStack? stack) {
+        if (stack == null || shape.Textures == null || shape.Textures.Count == 0) return;
+
+        var collectibleTextures = stack.Item?.Textures ?? stack.Block?.Textures;
+        if (collectibleTextures == null) return;
+
+        foreach (string key in shape.Textures.Keys.ToArray()) {
+            if (!collectibleTextures.TryGetValue(key, out CompositeTexture? tex) || tex?.Base == null) continue;
+            if (tex.Base.Path.Contains("transparent")) continue;
+
+            shape.Textures[key] = tex.Base;
         }
     }
 

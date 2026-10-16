@@ -31,7 +31,7 @@ public class BEJonasPartsCabinet : BEBasePSContainer {
 
         int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
         mesh = GenStackedShapeMesh(capi, slot.Itemstack, "jonasparts", capacity);
-        if (mesh == null) return base.getOrCreateMesh(slot, index); // fallback: normal item
+        if (mesh == null) return base.getOrCreateMesh(slot, index); // fallback - normal item
 
         MeshCache[getMeshCacheKey(slot)] = mesh;
         return mesh;

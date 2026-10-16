@@ -1,0 +1,8 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "*:poultice-linen-*",
+    "*:poultice-reed-*"
+  ],
+  "BlacklistedCodes": []
+}

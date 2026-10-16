@@ -68,7 +68,7 @@ public class BlockWardrobe : BasePSContainer, IMultiBlockColSelBoxes {
     }
 
     public override WorldInteraction[]? GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer) {
-        if (world.BlockAccessor.GetBlockEntity(selection.Position) is BEWardrobe bew) {
+        if (world.BlockAccessor.GetBlockEntity(selection.Position) is BEWardrobe) {
             if (selection.SelectionBoxIndex < 7) {
                 return footwareInteractions;
             }
