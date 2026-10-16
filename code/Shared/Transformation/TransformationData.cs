@@ -9,6 +9,7 @@ public class TransformationData() {
     public int section;
     public int segment;
     public int item;
+    public int stackItem;
 
     public float preRotate = 0;
     public float x, y, z;
@@ -24,6 +25,7 @@ public class TransformationData() {
     /// Resets all properties to 0, except preRotate.
     /// </summary>
     public void Reset() {
+        stackItem = 0;
         x = y = z = 0;
         offsetX = offsetY = offsetZ = 0;
         rotX = rotY = rotZ = 0;

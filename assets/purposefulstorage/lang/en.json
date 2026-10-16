@@ -25,6 +25,8 @@
   "block-swordplaque-*": "Sword Plaque",
   "block-clothrack-*": "Cloth Rack",
   "block-roperack-*": "Rope Rack",
+  "block-jonaspartscabinet-*": "Jonas Parts Cabinet",
+  "block-apothecarycabinet-*": "Apothecary Cabinet",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -36,7 +38,7 @@
   "helddesc-glidermount": "A mount for your glider!",
   "helddesc-weaponrack": "Can hold most long weapons!",
   "helddesc-gearrack": "Can hold gears!",
-  "helddesc-resourcebin": "Can hold dry grass & thatch, sticks, stones, coal/quartz, flax twine/fibers, peat, compost, ore chunks, nuggets & bits, and most powder-y stuff!",
+  "helddesc-resourcebin": "Can hold dry grass & thatch, sticks, stones, bones, feathers, coal/quartz, flax twine/fibers, peat, compost, metal parts, ore chunks, nuggets & bits, and most powder-y stuff!",
   "helddesc-pantsrack": "Can hold all sorts of pants!",
   "helddesc-gloverack": "Can hold most gloves, braces and bracelets!",
   "helddesc-necklacestand": "Can hold most necklaces!",
@@ -50,7 +52,11 @@
   "helddesc-swordplaque": "Hang your favorite sword!",
   "helddesc-clothrack": "Store your cloth!",
   "helddesc-roperack": "Store your ropes!",
+  "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
+  "helddesc-apothecarycabinet": "Store all of your bandages and poultices! Stops alcohol-soaked bandages from drying out.",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
-  "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!"
+  "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",
+
+  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Can't place this item here, it's either not the right type, or not the right size for this section."
 }

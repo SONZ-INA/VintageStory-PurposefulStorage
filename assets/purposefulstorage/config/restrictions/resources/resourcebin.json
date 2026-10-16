@@ -14,27 +14,39 @@
     "stick": [
       "game:stick"
     ],
-    "stone": [
-      "*:stone-*"
-    ],
     "flax": [
       "game:flaxtwine"
     ],
     "fiber": [
       "game:flaxfibers"
     ],
+    "peat": [
+      "game:peatbrick"
+    ],
+    "metalparts": [
+      "game:metal-parts"
+    ],
+    "feather": [
+      "game:feather"
+    ],
+    "bone": [
+      "game:bone"
+    ],
+    "stone": [
+      "*:stone-*"
+    ],
     "nugget": [
       "*:nugget-*",
       "*:metalbit-*"
-    ],
-    "peat": [
-      "game:peatbrick"
     ],
     "powder": [
       "game:lime",
       "game:calcined-flint",
       "game:blastingpowder",
       "game:compost",
+      "game:bonemeal",
+      "game:salt",
+      "game:saltpeter",
       "*:clay-*",
       "*:powder-*",
       "*:crushed-*"

@@ -1,0 +1,36 @@
+[
+  {
+    "ingredientPattern": "HNS,PGP,PRP",
+    "ingredients": {
+      "P": { "type": "item", "code": "game:plank-{wood}", "quantity": 2 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "R": { "type": "item", "code": "game:resin", "quantity": 2 },
+      "G": { "type": "block", "code": "game:glassslab-*-down-free" },
+      "H": { "type": "item", "code": "game:hammer-*", "isTool": true, "toolDurabilityCost": 10 },
+      "S": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 10 }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": {
+      "type": "block",
+      "code": "apothecarycabinet-normal-east",
+      "attributes": {
+        "PSAttributes": {
+          "wood": "{wood}"
+        }
+      }
+    }
+  },
+  {
+    "ingredientPattern": "HNS,PGP,PRP",
+    "ingredients": {
+      "P": { "type": "item", "code": "*:plank-*", "quantity": 2 },
+      "N": { "type": "item", "code": "game:metalnailsandstrips-*" },
+      "R": { "type": "item", "code": "game:resin", "quantity": 2 },
+      "G": { "type": "block", "code": "*:glassslab-*-down-free" },
+      "H": { "type": "item", "code": "game:hammer-*", "isTool": true, "toolDurabilityCost": 10 },
+      "S": { "type": "item", "code": "game:saw-*", "isTool": true, "toolDurabilityCost": 10 }
+    },
+    "width": 3, "height": 3, "recipeGroup": 1,
+    "output": { "type": "block", "code": "apothecarycabinet-normal-east" }
+  }
+]

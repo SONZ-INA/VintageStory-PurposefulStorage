@@ -75,6 +75,36 @@ public class BEResourceBin : BEBasePSContainer {
         RZ: [    0,     1,     2,    -1,     0,    -1,     3,     2,     1,    0,     -1,     1 ]
     );
 
+    protected static readonly ExplicitTransform PartsTransformations = new (
+        X: [  .1f, .21f,-.15f,  .22f,-.05f, .22f,-.2f,-.23f,-.11f,-.18f, .15f,-.19f, -.2f, .24f, .23f, .23f, .21f,-.23f,-.14f,-.21f, .08f, .22f,-.21f, .21f ],
+        Y: [    0, .01f,.021f, .031f,.039f,.049f,   0, .06f,    0, .01f,    0, .11f,  .1f, .11f, .11f, .11f, .12f, .12f, .15f,  .2f, .19f,  .2f, .25f, .25f ],
+        Z: [-.05f, .13f, .17f, -.07f, -.2f,-.25f, .1f,-.23f,-.08f, .18f, .21f,-.28f,  .2f,    0, .16f,-.21f,-.23f, .17f,-.22f,-.23f,-.23f,-.22f,-.23f,-.22f ],
+        
+        RX: [],
+        RY: [   0,  -30,    0,    90,   -5,    0, 180,   90,   30,   45,  -60,    5,    2,   90,   85,   90,  180,   90,   43,  180,   54,  -10,   24,  125 ],
+        RZ: []
+    );
+
+    protected static readonly ExplicitTransform FeatherTransformations = new (
+        X: [  .1f, .21f,-.15f,  .37f,-.05f, .16f,-.16f,-.23f,-.11f,-.18f, .15f,-.18f,-.18f, .24f, .38f, .38f, .18f,-.38f,-.14f,-.19f, .15f, .18f,-.21f, .21f, .19f, -.2f, .18f,    0, -.2f, -.1f,-.18f,    0, .36f,-.18f, .14f,-.18f,-.15f,-.14f,-.14f,-.14f,-.04f, .06f, .14f, .21f, .18f, .18f, .02f, .12f, .16f, .16f,-.21f,-.29f,-.35f ],
+        Y: [    0,.002f,.002f, .012f,    0,.015f, .02f,.012f, .02f, .01f,    0,.025f, .02f, .02f, .02f, .03f,.035f,.035f,.035f, .02f,.035f,.045f,.045f,.055f,.045f, .05f, .19f, .19f, .17f, .17f,  .2f, .21f, .21f, .23f, .23f, .23f, .29f, .23f, .33f, .33f, .26f, .25f, .24f, .24f, .23f, .23f, .23f, .22f, .22f, .21f, .24f, .22f, .25f ],
+        Z: [-.05f, .13f, .17f, -.07f, -.2f,-.25f,  .1f,-.15f,-.08f, .18f, .21f,-.38f,  .3f,    0, .16f,-.19f,-.23f, .15f,-.22f,-.23f,-.37f,-.22f,-.23f,-.22f, .32f,-.18f, .24f, .32f, -.1f,-.05f,-.32f, -.3f,-.18f,-.35f,-.34f, -.3f,-.35f,-.22f,-.35f,-.31f,-.30f,-.20f,-.33f,-.12f,-.25f,-.05f,-.02f, .06f, .10f, .14f,-.06f,-.04f,-.09f ],
+        
+        RX: [   0,    0,    0,     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   0,     0,  180,  180,  180,  180,  180,  178,  182,  210,  212,  200,  210,  250,  240,  220,  215,  210,  225,  210,  210,  205,  215,  220,  198,  208,  195,  189,  195 ],
+        RY: [   0,  -30,    0,    90,   -5,    0,  180,   90,   30,   45,  -60,    0,    2,   90,  -85,   90,  180,   90,   43,  180,  180,  -10, -157,  125,   0,   160,  175,  183,  150,  150,  186,  183,   96,    0,   -4,    0,  180,    1,    2,  180,  180,    4,  176,   -3,  184,    6,  178,    2,  182,    0,   90,   90,   90 ],
+        RZ: []
+    );
+
+    protected static readonly ExplicitTransform BoneTransformations = new (
+        X: [-.36f,-.21f,-.06f, .06f, .19f, .36f,-.36f,-.23f,-.08f, .07f, .22f, .36f,  .1f,  .5f,  .1f,  .5f,  .1f,  .5f,  .1f, .5f,-.37f,-.24f,-.12f,    0, .12f, .24f, .36f,  .1f,  .5f, .08f, .48f ],
+        Y: [    0,    0,    0,    0,    0,    0, .55f, .55f, .55f, .55f, .55f, .55f,  .1f,  .1f,  .1f,  .1f,  .1f,  .1f,  .1f, .1f,  .2f,  .2f,  .2f,  .2f,  .2f,  .2f,  .2f,  .3f,  .3f,  .3f,  .3f ],
+        Z: [-.23f,-.21f,-.22f,-.23f,-.21f,-.21f, -.3f, -.3f, -.3f, -.3f, -.3f, -.3f,-.04f,-.05f, .07f, .08f, .18f, .19f, .29f, .3f,-.18f, .43f,-.18f, .43f,-.18f, .43f,-.18f,-.12f,-.12f,    0,    0 ],
+        
+        RX: [ -20,  -21,  -19,  -20,  -19,  -20, -199, -200, -199, -202, -203, -199,  -20,   10,  179,  181,    0,    0,  180, 179,   90,  270,   89,  269,   91,  270,   90,    1,    0,  180,  180 ],
+        RY: [   0,  -30,    0,   90,   -5,    0,    0,   15,   -1,    3,   -2,    5,    2,    1,    0,   -1,    2,    1,    1,  -1,    1,   -1,    2,    0,    1,    2,    0,    2,    0,   -1,   -2 ],
+        RZ: [   0,    1,   -1,    0,   -1,    1,    1,   -2,    0,   -1,    0,    1,   90,   90,   91,   90,   89,   90,   90,  89,    1,    2,    1,   -1,   -1,    0,    0,   90,   89,   88,   92 ]
+    );
+
     protected ExplicitTransform? CachedTransformations {
         get {
             if (inv[0].Empty || ResourceBinData?.GroupingCodes == null)
@@ -92,6 +122,9 @@ public class BEResourceBin : BEBasePSContainer {
                             "flax" => FlaxTransformations,
                             "fiber" => FiberTransformations,
                             "peat" => PeatTransformations,
+                            "metalparts" => PartsTransformations,
+                            "feather" => FeatherTransformations,
+                            "bone" => BoneTransformations,
                             "powder" => null, // Returning null means powder rendering logic
                             _ => DefaultTransformations
                         };
@@ -103,12 +136,12 @@ public class BEResourceBin : BEBasePSContainer {
         }
     }
 
-    public BEResourceBin() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck, 8, true)); }
+    public BEResourceBin() { inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (_, inv) => new ItemSlotPSUniversal(inv, AttributeCheck, 12, true)); }
 
     protected override bool TryPut(IPlayer byPlayer, ItemSlot slot, BlockSelection blockSel) {
         // For some reason, the ore chunks and blocks have the same code
-        // And for some reason, peatbrick is categorized as a block...
-        if (slot.Itemstack?.Item == null && slot.Itemstack?.Collectible?.Code != "game:peatbrick") 
+        // And for some reason, peatbrick and metal parts are categorized as blocks...
+        if (slot.Itemstack?.Item == null && slot.Itemstack?.Collectible?.Code != "game:peatbrick" && slot.Itemstack?.Collectible?.Code != "game:metal-parts") 
             return false;
 
         return base.TryPut(byPlayer, slot, blockSel);
@@ -134,7 +167,7 @@ public class BEResourceBin : BEBasePSContainer {
 
         if (inv[0].StackSize > transforms.Length) {
             ItemStack stack = inv[0].Itemstack!;
-            int capacity = stack.Collectible.MaxStackSize * 8;
+            int capacity = stack.Collectible.MaxStackSize * 12;
 
             MeshData? utilCube = GenFillCubeMesh(capi, stack, capacity, 0.6f, ShapeReferences.utilResourceBin);
             if (utilCube != null) {
@@ -177,7 +210,7 @@ public class BEResourceBin : BEBasePSContainer {
         float heightOffset = 0f;
 
         if (stack?.StackSize > transforms.Length) {
-            int capacity = stack.Collectible.MaxStackSize * 8;
+            int capacity = stack.Collectible.MaxStackSize * 12;
             heightOffset = GetFillHeight(stack.StackSize, capacity, 0.6f);
         }
 

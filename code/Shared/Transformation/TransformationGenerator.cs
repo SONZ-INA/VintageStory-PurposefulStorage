@@ -52,7 +52,62 @@ public static class TransformationGenerator {
     }
 
     /// <summary>
-    /// Generates transformation matrices from a predefined set of positions and rotations. <br />
+    /// Like <see cref="GenerateLayout"/>, but td.item is the index of the physical item within the slot's stack.<br />
+    /// The number of physical items scales with how full the stack is, capped at <paramref name="limit"/>.
+    /// Returns one array of matrices per slot (empty array for empty slots).
+    /// </summary>
+    public static float[][][] GenerateStackLayout(BEBasePSContainer be, int limit, Action<TransformationData> accessor) {
+        float[][][] tfMatrices = new float[be.SlotCount][][];
+
+        TransformationData td = new() {
+            preRotate = be.Block.GetRotationAngle()
+        };
+
+        int index = 0;
+
+        for (int section = 0; section < be.SectionSegmentCounts.Length; section++) {
+            int segmentsInSection = be.SectionSegmentCounts[section];
+
+            for (int segment = 0; segment < segmentsInSection; segment++) {
+                for (int slotInSegment = 0; slotInSegment < be.ItemsPerSegment; slotInSegment++) {
+
+                    if (index >= be.SlotCount) break;
+
+                    var slot = be.inv[index];
+                    int visible = GetVisibleItemCount(slot, limit);
+
+                    if (visible == 0) {
+                        tfMatrices[index] = [];
+                        index++;
+                        continue;
+                    }
+
+                    float[][] stack = new float[visible][];
+
+                    for (int stackItem = 0; stackItem < visible; stackItem++) {
+                        td.Reset();
+                        td.index = index;
+                        td.section = section;
+                        td.segment = segment;
+                        td.item = slotInSegment;
+                        td.stackItem = stackItem;
+
+                        accessor(td);
+
+                        stack[stackItem] = td.BuildMatrix();
+                    }
+
+                    tfMatrices[index] = stack;
+                    index++;
+                }
+            }
+        }
+
+        return tfMatrices;
+    }
+
+    /// <summary>
+    /// Generates transformation matrices from a predefined set of positions and rotations.<br />
     /// Each slot is placed exactly according to the given matrix, with an optional modifier for small adjustments.
     /// </summary>
     public static float[][] GenerateExplicit(ExplicitTransform transform, Action<TransformationData>? modifier = null) {
@@ -78,5 +133,18 @@ public static class TransformationGenerator {
         }
 
         return tfMatrices;
+    }
+
+    /// <summary>
+    /// How many physical items to show. Scales proportionally with fill level, at least 1 if non-empty, never above limit.
+    /// </summary>
+    public static int GetVisibleItemCount(ItemSlot slot, int limit) {
+        if (slot.Empty || limit <= 0) return 0;
+
+        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
+        if (capacity <= 0) return 1;
+
+        int visible = (int)Math.Ceiling(slot.StackSize * (double)limit / capacity);
+        return Math.Clamp(visible, 1, limit);
     }
 }

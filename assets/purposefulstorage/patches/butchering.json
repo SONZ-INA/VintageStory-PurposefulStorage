@@ -1,0 +1,8 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/resources/resourcebin.json",
+    "op": "addmerge", "path": "/GroupingCodes/bone/-",
+    "value": "butchering:strongbone",
+    "dependsOn": [ { "modid": "butchering" } ]
+  }
+]

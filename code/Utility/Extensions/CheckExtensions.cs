@@ -11,12 +11,15 @@ public static class CheckExtensions {
 
     /// <summary>
     /// Determines whether the collectible in the given slot has the specified attribute set to true,
-    /// indicating that it is allowed to be stored.<br/> Prevents storage if the slot belongs to a hopper.
+    /// indicating that it is allowed to be stored. Also allows the item in, if the wildcard codes match.<br/>
+    /// Prevents storage if the slot belongs to a hopper.
     /// </summary>
     public static bool CanStoreInSlot(this ItemSlot slot, string attributeWhitelist) {
-        if (!(slot?.Itemstack?.Collectible?.Attributes?[attributeWhitelist].AsBool() == true)) return false;
-        if (slot?.Inventory?.ClassName == "hopper") return false;
-        return true;
+        if (slot?.Itemstack?.Collectible == null) return false;
+        if (slot.Inventory?.ClassName == "hopper") return false;
+        if (WildcardUtil.Match(attributeWhitelist, slot.Itemstack.Collectible.Code.ToString())) return true;
+
+        return slot.Itemstack.Collectible.Attributes?[attributeWhitelist].AsBool() == true;
     }
 
     /// <summary>
@@ -34,11 +37,14 @@ public static class CheckExtensions {
     }
 
     /// <summary>
-    /// Determines whether the collectible has the specified attribute set to true,
-    /// allowing it to be stored in compatible containers.
+    /// Determines whether the collectible has the specified attribute set to true, allowing it to be stored in compatible containers.<br />
+    /// Could also check for the Itemcode itself (supports Wildcards).
     /// </summary>
     public static bool CanStoreInSlot(this CollectibleObject obj, string attributeWhitelist) {
-        return obj?.Attributes?[attributeWhitelist].AsBool() == true;
+        if (obj == null) return false;
+        if (WildcardUtil.Match(attributeWhitelist, obj.Code.ToString())) return true;
+
+        return obj.Attributes?[attributeWhitelist].AsBool() == true;
     }
 
     /// <summary>

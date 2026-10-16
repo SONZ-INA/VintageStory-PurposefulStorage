@@ -1,4 +1,6 @@
-﻿namespace PurposefulStorage;
+﻿using System.Linq;
+
+namespace PurposefulStorage;
 
 public sealed class ItemSlotPSUniversal : ItemSlot {
     public override int MaxSlotStackSize {
@@ -18,6 +20,7 @@ public sealed class ItemSlotPSUniversal : ItemSlot {
 
     private readonly string[] attributeCheck;
     private readonly int stackCountLimit;
+    private readonly AssetLocation? collectibleCode;
 
     public ItemSlotPSUniversal(InventoryBase inventory, string[] attributeCheck, int stackCountLimit = 1, bool isBulk = false) : base(inventory) {
         this.inventory = inventory;
@@ -33,6 +36,14 @@ public sealed class ItemSlotPSUniversal : ItemSlot {
         this.isBulk = isBulk;
     }
 
+    public ItemSlotPSUniversal(InventoryBase inventory, AssetLocation collectibleCode, int stackCountLimit = 1, bool isBulk = false) : base(inventory) {
+        this.inventory = inventory;
+        this.attributeCheck = [];
+        this.collectibleCode = collectibleCode;
+        this.stackCountLimit = stackCountLimit;
+        this.isBulk = isBulk;
+    }
+
     public override int GetRemainingSlotSpace(ItemStack forItemstack) {
         int capacity = isBulk
             ? forItemstack.Collectible.MaxStackSize * stackCountLimit
@@ -41,28 +52,24 @@ public sealed class ItemSlotPSUniversal : ItemSlot {
         return capacity - StackSize;
     }
 
-    public override bool CanHold(ItemSlot slot) {
-        bool canStore = false;
-        foreach (var attribute in attributeCheck) {
-            if (slot.CanStoreInSlot(attribute)) {
-                canStore = true;
-                break;
-            }
+    public bool CanStoreItem(ItemSlot slot, string? overrideAttrCheck = null) {
+        if (overrideAttrCheck != null) {
+            return slot.CanStoreInSlot(overrideAttrCheck);
         }
 
-        return canStore && base.CanHold(slot);
+        if (collectibleCode != null) {
+            return slot.Itemstack?.Collectible?.Code.Equals(collectibleCode) == true;
+        }
+
+        return attributeCheck.Any(slot.CanStoreInSlot);
+    }
+
+    public override bool CanHold(ItemSlot slot) {
+        return CanStoreItem(slot) && base.CanHold(slot);
     }
 
     public override bool CanTakeFrom(ItemSlot slot, EnumMergePriority priority = EnumMergePriority.AutoMerge) {
-        bool canStore = false;
-        foreach (var attribute in attributeCheck) {
-            if (slot.CanStoreInSlot(attribute)) {
-                canStore = true;
-                break;
-            }
-        }
-
-        return canStore && base.CanTakeFrom(slot, priority);
+        return CanStoreItem(slot) && base.CanTakeFrom(slot, priority);
     }
 
     public override int TryPutInto(IWorldAccessor world, ItemSlot sinkSlot, int quantity = 1) {

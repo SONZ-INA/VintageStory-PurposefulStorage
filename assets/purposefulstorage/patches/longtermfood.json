@@ -1,0 +1,16 @@
+[
+  {
+    "file": "purposefulstorage:config/restrictions/general/bandages.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-", "side": "server",
+    "value": "pemmican:heal-wax",
+    "dependsOn": [ { "modid": "longtermfood" } ]
+  },
+  {
+    "file": "purposefulstorage:config/restrictions/general/poultices.json",
+    "op": "addmerge", "path": "/CollectibleCodes", "side": "server",
+    "value": [
+      "pemmican:healingherb-flower"
+    ],
+    "dependsOn": [ { "modid": "longtermfood" } ]
+  }
+]
