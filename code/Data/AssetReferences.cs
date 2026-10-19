@@ -15,4 +15,6 @@ public static class ShapeReferences {
 public static class SoundReferences {
     public const string WardrobeOpen = "purposefulstorage:sounds/block/wardrobeopen.ogg";
     public const string WardrobeClose = "purposefulstorage:sounds/block/wardrobeclose.ogg";
+    public const string ApothecaryOpen = "purposefulstorage:sounds/block/apothecarycabinetopen.ogg";
+    public const string ApothecaryClose = "purposefulstorage:sounds/block/apothecarycabinetclose.ogg";
 }

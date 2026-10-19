@@ -5,8 +5,8 @@ public class BlockApothecaryCabinet : BasePSContainer {
     private WorldInteraction[]? poulticeInteractions;
     private WorldInteraction[]? bandageInteractions;
 
-    public readonly AssetLocation soundCabinetOpen = new(SoundReferences.WardrobeOpen); // todo
-    public readonly AssetLocation soundCabinetClose = new(SoundReferences.WardrobeClose); // todo
+    public readonly AssetLocation soundCabinetOpen = new(SoundReferences.ApothecaryOpen);
+    public readonly AssetLocation soundCabinetClose = new(SoundReferences.ApothecaryClose);
 
     private static readonly Cuboidf Skip = new(); // Skip selectionBox, to keep consistency between selectionBox indexes
 
@@ -37,24 +37,18 @@ public class BlockApothecaryCabinet : BasePSContainer {
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-add",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "shift",
                     Itemstacks = stackArray
                 },
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-addbulk",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCodes = ["shift", "ctrl"],
+                    HotKeyCode = "ctrl",
                     Itemstacks = stackArray
                 },
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-remove",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = null
-                },
-                new() {
-                    ActionLangCode = "blockhelp-groundstorage-removebulk",
-                    MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "ctrl"
+                    RequireFreeHand = true
                 }
             };
         });
@@ -74,24 +68,18 @@ public class BlockApothecaryCabinet : BasePSContainer {
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-add",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "shift",
                     Itemstacks = stackArray
                 },
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-addbulk",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCodes = ["shift", "ctrl"],
+                    HotKeyCode = "ctrl",
                     Itemstacks = stackArray
                 },
                 new() {
                     ActionLangCode = "blockhelp-groundstorage-remove",
                     MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = null
-                },
-                new() {
-                    ActionLangCode = "blockhelp-groundstorage-removebulk",
-                    MouseButton = EnumMouseButton.Right,
-                    HotKeyCode = "ctrl"
+                    RequireFreeHand = true
                 }
             };
         });

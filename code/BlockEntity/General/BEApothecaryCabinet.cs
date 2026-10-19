@@ -1,6 +1,11 @@
 ﻿namespace PurposefulStorage;
 
 public class BEApothecaryCabinet : BEBasePSAnimatable {
+    // Take into account the "displayShape" introduced in 1.22
+    protected virtual string DisplayType => "shelf";
+    private DisplayableAttributes? GetDisplayProps(ItemSlot slot) => BlockBehaviorDisplay.GetDisplayableAttributes(slot, DisplayType);
+    // --------------------
+
     protected new BlockApothecaryCabinet block = null!;
 
     protected override string ReferencedShape => ShapeReferences.ApothecaryCabinet;
@@ -28,10 +33,21 @@ public class BEApothecaryCabinet : BEBasePSAnimatable {
         TDoor = 5
     }
 
+    private const int SlotsPerSegment = 32;
+    private static readonly int[] SegmentCapacities = [16, 16, 32]; // L, R, T
+
+    public override int ItemsPerSegment => SlotsPerSegment;
+
     public BEApothecaryCabinet() {
         inv = new InventoryGeneric(SlotCount, InventoryClassName + "-0", Api, (id, inv) => {
-            if (id < 2) return new ItemSlotPSUniversal(inv, "psPoultices", 1, true);
-            else return new ItemSlotPSUniversal(inv, "psBandages", 1, true);
+            int segment = id / SlotsPerSegment;
+            int local = id % SlotsPerSegment;
+
+            if (local >= SegmentCapacities[segment]) return new ItemSlotPSUniversal(inv, "ps-unused", 0);
+
+            return segment < 2
+                ? new ItemSlotPSUniversal(inv, "psPoultices")
+                : new ItemSlotPSUniversal(inv, "psBandages");
         });
     }
 
@@ -92,6 +108,39 @@ public class BEApothecaryCabinet : BEBasePSAnimatable {
         return false;
     }
 
+    protected override bool TryPut(IPlayer byPlayer, ItemSlot slot, BlockSelection blockSel) {
+        int segment = blockSel.SelectionBoxIndex;
+        int startIndex = segment * ItemsPerSegment;
+        if (segment < 0 || segment >= SegmentCapacities.Length || startIndex >= inv.Count) return false;
+
+        if (!CanInsertIntoSegment(null, slot.Itemstack!)) return false;
+
+        if (CountItemsInSegment(startIndex) >= SegmentCapacities[segment]) return false;
+
+        int moved = TryPutIntoSegment(slot, startIndex, byPlayer.Entity.Controls.CtrlKey);
+        if (moved <= 0) return false;
+
+        InitMesh();
+        MarkDirty();
+        (Api as ICoreClientAPI)?.World.Player.TriggerFpAnimation(EnumHandInteract.HeldItemInteract);
+        return true;
+    }
+
+    protected override int TryPutIntoSegment(ItemSlot slot, int startIndex, bool ctrl) {
+        int wanted = ctrl ? slot.StackSize : 1;
+        int moved = 0;
+
+        for (int i = 0; i < ItemsPerSegment && moved < wanted && !slot.Empty; i++) {
+            ItemSlot target = inv[startIndex + i];
+            if (!target.Empty || target.GetRemainingSlotSpace(slot.Itemstack) <= 0)
+                continue;
+
+            moved += slot.TryPutIntoBulk(Api.World, target, 1);
+        }
+
+        return moved;
+    }
+
     #region Animation
 
     protected override void HandleAnimations() {
@@ -127,31 +176,87 @@ public class BEApothecaryCabinet : BEBasePSAnimatable {
     #endregion
 
     protected override string getMeshCacheKey(ItemSlot slot) {
-        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
-        int visible = GetStackedVisibleCount(capi, slot.Itemstack, "apothecarycabinet", capacity);
+        if (slot.Empty) return base.getMeshCacheKey(slot);
 
-        if (visible == 0) return base.getMeshCacheKey(slot); // no stacked shape - normal item and key
+        DisplayableAttributes? attr = GetDisplayProps(slot);
+        if (attr?.Shape != null) return $"{slot.Itemstack!.Collectible.Code}-{DisplayType}-{attr.Shape}";
 
-        return $"ps-stacked-{slot.Itemstack?.Collectible.Code}-{visible}";
+        return base.getMeshCacheKey(slot);
     }
 
     protected override MeshData getOrCreateMesh(ItemSlot slot, int index) {
         MeshData? mesh = getMesh(slot);
         if (mesh != null) return mesh;
+        if (slot.Empty) return base.getOrCreateMesh(slot, index);
 
-        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
-        mesh = GenStackedShapeMesh(capi, slot.Itemstack, "apothecarycabinet", capacity);
-        if (mesh == null) return base.getOrCreateMesh(slot, index); // fallback - normal item
+        mesh = GenDisplayShapeMesh(slot);
+        if (mesh == null) return base.getOrCreateMesh(slot, index);
 
         MeshCache[getMeshCacheKey(slot)] = mesh;
         return mesh;
     }
 
+    private MeshData? GenDisplayShapeMesh(ItemSlot slot) {
+        DisplayableAttributes? attr = GetDisplayProps(slot);
+        if (attr?.Shape == null) return null;
+
+        ItemStack stack = slot.Itemstack!;
+        CompositeShape shapeLoc = attr.Shape;
+
+        MeshData mesh = capi.TesselatorManager.CreateMesh("displayed item shape", shapeLoc, (shape, name) => {
+            var textures = new Dictionary<string, AssetLocation>(shape.Textures);
+            var collTextures = stack.Class == EnumItemClass.Item ? stack.Item.Textures : stack.Block.Textures;
+            foreach (var val in collTextures) {
+                textures[val.Key] = val.Value.Base;
+            }
+
+            return new ContainedTextureSource(capi, capi.BlockTextureAtlas, textures, $"For displayed item {stack.Collectible.Code}");
+        },
+            null
+        );
+
+        if (attr.Transform != null) {
+            attr.Transform.EnsureDefaultValues();
+            mesh.ModelTransform(attr.Transform);
+        }
+
+        return mesh;
+    }
+
     protected override float[][] genTransformationMatrices() {
         return TransformationGenerator.GenerateLayout(this, td => {
-            if (td.segment == 1) {
-                td.offsetX = 0.4725f;
+            if (td.segment == 2) {
+                if (td.item % 2 != 0) { // Compress Bandages to 2:1 mesh ratio
+                    td.hidden = true;
+                    return;
+                }
+
+                td.scaleX =  0.8f;
+                td.scaleY = 0.75f;
+                td.scaleZ = 0.685f;
+
+                td.offsetX = -0.4325f;
+                td.offsetY = 0.775f;
+                td.offsetZ = -0.3325f;
+
+                td.offsetRotZ = -90;
+
+                td.x = td.item % 16 * 0.05375f;
+                td.z = td.item / 16 * 0.2f;
+
+                return;
             }
+
+            td.scaleX = td.scaleZ = 0.685f;
+            td.scaleY = 0.5f;
+
+            td.offsetX = -0.225f;
+            td.offsetY = 0.0625f;
+            td.offsetZ = -0.225f;
+
+            td.x = td.segment == 1 ? 0.46f : 0;
+            td.y = td.item * 0.03125f;
+            td.offsetRotY = StaticRandom(td.index, 10);
         });
     }
 }

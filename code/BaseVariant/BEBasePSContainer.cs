@@ -3,11 +3,6 @@
 namespace PurposefulStorage;
 
 public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorageContainer {
-    protected bool receivedInitialSync = false;
-
-    protected virtual string DisplayType => "shelf";
-    private DisplayableAttributes? GetDisplayProps(ItemSlot slot) => BlockBehaviorDisplay.GetDisplayableAttributes(slot, DisplayType);
-
     public InventoryGeneric inv = null!;
     protected BasePSContainer block = null!;
     protected MeshData? blockMesh;
@@ -225,45 +220,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         return base.OnTesselation(mesher, tesselator);
     }
 
-    protected override string getMeshCacheKey(ItemSlot slot) {
-        var attr = GetDisplayProps(slot);
-        if (attr?.Shape == null) return base.getMeshCacheKey(slot);
-
-        return $"{slot.Itemstack?.Collectible.Code}-{DisplayType}-{attr.Shape}";
-    }
-
-    protected override MeshData getOrCreateMesh(ItemSlot slot, int index) {
-        MeshData? cached = getMesh(slot);
-        if (cached != null) return cached;
-
-        var attr = GetDisplayProps(slot);
-        if (attr?.Shape == null) return base.getOrCreateMesh(slot, index);
-
-        ICoreClientAPI capi = (Api as ICoreClientAPI)!;
-        ItemStack? stack = slot.Itemstack;
-        CompositeShape shapeLoc = attr.Shape;
-
-        MeshData mesh = capi.TesselatorManager.CreateMesh("displayed item shape", shapeLoc, (shape, name) => {
-                var textures = new Dictionary<string, AssetLocation>(shape.Textures);
-                var collTextures = stack?.Class == EnumItemClass.Item ? stack.Item.Textures : stack?.Block.Textures;
-                foreach (var val in collTextures!) {
-                    textures[val.Key] = val.Value.Base;
-                }
-
-                return new ContainedTextureSource(capi, capi.BlockTextureAtlas, textures, $"For displayed item {stack?.Collectible.Code ?? "NULL"}");
-            }, 
-            null
-        );
-
-        if (attr.Transform != null) {
-            attr.Transform.EnsureDefaultValues();
-            mesh.ModelTransform(attr.Transform);
-        }
-
-        MeshCache[getMeshCacheKey(slot)] = mesh;
-        return mesh;
-    }
-
     protected abstract override float[][]? genTransformationMatrices();
 
     public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldForResolving) {
@@ -272,11 +228,6 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
         VariantAttributes = tree[PSAttributes] is ITreeAttribute psTree
             ? psTree
             : new TreeAttribute();
-
-        if (worldForResolving.Side == EnumAppSide.Client && !receivedInitialSync) {
-            receivedInitialSync = true;
-            InitMesh();
-        }
 
         RedrawAfterReceivingTreeAttributes(worldForResolving);
     }

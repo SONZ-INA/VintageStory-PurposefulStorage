@@ -115,6 +115,23 @@ public static class MeshExtensions {
     }
 
     /// <summary>
+    /// Deterministic pseudo-random float in [-range, range], derived from an integer seed. Same seed always gives the same value.
+    /// </summary>
+    public static float StaticRandom(int seed, float range) {
+        unchecked {
+            uint h = (uint)seed;
+            h ^= h >> 16;
+            h *= 0x45d9f3b;
+            h ^= h >> 16;
+            h *= 0x45d9f3b;
+            h ^= h >> 16;
+
+            float t = (h & 0xFFFF) / 65535f;
+            return (t * 2f - 1f) * range;
+        }
+    }
+
+    /// <summary>
     /// Updates the texture key for all faces in the shape’s root element and its children.
     /// </summary>
     public static void ChangeTextureKey(this Shape shape, string key) {

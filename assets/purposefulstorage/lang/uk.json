@@ -25,8 +25,8 @@
   "block-swordplaque-*": "Підставка для меча",
   "block-clothrack-*": "Стійки для тканини",
   "block-roperack-*": "Стійка для мотузки",
-  "block-jonaspartscabinet-*": "Шафа для деталей Йонаса",
-  "block-apothecarycabinet-*": "Аптекарська шафа",
+  "block-jonaspartscabinet-*": "Шафа для деталей Джонаса",
+  "block-apothecarycabinet-*": "Шафа аптекаря",
 
   "blockdesc-canhold-title": "Може зберігати:",
 
@@ -38,7 +38,7 @@
   "helddesc-glidermount": "Стійка для вашого планера!",
   "helddesc-weaponrack": "Може зберігати більшість довгої зброї!",
   "helddesc-gearrack": "Може зберігати шестерні!",
-  "helddesc-resourcebin": "Може зберігати суху траву, солому, палички, каміння, вугілля, кварц, лляні волокна й шпагати, торф, компост, руду і подрібнені матеріали!",
+  "helddesc-resourcebin": "Може зберігати суху траву, солому, палички, каміння, кістки, пір'я, вугілля, кварц, лляні волокна й шпагати, металеві деталі, торф, компост, руду і подрібнені матеріали!",
   "helddesc-pantsrack": "Може зберігати усі штани!",
   "helddesc-gloverack": "Може зберігати більшість рукавичок, наручів й браслетів!",
   "helddesc-necklacestand": "Може зберігати більшість намиста!",
@@ -52,11 +52,11 @@
   "helddesc-swordplaque": "Хизуйтеся своїм улюбленим мечем!",
   "helddesc-clothrack": "Зберігайте вашу тканину!",
   "helddesc-roperack": "Зберігайте ваші мотузки!",
-  "helddesc-jonaspartscabinet": "Зберігайте всі деталі Йонаса!",
-  "helddesc-apothecarycabinet": "Зберігайте всі свої бинти та припарки! Запобігає висиханню бинтів, просочених алкоголем.",
+  "helddesc-jonaspartscabinet": "Зберігайте усі ваші деталі Джонаса!",
+  "helddesc-apothecarycabinet": "Зберігайте усі ваші бинти та припарки! Запобігає висиханню просочених спиртом бинтів.",
 
   "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері.",
   "This item is not of the same type as the item in the container!": "Цей предмет не відповідає типу предмета в контейнері!",
 
-  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Цей предмет не можна сюди помістити: він має неправильний тип або розмір для цього відділення."
+  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Цей предмет не можна розмістити тут — він або не відповідає типу, або не підходить за розміром для цієї секції."
 }
