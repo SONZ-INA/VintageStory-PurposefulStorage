@@ -8,7 +8,6 @@ public class BEWardrobe : BEBasePSAnimatable {
             ? ShapeReferences.WardrobeWooden 
             : base.ReferencedShape;
 
-    public override string AttributeTransformCode => "onLowerbodywareTransform";
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
 
     public override int[] SectionSegmentCounts => [6, 10];

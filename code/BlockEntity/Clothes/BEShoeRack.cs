@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEShoeRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onFootwareTransform";
     public override string[] AttributeCheck => ["psFootware"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

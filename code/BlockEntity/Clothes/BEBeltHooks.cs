@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEBeltHooks : BEBasePSContainer {
-    public override string AttributeTransformCode => "onWaistwareTransform";
     public override string[] AttributeCheck => ["psWaistware"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

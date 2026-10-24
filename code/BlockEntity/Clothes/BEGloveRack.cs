@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEGloveRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onHandwareTransform";
     public override string[] AttributeCheck => ["psHandware"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

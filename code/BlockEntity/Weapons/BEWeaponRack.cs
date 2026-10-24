@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEWeaponRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onLongweaponsTransform";
     public override string[] AttributeCheck => ["psLongweapons"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

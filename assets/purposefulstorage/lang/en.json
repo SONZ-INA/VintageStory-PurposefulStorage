@@ -27,6 +27,7 @@
   "block-roperack-*": "Rope Rack",
   "block-jonaspartscabinet-*": "Jonas Parts Cabinet",
   "block-apothecarycabinet-*": "Apothecary Cabinet",
+  "block-peltrack-*": "Pelt Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -54,6 +55,7 @@
   "helddesc-roperack": "Store your ropes!",
   "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
   "helddesc-apothecarycabinet": "Store all of your bandages and poultices! Stops alcohol-soaked bandages from drying out.",
+  "helddesc-peltrack": "Your pelts won't clutter the ground anymore!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",

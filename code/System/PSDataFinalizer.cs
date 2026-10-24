@@ -6,17 +6,22 @@ public static class PSDataFinalizer {
     /// </summary>
     public static void FinalizeAssets(ICoreAPI api, Dictionary<string, RestrictionData> restrictions, Dictionary<string, Dictionary<string, ModelTransform>> transformations) {
         foreach (CollectibleObject obj in api.World.Collectibles) {
+            if (obj?.Code == null) continue;
+
             foreach (var restriction in restrictions) {
-                transformations.TryGetValue(restriction.Key, out var transformation);
-                PatchCollectibleWhitelist(obj, restriction, transformation);
+                PatchCollectibleWhitelist(obj, restriction);
+            }
+
+            foreach (var transformation in transformations) {
+                PatchCollectibleTransformation(obj, transformation);
             }
         }
     }
 
     /// <summary>
-    /// Checks if a collectible matches a restriction and applies tags and optional model transformation data.
+    /// Checks if a collectible matches a restriction and applies the "ps{name}" tag.
     /// </summary>
-    private static void PatchCollectibleWhitelist(CollectibleObject obj, KeyValuePair<string, RestrictionData> restrictionData, Dictionary<string, ModelTransform>? transformationData) {
+    private static void PatchCollectibleWhitelist(CollectibleObject obj, KeyValuePair<string, RestrictionData> restrictionData) {
         bool shouldPatch = false;
 
         string token = restrictionData.Key;
@@ -49,12 +54,16 @@ public static class PSDataFinalizer {
 
         obj.EnsureAttributesNotNull();
         obj.Attributes.Token!["ps" + token] = JToken.FromObject(true);
+    }
 
-        if (transformationData != null) {
-            ModelTransform? transformation = obj.GetTransformation(transformationData);
-            if (transformation != null) {
-                obj.Attributes.Token["on" + token + "Transform"] = JToken.FromObject(transformation);
-            }
-        }
+    /// <summary>
+    /// Writes "on{name}Transform" onto the collectible if one of the file's wildcard entries matches its code. Independent of restrictions.
+    /// </summary>
+    private static void PatchCollectibleTransformation(CollectibleObject obj, KeyValuePair<string, Dictionary<string, ModelTransform>> transformationData) {
+        ModelTransform? transformation = obj.GetTransformation(transformationData.Value);
+        if (transformation == null) return;
+
+        obj.EnsureAttributesNotNull();
+        obj.Attributes.Token!["on" + transformationData.Key + "Transform"] = JToken.FromObject(transformation);
     }
 }

@@ -220,6 +220,12 @@ public class BEApothecaryCabinet : BEBasePSAnimatable {
             mesh.ModelTransform(attr.Transform);
         }
 
+        ModelTransform? blockTransform = stack.Collectible.Attributes?[AttributeTransformCode].AsObject<ModelTransform>();
+        if (blockTransform != null) {
+            blockTransform.EnsureDefaultValues();
+            mesh.ModelTransform(blockTransform);
+        }
+
         return mesh;
     }
 

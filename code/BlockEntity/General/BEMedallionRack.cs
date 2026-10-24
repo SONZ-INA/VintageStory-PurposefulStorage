@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEMedallionRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onMedallionsTransform";
     public override string[] AttributeCheck => ["psMedallions"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

@@ -20,6 +20,7 @@ public static class PSDataLoader {
             LoadData(api, restrictionGroupsClient, restrictions, transformations);
         }
 
+        LoadTransformations(api, transformations);
         BEResourceBin.ResourceBinData = restrictions["resourcebin"];
     }
 
@@ -80,14 +81,32 @@ public static class PSDataLoader {
         foreach (var (category, names) in restrictionGroups) {
             foreach (var name in names) {
                 string restrictionPath = $"purposefulstorage:config/restrictions/{category}/{name}.json".Replace("//", "/");
-                string transformationPath = $"purposefulstorage:config/transformations/{category}/{name}.json".Replace("//", "/");
-
                 restrictions[name] = api.LoadAsset<RestrictionData>(restrictionPath);
-
-                if (api.Assets.Exists(transformationPath)) {
-                    transformations[name] = api.LoadAsset<Dictionary<string, ModelTransform>>(transformationPath);
-                }
             }
+        }
+    }
+
+    /// <summary>
+    /// Loads every file under config/transformations (any subfolder), keyed by file name.<br />
+    /// Independent of the restrictions, so a block can have one transformation file for all item types it displays.
+    /// </summary>
+    private static void LoadTransformations(ICoreAPI api, Dictionary<string, Dictionary<string, ModelTransform>> transformations) {
+        foreach (var asset in api.Assets.GetMany("config/transformations", "purposefulstorage", false)) {
+            string path = asset.Location.Path;
+            if (!path.EndsWith(".json")) continue;
+
+            string name = path[(path.LastIndexOf('/') + 1)..^".json".Length];
+
+            var data = api.LoadAsset<Dictionary<string, ModelTransform>>($"purposefulstorage:{path}");
+            if (data == null) continue;
+
+            // The same file name in several folders gets merged, later entries win
+            if (!transformations.TryGetValue(name, out var existing)) {
+                transformations[name] = data;
+                continue;
+            }
+
+            foreach (var kvp in data) existing[kvp.Key] = kvp.Value;
         }
     }
 }
