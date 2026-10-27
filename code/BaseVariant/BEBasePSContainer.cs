@@ -12,7 +12,9 @@ public abstract class BEBasePSContainer : BlockEntityDisplay, IPurposefulStorage
     public override string AttributeTransformCode => "on" + (Block?.Code.FirstCodePart() ?? "-temp-") + "Transform";
 
     public ITreeAttribute VariantAttributes { get; set; } = new TreeAttribute();
-    public virtual string[] AttributeCheck => ["ps" + GetType().Name.Replace("BE", "")];
+
+    protected string[]? AttributeCheckOverride;
+    public virtual string[] AttributeCheck => AttributeCheckOverride ?? ["ps" + GetType().Name.Replace("BE", "")];
 
     protected abstract InfoDisplayOptions InfoDisplay { get; }
 

@@ -66,6 +66,14 @@ public static class LocationalExtensions {
     }
 
     /// <summary>
+    /// Returns a symmetric drop for a segment. 0 at both ends, deepest in the middle.
+    /// </summary>
+    public static float GenerateFalloff(int index, int lastIndex, float depth, float exponent = 0.5f) {
+        int distanceFromEnd = Math.Max(0, Math.Min(index, lastIndex - index));
+        return -depth * MathF.Pow(distanceFromEnd, exponent);
+    }
+
+    /// <summary>
     /// Calculates and returns the horizontal rotation angle of a block relative to the player’s position,
     /// rounding it to the nearest 22.5 degrees.<br/> Useful for meshing blocks that can rotate freely (e.g., buckets/baskets).
     /// </summary>

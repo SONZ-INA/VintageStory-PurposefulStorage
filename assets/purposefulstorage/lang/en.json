@@ -27,7 +27,9 @@
   "block-roperack-*": "Rope Rack",
   "block-jonaspartscabinet-*": "Jonas Parts Cabinet",
   "block-apothecarycabinet-*": "Apothecary Cabinet",
-  "block-peltrack-*": "Pelt Rack",
+  "block-peltrack-small-*": "Small Pelt Rack",
+  "block-peltrack-normal-*": "Pelt Rack",
+  "block-peltrack-huge-*": "Huge Pelt Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -55,10 +57,25 @@
   "helddesc-roperack": "Store your ropes!",
   "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
   "helddesc-apothecarycabinet": "Store all of your bandages and poultices! Stops alcohol-soaked bandages from drying out.",
-  "helddesc-peltrack": "Your pelts won't clutter the ground anymore!",
+  "helddesc-peltrack": "Your pelts won't clutter the ground anymore! Cures pelts 2x faster!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",
 
-  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Can't place this item here, it's either not the right type, or not the right size for this section."
+  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Can't place this item here, it's either not the right type, or not the right size for this section.",
+
+  "Will melt in {0} years": "Will melt in {0} years",
+  "Will melt in {0} days": "Will melt in {0} days",
+  "Will melt in {0} hours": "Will melt in {0} hours",
+  "Will never melt": "Will never melt",
+
+  "Will cure in {0} years": "Will cure in {0} years",
+  "Will cure in {0} days": "Will cure in {0} days",
+  "Will cure in {0} hours": "Will cure in {0} hours",
+  "Will never cure": "Will never cure",
+
+  "Will dry in {0} years": "Will dry in {0} years",
+  "Will dry in {0} days": "Will dry in {0} days",
+  "Will dry in {0} hours": "Will dry in {0} hours",
+  "Will never dry": "Will never dry"
 }

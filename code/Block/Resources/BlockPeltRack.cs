@@ -13,14 +13,8 @@ public class BlockPeltRack : BasePSContainer, IMultiBlockColSelBoxes {
 
         if (be == null) return boxes;
 
-        if (offset.Y == 0) {
-            Cuboidf sbPeltRack = boxes[7].Clone();
-            sbPeltRack.MBNormalizeSelectionBox(offset);
-            return [sbPeltRack];
-        }
-
         List<Cuboidf> sbs = [];
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 27; i++) {
             var sb = boxes[i].Clone();
             sb.MBNormalizeSelectionBox(offset);
             sbs.Add(sb);
