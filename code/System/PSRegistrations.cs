@@ -61,6 +61,7 @@ public static class PSRegistrations {
         api.RegisterBlockEntityClass("PurposefulStorage.BERopeRack", typeof(BERopeRack));
 
         // Weapons
+        api.RegisterBlockEntityClass("PurposefulStorage.BEArrowRack", typeof(BEArrowRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESpearRack", typeof(BESpearRack));
         api.RegisterBlockEntityClass("PurposefulStorage.BESwordPedestal", typeof(BESwordPedestal));
         api.RegisterBlockEntityClass("PurposefulStorage.BESwordPlaque", typeof(BESwordPlaque));

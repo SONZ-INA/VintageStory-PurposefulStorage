@@ -30,6 +30,9 @@
   "block-peltrack-small-*": "Small Pelt Rack",
   "block-peltrack-normal-*": "Pelt Rack",
   "block-peltrack-huge-*": "Huge Pelt Rack",
+  "block-arrowrack-*": "Arrow Rack",
+
+  "block-firewoodrack-*": "Firewood Rack",
 
   "blockdesc-canhold-title": "Can hold:",
 
@@ -58,6 +61,7 @@
   "helddesc-jonaspartscabinet": "Store all of your Jonas parts!",
   "helddesc-apothecarycabinet": "Store all of your bandages and poultices! Stops alcohol-soaked bandages from drying out.",
   "helddesc-peltrack": "Your pelts won't clutter the ground anymore! Cures pelts 2x faster!",
+  "helddesc-arrowrack": "Store and display your arrows!",
 
   "This item cannot be placed in this container.": "This item cannot be placed in this container.",
   "This item is not of the same type as the item in the container!": "This item is not of the same type as the item in the container!",

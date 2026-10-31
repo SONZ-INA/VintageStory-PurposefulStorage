@@ -27,6 +27,12 @@
   "block-roperack-*": "Стійка для мотузки",
   "block-jonaspartscabinet-*": "Шафа для деталей Джонаса",
   "block-apothecarycabinet-*": "Шафа аптекаря",
+  "block-peltrack-small-*": "Мала стійка для шкур",
+  "block-peltrack-normal-*": "Стійка для шкур",
+  "block-peltrack-huge-*": "Велика стійка для шкур",
+  "block-arrowrack-*": "Стійка для стріл",
+
+  "block-firewoodrack-*": "Стійка для дров",
 
   "blockdesc-canhold-title": "Може зберігати:",
 
@@ -54,9 +60,26 @@
   "helddesc-roperack": "Зберігайте ваші мотузки!",
   "helddesc-jonaspartscabinet": "Зберігайте усі ваші деталі Джонаса!",
   "helddesc-apothecarycabinet": "Зберігайте усі ваші бинти та припарки! Запобігає висиханню просочених спиртом бинтів.",
+  "helddesc-peltrack": "Ваші шкури більше не валятимуться на землі! Дубить шкури у 2 рази швидше!",
+  "helddesc-arrowrack": "Зберігайте та хизуйтеся своїми стрілами!",
 
   "This item cannot be placed in this container.": "Цей предмет не можна зберігати в цьому контейнері.",
   "This item is not of the same type as the item in the container!": "Цей предмет не відповідає типу предмета в контейнері!",
 
-  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Цей предмет не можна розмістити тут — він або не відповідає типу, або не підходить за розміром для цієї секції."
+  "Can't place this item here, it's either not the right type, or not the right size for this section.": "Цей предмет не можна розмістити тут — він або не відповідає типу, або не підходить за розміром для цієї секції.",
+
+  "Will melt in {0} years": "Розтане через {p0:none|# рік|# роки|# років}",
+  "Will melt in {0} days": "Розтане через {p0:none|# день|# дні|# днів}",
+  "Will melt in {0} hours": "Розтане через {p0:none|# година|# години|# годин}",
+  "Will never melt": "Ніколи не розтане",
+
+  "Will cure in {0} years": "Дозріє за {p0:none|# рік|# роки|# років}",
+  "Will cure in {0} days": "Дозріє за {p0:none|# день|# дні|# днів}",
+  "Will cure in {0} hours": "Дозріє за {p0:none|# година|# години|# годин}",
+  "Will never cure": "Ніколи не дубитиметься",
+
+  "Will dry in {0} years": "Висохне за {p0:none|# рік|# роки|# років}",
+  "Will dry in {0} days": "Висохне за {p0:none|# день|# дні|# днів}",
+  "Will dry in {0} hours": "Висохне за {p0:none|# година|# години|# годин}",
+  "Will never dry": "Ніколи не висушиться"
 }

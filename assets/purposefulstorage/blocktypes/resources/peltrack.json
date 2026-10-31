@@ -17,6 +17,7 @@
   },
   "behaviorsByType": {
     "*-small-*": [
+      { "name": "UnstableFalling" },
       { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }
     ],
     "*-normal-*": [
@@ -72,15 +73,15 @@
   "combustiblePropsByType": {
     "*-small-*": {
       "burnTemperature": 700,
-      "burnDuration": 34
+      "burnDuration": 144
     },
     "*-normal-*": {
       "burnTemperature": 700,
-      "burnDuration": 34
+      "burnDuration": 288
     },
     "*-huge-*": {
       "burnTemperature": 700,
-      "burnDuration": 34
+      "burnDuration": 360
     }
   },
   "guiTransformByType": {

@@ -43,8 +43,10 @@ public class BEPeltRack : BEBasePSContainer {
     protected override float[][] genTransformationMatrices() {
         if (block.Variant["type"] == "small") {
             return TransformationGenerator.GenerateLayout(this, td => {
+                td.scaleX = td.scaleZ = 1.1f;
+
                 td.offsetY = 0.1525f;
-                td.offsetZ = 0.025f;
+                td.offsetZ = 0.065f;
 
                 td.offsetRotX = 11.5f;
                 td.offsetRotY = StaticRandom(td.item, 10);
@@ -88,6 +90,11 @@ public class BEPeltRack : BEBasePSContainer {
         }
 
         return [];
+    }
+
+    public override bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tesselator) {
+        InitMesh(); // Falling blocks
+        return base.OnTesselation(mesher, tesselator);
     }
 
     public override void GetBlockInfo(IPlayer forPlayer, StringBuilder sb) {
