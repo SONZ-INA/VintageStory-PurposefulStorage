@@ -7,10 +7,12 @@
 public static class TransformationGenerator {
     /// <summary>
     /// Generates transformation matrices using the container's grid structure (sections & their items). <br />
-    /// The provided accessor defines how each slot is positioned, and optional item layouts adjust placement per segment, depending on the item inside.
+    /// The provided accessor defines how each slot is positioned, and optional item layouts adjust placement per segment, depending on the item inside.<br />
+    /// If this method is used for generating meshes inside "bulk" storage containers, change meshesPerSlot to desired number of meshes.
     /// </summary>
-    public static float[][] GenerateLayout(BEBasePSContainer be, Action<TransformationData> accessor) {
-        float[][] tfMatrices = new float[be.SlotCount][];
+
+    public static float[][] GenerateLayout(BEBasePSContainer be, Action<TransformationData> accessor, int meshesPerSlot = 1) {
+        float[][] tfMatrices = new float[be.SlotCount * meshesPerSlot][];
 
         TransformationData td = new() {
             preRotate = be.Block.GetRotationAngle()
@@ -23,26 +25,30 @@ public static class TransformationGenerator {
 
             for (int segment = 0; segment < segmentsInSection; segment++) {
                 for (int item = 0; item < be.ItemsPerSegment; item++) {
-
                     if (index >= be.SlotCount) break;
 
                     var slot = be.inv[index];
 
-                    if (slot.Empty) {
-                        tfMatrices[index] = new Matrixf().Values;
-                        index++;
-                        continue;
+                    for (int stackItem = 0; stackItem < meshesPerSlot; stackItem++) {
+                        int matrixIndex = index * meshesPerSlot + stackItem;
+
+                        if (slot.Empty) {
+                            tfMatrices[matrixIndex] = new Matrixf().Values;
+                            continue;
+                        }
+
+                        td.Reset();
+                        td.index = index;
+                        td.section = section;
+                        td.segment = segment;
+                        td.item = item;
+                        td.stackItem = stackItem;
+
+                        accessor(td);
+
+                        tfMatrices[matrixIndex] = td.BuildMatrix();
                     }
 
-                    td.Reset();
-                    td.index = index;
-                    td.section = section;
-                    td.segment = segment;
-                    td.item = item;
-
-                    accessor(td);
-
-                    tfMatrices[index] = td.BuildMatrix();
                     index++;
                 }
             }

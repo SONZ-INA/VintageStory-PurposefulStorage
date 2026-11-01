@@ -20,12 +20,25 @@ public static class MeshExtensions {
         => stack.ItemAttributes?["displayable"]?["shelf"]?["shape"]?["base"]?.AsString();
 
     /// <summary>
-    /// Returns how many root shapes should be visible for the given stack size.
+    /// Calculates a proportional count based on the current content, capacity, and maximum count.
+    /// Rounds up to ensure at least one element is visible when content is present.
     /// </summary>
-    public static int GetVisibleShapeCount(int content, int capacity, int shapeCount) {
-        if (content <= 0 || capacity <= 0 || shapeCount <= 0) return 0;
+    public static int GetProportionalCount(int content, int capacity, int maxCount) {
+        if (content <= 0 || capacity <= 0 || maxCount <= 0) return 0;
+
         content = Math.Min(content, capacity);
-        return (content * shapeCount + capacity - 1) / capacity;
+        return (content * maxCount + capacity - 1) / capacity;
+    }
+
+    /// <summary>
+    /// Returns the number of visible mesh copies based on the slot's capacity.
+    /// </summary>
+    public static int GetVisibleMeshCount(ItemSlot slot, int maxMeshes) {
+        if (slot.Empty || maxMeshes <= 0) return 0;
+
+        int capacity = slot.StackSize + slot.GetRemainingSlotSpace(slot.Itemstack);
+
+        return GetProportionalCount(slot.StackSize, capacity, maxMeshes);
     }
 
     /// <summary>
@@ -49,7 +62,7 @@ public static class MeshExtensions {
     /// </summary>
     public static int GetStackedVisibleCount(ICoreClientAPI? capi, ItemStack? stack, string shapePath, int capacity) {
         if (stack == null) return 0;
-        return GetVisibleShapeCount(stack.StackSize, capacity, GetStackedShapeCount(capi, stack, shapePath));
+        return GetProportionalCount(stack.StackSize, capacity, GetStackedShapeCount(capi, stack, shapePath));
     }
 
     /// <summary>

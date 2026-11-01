@@ -4,5 +4,11 @@
     "op": "addmerge", "path": "/GroupingCodes/bone/-",
     "value": "butchering:strongbone",
     "dependsOn": [ { "modid": "butchering" } ]
+  },
+  {
+    "file": "purposefulstorage:config/restrictions/weapons/arrows.json",
+    "op": "addmerge", "path": "/CollectibleCodes/-",
+    "value": "butchering:arrow-bone",
+    "dependsOn": [ { "modid": "butchering" } ]
   }
 ]
