@@ -1,0 +1,10 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "*:hide-*-medium",
+    "*:hide-*-large",
+    "game:hide-*-bear-sun-body",
+    "game:hide-*-bear-sun-complete"
+  ],
+  "BlacklistedCodes": []
+}

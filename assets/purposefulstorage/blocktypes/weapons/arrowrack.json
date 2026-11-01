@@ -1,0 +1,58 @@
+{
+  "code": "arrowrack",
+  "class": "PurposefulStorage.BlockPSContainer",
+  "entityclass": "PurposefulStorage.BEArrowRack",
+  "variantgroups": [
+    { "code": "type", "states": ["normal"] },
+    { "code": "side", "loadFromProperties": "abstract/horizontalorientation" }
+  ],
+  "attributes": {
+    "materials": { "loadFromProperties": "block/wood" },
+    "variantTextures": {
+      "surface": [ "game:block/wood/debarked/{wood}", "purposefulstorage:variants/wood/{wood}" ]
+    },
+    "handbook": {
+      "groupBy": [ "arrowrack-*" ]
+    }
+  },
+  "behaviors": [
+    { "name": "HorizontalOrientable", "properties": { "dropBlockFace": "east" } }
+  ],
+  "shape": {
+    "base": "block/weapons/arrowrack",
+    "rotateYByType": { "*-north": 0, "*-east": 270, "*-west": 90, "*-south": 180 }
+  },
+  "heldTpIdleAnimation": "holdbothhandslarge",
+  "heldRightReadyAnimation": "heldblockready", 
+  "heldTpUseAnimation": "twohandplaceblock",
+  "blockmaterial": "Wood",
+  "maxStackSize": 16,
+  "lightAbsorption": 1,
+  "replaceable": 900,
+  "resistance": 1.5,
+  "materialDensity": 400,
+  "faceCullMode": "NeverCull",
+  "emitSideAo": { "all": false },
+  "sidesolid": { "all": false },
+  "sideopaque": { "all": false },
+  "combustibleProps": {
+    "burnTemperature": 700,
+    "burnDuration": 28
+  },
+  "tpHandTransform": {
+    "translation": { "x": -1.85, "y": -1.08, "z": -0.65 },
+    "rotation": { "x": 12, "y": 12, "z": -89 },
+    "scale": 0.4
+  },
+  "sounds": {
+    "place": "game:block/planks",
+    "hit": "game:block/planks",
+    "break": "game:block/planks"
+  },
+  "collisionbox": { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.4125, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+  "selectionBoxes": [
+	  { "x1": 0, "y1": 0, "z1": 0, "x2": 1, "y2": 0.4675, "z2": 0.34, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0, "y1": 0, "z1": 0.34, "x2": 1, "y2": 0.4675, "z2": 0.66, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } },
+	  { "x1": 0, "y1": 0, "z1": 0.66, "x2": 1, "y2": 0.4675, "z2": 1, "rotateYByType": { "*-north": 90, "*-east": 0, "*-west": 180, "*-south": 270 } }
+  ]
+}

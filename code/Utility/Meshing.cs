@@ -265,7 +265,7 @@ public static class Meshing {
             return null;
         }
 
-        int visible = GetVisibleShapeCount(stack.StackSize, capacity, shape.Elements.Length);
+        int visible = GetProportionalCount(stack.StackSize, capacity, shape.Elements.Length);
         if (visible <= 0) return null;
 
         if (visible < shape.Elements.Length) {
@@ -281,5 +281,18 @@ public static class Meshing {
         if (baseTransform != null) mesh.MatrixTransform(baseTransform);
 
         return mesh;
+    }
+
+    /// <summary>
+    /// Draws mesh copies used for rendering multiple meshes of "bulk" containers.
+    /// </summary>
+    public static void RenderStackedMeshes(ITerrainMeshPool mesher, MeshData mesh, ItemSlot slot, float[][] matrices) {
+        if (slot.Empty || matrices.Length == 0) return;
+
+        int visible = GetVisibleMeshCount(slot, matrices.Length);
+
+        for (int i = 0; i < visible; i++) {
+            mesher.AddMeshData(mesh, matrices[i]);
+        }
     }
 }

@@ -9,7 +9,7 @@ public static class InfoDisplay {
 
     #region // Public Methods -------------------------------------------------------------------------------------------------------------------------------
 
-    public static string GetNameAndStackSize(ItemStack stack) => stack.GetName() + " x" + stack.StackSize;
+    public static string GetNameAndStackSize(ItemStack? stack) => stack != null ? stack.GetName() + " x" + stack.StackSize : "";
 
     public static void DisplayInfo(IPlayer forPlayer, StringBuilder sb, InventoryGeneric inv, InfoDisplayOptions displaySelection, int slotCount, int segmentsPerShelf = 0, int itemsPerSegment = 0, int skipSlotsFrom = -1, int selectedSegment = -1) {
         if (selectedSegment == -1 && forPlayer.CurrentBlockSelection != null)
@@ -121,9 +121,9 @@ public static class InfoDisplay {
             actionVerb = transitionType switch {
                 EnumTransitionType.Perish => "fresh for",
                 EnumTransitionType.Ripen => "will ripen in",
-                EnumTransitionType.Cure => "foodshelves:Will cure in",
-                EnumTransitionType.Dry => "foodshelves:Will dry in",
-                EnumTransitionType.Melt => "foodshelves:Will melt in",
+                EnumTransitionType.Cure => "purposefulstorage:Will cure in",
+                EnumTransitionType.Dry => "purposefulstorage:Will dry in",
+                EnumTransitionType.Melt => "purposefulstorage:Will melt in",
                 _ => ""
             };
         }

@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEHatRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onHeadwareTransform";
     public override string[] AttributeCheck => ["psHeadware"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

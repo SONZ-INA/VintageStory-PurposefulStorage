@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEBlanketRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onBlanketsTransform";
     public override string[] AttributeCheck => ["psBlankets"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;

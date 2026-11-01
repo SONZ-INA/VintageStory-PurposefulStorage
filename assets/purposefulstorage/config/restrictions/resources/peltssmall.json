@@ -1,0 +1,10 @@
+{
+  "CollectibleTypes": [],
+  "CollectibleCodes": [
+    "*:hide-*-small",
+    "*:hide-*-fox-*",
+    "*:hide-*-raccoon-*",
+    "*:hide-*-head"
+  ],
+  "BlacklistedCodes": []
+}

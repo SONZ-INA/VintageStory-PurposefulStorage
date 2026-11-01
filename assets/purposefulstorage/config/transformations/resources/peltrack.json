@@ -1,0 +1,6 @@
+{
+  "game:*-sun-*": { "translation": { "x": 0, "y": 0, "z": -0.175 } },
+  "game:hide-*-medium": { "translation": { "x": 0, "y": 0, "z": -0.05 } },
+  "game:hide-*-fox-*": { "translation": { "x": 0, "y": -0.1, "z": -0.05 }, "scale": 0.8 },
+  "game:hide-*-raccoon-*": { "translation": { "x": 0, "y": -0.1, "z": -0.05 }, "scale": 0.8 }
+}

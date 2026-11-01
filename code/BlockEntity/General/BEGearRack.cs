@@ -1,7 +1,6 @@
 ﻿namespace PurposefulStorage;
 
 public class BEGearRack : BEBasePSContainer {
-    public override string AttributeTransformCode => "onGearsTransform";
     public override string[] AttributeCheck => ["psGears"];
 
     protected override InfoDisplayOptions InfoDisplay => InfoDisplayOptions.BySegment;
